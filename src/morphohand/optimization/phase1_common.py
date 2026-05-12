@@ -10,6 +10,10 @@ import mujoco
 import numpy as np
 
 from .contact_targets import ContactTargetSet, score_contact_targets
+from .force_closure import (
+    extract_finger_contacts,
+    force_closure_metrics,
+)
 from .phase1_trajectory import build_trajectory_interpolator
 
 
@@ -41,6 +45,11 @@ class Phase1EvalConfig:
     objective_weight_cube_ang_drift_penalty: float = 2.0
     objective_weight_contact_target_reward: float = 0.0
     objective_weight_contact_target_distance_penalty: float = 0.0
+    objective_weight_force_closure: float = 0.0
+    force_closure_friction_mu: float = 0.5
+    force_closure_cone_edges: int = 4
+    force_closure_weight_balance: float = 0.5
+    force_closure_weight_q1: float = 1.0
 
 
 class Phase1GraspEvaluator:
@@ -507,6 +516,7 @@ class Phase1GraspEvaluator:
         finger_qpos_settle: np.ndarray,
         finger_qpos_after: np.ndarray,
         tip_positions_settle: np.ndarray | None = None,
+        fc_metrics: Any = None,
     ) -> tuple[float, dict[str, float]]:
         lift_amount = peak_z - z_before
         mean_dist = float(np.mean(distances))
@@ -543,6 +553,10 @@ class Phase1GraspEvaluator:
             contact_target_mean_distance = breakdown.mean_distance
             contact_target_assignment = breakdown.assignment
 
+        fc_contribution = 0.0
+        if fc_metrics is not None and np.isfinite(fc_metrics.score):
+            fc_contribution = self.cfg.objective_weight_force_closure * fc_metrics.score
+
         score = (
             self.cfg.objective_weight_lift * lift_amount
             - self.cfg.objective_weight_distance * mean_dist
@@ -560,6 +574,7 @@ class Phase1GraspEvaluator:
             - self.cfg.objective_weight_finger_flex_drift_penalty * finger_flex_drift
             + self.cfg.objective_weight_contact_target_reward * contact_target_reward
             - self.cfg.objective_weight_contact_target_distance_penalty * contact_target_mean_distance
+            + fc_contribution
         )
 
         metrics = {
@@ -596,6 +611,8 @@ class Phase1GraspEvaluator:
                 metrics[f"contact_target_assignment_{i}"] = (
                     float(tip) if tip is not None else float("nan")
                 )
+        if fc_metrics is not None:
+            metrics.update(fc_metrics.to_dict())
         return float(score), metrics
 
     def _run_dynamic_loop_sampled(
@@ -676,6 +693,20 @@ class Phase1GraspEvaluator:
         tip_positions_settle = self._tip_positions().copy()
         z_before = float(self.data.xpos[self.cube_body_id, 2])
 
+        fc_metrics = None
+        if self.cfg.objective_weight_force_closure != 0.0:
+            wrenches = extract_finger_contacts(
+                self.data, self.model, self.tip_body_ids, self.cube_body_id
+            )
+            fc_metrics = force_closure_metrics(
+                wrenches,
+                object_com=cube_pos_before,
+                mu=self.cfg.force_closure_friction_mu,
+                n_edges=self.cfg.force_closure_cone_edges,
+                weight_balance=self.cfg.force_closure_weight_balance,
+                weight_q1=self.cfg.force_closure_weight_q1,
+            )
+
         if self.metric_collection_mode == "terminal" and self.backend != "mujoco":
             peak_z, contact_active_steps, finger_contact_steps, all_finger_contact_steps = (
                 self._run_dynamic_loop_terminal(get_finger_ctrl, z_before)
@@ -713,6 +744,7 @@ class Phase1GraspEvaluator:
             finger_qpos_settle=finger_qpos_settle,
             finger_qpos_after=finger_qpos_after,
             tip_positions_settle=tip_positions_settle,
+            fc_metrics=fc_metrics,
         )
 
     def evaluate(self, finger_ctrl: np.ndarray) -> tuple[float, dict[str, float]]:
