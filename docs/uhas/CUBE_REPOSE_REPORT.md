@@ -245,6 +245,77 @@ against an outcome, because no design of ours has produced an outcome yet. Treat
 filter to *use before* spending Isaac time, and confirm it with the first design that clears both
 axes.
 
+## The design box, searched (2026-08-02)
+
+The section above said spacing was the dominant lever and the optimum was interior. That was a
+claim about a landscape nobody had sampled. **980 designs later, each a real MJCF → URDF →
+UHAS-sphere → CIK rebuild** (`scripts/uhas_mount_search.py`, ~5 s each, no GPU), the honest
+verdict is a clean negative with a structural explanation.
+
+Two facts fell out of setting the search up. **The metric is translation-invariant** — UHAS fits
+its sphere to the *finger roots*, so the palm plate never enters and sliding all three mounts
+together is an exact no-op. The searchable axes are therefore the two *separations*, thumb↔pair
+in x and index↔middle in y, plus phalanx scales. And **the cube does not spawn on the palm**:
+`init_pos` is in sphere-radius units and the sphere is tangent to the fitted palm plane, so every
+hand gets the cube at 1.3 R off the palm — proportionally identical for LEAP and for us. Cube
+flat on the palm in our renders is a **catch failure**, not a different spawn.
+
+### LEAP dominates the whole front
+
+| | authority = travel_live × (1 − pinned) |
+|---|---|
+| whole box, min → median → max | 0.40 → 0.78 → **1.10** |
+| shipped perp | 0.93 |
+| best **buildable** (see floor, below) | 1.09 |
+| LEAP | **1.52** |
+
+Not one design is even non-dominated with respect to LEAP. 265 of 976 match or beat its
+conditioning (pinned ≤ 15 %); none of those clears travel 1.4. At LEAP's pinned fraction the box
+delivers about 65 % of LEAP's fingertip travel.
+
+The `l_prox/R` hypothesis is directly falsified as a *lever*. The box does reach **l/R 0.62**
+(LEAP 0.52) — and that design beats LEAP's conditioning (7.9 % pinned) at **43 % of its travel**.
+Matching LEAP's proportions is achievable and does not buy LEAP's authority.
+
+### The perp hand already ships on its collision floor
+
+`morph_selfcollision_gate.py --sep-sweep [--prox S]` settles each pair separation at the **open**
+pose. perp's fingers face each other, so the binding contact is index↔middle, not the palm:
+
+| proximal | **90 mm (shipped)** | 76 | 63 | 50 | 36 |
+|---|---|---|---|---|---|
+| minimum feasible separation | **96 mm (shipped)** | 85 | 75 | 65 | 55 |
+| best authority at that floor | 1.08 | **1.09** | 1.01 | 1.01 | 0.98 |
+
+The floor tracks proximal length ≈ 0.77:1, which makes "shorten the proximal" and "close the
+fingers" **one proposal** — the first is the enabler for the second. But the floor costs nothing
+(1.09 buildable vs 1.10 free) **because the metric never wanted the pair closer**. The best
+mount-only change moves the thumb *in* (gap 100 → 85 mm) and the pair slightly *out* (96 → 105 mm)
+for +5 %.
+
+### What no design in the box can buy
+
+| | joints per finger | link lengths (mm) |
+|---|---|---|
+| LEAP | 4: D, A, B, B | 53.1 / 15.0 / 36.1 / 50.0 |
+| perp | 3: A, B, B | 84.9 / 90.0 / 30.0 |
+
+**Three CIK-solvable joints across four segments against two across three.** Two flexion joints
+put the fingertip on a curve; three put it on an area. No mount position and no phalanx scale adds
+a joint — which is why the front is dominated everywhere rather than in one corner, and why
+spacing and length both plateau around 1.0–1.1. The lever this program has not pulled is a
+**third phalanx**.
+
+### The counter-argument that survives
+
+`authority` is fingers-only. **Palm contact is invisible to it**, and a three-finger hand can use
+the palm as a fourth contact to gait — a person with three fingers does exactly that, and this
+hand has more independent actuation and range of motion than those three fingers. Nothing above
+predicts or rules that out. It is the live counter-argument to this negative, it needs sim rather
+than kinematics to settle, and because the frozen policy was trained mostly on four- and
+five-fingered hands there is no particular reason it already knows the trick — which makes it a
+**finetune** hypothesis, not a zero-shot one.
+
 ## A cheap predictor, and an honest null
 
 The checkpoint's own observation normalizer gives an out-of-distribution score per hand in ~90 s
@@ -267,25 +338,28 @@ not a validated evaluator.
   have dynamic range across our designs (perp's centering 0.560 beats every other hand we have
   built) even while the repose rate does not.
 
-## Open, cheapest first (revised 2026-08-02)
+## Open, cheapest first (revised 2026-08-02, after the search)
 
-1. ~~Type-B lookup amplitude~~ — **done**, and it changed the plan; see "What actually limits our
-   hands". The deficit is authority × conditioning; the probe is `scripts/uhas_cik_authority.py`.
-2. **Search the mount box on the offline metric.** Seconds per design, no Isaac, no GPU: sweep
-   perp's three mount x/y (and `sphere_factor`) for the interior point that keeps LEAP-class
-   authority *and* LEAP-class conditioning. Both extremes are known to fail in opposite
-   directions, so an optimum exists inside.
-3. **Build the two best and zero-shot them.** The eval already runs. Judge on **best alignment
-   reached** and **cube angular speed**, not the binary repose rate — the rate has no dynamic
-   range at 0 %, the other two do.
-4. **Then fine-tune, if and only if step 3 shows the cube moving.** UHAS's own `MANO_to_LEAP`
-   transfer run is 1000 iterations (≈1.5 h at 8192 envs on their hardware) against 15000 from
-   scratch. A finetune can teach the policy to stay in a hand's live action region and to cope
-   with our contact model; it **cannot** create fingertip travel the morphology and the CIK do not
-   provide. Finetuning perp-as-built would test the wrong hypothesis.
-5. **Clamped-anchor variant** (anchor at the reachable θ closest to the canonical azimuth) — still
-   correct, still one line, but demoted: the E3 anchorfix moved no outcome.
-6. **Only then** use it to rank morphologies.
+1. ~~Type-B lookup amplitude~~ and ~~search the mount box~~ — **both done**; see "The design box,
+   searched". The box is exhausted: 980 designs, LEAP dominates all of them, and the shipped perp
+   already sits on its pair-separation floor.
+2. **Zero-shot a spread of the top buildable designs.** Not to pick a winner — the spread is
+   1.0–1.1 against LEAP's 1.52 — but because `authority` has never been checked against an
+   outcome. Judge on **best alignment reached** and **cube angular speed**; the repose rate is
+   floored at 0 % and cannot rank anything.
+3. **Test the palm-gaiting hypothesis, which requires a finetune.** It is the one live argument
+   that a three-finger hand can repose the cube despite the authority deficit, and no kinematic
+   score can see it. UHAS's own `MANO_to_LEAP` transfer is 1000 iterations (≈1.5 h at 8192 envs on
+   their hardware) against 15000 from scratch. A finetune can teach the policy to stay in a hand's
+   live action region, to cope with our contact model, and possibly to brace against the palm; it
+   **cannot** create fingertip travel the morphology and the CIK do not provide.
+4. **The third phalanx.** The only change in evidence that would move authority rather than trade
+   it. Outside every parameterisation this program has used, and a real hardware change.
+5. **`sphere_factor`** — a constant in `construct_sphere_with_palm`, not a hand property, never
+   swept; ×0.75 buys +30 % on the unmodified perp. Free, but it shrinks the cube with the sphere,
+   so it changes the task as well as the representation.
+6. **Clamped-anchor variant** — still correct, still one line, still demoted: the E3 anchorfix
+   moved no outcome.
 
 ## Renders
 
