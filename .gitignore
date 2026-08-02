@@ -38,5 +38,6 @@ wandb/
 *.DONE
 *.pid
 
-docs/uhas/UHAS_simdocs/uhas/paper
+docs/uhas/UHAS_sim
+docs/uhas/paper
 .venv-uhas/
