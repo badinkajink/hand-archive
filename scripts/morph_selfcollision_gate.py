@@ -49,6 +49,7 @@ from morphohand.sampling.morphology import (  # noqa: E402
 )
 from morphohand.tools.morphology_xml import create_rigid_morphology_xml  # noqa: E402
 from morphohand.tools.keyframe_ik import ik_finger  # noqa: E402
+from perp_phalanx_variant import rescale_phalanges  # noqa: E402
 
 PERP_DIR = PROJECT_ROOT / "assets" / "mjcf" / "perp"
 BASE_HAND = PERP_DIR / "perp_hand.xml"
@@ -198,6 +199,16 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--outdir", type=Path, default=None, help="Keep the baked scenes here.")
     p.add_argument("--base-scene", type=Path, default=BASE_SCENE,
                    help="Scene to bake designs from (for testing palm/geometry variants).")
+    p.add_argument("--sep-sweep", nargs="*", type=float, default=None, metavar="SEP_MM",
+                   help="Sweep index<->middle mount separation (mm) instead of one design. "
+                        "This is the measurement that says how close the pair can get before "
+                        "the two facing fingers interfere -- the perp hand SHIPS on that floor "
+                        "(96 mm), so the pair cannot be closed without shortening the proximal. "
+                        "Combine with --prox to see the floor move.")
+    p.add_argument("--prox", type=float, default=1.0,
+                   help="Scale the 90 mm proximal phalanx (geometry edit -- the *_len slides "
+                        "can only lengthen, so this is outside the 9-param space).")
+    p.add_argument("--dist", type=float, default=1.0, help="Scale the 30 mm distal phalanx.")
     p.add_argument("--retarget", action="store_true",
                    help="IK each design onto the REFERENCE grasp's fingertip world targets "
                         "before settling, instead of reusing the authored joint angles. "
@@ -210,7 +221,13 @@ def main() -> None:
     args = build_parser().parse_args()
 
     designs: list[tuple[str, MorphologyValues]] = []
-    if args.sweep:
+    if args.sep_sweep is not None:
+        seps = args.sep_sweep or [96.0, 85.0, 75.0, 65.0, 55.0, 45.0, 35.0, 25.0]
+        for s in seps:
+            dy = s / 2000.0 - 0.048
+            designs.append((f"sep {s:.0f} mm", MorphologyValues(
+                0.0, 0.0, 0.0, 0.0, dy, 0.0, 0.0, -dy, 0.0)))
+    elif args.sweep:
         ts = (0.0, 0.25, 0.5, 0.75, 1.0)
         designs.append(("shipped (0,0,0)", perp_compact_design()))
         designs += [(f"thumb_t {t:.2f}", perp_compact_design(thumb_t=t)) for t in ts[1:]]
@@ -241,8 +258,15 @@ def main() -> None:
     print(f"[gate] pose: {mode}")
     print(f"[gate] mount positions are PALM-FRAME mm; pinch = index_tip<->middle_tip at `closed`\n")
 
+    base_scene = args.base_scene
+    if (args.prox, args.dist) != (1.0, 1.0):
+        base_scene = outdir / f"base_p{args.prox:g}_d{args.dist:g}.xml"
+        base_scene.write_text(rescale_phalanges(args.base_scene.read_text(), args.prox, args.dist))
+        print(f"[gate] phalanges rescaled: proximal x{args.prox:g}, distal x{args.dist:g} "
+              f"-> {base_scene}")
+
     targets = reference_tip_targets(BASE_SCENE) if args.retarget else None
-    verdicts = [evaluate(label, m, outdir, args.steps, args.thumb_yaw, args.base_scene, targets)
+    verdicts = [evaluate(label, m, outdir, args.steps, args.thumb_yaw, base_scene, targets)
                 for label, m in designs]
     for v in verdicts:
         print(fmt_row(v))
