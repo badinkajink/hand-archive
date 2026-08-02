@@ -476,3 +476,127 @@ Two honest readings, and the second matters more than the first:
   there is no signal to track. This says nothing about whether the score would rank hands that
   actually differ. Do not report it as a validated morphology evaluator; it is a validated
   *sanity check* and a candidate evaluator.
+
+---
+
+## E5 — cube size: swept, with a control. It is not the explanation.
+
+`scripts/uhas_cube_sweep.sh`. `UHAS_CUBE_SCALE_MULT` multiplies the auto ratio; it now scales the
+cube's **mass** linearly as well as its geometry, matching upstream's own mass law. (Before that
+fix a 0.55× cube kept its full 78 g and became ~6× denser — the sweep would have measured density,
+not size. Caught by reading the geometry block of the first result.)
+
+Subject: **perp**, because it is the hand that holds the cube perfectly and never turns it, so
+"the cube is too big for three fingers to gait around" is a live hypothesis for it specifically.
+Control: **LEAP**, so any effect can be attributed to finger count rather than to cube size.
+
+| hand | mult | edge | mass | cube/sphere | attempts | success | 95 % CI | drop % | timeout % |
+|---|---|---|---|---|---|---|---|---|---|
+| LEAP | 0.70 | 4.90 cm | 72.8 g | 0.465 | 210 | **53.8 %** | [47.1, 60.4] | 32.9 | 13.3 |
+| LEAP | 1.00 | 7.00 cm | 104.0 g | 0.665 | 385 | **51.7 %** | [46.7, 56.6] | 41.0 | 7.3 |
+| LEAP | 1.15 | 8.05 cm | 119.6 g | 0.765 | 290 | **41.0 %** | [35.5, 46.8] | 52.4 | 6.6 |
+| perp | 0.55 | 2.89 cm | 43.0 g | 0.366 | 154 | **0.00 %** | [0.00, 2.43] | 58.4 | 41.6 |
+| perp | 0.70 | 3.68 cm | 54.7 g | 0.465 | 199 | **0.00 %** | [0.00, 1.89] | 67.8 | 32.2 |
+| perp | 0.85 | 4.47 cm | 66.4 g | 0.565 | 241 | **0.00 %** | [0.00, 1.57] | 73.4 | 26.6 |
+| perp | 1.00 | 5.26 cm | 78.1 g | 0.665 | 263 | **0.00 %** | [0.00, 1.44] | 75.7 | 24.3 |
+| perp | 1.15 | 6.05 cm | 89.8 g | 0.765 | 240 | **0.00 %** | [0.00, 1.58] | 73.3 | 26.7 |
+
+**Over a range where LEAP moves 53.8 % → 41.0 %, perp is 0.00 % at every point** — 0 successes in
+1097 attempts across five cube sizes. The hypothesis is dead, and the control is what kills it: at
+cube/sphere = 0.465 LEAP is at its *best* (53.8 %) and perp is still exactly zero, so nothing
+about that ratio is unfavourable per se.
+
+What the cube size *does* change for perp is the failure mode, cleanly and monotonically:
+
+| perp cube mult | 0.55 | 0.70 | 0.85 | 1.00 | 1.15 |
+|---|---|---|---|---|---|
+| drop % | **58.4** | 67.8 | 73.4 | 75.7 | 73.3 |
+| timeout % | **41.6** | 32.2 | 26.6 | 24.3 | 26.7 |
+
+A smaller cube is easier to keep hold of, so drops convert into timeouts one-for-one. It buys
+*holding*, and holding was never the binding constraint. **Rotation does not respond to cube size
+at all.**
+
+This closes E2/E5 together: the cube is neither mis-sized by construction (E2 — the ratio is a
+constant 0.66479 for every hand) nor mis-sized in effect (E5 — sweeping it changes nothing that
+matters). The gap is not about the object.
+
+---
+
+## E4d — why perp holds and never turns: the CIK commands motion 3–4× too small
+
+`scripts/uhas_motion_probe.py`. "Never rotates" has two causes needing opposite fixes — the policy
+is effectively silent on this hand, or the fingers move plenty and the motion does no work on the
+cube — and no task metric separates them. So measure the chain end to end: policy action → CIK
+joint target → delivered joint motion → object rotation.
+
+| | action std | joint std | joint travel | object ang. speed |
+|---|---|---|---|---|
+| **LEAP** | 125.9 | **0.241 rad** | **2.19 rad/s** | **5.06 rad/s** |
+| perp | 82.1 | 0.059 rad | 0.50 rad/s | 0.51 rad/s |
+| H06_04 | 100.2 | 0.065 rad | 0.22 rad/s | 1.33 rad/s |
+
+**The policy is not silent.** It emits action magnitudes on our hands within 35 % of what it emits
+on LEAP. What collapses is everything downstream: the joints move **4× less**, and the cube
+rotates **4–10× slower**.
+
+Splitting the commanded target from the delivered motion, and lateral (type-A) from encompassing
+(type-B) joints, locates it precisely:
+
+| hand | | CIK commands (target std) | joints deliver | tracking |
+|---|---|---|---|---|
+| **LEAP** | lateral | 0.546 rad | 0.218 | 0.40 |
+| | encompassing | **0.782 rad** | 0.248 | 0.32 |
+| perp | lateral | 0.383 | 0.083 | 0.22 |
+| | encompassing | **0.188** | 0.047 | 0.25 |
+| H06_04 | lateral | 0.170 | 0.035 | 0.21 |
+| | encompassing | **0.244** | 0.079 | 0.32 |
+
+Two deficits, one of them dominant:
+
+1. **The CIK asks our hands for far less flexion.** LEAP's encompassing joints are commanded
+   0.78 rad of excursion; ours are commanded **0.19–0.24 rad, 3–4× less**, from the same policy
+   acting on the same canonical sphere. The finger is being told to curl a little and hold, not to
+   sweep the cube around.
+2. Tracking is also worse (0.21–0.32 of commanded vs LEAP's 0.32–0.40), but that is a secondary
+   factor and partly a consequence of the small commands.
+
+So the mechanism is: **the sphere-deformation → joint mapping produces joint excursions on our
+hands that are too small to roll the cube.** perp grips it correctly and then makes small wiggles.
+
+That is a different part of CIK from the one fixed in E3b. The calibration bugs were in the
+**type-A (lateral)** lookup — anchor placement and θ branch. This is the **type-B (encompassing)**
+lookup, `q_list` built from the θ sweep in the same function. **That is the next lever, and it is
+named precisely rather than guessed at.**
+
+---
+
+## Where this leaves the programme
+
+The question this was meant to answer (see *Motivation*) was whether a frozen cross-embodiment
+policy gives us a **morphology evaluator with no training-seed draw**. Honest status:
+
+* **The evaluator exists and runs.** Any hand we can export goes from MJCF to a scored Isaac
+  rollout with no GUI step and no per-hand code, and the same frozen weights drive all of them.
+* **It has no dynamic range on our hands yet.** All four score 0–1 % with overlapping intervals,
+  so it currently cannot rank our designs — the thing it was wanted for. It discriminates
+  LEAP-from-us, not us-from-us.
+* **Two real defects were found and fixed on the way** (E3b), and a third is now precisely
+  located (E4d). None of them was the cube, which was the leading hypothesis going in and is now
+  closed twice over (E2 by construction, E5 by a swept control).
+* **The most useful thing produced is the failure taxonomy.** "0 %" was concealing a hand that
+  cannot hold the cube and a hand that holds it better than anything we have built and won't turn
+  it. Those need different fixes, and only the render and the motion probe could tell them apart.
+
+Ranked next steps, cheapest first:
+
+1. **Type-B lookup amplitude** (E4d). Why does the same sphere deformation ask our fingers for
+   1/4 the flexion? Instrument `build_lookup_dict_with_fp_and_phi`'s `q_list` for one of our
+   fingers against LEAP's and compare the θ→q gain directly.
+2. **The clamped-anchor variant** (E4 caveat): anchor the slot-4 finger at the reachable θ
+   *closest to* the canonical thumb azimuth, keeping both the unpinned joint and the azimuthal
+   separation my uniform re-anchor threw away. One line.
+3. **Fine-tune rather than zero-shot.** UHAS's whole claim is a shared action space; nothing says
+   a hand 3 σ outside the training distribution must work zero-shot. A short finetune on perp
+   would separate "the representation cannot express this hand" from "the policy has not seen it".
+4. Only then: use it to rank morphologies.
