@@ -21,6 +21,49 @@ taxonomy**: "0 %" was concealing a hand that cannot hold the cube and a hand tha
 than anything we have built and never turns it. Those need opposite fixes, and only the renders
 plus a motion probe could tell them apart.
 
+## How the action space works — the five command slots
+
+Worth stating plainly, because everything below depends on it and it is not in UHAS's README.
+
+The policy emits **15 numbers, always, for every hand**: `(1 + len(vector_phis)) * max_fingers`
+= `3 × 5`. A **slot** is not a finger — it is a **canonical driving plane on the sphere**, a
+half-plane through the polar axis at one azimuth, numbered 0–4 in azimuthal order the way a
+five-fingered hand's fingers would be (2 = the middle of the hand, 4 = the opposing thumb).
+Each slot's three numbers are:
+
+* **1 lateral** — where around the sphere that finger sits (rotates the plane about the axis),
+  clamped into that slot's `[min_offsets, max_offsets]` band;
+* **2 radius offsets**, at fixed polar angles φ = 50° and 120°, which define a radial profile
+  r(φ) — the sphere's *deformation* in that plane, in units of sphere radii, range ±2.
+
+CIK then curls that finger's encompassing joints until its links lie against the deformed
+profile. So the policy never speaks in joints; it says "make the object-shaped surface bulge
+here and shrink there", and every hand's own CIK translates.
+
+Fingers are mapped onto slots **automatically and geometrically** by
+`compute_finger_chain_order_translation`: each finger root's azimuth θ in the sphere frame is
+computed, the circular-median finger takes slot 2, and the rest fan out by sorted azimuth
+(smaller θ → 0, 1; larger → 4, 3). perp comes out `[[4], [2], [0, 1]]` — thumb, index, and a
+middle finger that claims two slots. A finger claiming several slots is UHAS's stated way of
+covering a 5-slot space with fewer fingers (during *training* the merged slots' actions are
+averaged; at eval they are not).
+
+**What that costs a 3-finger hand.** For perp: slot 3 is unclaimed, so its 3 dims are inert.
+Of the middle finger's two slots, the flexion is read from `chain_idxs[0]` (slot 0) while the
+lateral targets of slots 0 and 1 write to the *same* joint index, so the later write wins —
+slot 1's lateral is used and slot 0's is discarded, along with slot 1's two radius dims.
+**6 of 15 action dimensions (40 %) drive nothing on perp.** That is a real cost of a 3-finger
+hand in this representation, and it is structural, not a bug.
+
+**Why we touched the slots at all**, and what it did *not* buy: `min_offsets`/`max_offsets`
+are the runtime lateral clamp, and `utils_urdf.py:2364` special-cases slot 4 to a hard-coded
+thumb azimuth of 1.571 rad. When that is wrong the band can exclude zero and **pin** that
+finger's lateral joint for the whole episode — a genuine bug, fixed (E3). The follow-up idea
+(anchor at the reachable θ *closest to* the canonical azimuth, to keep the azimuthal spread)
+is a one-line refinement of the same fix. But the fix itself moved no outcome — every
+before/after interval overlaps — so slot work is now a correctness chore, **not** a lever.
+The lever is below.
+
 ## Why bother with someone else's cube task
 
 Every evaluator this programme has used has been *our own trained policy*, and that is where the
@@ -125,6 +168,83 @@ The same policy on the same canonical sphere asks our fingers for **a quarter of
 finger is told to curl a little and hold, not to sweep the cube around. This is the **type-B
 (encompassing) lookup** — a different part of CIK from the type-A lateral calibration fixed above.
 
+That number is a *variance over a rollout*, and the section below — which instruments the map
+itself rather than one policy's path through it — shows it is not a uniform gain deficit.
+
+## What actually limits our hands (2026-08-02)
+
+The type-B command is a pure function of the action, so it can be instrumented **offline, with no
+Isaac and no rollout**: reproduce the solve in numpy and sweep the whole action box
+(`scripts/uhas_cik_authority.py`, seconds per design). Two things come out, and they are not the
+same thing:
+
+* **conditioning** — the solve keeps sphere points at distance ≥ *l* from the joint axis (*l* = the
+  link length to the next joint) inside a ±0.1 R band, then rotates the link to the extremal
+  surviving point. When nothing survives, the target **snaps to a joint limit** (`starved`). Any
+  target sitting on a limit carries no information about the sphere (`pinned`).
+* **authority** — how far the fingertip travels, in widths of the cube UHAS gives *that* hand
+  (both the sphere and the cube are sized to the hand, so radians do not compare across designs).
+
+| hand | R (m) | l_prox/R | starved | pinned | travel (all) | travel (live) |
+|---|---|---|---|---|---|---|
+| **LEAP** (ref) | 0.0912 | **0.52** | 3.2 % | **11.1 %** | **2.22** | **1.71** |
+| perp | 0.0685 | 1.31 | 0.4 % | 16.7 % | 1.20 | 1.12 |
+| H06_04 | 0.0710 | 1.45 | 13.5 % | 37.4 % | 2.51 | 1.15 |
+| m05 | 0.0687 | 1.50 | 12.6 % | 39.9 % | 2.59 | 1.18 |
+| baseline | 0.0654 | 1.38 | 9.0 % | 34.3 % | 2.33 | 1.29 |
+
+**LEAP has both; each of ours has at most one**, and which one post-dicts the failure we rendered:
+
+* **perp** — the best-conditioned map of anything here (0.4 % starved) and the *least* authority
+  (1.12 vs LEAP's 1.71). A hand whose commands are well-posed but too small to sweep the cube is a
+  hand that **holds and never turns**. That is exactly the filmstrip.
+* **m05 / baseline / H06_04** — comparable travel only because a third of their commands are
+  slammed against joint limits (`pinned` 34–40 %, `starved` 9–14 %). Bang-bang between limits is
+  what **flailing that never cages the cube** looks like in a table.
+
+**Why: the proximal phalanx.** UHAS sets R = 0.509 × mean palm-to-fingertip reach, so what matters
+is the first link *as a fraction of total reach*. LEAP spreads 14 cm of finger over three links
+(~53/36/50 mm) → l/R ≈ 0.52. Ours puts 9 cm into one proximal link against a 3 cm distal → l/R
+1.3–1.5, **2.5–3× LEAP's**. A long first link admits only a thin outer crescent of the sphere, and
+that crescent empties as the sphere shrinks — which is the starvation.
+
+### The knobs, measured (perp, real MJCF → URDF → CIK rebuild for each)
+
+| variant | R (m) | l_prox/R | starved | pinned | travel (live) |
+|---|---|---|---|---|---|
+| perp as built | 0.0685 | 1.31 | 0.4 % | 16.7 % | 1.12 |
+| proximal 90 → 45 mm | 0.0476 | 0.95 | 0.1 % | 12.5 % | 0.79 |
+| proximal 90 → 32 mm | 0.0417 | 0.76 | 0.0 % | 9.0 % | 0.73 |
+| distal 30 → 50 mm | 0.0740 | 1.22 | 0.7 % | 20.6 % | 1.18 |
+| distal 30 → 70 mm | 0.0804 | 1.12 | 1.0 % | 23.3 % | 1.16 |
+| **fingers in (mount limit)** | 0.0596 | 1.51 | 22.0 % | 48.6 % | **1.72** |
+| proximal 45 + fingers in | 0.0372 | 1.21 | 2.2 % | 30.2 % | 1.36 |
+| sphere R × 0.75 (`sphere_factor`) | 0.0514 | 1.75 | 3.1 % | 27.5 % | 1.46 |
+| sphere R × 1.25 | 0.0856 | 1.05 | 0.1 % | 18.6 % | 0.77 |
+| *LEAP, for scale* | 0.0912 | 0.52 | 3.2 % | 11.1 % | 1.71 |
+
+Reading it:
+
+1. **Finger spacing is the dominant lever, not phalanx length.** Moving perp's three mounts to the
+   inner limit of their workspace is the only change that reaches LEAP's authority (1.72 vs 1.71) —
+   a 54 % gain. It also wrecks the conditioning (pinned 49 %, starved 22 %) and, at the extreme,
+   flattens the thumb's lateral span to 0.002 rad. So: go inward, but **not to the stop** — there is
+   an interior optimum and it is now searchable offline.
+2. **Shortening the proximal alone trades the wrong way.** It fixes conditioning (pinned 17 → 9 %)
+   but *costs* authority (1.12 → 0.73), because R follows reach: a shorter finger shrinks the sphere
+   and the cube with it. It is a **conditioner to pair with spacing**, not a fix on its own.
+3. **Distal length barely moves anything** (1.12 → 1.18) and mildly worsens pinning.
+4. **The sphere radius is a free knob nobody has swept.** `sphere_factor` (4/2.5π) is a constant in
+   `construct_sphere_with_palm`, not a property of the hand. Shrinking it 25 % buys +30 % authority
+   on the unmodified perp. Note this is *not* the cube sweep we already ran: that changed the
+   object; this changes the action representation's scale. Untested against the task.
+
+**Status of this metric: post-diction on five hands, not validation.** It has dynamic range where
+the repose rate has none, and it explains the taxonomy we rendered — but it has never been checked
+against an outcome, because no design of ours has produced an outcome yet. Treat it as the design
+filter to *use before* spending Isaac time, and confirm it with the first design that clears both
+axes.
+
 ## A cheap predictor, and an honest null
 
 The checkpoint's own observation normalizer gives an out-of-distribution score per hand in ~90 s
@@ -147,16 +267,32 @@ not a validated evaluator.
   have dynamic range across our designs (perp's centering 0.560 beats every other hand we have
   built) even while the repose rate does not.
 
-## Open, cheapest first
+## Open, cheapest first (revised 2026-08-02)
 
-1. **Type-B lookup amplitude.** Why does the same sphere deformation ask our fingers for ¼ the
-   flexion? Instrument the θ→q gain in `build_lookup_dict_with_fp_and_phi` against LEAP's.
-2. **Clamped-anchor variant.** Our fix anchors slot 4 at its band centre, which removes the pinned
-   joint but throws away azimuthal separation (as-built spread 74–103° → 8–22°; perp unchanged at
-   179°). Anchoring at the reachable θ *closest to* the canonical thumb azimuth keeps both. One line.
-3. **Fine-tune rather than zero-shot**, on perp — it already holds the cube. Separates "the
-   representation cannot express this hand" from "the policy has not seen it".
-4. **Only then** use it to rank morphologies.
+1. ~~Type-B lookup amplitude~~ — **done**, and it changed the plan; see "What actually limits our
+   hands". The deficit is authority × conditioning; the probe is `scripts/uhas_cik_authority.py`.
+2. **Search the mount box on the offline metric.** Seconds per design, no Isaac, no GPU: sweep
+   perp's three mount x/y (and `sphere_factor`) for the interior point that keeps LEAP-class
+   authority *and* LEAP-class conditioning. Both extremes are known to fail in opposite
+   directions, so an optimum exists inside.
+3. **Build the two best and zero-shot them.** The eval already runs. Judge on **best alignment
+   reached** and **cube angular speed**, not the binary repose rate — the rate has no dynamic
+   range at 0 %, the other two do.
+4. **Then fine-tune, if and only if step 3 shows the cube moving.** UHAS's own `MANO_to_LEAP`
+   transfer run is 1000 iterations (≈1.5 h at 8192 envs on their hardware) against 15000 from
+   scratch. A finetune can teach the policy to stay in a hand's live action region and to cope
+   with our contact model; it **cannot** create fingertip travel the morphology and the CIK do not
+   provide. Finetuning perp-as-built would test the wrong hypothesis.
+5. **Clamped-anchor variant** (anchor at the reachable θ closest to the canonical azimuth) — still
+   correct, still one line, but demoted: the E3 anchorfix moved no outcome.
+6. **Only then** use it to rank morphologies.
+
+## Renders
+
+Every hand has a 10 s rollout video under the eval policy, not only the filmstrips:
+`results/uhas/video/{leap_right_final, morpho_perp_open_anchorfix, morpho_H0604_anchorfix,
+morpho_m05_final, morpho_mh_baseline_final}/*.mp4` — gitignored, hence easy to miss. Filmstrips
+are `docs/uhas/figs/filmstrip_*.png`.
 
 ## Method
 
@@ -165,3 +301,11 @@ not a validated evaluator.
 drop threshold 0.2 m, 30 s timer reset per repose. Wilson 95 % intervals. Distances in sphere radii
 so they compare across hand sizes. Produced by `scripts/uhas_eval.py`, `uhas_obs_audit.py`,
 `uhas_motion_probe.py`, `uhas_cube_sweep.sh`, `uhas_cik_report.py`.
+
+The offline authority/conditioning numbers come from `scripts/uhas_cik_authority.py` (numpy only,
+no Isaac): a 21×21 sweep of each slot's two radius actions over 1000 Fibonacci sphere samples,
+reproducing `multi_manipulation_env._pre_physics_step` + `torch_solve_for_B_joint`. Lateral joints
+are held at `q_sphere`, which is what the CIK cascade itself uses when advancing through a type-A
+joint, so that is not an approximation. Variants were rebuilt end to end
+(`uhas_build_hand.py` → `process_urdf.py`); the `sphere_factor` rows use a patched copy of
+`construct_sphere_with_palm`. Rows in `docs/experiments/uhas_cik_authority.json`.

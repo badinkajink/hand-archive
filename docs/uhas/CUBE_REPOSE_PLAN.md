@@ -600,3 +600,79 @@ Ranked next steps, cheapest first:
    a hand 3 σ outside the training distribution must work zero-shot. A short finetune on perp
    would separate "the representation cannot express this hand" from "the policy has not seen it".
 4. Only then: use it to rank morphologies.
+
+---
+
+## E6 — the type-B amplitude, instrumented (2026-08-02)
+
+Item 1 above, done, and it does not say what E4d guessed. Prompted by the user's observation
+that on LEAP the cube rests **against the phalanges** while on ours it rests **flat on the palm**:
+our fingers must travel a long way before they even reach the object.
+
+**Method.** The type-B command is a pure function of the action, so it can be instrumented with
+no Isaac and no rollout. `scripts/uhas_cik_authority.py` reproduces
+`_pre_physics_step` + `torch_solve_for_B_joint` in numpy and sweeps the whole 21×21 action box for
+each slot. (Lateral joints are held at `q_sphere`, which is what the CIK cascade itself uses when
+it advances through a type-A joint — not an approximation.) Two quantities:
+
+* `starved` — no sphere point survives the solve's filters (|xy| ≥ link length *l*, |z| ≤ 0.1 R),
+  so the target **snaps to a joint limit** instead of encoding the sphere.
+* `pinned` — the target sits on a limit at all (starved or clipped): zero information, zero variance.
+* `travel` — Σ_joints sd(q) × moment arm, in widths of the cube UHAS gives that hand.
+
+| hand | R (m) | l_prox/R | starved | pinned | travel (all) | travel (live) |
+|---|---|---|---|---|---|---|
+| LEAP | 0.0912 | 0.52 | 3.2 % | 11.1 % | 2.22 | 1.71 |
+| perp | 0.0685 | 1.31 | 0.4 % | 16.7 % | 1.20 | 1.12 |
+| H06_04 | 0.0710 | 1.45 | 13.5 % | 37.4 % | 2.51 | 1.15 |
+| m05 | 0.0687 | 1.50 | 12.6 % | 39.9 % | 2.59 | 1.18 |
+| baseline | 0.0654 | 1.38 | 9.0 % | 34.3 % | 2.33 | 1.29 |
+
+**It is not a uniform gain deficit.** Over the full action box our hands' commanded swing is as
+large as LEAP's or larger. What differs is that a third of the box (for the three flat hands) maps
+to a **pinned joint limit** rather than to the sphere, and 9–14 % is outright starved. The "¼ the
+flexion" of E4d is a rollout *variance*, and variance is exactly what a pinned map destroys.
+
+**LEAP has both authority and conditioning; each of ours has at most one** — and which one
+post-dicts the rendered taxonomy: perp = well-posed but too little travel = holds, never turns;
+the other three = travel bought by slamming limits = flailing that never cages the cube.
+
+**Mechanism = the proximal phalanx as a fraction of reach.** R = 0.509 × mean palm-to-tip
+(`construct_sphere_with_palm`), so l/R is scale-free. LEAP spreads ~14 cm over three links
+(53/36/50 mm) → 0.52. Ours puts 9 cm in one proximal link against a 3 cm distal → 1.3–1.5. A long
+first link admits only a thin outer crescent of the sphere, and that crescent empties as the
+sphere shrinks.
+
+### The knobs, each a real MJCF → URDF → CIK rebuild
+
+| variant | R (m) | l_prox/R | starved | pinned | travel (live) |
+|---|---|---|---|---|---|
+| perp as built | 0.0685 | 1.31 | 0.4 % | 16.7 % | 1.12 |
+| proximal 90 → 45 mm | 0.0476 | 0.95 | 0.1 % | 12.5 % | 0.79 |
+| proximal 90 → 32 mm | 0.0417 | 0.76 | 0.0 % | 9.0 % | 0.73 |
+| distal 30 → 50 mm | 0.0740 | 1.22 | 0.7 % | 20.6 % | 1.18 |
+| distal 30 → 70 mm | 0.0804 | 1.12 | 1.0 % | 23.3 % | 1.16 |
+| fingers in (mount limit) | 0.0596 | 1.51 | 22.0 % | 48.6 % | **1.72** |
+| proximal 45 + fingers in | 0.0372 | 1.21 | 2.2 % | 30.2 % | 1.36 |
+| sphere R × 0.75 | 0.0514 | 1.75 | 3.1 % | 27.5 % | 1.46 |
+| sphere R × 1.25 | 0.0856 | 1.05 | 0.1 % | 18.6 % | 0.77 |
+
+1. **Finger spacing dominates.** Mounts to the inner limit is the only change that reaches LEAP's
+   authority (1.72 vs 1.71), +54 %. It also wrecks conditioning (pinned 49 %) and flattens the
+   thumb's lateral span to 0.002 rad, so the optimum is interior — and now searchable offline.
+2. **Shortening the proximal alone trades the wrong way**: conditioning improves, authority falls,
+   because R follows reach so the sphere and cube shrink with the finger. Pair it with spacing.
+3. **Distal length is nearly inert** (1.12 → 1.18).
+4. **`sphere_factor` is a free, never-swept knob** — a constant in `construct_sphere_with_palm`,
+   not a hand property. ×0.75 buys +30 % authority on the unmodified perp. Distinct from the E5
+   cube sweep: that changed the object, this changes the representation's scale.
+
+**Status: post-diction on five hands, not validation.** No design of ours has produced an outcome
+to correlate against. It is the filter to spend before Isaac time, to be confirmed by the first
+design that clears both axes.
+
+Revised next steps: (1) search the mount box offline; (2) build the best two and zero-shot,
+judging on best-alignment and cube angular speed, not the 0 %-floored repose rate; (3) finetune
+only if the cube visibly moves — UHAS's own `MANO_to_LEAP` transfer is 1000 iterations (~1.5 h at
+8192 envs on their hardware) vs 15000 from scratch, but no finetune can create fingertip travel
+the morphology does not have.

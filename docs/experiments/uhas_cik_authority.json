@@ -1,0 +1,62 @@
+[
+ {
+  "hand": "H0604",
+  "path": "results/uhas/hands/H0604/sphere_cik.json",
+  "R": 0.07101564350339612,
+  "l_prox_R": 1.45038466060051,
+  "starved": 0.1345427059712774,
+  "pinned": 0.37377173091458804,
+  "cmd_sd": 0.7313872829955285,
+  "live_sd": 0.42643457742488383,
+  "travel": 2.5067995634393414,
+  "travel_live": 1.1463398795377395
+ },
+ {
+  "hand": "m05",
+  "path": "results/uhas/hands/m05/sphere_cik.json",
+  "R": 0.06868093521365565,
+  "l_prox_R": 1.499688373193858,
+  "starved": 0.12585034013605442,
+  "pinned": 0.3994708994708995,
+  "cmd_sd": 0.7219184377536444,
+  "live_sd": 0.42332214696733755,
+  "travel": 2.594578585389249,
+  "travel_live": 1.1764899401747673
+ },
+ {
+  "hand": "mh_baseline",
+  "path": "results/uhas/hands/mh_baseline/sphere_cik.json",
+  "R": 0.06540301459768832,
+  "l_prox_R": 1.3760833587505776,
+  "starved": 0.09032501889644746,
+  "pinned": 0.3431594860166289,
+  "cmd_sd": 0.6935336837258396,
+  "live_sd": 0.45492607675549196,
+  "travel": 2.330882475470207,
+  "travel_live": 1.2907567457783868
+ },
+ {
+  "hand": "perp_open",
+  "path": "results/uhas/hands/perp_open/sphere_cik.json",
+  "R": 0.06849577236516897,
+  "l_prox_R": 1.3139497065627108,
+  "starved": 0.003779289493575208,
+  "pinned": 0.16666666666666666,
+  "cmd_sd": 0.3574937647483247,
+  "live_sd": 0.3341840807468703,
+  "travel": 1.2006805023267328,
+  "travel_live": 1.1191035451510432
+ },
+ {
+  "hand": "leap_right",
+  "path": "docs/uhas/UHAS_sim/grippers/leap/leap_right/sphere_cik.json",
+  "R": 0.09119238042472187,
+  "l_prox_R": 0.5225704050980462,
+  "starved": 0.03231292517006803,
+  "pinned": 0.11148904006046863,
+  "cmd_sd": 0.5326468403886664,
+  "live_sd": 0.4234780256608382,
+  "travel": 2.2165479688790213,
+  "travel_live": 1.7087682348410689
+ }
+]
