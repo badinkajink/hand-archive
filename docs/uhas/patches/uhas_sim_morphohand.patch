@@ -1,0 +1,559 @@
+diff --git a/grippers/allegro/allegro_right/allegro_right.py b/grippers/allegro/allegro_right/allegro_right.py
+index 71ce588..b984515 100644
+--- a/grippers/allegro/allegro_right/allegro_right.py
++++ b/grippers/allegro/allegro_right/allegro_right.py
+@@ -62,7 +62,11 @@ ALLEGRO_HAND_CFG = ArticulationCfg(
+             },
+             friction = 0.02,
+             armature = 0.00149376,
+-            dynamic_friction = 0.02
++            # MORPHOHAND PATCH: `dynamic_friction` is an Isaac Lab 2.2 field (2.2 split joint
++            # friction into static/dynamic); this machine runs 2.1.0, whose single `friction`
++            # field is set above. Both values are 0.02, so the one 2.1 field reproduces
++            # upstream's intent exactly. Same patch as multi_env_cfg.py's actuator cfg.
++            # dynamic_friction = 0.02
+         ),
+     },
+     soft_joint_pos_limit_factor=1.0,
+diff --git a/grippers/morphohand/__init__.py b/grippers/morphohand/__init__.py
+new file mode 100644
+index 0000000..914156d
+--- /dev/null
++++ b/grippers/morphohand/__init__.py
+@@ -0,0 +1,12 @@
++# MORPHOHAND PATCH: data-driven hand family.
++#
++# The five shipped grippers each get a hand-written `<hand>_right.py` with a hard-coded USD path
++# and a hard-coded joint dict, plus a branch in `multi_env_cfg.py`. That is fine for five fixed
++# hands and wrong for a morphology sweep, where the whole point is that the hand is a free
++# variable and there are as many of them as we care to sample.
++#
++# This module builds the `ArticulationCfg` from the built-hand directory instead, so adding a
++# morphology is `uhas_build_hand.py` + `uhas_urdf_to_usd.py` and nothing else.
++from .morphohand import MORPHO_ROOT, list_morphohands, morphohand_cfg, resolve_morphohand
++
++__all__ = ["MORPHO_ROOT", "list_morphohands", "morphohand_cfg", "resolve_morphohand"]
+diff --git a/grippers/morphohand/morphohand.py b/grippers/morphohand/morphohand.py
+new file mode 100644
+index 0000000..0ee51aa
+--- /dev/null
++++ b/grippers/morphohand/morphohand.py
+@@ -0,0 +1,120 @@
++# MORPHOHAND PATCH: build a UHAS gripper ArticulationCfg from a built-hand directory.
++#
++# A "built hand" is what `scripts/uhas_build_hand.py` + `scripts/uhas_urdf_to_usd.py` leave behind:
++#
++#   <root>/<name>/
++#       <name>.urdf         exported from MJCF, morphology baked to fixed geometry
++#       config.json         {"opened_dofs": {...}} -- the open pose the sphere was fitted at
++#       sphere_cik.json     the UHAS representation (read by multi_env_cfg, not by us)
++#       meshes/             STLs
++#       usd/<name>.usd      URDF -> USD, converted headless
++#
++# The robot tag is `morpho_<name>`; `<root>` comes from the UHAS_MORPHO_ROOT environment variable.
++import json
++import os
++
++import isaaclab.sim as sim_utils
++from isaaclab.actuators.actuator_cfg import ImplicitActuatorCfg
++from isaaclab.assets.articulation import ArticulationCfg
++
++MORPHO_ROOT = os.environ.get("UHAS_MORPHO_ROOT", "")
++
++TAG_PREFIX = "morpho_"
++
++
++def list_morphohands(root: str | None = None) -> list[str]:
++    """Names of every built hand under ``root`` that has both a USD and a sphere_cik.json."""
++    root = root or MORPHO_ROOT
++    if not root or not os.path.isdir(root):
++        return []
++    out = []
++    for name in sorted(os.listdir(root)):
++        d = os.path.join(root, name)
++        if os.path.isfile(os.path.join(d, "usd", f"{name}.usd")) and os.path.isfile(
++            os.path.join(d, "sphere_cik.json")
++        ):
++            out.append(name)
++    return out
++
++
++def resolve_morphohand(robot: str, root: str | None = None) -> tuple[str, str, str]:
++    """``morpho_<name>`` -> (hand_dir, usd_path, sphere_cik_path). Raises with a usable message."""
++    root = root or MORPHO_ROOT
++    if not robot.startswith(TAG_PREFIX):
++        raise ValueError(f"{robot!r} is not a MorphoHand tag (expected {TAG_PREFIX}<name>)")
++    name = robot[len(TAG_PREFIX) :]
++    if not root:
++        raise ValueError(
++            f"robot {robot!r} needs UHAS_MORPHO_ROOT set to the directory of built hands"
++        )
++    hand_dir = os.path.join(root, name)
++    usd_path = os.path.join(hand_dir, "usd", f"{name}.usd")
++    cik_path = os.path.join(hand_dir, "sphere_cik.json")
++    for p in (usd_path, cik_path):
++        if not os.path.isfile(p):
++            raise FileNotFoundError(
++                f"{robot}: missing {p}. Built hands under {root}: {list_morphohands(root)}"
++            )
++    return hand_dir, usd_path, cik_path
++
++
++def morphohand_cfg(robot: str, root: str | None = None) -> tuple[ArticulationCfg, str]:
++    """Return (ArticulationCfg, sphere_cik path) for ``morpho_<name>``.
++
++    The spawn properties mirror LEAP's (`leap_right.py`) exactly -- gravity off, self-collisions
++    on, 8 position iterations -- so a cross-hand comparison is not silently also a comparison of
++    solver settings. The actuator block here is a placeholder: `multi_env_cfg` replaces
++    ``actuators`` wholesale with the shared `ImplicitActuatorCfg`, which is what makes every hand
++    in a UHAS run share one set of gains.
++    """
++    hand_dir, usd_path, cik_path = resolve_morphohand(robot, root)
++
++    with open(os.path.join(hand_dir, "config.json")) as f:
++        opened_dofs = json.load(f)["opened_dofs"]
++    # The env overwrites the hand pose at every reset from `q_open_palm` in sphere_cik.json, so
++    # this only sets the spawn pose -- but spawning at the open pose keeps the very first physics
++    # step from starting inside a self-collision.
++    joint_pos = {k: float(v) for k, v in opened_dofs.items()}
++
++    cfg = ArticulationCfg(
++        spawn=sim_utils.UsdFileCfg(
++            usd_path=usd_path,
++            activate_contact_sensors=False,
++            rigid_props=sim_utils.RigidBodyPropertiesCfg(
++                kinematic_enabled=False,
++                disable_gravity=True,
++                retain_accelerations=True,
++                enable_gyroscopic_forces=False,
++                angular_damping=0.01,
++                max_linear_velocity=1000.0,
++                max_angular_velocity=64 / 3.141592653589793 * 180.0,
++                max_depenetration_velocity=1000.0,
++                max_contact_impulse=1e32,
++            ),
++            articulation_props=sim_utils.ArticulationRootPropertiesCfg(
++                enabled_self_collisions=True,
++                solver_position_iteration_count=8,
++                solver_velocity_iteration_count=0,
++                sleep_threshold=0.005,
++                stabilization_threshold=0.0005,
++            ),
++        ),
++        init_state=ArticulationCfg.InitialStateCfg(
++            pos=(0.0, 0.0, 0.0),
++            rot=(1.0, 0.0, 0.0, 0.0),
++            joint_pos=joint_pos,
++        ),
++        actuators={
++            "fingers": ImplicitActuatorCfg(
++                joint_names_expr=[".*"],
++                effort_limit_sim=0.4,
++                stiffness=3.0,
++                damping=0.2,
++                velocity_limit_sim=5.0,
++                friction=0.02,
++                armature=0.00149376,
++            ),
++        },
++        soft_joint_pos_limit_factor=1.0,
++    )
++    return cfg, cik_path
+diff --git a/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_env_cfg.py b/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_env_cfg.py
+index 03f6ea9..8aade9f 100644
+--- a/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_env_cfg.py
++++ b/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_env_cfg.py
+@@ -7,6 +7,8 @@ from sphere_ctrl_isaaclab.assets.grippers.leap.leap_right.leap_right import LEAP
+ from sphere_ctrl_isaaclab.assets.grippers.mano.mano_right.mano_right import MANO_HAND_CFG as MOD_MANO_HAND_RIGHT_CFG
+ from sphere_ctrl_isaaclab.assets.grippers.allegro.allegro_right.allegro_right import ALLEGRO_HAND_CFG as ALLEGRO_HAND_RIGHT_CFG
+ from sphere_ctrl_isaaclab.assets.grippers.wuji.wuji_right.wuji_right import WUJI_HAND_CFG as WUJI_HAND_RIGHT_CFG
++# MORPHOHAND PATCH: `morpho_<name>` hands, built from a directory instead of a hand-written module.
++from sphere_ctrl_isaaclab.assets.grippers.morphohand import morphohand_cfg
+ from sphere_ctrl_isaaclab import IRVL_ASSET_PATH
+ from sphere_ctrl_isaaclab.tasks.UHAS_inhand.agents.rsl_rl_ppo_cfg import SpherePPORunnerCfg     
+ from sphere_ctrl_isaaclab.tasks.utils.dr_funcs import *
+@@ -229,18 +231,47 @@ for i, arg in enumerate(sys.argv):
+             pass
+         break
+ 
++# MORPHOHAND PATCH: import-time configuration via environment variables.
++#
++# Everything below -- the robot list, the CIK load, the cube spawn scale -- is executed in the
++# SphereEnvCfg *class body*, i.e. at import time, before play.py has parsed anything. There is
++# therefore no way to select a hand or switch to eval mode from the command line; upstream edits
++# the file between runs. These env vars let one checked-out tree serve every sweep leg.
++#
++#   UHAS_ROBOTS           comma-separated robot tags (default: the four shipped training hands)
++#   UHAS_EVAL             "1" -> training=False, evaluation=True (turns on the success printouts)
++#   UHAS_CUBE_SCALE_MULT  multiplies the auto cube scale (see cube_scale below). 1.0 = untouched.
++#   UHAS_MORPHO_ROOT      directory of built MorphoHands; enables the `morpho_<name>` robot tags
++#   UHAS_MAX_CONSEC       max_consecutive_success (default 10, the paper's cap)
++_MH_EVAL = os.environ.get("UHAS_EVAL", "0") == "1"
++_MH_CUBE_SCALE_MULT = float(os.environ.get("UHAS_CUBE_SCALE_MULT", "1.0"))
++_MH_MAX_CONSEC = int(os.environ.get("UHAS_MAX_CONSEC", "10"))
++_MH_ROBOTS = [s.strip() for s in os.environ.get("UHAS_ROBOTS", "").split(",") if s.strip()] or [
++    "shadow_right",
++    "leap_right",
++    "mano_right",
++    "allegro_right",
++]
++if _MH_EVAL or _MH_CUBE_SCALE_MULT != 1.0 or os.environ.get("UHAS_ROBOTS"):
++    print(
++        f"[MorphoHand] robots={_MH_ROBOTS} eval={_MH_EVAL} "
++        f"cube_scale_mult={_MH_CUBE_SCALE_MULT} max_consec={_MH_MAX_CONSEC}"
++    )
++
++
+ @configclass
+ class SphereEnvCfg(DirectRLEnvCfg):
+     # Environment Options
+     episode_length_s = 30.0 # Count down timer to reset environment
+     rsl_config = SpherePPORunnerCfg()
+     num_steps_per_env = rsl_config.num_steps_per_env
+-    max_consecutive_success = 10
+-    training = True    
+-    evaluation = False
++    max_consecutive_success = _MH_MAX_CONSEC
++    training = not _MH_EVAL      # MORPHOHAND PATCH: was `True`
++    evaluation = _MH_EVAL        # MORPHOHAND PATCH: was `False`
+     reset_timer = True # reset episode length timer at every repose.
+-    robots = ["shadow_right", "leap_right", "mano_right", "allegro_right"]
+-    # Possible values: "shadow_right", "leap_right", "mano_right", "allegro_right", "wuji_right"
++    robots = list(_MH_ROBOTS)    # MORPHOHAND PATCH: was the hard-coded four
++    # Possible values: "shadow_right", "leap_right", "mano_right", "allegro_right", "wuji_right",
++    #                  "morpho_<name>" (MorphoHand, resolved from UHAS_MORPHO_ROOT)
+ 
+     # Gripper options
+     max_fingers = 5
+@@ -271,7 +302,10 @@ class SphereEnvCfg(DirectRLEnvCfg):
+     armature = 0.00149376
+ 
+     # Vector Phis
+-    vector_phis = [60.0, 120.0] # 2 
++    # MORPHOHAND PATCH: 50.0 (not the released 60.0) to match models/UGAS_Models/All_grippers
++    # params/env.yaml. These angles define what a policy's action MEANS as a sphere
++    # deformation, so a mismatch silently misinterprets every action of a pretrained policy.
++    vector_phis = [50.0, 120.0] # 2
+     max_vector_offsets = [2.0] * len(vector_phis) # In radius #2.0
+     min_vector_offsets = [-2.0] * len(vector_phis) # In radius #2.0
+ 
+@@ -284,14 +318,32 @@ class SphereEnvCfg(DirectRLEnvCfg):
+     merge_frequency = 0.3
+ 
+     # Observations
++    # MORPHOHAND PATCH: tip_rot/angvel_obs off to match All_grippers params/env.yaml
++    # (tip_rot: false, angvel_obs: false). Released defaults give a 142-dim actor obs; the
++    # shipped checkpoints are 98. See docs/uhas/INTEGRATION.md -- the released code is a
++    # different vintage than the released checkpoints and cannot reach 98 exactly on its own.
+     obj_linvel_obs = True
+     obj_angvel_obs = True
+-    tip_rot = True 
++    tip_rot = False
+     linvel_obs = True
+-    angvel_obs = True
++    angvel_obs = False
++
++    # MORPHOHAND PATCH: two knobs needed to load the RELEASED checkpoints with the RELEASED
++    # code, which are different vintages (see docs/uhas/INTEGRATION.md).
++    #
++    # ff_flag_input -- the checkpoints' env.yaml carries `finger_failures`/`ff_flag_input`,
++    #   a 1-wide "is a finger disabled this episode" flag. The released env dropped the
++    #   feature entirely, which is why its obs is 97 where the checkpoints want 98. The
++    #   failure machinery is gone, so the flag is constant 0 -- exactly its training value
++    #   whenever no finger is failed (env.yaml has force_failure: 0 at eval).
++    # symmetric_critic -- the released env feeds the critic a wider privileged obs (142);
++    #   the released checkpoints have critic.0 == actor.0 == 98, i.e. no asymmetry. Only
++    #   affects loading/value estimates, never the actions the policy takes.
++    ff_flag_input = True
++    symmetric_critic = True
+ 
+     # Priviledge State
+-    c_tip_rot = True 
++    c_tip_rot = True
+     c_linvel_obs = True
+     c_angvel_obs = True
+ 
+@@ -377,11 +429,16 @@ class SphereEnvCfg(DirectRLEnvCfg):
+         ),
+     )
+ 
++    # MORPHOHAND PATCH: viewer overridable from the environment, so one tree can produce both the
++    # wide grid shot and a close single-hand hero render without an edit between runs.
++    #   UHAS_VIEW_EYE / UHAS_VIEW_LOOKAT  "x,y,z"
++    #   UHAS_VIEW_ENV                     env index to track (switches origin_type to "env")
+     viewer: ViewerCfg = ViewerCfg(
+-        eye=(2.5, 2.5, 2.5),           # ← change this to your desired camera position
+-        lookat=(0.0, 0.0, -0.4),        # ← where the camera should point (e.g. center of sphere)
+-        origin_type="world",           # keep "world" for absolute coords
+-        resolution=(1920, 1080),        # optional: higher quality video
++        eye=tuple(float(v) for v in os.environ.get("UHAS_VIEW_EYE", "2.5,2.5,2.5").split(",")),
++        lookat=tuple(float(v) for v in os.environ.get("UHAS_VIEW_LOOKAT", "0.0,0.0,-0.4").split(",")),
++        origin_type="env" if os.environ.get("UHAS_VIEW_ENV") else "world",
++        env_index=int(os.environ.get("UHAS_VIEW_ENV", "0")),
++        resolution=(1920, 1080),
+     )
+     
+     cik_infos = {}
+@@ -406,7 +463,11 @@ class SphereEnvCfg(DirectRLEnvCfg):
+             damping=kD,
+             velocity_limit_sim= vel_lim,
+             friction = act_st_friction,
+-            dynamic_friction = act_dyn_friction,
++            # MORPHOHAND PATCH: `dynamic_friction` is an Isaac Lab 2.2 field (2.2 split joint
++            # friction into static/dynamic); this machine runs 2.1.0, whose single `friction`
++            # field is set above. act_st_friction == act_dyn_friction == 0.02, so the one 2.1
++            # field reproduces upstream's intent exactly rather than approximating it.
++            # dynamic_friction = act_dyn_friction,
+             armature = armature
+         )
+     
+@@ -442,6 +503,15 @@ class SphereEnvCfg(DirectRLEnvCfg):
+         elif robot == "wuji_right":
+             robot_cfg: ArticulationCfg = WUJI_HAND_RIGHT_CFG.replace(prim_path=robot_path, actuators = {"fingers": articulation_cfg})
+             cik_json_path = os.path.join(IRVL_ASSET_PATH, "grippers", "wuji", robot,sphere_cik_info)
++        elif robot.startswith("morpho_"):
++            # MORPHOHAND PATCH: data-driven hand family. Everything -- USD, open pose, CIK -- is
++            # read from the built-hand directory under UHAS_MORPHO_ROOT, so a new morphology is
++            # a new directory and not a new elif branch. See assets/grippers/morphohand/.
++            # NB: no intermediate variable -- every name bound in this class body becomes a
++            # configclass FIELD, and a bare ArticulationCfg still has prim_path=MISSING, which
++            # fails validation with a message that names a variable and not the real problem.
++            robot_cfg, cik_json_path = morphohand_cfg(robot)
++            robot_cfg: ArticulationCfg = robot_cfg.replace(prim_path=robot_path, actuators = {"fingers": articulation_cfg})
+         else:
+             raise ValueError(f"Unable to identify Robot Tag {robot}.")
+         
+@@ -450,7 +520,15 @@ class SphereEnvCfg(DirectRLEnvCfg):
+         robot_cfgs[robot] = robot_cfg
+         cik_infos[robot] = load_from_json(cik_json_path) 
+         sphere_radius = cik_infos[robot]["joint_info"]["sphere_frame"][6]
+-        cube_scale = scale * sphere_radius/base_radius
++        # MORPHOHAND PATCH: `* _MH_CUBE_SCALE_MULT` (default 1.0, i.e. untouched).
++        #
++        # Note what this line already does on its own: UHAS sizes the cube to the HAND, via the
++        # UHAS sphere radius. A hand with a smaller sphere gets a proportionally smaller cube, so
++        # "is the box the wrong size for this morphology" has an answer by construction -- the
++        # cube/hand ratio is a constant. The multiplier exists to TEST that constant: it is the
++        # only way to ask whether UHAS's chosen ratio is right for a 3-finger hand, or merely
++        # right for the 4- and 5-finger hands it was calibrated on.
++        cube_scale = scale * sphere_radius/base_radius * _MH_CUBE_SCALE_MULT
+         robot_cube_mass = cube_density * ((cube_size * sphere_radius/base_radius))**3 # Can end up in very small values for small grippers
+         robot_cube_mass = cube_density * (cube_size)**3 * (sphere_radius/base_radius) # Could use linear, since effort (torque) is linear to hand size
+         cube_scales[robot] = cube_scale
+diff --git a/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_manipulation_env.py b/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_manipulation_env.py
+index a691daa..efe3311 100644
+--- a/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_manipulation_env.py
++++ b/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_manipulation_env.py
+@@ -48,6 +48,7 @@ class InHandManipulationEnv(DirectRLEnv):
+         self.sphere_radius = dict()
+         self.main_joints = dict()
+         self.main_indices = dict()
++        self.live_slots = dict()   # MORPHOHAND PATCH: slots a finger actually claims
+         self.non_main_indices = dict()
+         self.chain_joint_indices = dict()
+         self.hand_dof_lower_limits = dict()
+@@ -194,6 +195,21 @@ class InHandManipulationEnv(DirectRLEnv):
+         self.total_resets = torch.tensor(-self.num_envs, dtype=torch.float, device=self.device)
+         self.reset_counts = torch.zeros(self.num_envs, dtype=torch.float, device=self.device)
+         self.all_successes = []
++        # MORPHOHAND PATCH: success bookkeeping that survives the step.
++        #
++        # Both of the env's success signals are cleared INSIDE `step()`, after the check that
++        # sets them: `_get_rewards` sets `reset_goal_buf` and then calls `_reset_target_pose`,
++        # whose last line is `self.reset_goal_buf[env_ids] = 0`; and `successes` is zeroed by
++        # `_reset_idx`. An external evaluator reading either one after `env.step()` returns
++        # therefore sees zeros and concludes the policy never succeeds -- silently, and
++        # indistinguishably from a real failure.
++        #
++        # These two are monotonic / latched, so no later clear can erase them.
++        self.mh_success_events = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
++        self.mh_success_total = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
++        self.mh_streak_at_reset = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
++        self.mh_reset_serial = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
++
+         # New evaluation metric: target pose success rate over first 10 tries per env (skipping the initial reset call)
+         self.eval_target_reset_counts = torch.zeros(self.num_envs, dtype=torch.int32, device=self.device)
+         self.eval_num_successes = torch.tensor(0.0, dtype=torch.float, device=self.device)
+@@ -281,26 +297,48 @@ class InHandManipulationEnv(DirectRLEnv):
+             # Sphere radius
+             self.sphere_radius[robot] = torch.tensor(self.joint_info[robot]["sphere_frame"][6], dtype=torch.float, device=self.device)
+             
+-            # Main Finger Joints 
+-            self.main_joints[robot] = []
+-            repeat_main_joints = []
++            # Main Finger Joints
++            #
++            # MORPHOHAND PATCH: build the slot -> main-joint table BY SLOT, tolerating slots that
++            # no finger claims.
++            #
++            # Upstream builds `main_joints` as one entry per finger chain plus one repeat per
++            # extra slot, then reorders it by `argsort(chain_order padded to max_fingers)`. That
++            # is only well defined when the fingers between them claim ALL `max_fingers` slots --
++            # true of every shipped hand (LEAP: 4 fingers, chain_indices [[3],[2],[0,1],[4]] = 5
++            # slots), false of a 3-finger hand, which claims 4 of 5 and then indexes a 4-element
++            # list with indices up to 4. The failure is an IndexError in the constructor, which
++            # reads as "3-finger hands are unsupported" but is really an unstated assumption that
++            # #slots == max_fingers.
++            #
++            # An unclaimed slot is not an error condition: it means no finger drives that
++            # canonical plane, and the policy's three action dimensions for it should go nowhere.
++            # So index by slot, remember which slots are real (`live_slots`), and write joint
++            # targets only through those -- see `_pre_physics_step`.
++            slot_main: list[str | None] = [None] * self.cfg.max_fingers
+             for c, chain in enumerate(self.finger_chains[robot]):
+-                chain_idx  = self.chain_indices[robot][c]
+-                m_join_exists = False
++                m_joint = None
+                 for joint in chain[1:-1]:
+-                    if self.joint_type_info[robot][joint]["type"]=="A":
+-                        self.main_joints[robot].append(joint)
+-                        m_join_exists = True
+-                        if chain_idx.numel()>1:
+-                            repeat_main_joints.append(joint)
++                    if self.joint_type_info[robot][joint]["type"] == "A":
++                        m_joint = joint
+                         break
+-                if m_join_exists == False:
++                if m_joint is None:
+                     raise ValueError(f"Main Joint not found in finger {chain}. Fingers without Main Joint are not implemented yet.")
+-            
+-            for joint in repeat_main_joints:
+-                self.main_joints[robot].append(joint)
+-
+-            self.main_joints[robot] = [self.main_joints[robot][i] for i in finger_organize_indices.tolist()]
++                for s in self.chain_indices[robot][c].tolist():
++                    slot_main[s] = m_joint
++
++            live = [s for s, j in enumerate(slot_main) if j is not None]
++            if not live:
++                raise ValueError(f"{robot}: chain_indices claims no slots at all -- {self.cfg.cik_infos[robot]['chain_indices']}")
++            self.live_slots[robot] = torch.tensor(live, dtype=torch.long, device=self.device)
++            # Unclaimed slots keep a placeholder so every per-slot tensor stays max_fingers wide
++            # and the CIK solve can stay batched; nothing is ever written through them.
++            fallback = slot_main[live[0]]
++            self.main_joints[robot] = [j if j is not None else fallback for j in slot_main]
++            if len(live) < self.cfg.max_fingers:
++                print(f"  {robot}: slots {sorted(set(range(self.cfg.max_fingers)) - set(live))} "
++                      f"unclaimed -- {3 * (self.cfg.max_fingers - len(live))}/{self.cfg.action_space} "
++                      f"action dims are inert for this hand")
+ 
+             # Get chain joint indices
+             self.chain_joint_indices[robot] = []
+@@ -741,7 +779,11 @@ class InHandManipulationEnv(DirectRLEnv):
+                 self.m_joint_anchor_dist[robot],
+                 self.m_joint_q_lists[robot]
+             )
+-            self.q[robot][:, self.main_indices[robot]] = main_joint_targets
++            # MORPHOHAND PATCH: write only through slots a finger actually claims. For the
++            # shipped hands `live_slots` is all of them and this is the original line; for a
++            # 3-finger hand it stops an unclaimed slot's target from clobbering a real joint.
++            _live = self.live_slots[robot]
++            self.q[robot][:, self.main_indices[robot][_live]] = main_joint_targets[:, _live]
+ 
+             # Solve IK for Hand in Sim
+             T_rot = self.T_rot_template[self.robot_indices[robot]]
+@@ -936,6 +978,10 @@ class InHandManipulationEnv(DirectRLEnv):
+         if abs(self.cfg.action_rate) > 0.0:
+             self.extras["log"]["action_rate_penalty"] = action_rate_penalty.mean() * self.cfg.action_rate
+         
++        # MORPHOHAND PATCH: latch the successes before `_reset_target_pose` clears the buffer.
++        self.mh_success_events = self.reset_goal_buf.clone().bool()
++        self.mh_success_total += self.mh_success_events.long()
++
+         # reset goals if the goal has been reached
+         goal_env_ids = self.reset_goal_buf.nonzero(as_tuple=False).squeeze(-1)
+         if len(goal_env_ids) > 0:
+@@ -1197,6 +1243,11 @@ class InHandManipulationEnv(DirectRLEnv):
+         self._reset_target_pose(env_ids)
+         self._compute_intermediate_values()
+ 
++        # MORPHOHAND PATCH: latch the streak this episode ended on, and bump a serial so an
++        # external evaluator can tell a fresh value from a stale one.
++        self.mh_streak_at_reset[env_ids] = self.successes[env_ids].long()
++        self.mh_reset_serial[env_ids] += 1
++
+         # Reset success counter
+         self.successes[env_ids] = 0
+ 
+@@ -1448,6 +1499,13 @@ class InHandManipulationEnv(DirectRLEnv):
+             if self.cfg.merge_flag_input:
+                 sub_obs.append(self.env_merge_flags[self.robot_indices[robot]].to(dtype=torch.float)[:,None])
+ 
++            # MORPHOHAND PATCH: see multi_env_cfg.SphereEnvCfg.ff_flag_input. Restores the
++            # 1-wide finger-failure flag the released checkpoints were trained with. The
++            # failure machinery itself is absent from this code vintage, so the flag is
++            # constant 0 -- its correct value whenever no finger is failed.
++            if getattr(self.cfg, "ff_flag_input", False):
++                sub_obs.append(torch.zeros_like(sub_obs[0][:, :1]))
++
+             sub_obs = torch.cat(sub_obs, dim=-1)
+             obs.append(sub_obs)
+ 
+@@ -1478,6 +1536,9 @@ class InHandManipulationEnv(DirectRLEnv):
+ 
+         obs = torch.cat(obs, dim=0)
+         privileged_obs = torch.cat(privileged_obs, dim=0)
++        # MORPHOHAND PATCH: see multi_env_cfg.SphereEnvCfg.symmetric_critic.
++        if getattr(self.cfg, "symmetric_critic", False):
++            return {"policy": obs, "critic": obs}
+         return {"policy": obs, "critic": privileged_obs}
+     
+     def step(self, action: torch.Tensor): # Overwrite original step to handle multiple robots
+diff --git a/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/utils/dr_funcs.py b/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/utils/dr_funcs.py
+index a7ac8cb..81e7b85 100644
+--- a/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/utils/dr_funcs.py
++++ b/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/utils/dr_funcs.py
+@@ -17,9 +17,51 @@ from isaaclab.actuators import ImplicitActuator
+ from isaaclab.assets import Articulation, DeformableObject, RigidObject
+ from isaaclab.managers import EventTermCfg, ManagerTermBase, SceneEntityCfg
+ from isaaclab.terrains import TerrainImporter
+-from isaaclab.utils.version import compare_versions
++# MORPHOHAND PATCH: `isaaclab.utils.version` is new in Isaac Lab 2.2; this machine runs 2.1.0
++# (Isaac Sim 4.5.0). Nothing in UHAS ever calls compare_versions -- it is a dead import -- so
++# fall back to the upstream 2.2.1 implementation verbatim rather than pulling in 2.2.
++try:
++    from isaaclab.utils.version import compare_versions
++except ModuleNotFoundError:
++
++    def compare_versions(v1: str, v2: str) -> int:
++        parts1 = list(map(int, v1.split(".")))
++        parts2 = list(map(int, v2.split(".")))
++        length = max(len(parts1), len(parts2))
++        parts1 += [0] * (length - len(parts1))
++        parts2 += [0] * (length - len(parts2))
++        return (parts1 > parts2) - (parts1 < parts2)
++
+ from isaaclab.envs import ManagerBasedEnv
+-from isaaclab.envs.mdp.events import _randomize_prop_by_op, _validate_scale_range
++from isaaclab.envs.mdp.events import _randomize_prop_by_op
++
++# MORPHOHAND PATCH: `_validate_scale_range` is a private helper added in Isaac Lab 2.2;
++# 2.1.0 has `_randomize_prop_by_op` (imported above) but not this one. It is PURE INPUT
++# VALIDATION -- it raises on a malformed (low, high) tuple and otherwise does nothing -- so
++# the verbatim 2.2.1 body below cannot change simulation behaviour, only reject bad configs.
++try:
++    from isaaclab.envs.mdp.events import _validate_scale_range
++except ImportError:
++
++    def _validate_scale_range(
++        params: "tuple[float, float] | None",
++        name: str,
++        *,
++        allow_negative: bool = False,
++        allow_zero: bool = True,
++    ) -> None:
++        if params is None:
++            return
++        low, high = params
++        if not isinstance(low, (int, float)) or not isinstance(high, (int, float)):
++            raise TypeError(f"{name}: expected (low, high) to be a tuple of numbers, got {params}.")
++        if not allow_negative and not allow_zero and low <= 0:
++            raise ValueError(f"{name}: lower bound must be > 0 when using the 'scale' operation (got {low}).")
++        if not allow_negative and allow_zero and low < 0:
++            raise ValueError(f"{name}: lower bound must be >= 0 when using the 'scale' operation (got {low}).")
++        if high < low:
++            raise ValueError(f"{name}: upper bound ({high}) must be >= lower bound ({low}).")
++
+ 
+ class curriculum_randomize_rigid_body_material(ManagerTermBase):
+     """Curriculum version of randomize_rigid_body_material.
