@@ -159,8 +159,95 @@ index 0000000..0ee51aa
 +        soft_joint_pos_limit_factor=1.0,
 +    )
 +    return cfg, cik_path
+diff --git a/process_urdf/utils_urdf.py b/process_urdf/utils_urdf.py
+index 1ae7f5b..e5e7627 100644
+--- a/process_urdf/utils_urdf.py
++++ b/process_urdf/utils_urdf.py
+@@ -2361,7 +2361,27 @@ def build_lookup_dict_with_fp_and_phi(
+         return
+     
+     # Place valid closest to open palm position #!
+-    if 4 not in chain_idx:
++    #
++    # MORPHOHAND PATCH: apply this re-anchor to the slot-4 finger too.
++    #
++    # Upstream gates it on `4 not in chain_idx`, so every finger EXCEPT the one occupying
++    # canonical slot 4 gets its plane anchor moved to the middle of the theta band the finger
++    # can actually reach, while the slot-4 finger keeps the hard-coded `--thumb_anchor` (1.571).
++    # That is fine for a hand whose thumb really does sit at theta = pi/2 in the sphere frame --
++    # LEAP's does, by construction of the sphere. It is wrong for any hand whose slot-4 finger
++    # sits elsewhere, and the consequence is not cosmetic: `min_offsets`/`max_offsets` are
++    # theta MINUS the anchor, and the Isaac env clamps each slot's lateral action into them.
++    # If the anchor is outside the reachable band, both offsets have the same sign, zero is not
++    # in range, and the clamp pins that finger's lateral joint at a fixed large angle forever.
++    #
++    # Measured slot-4 anchor error on our hands (band centre vs the assumed 1.571):
++    #     perp    +0.7 deg    H06_04  +95 deg    m05  -48 deg    baseline  +89 deg
++    # and perp -- the only one that is nearly correct -- was the only hand to score a single
++    # repose in the as-built zero-shot sweep. See docs/uhas/CUBE_REPOSE_PLAN.md E3.
++    #
++    # Set UHAS_UNIFORM_ANCHOR=0 to restore upstream behaviour.
++    _uniform_anchor = os.environ.get("UHAS_UNIFORM_ANCHOR", "1") == "1"
++    if (4 not in chain_idx) or _uniform_anchor:
+         mean_q = (max_q + min_q) / 2
+         # idx_anchor = np.argmin(np.abs(valid_q_main_joint - q_0[joint]))
+         mid_idx = np.argmin(np.abs(valid_q_main_joint - mean_q))
+@@ -2407,6 +2427,53 @@ def build_lookup_dict_with_fp_and_phi(
+     theta_offsets = valid_theta - anchor
+     theta_offsets = (theta_offsets + np.pi) % (2 * np.pi) - np.pi
+ 
++    # MORPHOHAND PATCH: restrict the calibration to the MONOTONIC branch of theta(q) around the
++    # anchor.
++    #
++    # Everything below assumes theta(q) is monotonic across the valid range: `min_offset` and
++    # `max_offset` are read off the two ENDPOINTS of the q sweep, and `q_list` is then built by
++    # linearly interpolating q over (min_offset -> zero_q -> max_offset). That holds for the
++    # shipped hands. It fails for a finger whose fingertip passes near the sphere pole, where the
++    # azimuth wraps: theta(q) doubles back, BOTH sweep endpoints land on the far side of the
++    # branch cut, and the recorded range comes out narrow and entirely one-signed --
++    # m05 slots 0/1 = [-2.887, -2.718], H06_04 slot 4 = [-2.948, -2.774]. The Isaac env clamps
++    # each slot's lateral action into that range, so a range excluding 0 pins the joint at a
++    # large fixed angle and the finger can never return to its neutral pose.
++    #
++    # Narrowing to the contiguous monotonic neighbourhood of the anchor makes the assumption true
++    # rather than merely assumed: inside it theta <-> q is single-branch and invertible, which is
++    # what the lookup needs. It costs nominal range on the degenerate fingers, which is honest --
++    # that range was never usable, it was an artifact of reading across a branch cut.
++    #
++    # Set UHAS_MONOTONIC_BRANCH=0 to restore upstream behaviour.
++    if os.environ.get("UHAS_MONOTONIC_BRANCH", "1") == "1" and len(theta_offsets) > 2:
++        _d = np.diff(theta_offsets)
++        _a = int(np.clip(idx_anchor, 0, len(_d) - 1))
++        _sign = np.sign(_d[_a]) if np.sign(_d[_a]) != 0 else 1.0
++        # A wrap shows up as a step of order 2*pi; break on it explicitly, since a wrap can share
++        # the sign of the surrounding trend and would otherwise slip through the sign test.
++        _jump = np.pi / 2
++
++        _lo = _a
++        while _lo > 0 and np.sign(_d[_lo - 1]) == _sign and abs(_d[_lo - 1]) < _jump:
++            _lo -= 1
++        _hi = _a + 1
++        while _hi < len(_d) and np.sign(_d[_hi]) == _sign and abs(_d[_hi]) < _jump:
++            _hi += 1
++
++        if _hi - _lo + 1 < len(theta_offsets):
++            print(f"[MORPHOHAND] {joint}: monotonic branch {_lo}..{_hi} of 0..{len(theta_offsets)-1} "
++                  f"(theta range {theta_offsets[_lo]:+.3f}..{theta_offsets[_hi]:+.3f} rad)")
++        _sl = slice(_lo, _hi + 1)
++        valid_q_main_joint = valid_q_main_joint[_sl]
++        valid_theta = valid_theta[_sl]
++        valid_q_all_joints = valid_q_all_joints[_sl]
++        valid_phi = valid_phi[_sl]
++        theta_offsets = theta_offsets[_sl]
++        idx_anchor = int(np.argmin(np.abs(theta_offsets)))
++        q_anchor = valid_q_main_joint[idx_anchor]
++        min_anchor_distance = valid_theta[idx_anchor] - anchor
++
+     # Find indices for min and max q values
+     min_idx = np.argmin(valid_q_main_joint)
+     max_idx = np.argmax(valid_q_main_joint)
 diff --git a/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_env_cfg.py b/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_env_cfg.py
-index 03f6ea9..8aade9f 100644
+index 03f6ea9..e6578b2 100644
 --- a/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_env_cfg.py
 +++ b/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_env_cfg.py
 @@ -7,6 +7,8 @@ from sphere_ctrl_isaaclab.assets.grippers.leap.leap_right.leap_right import LEAP
@@ -323,7 +410,7 @@ index 03f6ea9..8aade9f 100644
          else:
              raise ValueError(f"Unable to identify Robot Tag {robot}.")
          
-@@ -450,7 +520,15 @@ class SphereEnvCfg(DirectRLEnvCfg):
+@@ -450,9 +520,24 @@ class SphereEnvCfg(DirectRLEnvCfg):
          robot_cfgs[robot] = robot_cfg
          cik_infos[robot] = load_from_json(cik_json_path) 
          sphere_radius = cik_infos[robot]["joint_info"]["sphere_frame"][6]
@@ -339,7 +426,16 @@ index 03f6ea9..8aade9f 100644
 +        cube_scale = scale * sphere_radius/base_radius * _MH_CUBE_SCALE_MULT
          robot_cube_mass = cube_density * ((cube_size * sphere_radius/base_radius))**3 # Can end up in very small values for small grippers
          robot_cube_mass = cube_density * (cube_size)**3 * (sphere_radius/base_radius) # Could use linear, since effort (torque) is linear to hand size
++        # MORPHOHAND PATCH: the multiplier has to move the mass as well as the geometry.
++        # Upstream's mass law is LINEAR in the size ratio (the line above -- a deliberate choice,
++        # "effort (torque) is linear to hand size"), so the multiplier is applied linearly too.
++        # Without this a 0.55x cube keeps its full 78 g and becomes ~6x denser, and a sweep meant
++        # to ask "is the cube too big for three fingers" silently asks "is the cube too heavy for
++        # its size" instead.
++        robot_cube_mass = robot_cube_mass * _MH_CUBE_SCALE_MULT
          cube_scales[robot] = cube_scale
+         cube_masses[robot] = robot_cube_mass
+         print(f"Loaded sphere information from {cik_json_path}")
 diff --git a/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_manipulation_env.py b/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_manipulation_env.py
 index a691daa..efe3311 100644
 --- a/sphere_ctrl_isaaclab/source/sphere_ctrl_isaaclab/sphere_ctrl_isaaclab/tasks/UHAS_inhand/multi_manipulation_env.py

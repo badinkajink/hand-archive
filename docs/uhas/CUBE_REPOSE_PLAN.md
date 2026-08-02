@@ -32,13 +32,21 @@ give us a zero-variance morphology evaluator, and what does it cost to make it v
 
 | # | Question | Status |
 |---|---|---|
-| E0 | Does the patched stack reproduce UHAS on a hand it was trained on? | **DONE** |
-| E1 | Does our hand run at all under the pretrained policy? | **DONE** |
-| E2 | Is the cube the wrong size for our smaller hand? | **DONE — answered no** |
-| E3 | Why does our hand fail, and is the cause morphology or calibration? | in progress |
-| E4 | With the cause fixed, how do our hands rank? | pending |
-| E5 | Cube-size sensitivity per hand (the ratio UHAS assumes vs the one ours wants) | pending |
-| E6 | Cross-hand comparison: metrics, plots, videos | pending |
+| E0 | Does the patched stack reproduce UHAS on a hand it was trained on? | **DONE** — LEAP 51.7 % |
+| E1 | Does our hand run at all under the pretrained policy? | **DONE** — yes, all four |
+| E2 | Is the cube the wrong size for our smaller hand? | **DONE — no**, ratio is constant by construction |
+| E3 | Why does it fail — morphology or calibration? | **DONE** — two real calibration bugs, found and fixed |
+| E4 | With the calibration fixed, how do our hands rank? | **DONE — clean negative**, all still 0–1 % |
+| E4b | What *kind* of failure is it? | **DONE** — two kinds: grasp vs manipulation |
+| E4c | Does the cheap OOD score predict task success? | **DONE** — separates LEAP from ours, no resolution within ours |
+| E5 | Cube-size sensitivity (does a 3-finger hand want a different ratio?) | in progress |
+| E6 | Cross-hand comparison: metrics, plots, videos | follow-up 2 |
+
+**Headline after session 2: the calibration was genuinely broken and is genuinely fixed, and it
+was not the blocker.** Our hands remain at 0–1 % against LEAP's 51.7 %. The useful result is not
+the rate, it is that the single number "0 %" was hiding two unrelated failures — three hands that
+cannot cage the cube at all, and one (perp) that cages it better than anything else we have built
+and then never turns it.
 
 ---
 
@@ -224,12 +232,196 @@ radii vs 0.80–0.93). m05, with a 32× spread and two slots pinned at 0.17, dro
 This is correlational across four hands, not proof; it is the reason the calibration fix is the
 next experiment rather than one of several.
 
-### What E3 has NOT yet shown
+---
 
-That fixing the calibration fixes the task. The next run is the test: rebuild the CIK with a
-lateral range calibrated at the hand's actual operating pose, and re-run the identical eval. If
-success goes from 0 % to something, calibration was the blocker; if it stays at 0 %, the
-3-finger/cube-ratio question (E5) moves to the front.
+## E3b — the two bugs, found and fixed
+
+Both are in `build_lookup_dict_with_fp_and_phi` (`process_urdf/utils_urdf.py`), and neither is a
+property of our hand. Both are marked `MORPHOHAND PATCH` and both have an env-var escape hatch.
+
+### Bug 1 — the slot-4 finger is exempted from the re-anchor (`utils_urdf.py:2364`)
+
+```python
+# Place valid closest to open palm position #!
+if 4 not in chain_idx:              # <-- the whole bug is this gate
+    mean_q = (max_q + min_q) / 2
+    ...
+    anchor = valid_theta[idx_anchor]   # re-anchor to the middle of the REACHABLE theta band
+```
+
+Every finger **except** the one occupying canonical slot 4 has its plane anchor moved to the
+middle of the θ band it can actually reach. The slot-4 finger keeps the hard-coded
+`--thumb_anchor` (1.571 rad). For LEAP that is harmless — its thumb genuinely sits at θ ≈ π/2,
+by construction of the sphere. For anything else it is silently wrong, and the consequence is not
+cosmetic: `min_offsets`/`max_offsets` are θ *minus the anchor*, so an anchor outside the reachable
+band makes both offsets the same sign, zero falls outside the clamp, and that finger's lateral
+joint is pinned at a large fixed angle for the entire episode.
+
+The measured anchor error is a near-perfect predictor of the as-built scores:
+
+| hand | slot-4 band centre | assumed anchor | error | as-built success |
+|---|---|---|---|---|
+| perp | 1.583 rad | 1.571 | **+0.7°** | **0.8 %** |
+| m05 | 0.728 | 1.571 | −48° | 0.0 % |
+| baseline | 3.127 | 1.571 | +89° | 0.4 % |
+| H06_04 | 3.231 | 1.571 | **+95°** | 0.0 % |
+
+perp is the only hand whose thumb happens to sit where UHAS assumed, and perp was the only hand
+to reach a goal. **Fix: apply the re-anchor uniformly** (`UHAS_UNIFORM_ANCHOR=0` restores
+upstream).
+
+### Bug 2 — the range is read at the sweep endpoints, but θ(q) is not monotonic
+
+```python
+min_idx = np.argmin(valid_q_main_joint)   # first sample of the q sweep
+max_idx = np.argmax(valid_q_main_joint)   # last sample
+min_offset = theta_offsets[min_idx]
+max_offset = theta_offsets[max_idx]
+...
+q_list[:zero_idx+1] = np.linspace(q_min, zero_q, ...)   # and then interpolates q LINEARLY
+```
+
+The endpoints are only the extremes of θ if θ(q) is monotonic, and the linear `q_list` build
+assumes the same thing. It holds for the shipped hands. It fails for a finger whose fingertip
+passes near the **sphere pole**, where the azimuth wraps: θ(q) doubles back, both sweep endpoints
+land on the far side of the branch cut, and the recorded range comes out narrow and entirely
+one-signed — m05 slots 0/1 `[-2.887, -2.718]`, H06_04 slot 4 `[-2.948, -2.774]` even after Bug 1
+was fixed. This is the "index/middle cross the sphere pole where azimuth wraps" effect
+`INTEGRATION.md` already noted, but its consequence was a pinned joint, not a cosmetic number.
+
+**Fix: restrict the calibration to the contiguous monotonic branch of θ(q) around the anchor**
+(breaking on a sign change *or* a step > π/2, which is what a wrap looks like). Inside that window
+θ ↔ q is single-branch and invertible, which is what the lookup needs. It costs nominal range on
+the degenerate fingers, honestly so — that range was an artifact of reading across a branch cut.
+`UHAS_MONOTONIC_BRANCH=0` restores upstream.
+
+### Validation: on LEAP the patches do almost nothing
+
+Regenerating LEAP's `sphere_cik.json` from its own URDF with both patches, against the shipped
+artifact the policy was trained with:
+
+| | slot 0 | 1 | 2 | 3 | 4 (thumb) |
+|---|---|---|---|---|---|
+| Δ min_offset | 0.0000 | 0.0000 | 0.0000 | −0.0000 | +0.0871 |
+| Δ max_offset | −0.0000 | −0.0000 | 0.0000 | 0.0000 | −0.0449 |
+| span shipped → regen | 1.1197 → 1.1197 | ident. | ident. | ident. | 0.660 → 0.528 |
+
+`chain_indices` identical, sphere radius identical to 1e-16. **Slots 0–3 are bit-identical**; only
+the thumb moves, by a 2.6° anchor shift and a modest span narrowing. That is the strongest
+available evidence that the patches do exactly one thing and do not quietly redefine the action
+space: on the hand where the assumptions already held, almost nothing changes.
+
+LEAP itself keeps its **shipped** file for every evaluation here — the policy was trained with it,
+so it is ground truth for LEAP and the 51.7 % reference stays comparable.
+
+### The calibration afterwards
+
+`scripts/uhas_cik_report.py --compare` (`!` = range excludes 0, i.e. joint pinned):
+
+| hand | span ratio before → after | pinned before → after |
+|---|---|---|
+| LEAP (ref) | — 1.73 | — 0 |
+| baseline | 29.2 → **1.25** | 1 → **0** |
+| m05 | 32.5 → **1.20** | 2 → **0** |
+| H06_04 | 32.4 → **1.44** | 1 → **0** |
+| perp | 1.51 → **1.30** | 0 → 0 |
+
+Every hand now has all live slots bracketing zero, with slot-to-slot consistency **better than
+LEAP's**. The ranges remain wider than LEAP's in absolute terms (±1.0–1.7 rad vs ±0.3–0.6) — that
+is a real geometric property of our yaw, not a defect: our fingers have more azimuthal authority
+per radian of joint travel.
+
+---
+
+## E4 — the calibration fix does NOT recover the task. Clean negative.
+
+Identical protocol to E1 (64 envs, 3000 control steps), the only change being the regenerated
+`sphere_cik.json`. Wilson 95 % intervals, because at these rates the point estimates are 0–6
+successes and reading them without intervals would invent a ranking that is not there.
+
+| hand | | attempts | successes | rate | 95 % CI |
+|---|---|---|---|---|---|
+| **LEAP** (ref) | shipped | 385 | 199 | **51.7 %** | [46.7, 56.6] |
+| H06_04 | as-built | 220 | 0 | 0.00 % | [0.00, 1.72] |
+| H06_04 | **anchorfix** | 212 | 2 | 0.94 % | [0.26, 3.37] |
+| m05 | as-built | 927 | 0 | 0.00 % | [0.00, 0.41] |
+| m05 | **anchorfix** | 868 | 1 | 0.12 % | [0.02, 0.65] |
+| baseline | as-built | 2624 | 10 | 0.38 % | [0.21, 0.70] |
+| baseline | **anchorfix** | 1193 | 6 | 0.50 % | [0.23, 1.09] |
+| perp | as-built | 249 | 2 | 0.80 % | [0.22, 2.88] |
+| perp | **anchorfix** | 263 | 0 | 0.00 % | [0.00, 1.44] |
+
+**Every one of our hands, before and after, lies inside [0 %, 3.4 %]. LEAP is [46.7 %, 56.6 %].**
+Every before/after pair overlaps heavily — including perp's apparent 0.8 → 0.0 "regression", which
+is 2 successes versus 0 and means nothing. There is no ranking among our four hands to report.
+
+So: the calibration bugs were real, correctly diagnosed, and are now correctly fixed — the
+calibration table in E3b is the evidence, and it is a genuine improvement in the representation.
+**They were not what stands between our hands and this task.** Recording that plainly rather than
+hunting for a third calibration variant.
+
+### What the failure actually is — two different failures, and only one is interesting
+
+Median best alignment reached *within a failed attempt* (success needs ≤ 0.10 rad):
+
+| hand | median best alignment | drop % | timeout % |
+|---|---|---|---|
+| **LEAP** | **0.166 rad** | 41.0 | 7.3 |
+| H06_04 | 1.111 | 73.1 | 25.9 |
+| m05 | 1.418 | 95.7 | 4.1 |
+| baseline | 1.419 | 95.2 | 4.3 |
+| perp | 1.570 | 75.7 | 24.3 |
+
+LEAP's *failures* get to 0.166 rad — it misses narrowly. Ours never get near: 1.1–1.6 rad, with a
+whole-run mean rot-dist of 2.1–2.2 rad, which is the mean angle between two uniformly random
+orientations. **Our hands are not near-missing the goal; the cube's orientation is statistically
+independent of it.**
+
+The renders (`docs/uhas/figs/filmstrip_morpho_{perp_open,H0604}_anchorfix.png`) separate two
+distinct failures that the aggregate rate hides completely:
+
+* **baseline / m05 / H06_04 — a GRASP failure.** 73–96 % drop. The fingers stay flat and the cube
+  balances on top of them rather than being caged. H06_04 tumbles the cube a little in the first
+  ~100 steps, then settles and stops. It never gets a grip to manipulate from.
+* **perp — a MANIPULATION failure, and this is the interesting one.** With the fixed calibration
+  perp genuinely *cradles* the cube: three fingers wrapped around it, the most stable hold of any
+  hand (centering 0.560 radii vs LEAP's 0.415, against 0.87–1.06 for the others). And then the
+  cube's painted faces are **identical in every frame across 440 steps** — X up, R right, never
+  moving. It holds beautifully and never rotates. 24 % of its attempts end in timeout, i.e. held
+  for the full 30 s without ever reaching a goal.
+
+That distinction is the useful output of this session. "0 % success" was one number covering a
+hand that cannot hold the cube and a hand that holds it perfectly and won't turn it, and those
+have nothing to do with each other.
+
+### ⚠ A caveat on my own fix, recorded because it nearly became a false conclusion
+
+The uniform re-anchor moves each finger's plane to the middle of its reachable θ band. Measuring
+the fingertip azimuths on the sphere before and after shows this **collapses the azimuthal spread**
+of our hands:
+
+| hand | azimuthal spread, as-built | after anchorfix |
+|---|---|---|
+| LEAP | 123.9° | — (kept shipped) |
+| baseline | 74.0° | **8.2°** |
+| m05 | 103.4° | **12.9°** |
+| H06_04 | 86.8° | **22.3°** |
+| perp | 178.9° | 178.9° (unchanged) |
+
+I nearly wrote this up as "our co-designed hands have a degenerate azimuthal layout, which is why
+they fail". They do not — as-built they are at 74–103° against LEAP's 124°, which is not
+pathological. The collapse is **caused by my own patch**: anchoring each finger at its band centre
+throws away the azimuthal separation that the hard-coded `thumb_anchor` was, accidentally,
+providing. perp is unchanged because its thumb already sat at the assumed anchor.
+
+So the fix trades one defect for another: it removes the pinned joints (real gain) and costs
+azimuthal separation (real loss), and the net on the task is zero. **The obvious third variant —
+anchor the slot-4 finger at the reachable θ *closest to* the canonical thumb azimuth, i.e. clamp
+1.571 into the band instead of ignoring it — would keep both properties.** It is one line. I did
+not run it, because the instruction for this session was to stop pushing on calibration once it
+failed to recover success, and because with perp already holding the cube perfectly and still not
+rotating, azimuthal separation is not obviously the binding constraint. Recorded as the top
+candidate if calibration is revisited.
 
 ---
 
@@ -255,3 +447,32 @@ $P scripts/uhas_eval.py --robot morpho_H0604 --num-envs 4 --steps 650 --video \
 
 Env-var knobs on the vendored env (all `MORPHOHAND PATCH`): `UHAS_ROBOTS`, `UHAS_EVAL`,
 `UHAS_CUBE_SCALE_MULT`, `UHAS_MORPHO_ROOT`, `UHAS_MAX_CONSEC`, `UHAS_VIEW_EYE/LOOKAT/ENV`.
+
+---
+
+## E4c — the observation-distribution audit as a cheap morphology evaluator
+
+`scripts/uhas_obs_audit.py` compares a hand's live observations against the checkpoint's own
+`obs_norm_state_dict` — the per-dimension mean/var over 1.0e8 training samples on four hands — and
+reports mean |z| per feature group. It costs ~90 s per hand and needs no task rollout.
+
+| hand | OOD mean \|z\| | p90 | fingertip pos | fingertip linvel | object pos | task success |
+|---|---|---|---|---|---|---|
+| **LEAP** | **0.301** | 0.784 | 0.503 | 0.022 | 1.007 | 51.7 % |
+| m05 | 0.651 | 1.523 | 1.461 | 0.092 | 0.954 | 0.12 % |
+| baseline | 0.734 | 1.878 | 1.427 | 0.249 | 1.021 | 0.50 % |
+| perp | 0.929 | 2.905 | 2.301 | 0.089 | 0.772 | 0.00 % |
+| H06_04 | 0.990 | 2.898 | 2.307 | 0.245 | 1.451 | 0.94 % |
+
+Two honest readings, and the second matters more than the first:
+
+* **As a binary indicator it works.** LEAP sits at 0.30 and every one of our hands is 2–3× that.
+  The gap is concentrated in **fingertip positions** (0.50 for LEAP vs 1.43–2.31 for ours) — the
+  policy's picture of our hands is dominated by fingertip coordinates it has never seen. Object
+  position sits near 1.0 for everyone including LEAP, so that column is a baseline offset of the
+  metric rather than a property of any hand.
+* **As a ranking evaluator it is untested, and cannot be tested here.** Within our four hands the
+  OOD score does not track success — but all four successes are statistically identical (E4), so
+  there is no signal to track. This says nothing about whether the score would rank hands that
+  actually differ. Do not report it as a validated morphology evaluator; it is a validated
+  *sanity check* and a candidate evaluator.
