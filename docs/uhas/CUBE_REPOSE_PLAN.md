@@ -676,3 +676,94 @@ judging on best-alignment and cube angular speed, not the 0 %-floored repose rat
 only if the cube visibly moves — UHAS's own `MANO_to_LEAP` transfer is 1000 iterations (~1.5 h at
 8192 envs on their hardware) vs 15000 from scratch, but no finetune can create fingertip travel
 the morphology does not have.
+
+---
+
+## E7 — the whole design box, searched (2026-08-02)
+
+E6 said finger spacing was the dominant lever and the optimum was interior. That was a claim about
+a landscape nobody had sampled. This is the sample: **980 designs, each a real MJCF → URDF →
+UHAS-sphere → CIK rebuild** (~5 s each, no GPU, no Isaac), scored on
+`authority = travel_live × (1 − pinned)`. `scripts/uhas_mount_search.py`, rows in
+`docs/experiments/uhas_mount_search.json`.
+
+**First: the metric is translation-invariant.** UHAS fits its canonical sphere to the *finger
+roots* (`construct_palm_plane` → `construct_sphere_with_palm`); the palm plate's geometry never
+enters. Sliding all three mounts together by +60 mm scores byte-identically. So the searchable
+axes are the two **separations** — thumb↔pair in x (`gap_x`, shipped 100 mm) and index↔middle in y
+(`sep_y`, shipped 96 mm) — plus proximal and distal scale. Where the cluster sits on the plate is
+a free variable this metric cannot rank.
+
+**Second: the object does not spawn on the palm.** `init_pos = [0.65, 0.0, 0.3]` is in
+*sphere-radius units*, and the sphere is tangent to the fitted palm plane, so every hand gets the
+cube at 1.3 R off the palm, 0.65 R lateral — proportionally identical for LEAP and for us. Cube-
+flat-on-the-palm in our renders is a **catch failure**, not a spawn difference.
+
+### The landscape
+
+| | authority |
+|---|---|
+| whole box, min → median → max | 0.40 → 0.78 → **1.10** |
+| shipped perp | 0.93 |
+| LEAP | **1.52** |
+
+**LEAP strictly dominates the entire Pareto front.** 265 of 976 designs match or beat its
+conditioning (pinned ≤ 15 %); not one of those clears travel 1.4. At LEAP's pinned fraction the
+box delivers travel ≈ 1.1, about 65 % of LEAP's 1.71. Marginal means: `gap_x` has a real interior
+optimum at 85 mm (0.84, vs 0.64 at the 145 mm limit); `sep_y` is flat (0.76–0.78) except in
+interaction with `gap_x`; `prox` is monotone *against* shortening (1.0 → 0.84, 0.4 → 0.68); `dist`
+is inert (0.75–0.79).
+
+### The l_prox/R hypothesis, tested directly
+
+The box reaches **l/R 0.62** (LEAP 0.52) by shortening the proximal and lengthening the distal.
+That design has **better conditioning than LEAP** (7.9 % pinned) at **43 % of its travel**
+(0.73 vs 1.71). Matching LEAP's proportions is achievable and does not buy LEAP's authority.
+
+### The pair-separation floor (new gate mode)
+
+`morph_selfcollision_gate.py --sep-sweep [--prox S]` settles each separation at the **open** pose
+and reports robot-vs-robot contact. The perp fingers face each other, so the floor is set by
+index↔middle interference, not the palm:
+
+| proximal | 90 mm (shipped) | 76 | 63 | 50 | 36 |
+|---|---|---|---|---|---|
+| min feasible separation | **96 mm** | 85 | 75 | 65 | 55 |
+
+**The shipped hand already sits on its floor.** The floor tracks proximal length ≈ 0.77:1, so the
+two proposals — shorten the proximal, close the fingers — are **one proposal**: the first is the
+enabler for the second. The collision is present at `open`, not only in a deep grasp, so it is
+resting geometry and not an artifact of the screwdriver grasp targets.
+
+### The buildable optimum
+
+Best authority once separation is held at or above the measured floor:
+
+| proximal | 90 | 76 | 63 | 50 | 36 |
+|---|---|---|---|---|---|
+| buildable best | 1.08 | **1.09** | 1.01 | 1.01 | 0.98 |
+
+The floor costs essentially nothing (1.09 vs the unconstrained 1.10) **because the metric never
+wanted the pair closer**. Best mount-only change (no new parts): gap 100 → 85 mm and pair 96 →
+105 mm — thumb *in*, pair slightly *out* — for authority 0.98, +5 %. Best buildable overall:
+1.09, +17 %, still 72 % of LEAP.
+
+### What LEAP has that no design in the box can buy
+
+| | joints per finger | link lengths (mm) |
+|---|---|---|
+| LEAP | 4: D, A, B, B | 53.1 / 15.0 / 36.1 / 50.0 |
+| perp | 3: A, B, B | 84.9 / 90.0 / 30.0 |
+
+**Three CIK-solvable joints across four segments versus two across three.** Two flexion joints
+reach a curve; three reach an area. No mount position and no phalanx scale adds a joint, which is
+why the front is dominated everywhere rather than in one corner. The lever this program has not
+pulled is a **third phalanx**.
+
+### Caveat that stands
+
+Still post-diction. `authority` correlates with the rendered taxonomy on five hands and has never
+been checked against an outcome. It is also fingers-only: **palm contact is invisible to it**, so
+a policy that braces the cube against the palm to gait with three fingers would not be predicted
+by any number above. That is the live counter-argument to this negative, and it is testable only
+in sim.
