@@ -105,7 +105,18 @@ Two blockers had to go first, and neither was a hardware or morphology problem:
    records `live_slots`, and writes joint targets only through claimed slots. For the shipped
    hands `live_slots` is all five and the behaviour is byte-identical.
 
-**Result: it runs, and it fails.** 0 % success, 76.8 % drop, 23.2 % timeout.
+**Result: all four hands run, and all four fail.** 64 envs, 3000 control steps, identical protocol.
+
+| hand | attempts | success | drop | timeout | mean rot-dist | centering |
+|---|---|---|---|---|---|---|
+| **LEAP** (reference) | 385 | **51.7 %** | 41.0 % | 7.3 % | 1.04 rad | 0.415 |
+| perp | 249 | 0.8 % | 73.5 % | 25.7 % | 2.12 rad | 0.560 |
+| H06_04 | 220 | 0.0 % | 76.8 % | 23.2 % | 2.22 rad | 0.823 |
+| m05 | 927 | 0.0 % | 94.9 % | 5.1 % | 2.21 rad | 0.798 |
+| baseline | 2624 | 0.4 % | 98.0 % | 1.6 % | 2.20 rad | 0.926 |
+
+Read the attempt counts as a hold-time proxy: the baseline racks up 2624 attempts in the same
+wall budget because it drops almost immediately and restarts, where perp manages 249 longer ones.
 
 ---
 
@@ -188,6 +199,30 @@ becomes a command range the policy has to drive through.
 
 > Standing correction to `INTEGRATION.md`: "the offsets are cosmetic, the joint is fine" is half
 > right. The joint is fine. The offsets are load-bearing.
+
+### The picture, which is where this became obvious
+
+`docs/uhas/figs/filmstrip_H0604_asbuilt.png` vs `filmstrip_leap.png`. LEAP curls three fingers
+around the cube and turns it. **H06_04 holds all three fingers splayed flat and pointing outward,
+with the cube resting on top of them like a plate** — no opposition anywhere in the rollout. That
+is precisely what a yaw clamped to +90° looks like, and it is not something the metric table says.
+
+### A consistency check that the calibration story passes
+
+If the lateral ranges are the blocker, the hand with the least pathological ranges should score
+best. It does:
+
+| hand | lateral spans (rad) | max/min ratio | success | drop |
+|---|---|---|---|---|
+| perp | 3.92, 3.92, 3.95, —, 2.62 | **1.5×** | **0.8 %** | 73.5 % |
+| H06_04 | 2.62, 2.62, 5.63, —, 0.17 | 33× | 0.0 % | 76.8 % |
+| m05 | 0.17, 0.17, 5.48, —, 3.60 | 32× | 0.0 % | 94.9 % |
+
+perp — whose three live slots are within 1.5× of each other, the most LEAP-like of any of our
+hands — is the only one that ever reaches a goal, and holds the cube nearest the target (0.560
+radii vs 0.80–0.93). m05, with a 32× spread and two slots pinned at 0.17, drops 95 % of the time.
+This is correlational across four hands, not proof; it is the reason the calibration fix is the
+next experiment rather than one of several.
 
 ### What E3 has NOT yet shown
 
