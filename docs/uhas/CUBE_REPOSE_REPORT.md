@@ -21,6 +21,15 @@ taxonomy**: "0 %" was concealing a hand that cannot hold the cube and a hand tha
 than anything we have built and never turns it. Those need opposite fixes, and only the renders
 plus a motion probe could tell them apart.
 
+**Update 2026-08-02 (E8), and it retires the offline metric.** Six cube-controlled designs
+spanning a 1.6x range of `authority` were built and zero-shot. Authority orders their **drop rate**
+almost perfectly (Spearman -0.94) and has **no** relationship with goal approach (-0.03): closest
+approach sits in 1.51-1.66 rad across the whole span, against a 0.100 rad tolerance, and the
+*worst* value belongs to the *highest*-authority design. `authority` is a grip-retention metric
+that was being read as a manipulation metric. Separately, an 82-minute finetune of the frozen
+policy on perp alone moved the repose rate 0.00 % -> 0.00 %, so the palm-gaiting counter-argument
+below is **still open and still unsupported**. Full detail in `CUBE_REPOSE_PLAN.md` SS E8.
+
 ## How the action space works — the five command slots
 
 Worth stating plainly, because everything below depends on it and it is not in UHAS's README.
@@ -293,6 +302,20 @@ fingers" **one proposal** — the first is the enabler for the second. But the f
 mount-only change moves the thumb *in* (gap 100 → 85 mm) and the pair slightly *out* (96 → 105 mm)
 for +5 %.
 
+**Correction (E8a).** That floor was swept at the *shipped* phalanx lengths, so it only ever saw
+the floor track the **proximal**. Re-gating the top 40 designs through the contact solver
+(`scripts/uhas_gate_frontier.py`) rejects 8 of them: a longer **distal** reaches across the gap the
+proximal floor was measured to protect, and index/middle `*_len_frame` interpenetrate at up to
+64 N. The design called best-buildable above (authority 1.084) is one of them.
+
+| | claimed | actual |
+|---|---|---|
+| best collision-free authority, cube 50-56 mm | 1.084 | **1.002** |
+| … also reaching our screwdriver reference grasp | — | **0.984** |
+| headroom over shipped perp (0.930) | +17 % | **+8 %** |
+
+LEAP is 1.52 either way; the correction only strengthens the negative.
+
 ### What no design in the box can buy
 
 | | joints per finger | link lengths (mm) |
@@ -306,15 +329,70 @@ a joint — which is why the front is dominated everywhere rather than in one co
 spacing and length both plateau around 1.0–1.1. The lever this program has not pulled is a
 **third phalanx**.
 
-### The counter-argument that survives
+### The counter-argument, now tested once and still standing
 
 `authority` is fingers-only. **Palm contact is invisible to it**, and a three-finger hand can use
-the palm as a fourth contact to gait — a person with three fingers does exactly that, and this
-hand has more independent actuation and range of motion than those three fingers. Nothing above
-predicts or rules that out. It is the live counter-argument to this negative, it needs sim rather
-than kinematics to settle, and because the frozen policy was trained mostly on four- and
-five-fingered hands there is no particular reason it already knows the trick — which makes it a
-**finetune** hypothesis, not a zero-shot one.
+the palm as a fourth contact to gait. Nothing kinematic predicts or rules that out, which is why
+it needed sim.
+
+**E8b ran it.** An 82-minute finetune (4000 iterations, 4096 envs) of the frozen checkpoint on perp
+alone moved the repose rate **0.00 % -> 0.00 %**, and closest approach 1.519 -> 1.410 rad against a
+0.100 rad tolerance. In training, mean episode length climbed 26 -> ~577 steps within 100
+iterations and then sat flat for 3900 more; at eval that 20x became ~15 % (730 -> 838 steps per
+attempt), because most of it was coping with the training env's own randomisation rather than
+anything the deterministic eval applies.
+
+Exploration never collapsed (action noise std flat at 0.53), so this is a fair test failing rather
+than a broken run — and that is the useful part. **PPO found a holding basin in under 100
+iterations and never left it.** The hypothesis is therefore *not* settled: this does not separate
+"perp cannot gait against the palm" from "PPO cannot find the gait from a holding basin". Reaching
+it needs a curriculum or a shaped gaiting reward, not more steps of the same kind.
+
+## What `authority` actually measures (E8, 2026-08-02)
+
+The search ranked 976 designs and had never once been checked against an outcome. Six designs were
+built to check it — five new plus the shipped perp — each collision-gated and each with its cube
+held to **50-56 mm**, so no design can win by shrinking the task. Scored on the graded metrics,
+since the repose rate is floored at 0 % and cannot rank anything.
+
+| hand | AUTH | travel | pin % | drop % | timeout % | best rot | centering |
+|---|---|---|---|---|---|---|---|
+| d1_hi | 1.002 | 1.16 | 13.3 | **55.2** | 44.8 | 1.658 | **0.253** |
+| d2_mount | 0.977 | 1.14 | 14.7 | 64.6 | 34.8 | 1.511 | 0.519 |
+| perp (shipped) | 0.930 | 1.07 | 13.1 | 75.7 | 24.3 | 1.540 | 0.563 |
+| d3_mid | 0.762 | 0.92 | 17.1 | 81.8 | 18.2 | 1.529 | 0.494 |
+| d4_pin | 0.625 | 1.29 | 51.7 | 98.7 | 1.2 | 1.552 | 0.554 |
+| d5_lo | 0.623 | 0.79 | 21.6 | 91.2 | 8.7 | 1.547 | 0.770 |
+
+    spearman(authority, drop_rate) = -0.943      grip retention
+    spearman(authority, best_rot)  = -0.029      goal approach
+    spearman(authority, centering) = -0.714
+
+**It is a grip-retention metric.** It orders drop rate almost perfectly and is uncorrelated with
+the only graded manipulation number available: closest approach sits in 1.51-1.66 rad across the
+entire 1.6x span, against a 0.100 rad tolerance and LEAP's 0.309 — and its *worst* value belongs to
+the *highest*-authority design. E7's search was careful and was ranking the wrong quantity, which
+is also why it post-dicted so well: every hand we own holds, and none manipulate.
+
+The matched pair built to test the product form does its job. `d4_pin` (travel 1.29, 52 % pinned)
+and `d5_lo` (travel 0.79, 22 % pinned) score 0.625 and 0.623 by opposite routes, and give **equal**
+goal approach (1.552 vs 1.547) with **unequal** drop (98.7 vs 91.2). The product form is adequate
+for what the metric measures and irrelevant to what it does not.
+
+⚠ Confound recorded: `d1_hi` and `d4_pin` map their fingers onto canonical slots `[2,0,4]` where
+the others use `[4,2,0]`, so the frozen policy's per-slot priors land on different physical
+fingers. The drop-rate ordering is monotone across both groups, so it does not carry the result.
+
+### The one promotable design
+
+**`d1_hi` (gap 65 / sep 145 / prox 0.85 / dist 1.33) is the best gripper this program has built**:
+centering **0.253 sphere radii** against perp's 0.563 — previously our best — and against **LEAP's
+0.415**. Lowest drop rate of any MorphoHand (55.2 %) and the highest timeout rate (44.8 %), which
+is the same sentence twice: it holds the cube and does not turn it. That is a grasp result and
+should not be promoted as a manipulation one.
+
+So the evaluator is **retired as a manipulation metric and kept as a grasp metric**, where it is
+5 s per design, needs no GPU, and is now outcome-validated at rho = -0.94.
 
 ## A cheap predictor, and an honest null
 
@@ -338,25 +416,26 @@ not a validated evaluator.
   have dynamic range across our designs (perp's centering 0.560 beats every other hand we have
   built) even while the repose rate does not.
 
-## Open, cheapest first (revised 2026-08-02, after the search)
+## Open, cheapest first (revised 2026-08-02, after E8)
 
-1. ~~Type-B lookup amplitude~~ and ~~search the mount box~~ — **both done**; see "The design box,
-   searched". The box is exhausted: 980 designs, LEAP dominates all of them, and the shipped perp
-   already sits on its pair-separation floor.
-2. **Zero-shot a spread of the top buildable designs.** Not to pick a winner — the spread is
-   1.0–1.1 against LEAP's 1.52 — but because `authority` has never been checked against an
-   outcome. Judge on **best alignment reached** and **cube angular speed**; the repose rate is
-   floored at 0 % and cannot rank anything.
-3. **Test the palm-gaiting hypothesis, which requires a finetune.** It is the one live argument
-   that a three-finger hand can repose the cube despite the authority deficit, and no kinematic
-   score can see it. UHAS's own `MANO_to_LEAP` transfer is 1000 iterations (≈1.5 h at 8192 envs on
-   their hardware) against 15000 from scratch. A finetune can teach the policy to stay in a hand's
-   live action region, to cope with our contact model, and possibly to brace against the palm; it
-   **cannot** create fingertip travel the morphology and the CIK do not provide.
-4. **The third phalanx.** The only change in evidence that would move authority rather than trade
-   it. Outside every parameterisation this program has used, and a real hardware change.
+1. ~~Type-B lookup amplitude~~, ~~search the mount box~~, ~~zero-shot a spread of designs~~, and
+   ~~test the palm-gaiting hypothesis~~ — **all four done**. The box is exhausted, the offline
+   metric is retired as a manipulation evaluator, and the finetune reached a holding basin and
+   stopped there.
+2. **A gaiting curriculum or a shaped reward.** The one thing E8b established is that the repose
+   reward is a hard-exploration target from a holding start — the same failure this program
+   already documented in its own RL. A finetune that is going to test palm bracing has to make
+   *rotating* rewarded before it is achievable; more iterations of the same objective will not.
+   This is the cheapest remaining route to settling the palm-gaiting question, which E8b left
+   open rather than answered.
+3. **The third phalanx.** Untouched, and still the only change in evidence that would move
+   manipulation rather than trade it. Three CIK-solvable joints across four segments against our
+   two across three; no mount position and no phalanx rescale adds a joint.
+4. **Promote `d1_hi` on the grasp track**, where the metric is now outcome-validated. It beats
+   LEAP on centering (0.253 vs 0.415) and is the best gripper we have. It reposes nothing, so it
+   belongs in the grasp lineage, not the A/B policy lineage.
 5. **`sphere_factor`** — a constant in `construct_sphere_with_palm`, not a hand property, never
-   swept; ×0.75 buys +30 % on the unmodified perp. Free, but it shrinks the cube with the sphere,
+   swept; x0.75 buys +30 % on the unmodified perp. Free, but it shrinks the cube with the sphere,
    so it changes the task as well as the representation.
 6. **Clamped-anchor variant** — still correct, still one line, still demoted: the E3 anchorfix
    moved no outcome.

@@ -767,3 +767,136 @@ been checked against an outcome. It is also fingers-only: **palm contact is invi
 a policy that braces the cube against the palm to gait with three fingers would not be predicted
 by any number above. That is the live counter-argument to this negative, and it is testable only
 in sim.
+
+## E8 — the two open items, run (2026-08-02)
+
+E7 closed with two things outstanding: a **finetune**, because palm bracing is invisible to a
+fingers-only kinematic score and therefore could not be ruled out by it; and a **zero-shot spread**
+of built designs, because `authority` had ranked 976 designs without ever once being checked
+against an outcome. Both ran. Neither went the way E7 expected, and one of them retires the metric.
+
+### E8a — a correction to E7's buildable ceiling
+
+The `--sep-sweep` floor E7 filtered on was measured at the **shipped phalanx lengths**, so it only
+ever saw the floor move with the *proximal* scale. Re-gating the top of the search through the
+actual contact solver (`scripts/uhas_gate_frontier.py`, rows in
+`docs/experiments/uhas_gate_frontier.json`) rejects **8 of the top 40**: a longer *distal* reaches
+across the gap the proximal floor was measured to protect, and `index_len_frame` ↔
+`middle_len_frame` interpenetrate at up to 64 N. The design E7 named the best buildable one
+(authority 1.084) is among them.
+
+| | E7 claimed | actually |
+|---|---|---|
+| best buildable authority (cube 50–56 mm) | 1.084 | **1.002** |
+| … also reaching our screwdriver reference grasp | — | **0.984** |
+| headroom over shipped perp (0.930) | +17 % | **+8 %** |
+
+LEAP is 1.52 either way. The correction only makes the negative stronger.
+
+Note the two verdicts are different claims. `COLLIDE` means the design does not exist. The gate's
+other rejection, `no-screwdriver`, means the retargeted fingertips miss **our** reference grasp by
+more than 2 mm — irrelevant to the UHAS cube task (different object, and UHAS spawns its cube
+1.3 R off the palm rather than at our grasp pose), but it tells you a design the rest of this
+program could not reuse.
+
+### E8b — the finetune: perp learns to hold, and never learns to turn
+
+`scripts/uhas_finetune.py` — resume `All_grippers/model_14999.pt` on `morpho_perp_open` alone,
+4096 envs, 4000 iterations, 82 min. Two settings are judgment calls and are argued in the file:
+training runs at the **stage-1 curriculum** (no DR, i.e. the nominal physics eval measures at,
+which gives the hypothesis its best shot), and the checkpoint's action std of **~36** is overridden
+to 0.5. That std is not a typo: the env clamps every action into a box, so UHAS's entropy bonus
+drove the std up at no cost, and UHAS explores bang-bang while evaluating deterministically. A
+short finetune wants to improve the policy that is actually measured.
+
+In training, mean episode length climbed 26 → ~577 steps over the first ~100 iterations and then
+sat there for 3900 more. Reward crept −41 → −28. Action noise std stayed flat at 0.53, so
+**exploration never collapsed** — this is a fair test failing, not a broken run.
+
+At eval the gain almost entirely disappears:
+
+| | zero-shot | finetuned |
+|---|---|---|
+| repose success | 0.00 % | **0.00 %** |
+| drop rate | 75.7 % | 72.1 % |
+| best approach to goal | 1.519 rad | 1.410 rad |
+| steps per attempt | 730 (12.2 s) | 838 (14.0 s) |
+| centering | 0.563 | 0.567 |
+
+Against a 0.1 rad tolerance, 1.52 → 1.41 rad is not progress toward a repose. The 20× in-training
+episode-length gain is a ~15 % gain at eval, because most of what was learned was coping with the
+**training env's own randomisation** (`reset_dof_pos_noise`, randomised theta anchors, stochastic
+actions) which the deterministic eval never applies. ⚠ Do not quote the in-training curve as a
+hold improvement; it was nearly quoted that way here.
+
+**The palm-gaiting hypothesis is not settled, and it is not supported.** What the run does buy is
+a sharper statement of why: with exploration healthy throughout, PPO found a *holding* basin in
+under 100 iterations and never left it. This is gotcha #7 in someone else's codebase — the repose
+reward is a hard-exploration target, and a policy that can hold gets no gradient toward gaiting.
+It does **not** separate "perp cannot gait against the palm" from "PPO cannot find the gait from a
+holding basin".
+
+### E8c — the zero-shot spread, and what it does to `authority`
+
+Five designs built (`scripts/uhas_design_set.py`), each collision-gated, and each with its cube
+held to **50–56 mm** so UHAS cannot let a design win by shrinking the task. Authority spans
+0.62–1.00; the shipped perp (0.930) sits inside the span. Scored on the graded metrics, since the
+repose rate is floored at 0 % and cannot rank anything (`scripts/uhas_authority_vs_outcome.py`).
+
+| hand | AUTH | travel | pin % | drop % | timeout % | best rot | centering | attempts |
+|---|---|---|---|---|---|---|---|---|
+| d1_hi | 1.002 | 1.16 | 13.3 | **55.2** | 44.8 | 1.658 | **0.253** | 143 |
+| d2_mount | 0.977 | 1.14 | 14.7 | 64.6 | 34.8 | 1.511 | 0.519 | 181 |
+| perp_open | 0.930 | 1.07 | 13.1 | 75.7 | 24.3 | 1.540 | 0.563 | 263 |
+| d3_mid | 0.762 | 0.92 | 17.1 | 81.8 | 18.2 | 1.529 | 0.494 | 346 |
+| d4_pin | 0.625 | 1.29 | 51.7 | 98.7 | 1.2 | 1.552 | 0.554 | 3325 |
+| d5_lo | 0.623 | 0.79 | 21.6 | 91.2 | 8.7 | 1.547 | 0.770 | 727 |
+
+Over that whole 1.6× authority span, on n = 6 cube-controlled designs:
+
+    spearman(authority, drop_rate) = -0.943      grip retention
+    spearman(authority, best_rot)  = -0.029      goal approach
+    spearman(authority, centering) = -0.714
+
+**`authority` is a grip-retention metric.** It orders drop rate almost perfectly and has *no*
+relationship with the only graded manipulation number we have: `best_rot` sits in 1.51–1.66 rad
+across the entire span, against a 0.100 rad tolerance and LEAP's 0.309, and its **worst** value
+belongs to the **highest**-authority design. E7's search was real, careful, and ranking the wrong
+quantity — which also explains why it post-dicted so well, since every hand we own holds and none
+manipulate.
+
+The matched-authority pair was built to test the product form and does so cleanly:
+
+| | authority | = travel × (1 − pinned) | drop % | best rot |
+|---|---|---|---|---|
+| d4_pin | 0.625 | 1.29 × (1 − 0.517) | 98.7 | 1.552 |
+| d5_lo | 0.623 | 0.79 × (1 − 0.216) | 91.2 | 1.547 |
+
+Equal scores by opposite routes give **equal** goal approach (1.552 vs 1.547) and **unequal** drop
+(98.7 vs 91.2). The product form is adequate for the thing the metric measures and irrelevant for
+the thing it does not.
+
+⚠ Confound worth recording: `d1_hi` and `d4_pin` map their three fingers onto canonical slots
+`[2,0,4]` while the rest use `[4,2,0]`, so the frozen policy's per-slot priors land on different
+physical fingers. It does not affect the drop-rate ordering, which is monotone across both groups.
+
+### E8d — the one promotable result
+
+`d1_hi` (gap 65 / sep 145 / prox 0.85 / dist 1.33) is **the best gripper this program has built**:
+centering **0.253 sphere radii**, against perp's 0.563 — which the E7 report called the best of
+anything we had — and against **LEAP's 0.415**. Its drop rate, 55.2 %, is the lowest of any
+MorphoHand, and its timeout rate, 44.8 %, is the highest, which is the same fact stated twice: it
+holds the cube and does not turn it.
+
+That is worth having. It is a grasp result, not a manipulation result, and it should not be
+promoted as the latter.
+
+### Where E8 leaves it
+
+* The offline evaluator is **retired as a manipulation metric** and **kept as a grasp metric**,
+  where it is cheap (5 s/design, no GPU) and now outcome-validated at ρ = −0.94 on drop rate.
+* The finetune question is **open but more expensive than advertised**: a 1000-iteration transfer
+  does not reach it, because the holding basin is an attractor. Anything further needs a curriculum
+  or a shaped gaiting reward, not more of the same steps.
+* The **third phalanx** is untouched and is still the only change in evidence that would move
+  manipulation rather than trade it.
