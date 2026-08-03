@@ -30,6 +30,15 @@ product form of the metric means anything.
 
     .venv-uhas/bin/python scripts/uhas_design_set.py --build      # MJCF -> URDF -> CIK
     .venv-uhas/bin/python scripts/uhas_design_set.py --gate       # is it physically real?
+
+`--build` stops at the CIK, which is all the OFFLINE half needs. Isaac additionally needs a USD,
+and that conversion needs Isaac itself, so it cannot live in this script's env. Before evaluating:
+
+    /home/humanoid/miniconda3/envs/env_isaaclab/bin/python scripts/uhas_urdf_to_usd.py \
+        results/uhas/hands/d1_hi ... --headless
+
+Skipping it does NOT fail loudly at build time -- the eval dies later, one hand at a time, with
+`FileNotFoundError: missing .../usd/<name>.usd`.
 """
 
 from __future__ import annotations
