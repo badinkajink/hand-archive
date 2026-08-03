@@ -394,6 +394,26 @@ should not be promoted as a manipulation one.
 So the evaluator is **retired as a manipulation metric and kept as a grasp metric**, where it is
 5 s per design, needs no GPU, and is now outcome-validated at rho = -0.94.
 
+### What the renders show — the palm hypothesis is narrower than it looked
+
+Close single-hand filmstrips, `docs/uhas/figs/hero_*.png`:
+
+* **`hero_d1_hi`** — the cube's faces are in the identical pose at 3, 6, 9, 12 and 15 s. Centering
+  0.253 and timeout 44.8 % rendered: a flawless static hold.
+* **`hero_perp_zeroshot` vs `hero_perp_finetuned`** — indistinguishable. Same cradle, same cube
+  orientation, frozen for 15 s in both. The finetune produced no visible change in deployed
+  behaviour.
+* **`hero_leap`** — a different cube face at every sampled step and the goal marker changing with
+  it. The mechanism is legible: **LEAP rests the cube on its palm and rolls it with the fingers.**
+
+E7 framed the counter-argument as "a policy might brace the cube against the palm to gait, and no
+kinematic score would see it". The renders say bracing is not the undiscovered part. **perp already
+holds the cube in the palm-side cradle** — in both policies, statically, for 15 s — and **LEAP's
+winning strategy already is palm bracing.** What perp never does is *roll* an already-braced cube.
+The open question is therefore about fingertip travel against a braced object, not about
+discovering a contact topology, and it is correspondingly less likely to yield to a mount or
+phalanx change.
+
 ## A cheap predictor, and an honest null
 
 The checkpoint's own observation normalizer gives an out-of-distribution score per hand in ~90 s
@@ -442,10 +462,21 @@ not a validated evaluator.
 
 ## Renders
 
-Every hand has a 10 s rollout video under the eval policy, not only the filmstrips:
-`results/uhas/video/{leap_right_final, morpho_perp_open_anchorfix, morpho_H0604_anchorfix,
-morpho_m05_final, morpho_mh_baseline_final}/*.mp4` — gitignored, hence easy to miss. Filmstrips
-are `docs/uhas/figs/filmstrip_*.png`.
+Wide grid rollouts (all 64 envs): `results/uhas/video/{leap_right_final, morpho_perp_open_anchorfix,
+morpho_H0604_anchorfix, morpho_m05_final, morpho_mh_baseline_final}/*.mp4` — gitignored, hence easy
+to miss. Filmstrips `docs/uhas/figs/filmstrip_*.png`.
+
+**Close single-hand renders (E8)** are the ones worth reading: `docs/uhas/figs/hero_d1_hi.png`,
+`hero_perp_zeroshot.png`, `hero_perp_finetuned.png`, `hero_leap.png`, from
+`results/uhas/video/*__hero*/`. Produced with the viewer env vars already present in the patched
+cfg:
+
+    UHAS_VIEW_ENV=0 UHAS_VIEW_EYE="0.45,0.45,0.30" UHAS_VIEW_LOOKAT="0.0,0.0,0.02" \
+      python scripts/uhas_eval.py --robot <robot> --num-envs 4 --steps 900 --warmup 0 \
+        --video --video-length 900 --video-dir results/uhas/video/<robot>__hero --headless
+
+The default 64-env grid shot is too zoomed out to read a grip from; every conclusion above about
+what a hand is *doing* comes from the close renders.
 
 ## Method
 

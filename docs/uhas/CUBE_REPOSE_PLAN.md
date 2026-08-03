@@ -900,3 +900,34 @@ promoted as the latter.
   or a shaped gaiting reward, not more of the same steps.
 * The **third phalanx** is untouched and is still the only change in evidence that would move
   manipulation rather than trade it.
+
+### E8e — what the hero renders show, and how it narrows the palm hypothesis
+
+Close single-hand renders at 60 fps (`UHAS_VIEW_ENV=0`, eye 0.45/0.45/0.30 — the viewer env vars
+were already in the patched cfg), filmstrips in `docs/uhas/figs/hero_*.png`.
+
+**`hero_d1_hi.png`** — the cube's faces are in the *identical* pose at 3, 6, 9, 12 and 15 s. A
+perfect static three-finger hold. This is centering 0.253 and timeout 44.8 % rendered.
+
+**`hero_perp_zeroshot.png` vs `hero_perp_finetuned.png`** — indistinguishable. Same cradle posture,
+same cube orientation (blue X up), frozen for the full 15 s in both. 82 GPU-minutes produced no
+visible change in deployed behaviour, which is what the eval table already said and what the
+in-training episode-length curve did *not*.
+
+**`hero_leap.png`** — a different cube face at every sampled step, and the goal marker changes with
+it (D → X → X → M), i.e. goals being reached and resampled. And the mechanism is legible: **LEAP
+rests the cube on its palm and rolls it with the fingers.** Its winning strategy *is* palm-braced
+gaiting.
+
+That is the refinement. E7 framed the counter-argument as "the policy might discover bracing the
+cube against the palm, and no kinematic score would see it". The renders say bracing is not the
+undiscovered part:
+
+* perp **already** holds the cube in the palm-side cradle at the base of the fingers, in both the
+  zero-shot and finetuned policies — statically, for 15 s;
+* LEAP **already** uses palm bracing, and it is not exotic, it is the winning strategy.
+
+So the missing capability is not the brace, it is the **roll** — moving a cube that is already
+braced. The open question is narrower than E7 posed it, and correspondingly less likely to be
+answered by a design change: the two hands differ in what they can do *to* an already-braced cube,
+which is the fingertip-travel question, not the contact-topology question.
