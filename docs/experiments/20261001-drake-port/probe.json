@@ -1,0 +1,861 @@
+{
+  "date": "2026-10-01",
+  "python": "3.12.2",
+  "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+  "versions": {
+    "drake": "1.57.0",
+    "mujoco": "3.6.0",
+    "numpy": "2.5.3"
+  },
+  "source_sha256": {
+    "assets/mjcf/real_v1/real_hand.xml": "acdb5aaab6156a50005ce9dec7fe5281e3deeb19b002b711f5f1ca520e36b57a",
+    "assets/mjcf/real_v1/real_hand_morphology_actuated.xml": "f231fc4ad93281c1a55bf511cc9c2062a39cad1092519f36d69dc421f62921d5"
+  },
+  "import_audit": [
+    {
+      "source": "assets/mjcf/real_v1/real_hand.xml",
+      "nq": 18,
+      "nv": 18,
+      "nu": 9,
+      "actuators": [
+        {
+          "name": "a_thumb_yaw",
+          "effort": 1.48353,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_thumb_mcp",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_thumb_pip",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_index_yaw",
+          "effort": 1.48353,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_index_mcp",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_index_pip",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_middle_yaw",
+          "effort": 1.48353,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_middle_mcp",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_middle_pip",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        }
+      ],
+      "warnings": [
+        "assets/mjcf/real_v1/real_hand.xml:3: warning: The attribute 'timestep' found in a 'option' tag is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:3: warning: The attribute 'integrator' found in a 'option' tag is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:25: warning: The texture element is not supported, see https://drake.mit.edu/troubleshooting.html for additional resources.",
+        "assets/mjcf/real_v1/real_hand.xml:37: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:36: warning: The tag 'light' found as a child of 'worldbody' is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:39: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:38: warning: The attribute 'gravcomp' found in a 'body' tag is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:41: warning: The tag 'site' found as a child of 'body' is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:50: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:53: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:59: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:61: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:74: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:77: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:83: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:85: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:98: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:101: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:107: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:109: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:143: warning: The motor 'a_thumb_mcp' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/real_hand.xml:144: warning: The motor 'a_thumb_pip' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/real_hand.xml:146: warning: The motor 'a_index_mcp' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/real_hand.xml:147: warning: The motor 'a_index_pip' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/real_hand.xml:149: warning: The motor 'a_middle_mcp' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/real_hand.xml:150: warning: The motor 'a_middle_pip' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/real_hand.xml:152: warning: The tag 'keyframe' found as a child of 'mujoco' is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand.xml:4: warning: The tag 'visual' found as a child of 'mujoco' is currently unsupported and will be ignored."
+      ]
+    },
+    {
+      "source": "assets/mjcf/real_v1/real_hand_morphology_actuated.xml",
+      "nq": 31,
+      "nv": 30,
+      "nu": 21,
+      "actuators": [
+        {
+          "name": "a_palm_px",
+          "effort": 0.2,
+          "kp": 4000.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_palm_py",
+          "effort": 0.2,
+          "kp": 4000.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_palm_pz",
+          "effort": 0.35,
+          "kp": 4000.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_palm_rx",
+          "effort": 1.57,
+          "kp": 4000.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_palm_ry",
+          "effort": 1.57,
+          "kp": 4000.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_palm_rz",
+          "effort": 3.14,
+          "kp": 4000.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_thumb_x",
+          "effort": 0.03,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_thumb_y",
+          "effort": 0.055,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_index_x",
+          "effort": 0.03,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_index_y",
+          "effort": 0.03,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_middle_x",
+          "effort": 0.03,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_middle_y",
+          "effort": 0.03,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_thumb_yaw",
+          "effort": 1.48353,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_thumb_mcp",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_thumb_pip",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_index_yaw",
+          "effort": 1.48353,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_index_mcp",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_index_pip",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_middle_yaw",
+          "effort": 1.48353,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_middle_mcp",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_middle_pip",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        }
+      ],
+      "warnings": [
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:3: warning: The attribute 'timestep' found in a 'option' tag is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:3: warning: The attribute 'integrator' found in a 'option' tag is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:25: warning: The texture element is not supported, see https://drake.mit.edu/troubleshooting.html for additional resources.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:38: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:36: warning: The tag 'light' found as a child of 'worldbody' is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:41: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:50: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:43: warning: The attribute 'gravcomp' found in a 'body' tag is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:52: warning: The tag 'site' found as a child of 'body' is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:61: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:64: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:70: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:72: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:85: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:88: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:94: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:96: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:109: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:112: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:118: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:120: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:155: warning: The motor 'a_palm_pz' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 0.35 will be used.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:166: warning: The motor 'a_thumb_mcp' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:167: warning: The motor 'a_thumb_pip' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:169: warning: The motor 'a_index_mcp' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:170: warning: The motor 'a_index_pip' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:172: warning: The motor 'a_middle_mcp' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:173: warning: The motor 'a_middle_pip' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:175: warning: The tag 'keyframe' found as a child of 'mujoco' is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/real_hand_morphology_actuated.xml:4: warning: The tag 'visual' found as a child of 'mujoco' is currently unsupported and will be ignored."
+      ]
+    },
+    {
+      "source": "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml",
+      "nq": 31,
+      "nv": 30,
+      "nu": 15,
+      "actuators": [
+        {
+          "name": "a_palm_px",
+          "effort": 0.2,
+          "kp": 4000.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_palm_py",
+          "effort": 0.2,
+          "kp": 4000.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_palm_pz",
+          "effort": 0.35,
+          "kp": 4000.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_palm_rx",
+          "effort": 1.57,
+          "kp": 4000.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_palm_ry",
+          "effort": 1.57,
+          "kp": 4000.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_palm_rz",
+          "effort": 3.14,
+          "kp": 4000.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_thumb_yaw",
+          "effort": 1.48353,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_thumb_mcp",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_thumb_pip",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_index_yaw",
+          "effort": 1.48353,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_index_mcp",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_index_pip",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_middle_yaw",
+          "effort": 1.48353,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_middle_mcp",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        },
+        {
+          "name": "a_middle_pip",
+          "effort": 1.605703,
+          "kp": 30.0,
+          "kd": 0.0
+        }
+      ],
+      "warnings": [
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:3: warning: The attribute 'timestep' found in a 'option' tag is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:3: warning: The attribute 'integrator' found in a 'option' tag is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:25: warning: The texture element is not supported, see https://drake.mit.edu/troubleshooting.html for additional resources.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:38: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:36: warning: The tag 'light' found as a child of 'worldbody' is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:41: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:50: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:43: warning: The attribute 'gravcomp' found in a 'body' tag is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:52: warning: The tag 'site' found as a child of 'body' is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:61: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:64: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:70: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:72: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:85: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:88: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:94: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:96: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:109: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:112: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:118: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:120: warning: The torsional and rolling friction specified in the friction attribute of geom are unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:155: warning: The motor 'a_palm_pz' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 0.35 will be used.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:160: warning: The motor 'a_thumb_mcp' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:161: warning: The motor 'a_thumb_pip' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:163: warning: The motor 'a_index_mcp' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:164: warning: The motor 'a_index_pip' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:166: warning: The motor 'a_middle_mcp' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:167: warning: The motor 'a_middle_pip' specified a ctrlrange attribute where lower limit != -upper limit. Asymmetrical effort limits are not supported yet, so the larger of the values 1.605703 will be used.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:169: warning: The tag 'keyframe' found as a child of 'mujoco' is currently unsupported and will be ignored.",
+        "assets/mjcf/real_v1/scenes/scene_screwdriver_medium.xml:4: warning: The tag 'visual' found as a child of 'mujoco' is currently unsupported and will be ignored."
+      ]
+    }
+  ],
+  "kinematics": {
+    "samples": 128,
+    "seed": 42,
+    "max_tip_position_error_m": 2.7755575615628914e-17,
+    "max_tip_rotation_matrix_error": 5.551115123125783e-16,
+    "max_tip_jacobian_error": 4.163336342344337e-17,
+    "max_mass_matrix_entry_error": 6.938893903907228e-18,
+    "elapsed_s": 0.09715610998682678
+  },
+  "planning": {
+    "ik": [
+      {
+        "design": "nominal",
+        "mode": "frozen",
+        "nq": 9,
+        "success": true,
+        "solver": "SNOPT",
+        "solve_s": 0.000671047018840909,
+        "max_tip_error_m": 1.1201617557462379e-06,
+        "min_enabled_collision_distance_m": 0.0035442696213101744,
+        "morphology_offsets_m": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "finger_angles_rad": [
+          0.14998338111742107,
+          0.6498028111215539,
+          0.4003586417313198,
+          -0.11998291972315468,
+          0.5998406708275357,
+          0.45028894203416553,
+          0.0999785457736259,
+          0.5001106059627817,
+          0.5998052948213782
+        ],
+        "target_tip_positions_m": [
+          [
+            -0.014360250047920386,
+            0.007547986235091406,
+            0.012558058392584332
+          ],
+          [
+            0.015201536643996228,
+            0.048880781283873145,
+            0.01175151474830691
+          ],
+          [
+            0.016336892222727994,
+            -0.04990549765863219,
+            0.011724906650125369
+          ]
+        ]
+      },
+      {
+        "design": "nominal",
+        "mode": "locked",
+        "nq": 15,
+        "success": true,
+        "solver": "SNOPT",
+        "solve_s": 0.00047540408559143543,
+        "max_tip_error_m": 1.1317569946506928e-06,
+        "min_enabled_collision_distance_m": 0.0035442727236591823,
+        "morphology_offsets_m": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "finger_angles_rad": [
+          0.14998338090319818,
+          0.6498008963184707,
+          0.4003620704900117,
+          -0.11998291979966637,
+          0.5998404624262841,
+          0.45028931587084486,
+          0.09997854579445528,
+          0.5001105875008836,
+          0.5998053282620963
+        ],
+        "target_tip_positions_m": [
+          [
+            -0.014360250047920386,
+            0.007547986235091406,
+            0.012558058392584332
+          ],
+          [
+            0.015201536643996228,
+            0.048880781283873145,
+            0.01175151474830691
+          ],
+          [
+            0.016336892222727994,
+            -0.04990549765863219,
+            0.011724906650125369
+          ]
+        ]
+      },
+      {
+        "design": "compact",
+        "mode": "frozen",
+        "nq": 9,
+        "success": true,
+        "solver": "SNOPT",
+        "solve_s": 0.0006474209949374199,
+        "max_tip_error_m": 1.1201617557505747e-06,
+        "min_enabled_collision_distance_m": 0.0035442696213101726,
+        "morphology_offsets_m": [
+          0.01,
+          0.0,
+          -0.01,
+          -0.01,
+          -0.01,
+          0.01
+        ],
+        "finger_angles_rad": [
+          0.14998338111742107,
+          0.6498028111215529,
+          0.40035864173132146,
+          -0.11998291972315468,
+          0.5998406708275359,
+          0.45028894203416503,
+          0.09997854577362592,
+          0.500110605962782,
+          0.5998052948213773
+        ],
+        "target_tip_positions_m": [
+          [
+            -0.0043602500479203886,
+            0.007547986235091406,
+            0.012558058392584332
+          ],
+          [
+            0.005201536643996226,
+            0.03888078128387314,
+            0.01175151474830691
+          ],
+          [
+            0.006336892222727989,
+            -0.03990549765863219,
+            0.011724906650125369
+          ]
+        ]
+      },
+      {
+        "design": "compact",
+        "mode": "locked",
+        "nq": 15,
+        "success": true,
+        "solver": "SNOPT",
+        "solve_s": 0.0005383798852562904,
+        "max_tip_error_m": 1.1317569946428865e-06,
+        "min_enabled_collision_distance_m": 0.003544272723659184,
+        "morphology_offsets_m": [
+          0.01,
+          0.0,
+          -0.01,
+          -0.01,
+          -0.01,
+          0.01
+        ],
+        "finger_angles_rad": [
+          0.14998338090319818,
+          0.6498008963184712,
+          0.4003620704900108,
+          -0.1199829197996665,
+          0.5998404624262835,
+          0.4502893158708458,
+          0.0999785457944553,
+          0.5001105875008834,
+          0.5998053282620965
+        ],
+        "target_tip_positions_m": [
+          [
+            -0.0043602500479203886,
+            0.007547986235091406,
+            0.012558058392584332
+          ],
+          [
+            0.005201536643996226,
+            0.03888078128387314,
+            0.01175151474830691
+          ],
+          [
+            0.006336892222727989,
+            -0.03990549765863219,
+            0.011724906650125369
+          ]
+        ]
+      },
+      {
+        "design": "asymmetric",
+        "mode": "frozen",
+        "nq": 9,
+        "success": true,
+        "solver": "SNOPT",
+        "solve_s": 0.0005513799842447042,
+        "max_tip_error_m": 1.1201617557462379e-06,
+        "min_enabled_collision_distance_m": 0.003544269621310176,
+        "morphology_offsets_m": [
+          0.0,
+          0.012,
+          0.005,
+          -0.008,
+          -0.008,
+          0.006
+        ],
+        "finger_angles_rad": [
+          0.14998338111742107,
+          0.6498028111215539,
+          0.4003586417313198,
+          -0.1199829197231547,
+          0.5998406708275359,
+          0.4502889420341652,
+          0.09997854577362579,
+          0.5001106059627816,
+          0.5998052948213783
+        ],
+        "target_tip_positions_m": [
+          [
+            -0.014360250047920386,
+            0.019547986235091408,
+            0.012558058392584332
+          ],
+          [
+            0.020201536643996224,
+            0.040880781283873145,
+            0.01175151474830691
+          ],
+          [
+            0.008336892222727994,
+            -0.04390549765863219,
+            0.011724906650125369
+          ]
+        ]
+      },
+      {
+        "design": "asymmetric",
+        "mode": "locked",
+        "nq": 15,
+        "success": true,
+        "solver": "SNOPT",
+        "solve_s": 0.0004999639932066202,
+        "max_tip_error_m": 1.1317569946402845e-06,
+        "min_enabled_collision_distance_m": 0.0035442727236591857,
+        "morphology_offsets_m": [
+          0.0,
+          0.012,
+          0.005,
+          -0.008,
+          -0.008,
+          0.006
+        ],
+        "finger_angles_rad": [
+          0.14998338090319813,
+          0.6498008963184714,
+          0.40036207049001066,
+          -0.11998291979966652,
+          0.5998404624262822,
+          0.4502893158708479,
+          0.09997854579445525,
+          0.5001105875008833,
+          0.5998053282620966
+        ],
+        "target_tip_positions_m": [
+          [
+            -0.014360250047920386,
+            0.019547986235091408,
+            0.012558058392584332
+          ],
+          [
+            0.020201536643996224,
+            0.040880781283873145,
+            0.01175151474830691
+          ],
+          [
+            0.008336892222727994,
+            -0.04390549765863219,
+            0.011724906650125369
+          ]
+        ]
+      },
+      {
+        "design": "joint morphology and posture",
+        "mode": "actuated",
+        "nq": 15,
+        "success": true,
+        "solver": "SNOPT",
+        "solve_s": 0.001151462085545063,
+        "max_tip_error_m": 1.0000046651720274e-06,
+        "min_enabled_collision_distance_m": 0.003662634700324444,
+        "morphology_offsets_m": [
+          0.010560653107913938,
+          0.004015726230429284,
+          -0.010660526050200465,
+          -0.00854610190762104,
+          -0.009517092954277023,
+          0.007946898539279146
+        ],
+        "finger_angles_rad": [
+          0.07059122987575392,
+          0.5744766083159093,
+          0.5328345575196839,
+          -0.14811887160073056,
+          0.5500159655134506,
+          0.5159747477510394,
+          0.13983434821482138,
+          0.5490719701786777,
+          0.5188476856599918
+        ],
+        "target_tip_positions_m": [
+          [
+            -0.0043602500479203886,
+            0.007547986235091406,
+            0.012558058392584332
+          ],
+          [
+            0.005201536643996226,
+            0.03888078128387314,
+            0.01175151474830691
+          ],
+          [
+            0.006336892222727989,
+            -0.03990549765863219,
+            0.011724906650125369
+          ]
+        ]
+      }
+    ],
+    "max_frozen_locked_tip_difference_m": 0.0,
+    "optimized_morphology_frozen_tip_error_m": 1.0000046651720274e-06
+  },
+  "locking": {
+    "locked_duration_s": 0.1,
+    "locked_max_drift_m": 0.0,
+    "unlocked_duration_s": 0.2,
+    "unlocked_max_displacement_m": 3.5936305391332315e-05,
+    "separate_rollouts": true,
+    "caveat": "No object. Shipped gantry gains/damping are not a stepper identification."
+  },
+  "actuators": [
+    {
+      "name": "a_thumb_x",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.0001
+    },
+    {
+      "name": "a_thumb_y",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.0001
+    },
+    {
+      "name": "a_index_x",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.0001
+    },
+    {
+      "name": "a_index_y",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.0001
+    },
+    {
+      "name": "a_middle_x",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.0001
+    },
+    {
+      "name": "a_middle_y",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.0001
+    },
+    {
+      "name": "a_thumb_yaw",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.001
+    },
+    {
+      "name": "a_thumb_mcp",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.001
+    },
+    {
+      "name": "a_thumb_pip",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.001
+    },
+    {
+      "name": "a_index_yaw",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.001
+    },
+    {
+      "name": "a_index_mcp",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.001
+    },
+    {
+      "name": "a_index_pip",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.001
+    },
+    {
+      "name": "a_middle_yaw",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.001
+    },
+    {
+      "name": "a_middle_mcp",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.001
+    },
+    {
+      "name": "a_middle_pip",
+      "kp": 30.0,
+      "kd": 0.5,
+      "effort": 10.0,
+      "rotor_inertia": 0.001
+    }
+  ],
+  "live_unlock": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Failure at bazel-out/k8-opt/bin/external/drake+/multibody/contact_solvers/sap/_virtual_includes/sap_contact_problem/drake/multibody/contact_solvers/sap/sap_contact_problem.h:245 in get_constraint(): condition '0 <= constraint_index && constraint_index < num_constraints()' failed.\n"
+  }
+}

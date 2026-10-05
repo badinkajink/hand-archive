@@ -1,0 +1,106 @@
+[
+  {
+    "run_id": "payload_s1_m1",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 1.0,
+      "mass_scale": 1.0
+    }
+  },
+  {
+    "run_id": "payload_s05_m1",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 0.5,
+      "mass_scale": 1.0
+    }
+  },
+  {
+    "run_id": "payload_s1_m8",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 1.0,
+      "mass_scale": 8.0
+    }
+  },
+  {
+    "run_id": "payload_s05_m8",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 0.5,
+      "mass_scale": 8.0
+    }
+  },
+  {
+    "run_id": "payload_s1_m16",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 1.0,
+      "mass_scale": 16.0
+    }
+  },
+  {
+    "run_id": "payload_s05_m16",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 0.5,
+      "mass_scale": 16.0
+    }
+  },
+  {
+    "run_id": "payload_s1_m32",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 1.0,
+      "mass_scale": 32.0
+    }
+  },
+  {
+    "run_id": "payload_s05_m32",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 0.5,
+      "mass_scale": 32.0
+    }
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "name": "drake_tau0.003",
+    "timestep": 0.0005,
+    "torque_peak": 0.003
+  },
+  {
+    "name": "drake_tau0.012",
+    "timestep": 0.0005,
+    "torque_peak": 0.012
+  },
+  {
+    "name": "drake_tau0.048",
+    "timestep": 0.0005,
+    "torque_peak": 0.048
+  },
+  {
+    "name": "drake_dt1ms",
+    "timestep": 0.001,
+    "torque_peak": 0.012
+  },
+  {
+    "name": "drake_dt01ms",
+    "timestep": 0.0001,
+    "torque_peak": 0.012
+  },
+  {
+    "name": "drake_mesh05",
+    "timestep": 0.0005,
+    "torque_peak": 0.012,
+    "mesh_mm": 0.5
+  },
+  {
+    "name": "drake_hold_m0.25",
+    "scenario": "holding_ramp",
+    "duration": 1.1,
+    "timestep": 0.0005,
+    "torque_peak": 0.008,
+    "mass_scale": 0.25
+  },
+  {
+    "name": "drake_hold_m1.0",
+    "scenario": "holding_ramp",
+    "duration": 1.1,
+    "timestep": 0.0005,
+    "torque_peak": 0.008,
+    "mass_scale": 1.0
+  },
+  {
+    "name": "drake_hold_m4.0",
+    "scenario": "holding_ramp",
+    "duration": 1.1,
+    "timestep": 0.0005,
+    "torque_peak": 0.008,
+    "mass_scale": 4.0
+  },
+  {
+    "name": "drake_hold_load4",
+    "scenario": "holding_ramp",
+    "duration": 1.1,
+    "timestep": 0.0005,
+    "torque_peak": 0.015,
+    "pad_load": 4.0
+  }
+]

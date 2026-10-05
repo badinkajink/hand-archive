@@ -1,0 +1,102 @@
+[
+  {
+    "name": "s1.0_batch1",
+    "spacing_mm": 1.0,
+    "nworld": 1,
+    "timestep": 0.0005,
+    "policy": "compiled",
+    "torque_peak": 0.012,
+    "duration": 0.8,
+    "solver_tolerance": 1e-08
+  },
+  {
+    "name": "s1.0_batch32",
+    "spacing_mm": 1.0,
+    "nworld": 32,
+    "timestep": 0.0005,
+    "policy": "compiled",
+    "torque_peak": 0.012,
+    "duration": 0.8,
+    "solver_tolerance": 1e-08
+  },
+  {
+    "name": "s1.0_batch128",
+    "spacing_mm": 1.0,
+    "nworld": 128,
+    "timestep": 0.0005,
+    "policy": "compiled",
+    "torque_peak": 0.012,
+    "duration": 0.8,
+    "solver_tolerance": 1e-08
+  },
+  {
+    "name": "s0.5_batch1",
+    "spacing_mm": 0.5,
+    "nworld": 1,
+    "timestep": 0.0005,
+    "policy": "compiled",
+    "torque_peak": 0.012,
+    "duration": 0.8,
+    "solver_tolerance": 1e-08
+  },
+  {
+    "name": "s0.5_batch32",
+    "spacing_mm": 0.5,
+    "nworld": 32,
+    "timestep": 0.0005,
+    "policy": "compiled",
+    "torque_peak": 0.012,
+    "duration": 0.8,
+    "solver_tolerance": 1e-08
+  },
+  {
+    "name": "s0.5_batch128",
+    "spacing_mm": 0.5,
+    "nworld": 128,
+    "timestep": 0.0005,
+    "policy": "compiled",
+    "torque_peak": 0.012,
+    "duration": 0.8,
+    "solver_tolerance": 1e-08
+  },
+  {
+    "name": "fine_s1.0_batch1",
+    "spacing_mm": 1.0,
+    "nworld": 1,
+    "timestep": 5e-05,
+    "policy": "runtime_approx",
+    "torque_peak": 0.012,
+    "duration": 0.8,
+    "solver_tolerance": 1e-08
+  },
+  {
+    "name": "fine_s1.0_batch128",
+    "spacing_mm": 1.0,
+    "nworld": 128,
+    "timestep": 5e-05,
+    "policy": "runtime_approx",
+    "torque_peak": 0.012,
+    "duration": 0.8,
+    "solver_tolerance": 1e-08
+  },
+  {
+    "name": "fine_s0.5_batch1",
+    "spacing_mm": 0.5,
+    "nworld": 1,
+    "timestep": 5e-05,
+    "policy": "runtime_approx",
+    "torque_peak": 0.012,
+    "duration": 0.8,
+    "solver_tolerance": 1e-08
+  },
+  {
+    "name": "fine_s0.5_batch128",
+    "spacing_mm": 0.5,
+    "nworld": 128,
+    "timestep": 5e-05,
+    "policy": "runtime_approx",
+    "torque_peak": 0.012,
+    "duration": 0.8,
+    "solver_tolerance": 1e-08
+  }
+]

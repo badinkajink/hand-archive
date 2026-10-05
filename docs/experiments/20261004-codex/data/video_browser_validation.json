@@ -1,0 +1,58 @@
+[
+  {
+    "page": "20261004-contact_videos.html",
+    "title": "Contact videos: native trajectories and close-ups",
+    "viewport": 1440,
+    "bodyWidth": 1425,
+    "videoCount": 69,
+    "playback": {
+      "readyState": 4,
+      "width": 1280,
+      "height": 892,
+      "currentTime": 2.00073,
+      "error": null
+    }
+  },
+  {
+    "page": "20261004-contact_videos.html",
+    "title": "Contact videos: native trajectories and close-ups",
+    "viewport": 390,
+    "bodyWidth": 375,
+    "videoCount": 69,
+    "playback": {
+      "readyState": 4,
+      "width": 1280,
+      "height": 892,
+      "currentTime": 2.000251,
+      "error": null
+    }
+  },
+  {
+    "page": "20261004-articulated_contact_transfer.html",
+    "title": "Articulated contact: holding, torsion and computational cost",
+    "viewport": 1440,
+    "bodyWidth": 1425,
+    "videoCount": 3,
+    "playback": {
+      "readyState": 4,
+      "width": 1280,
+      "height": 892,
+      "currentTime": 2.000268,
+      "error": null
+    }
+  },
+  {
+    "page": "20261004-articulated_contact_transfer.html",
+    "title": "Articulated contact: holding, torsion and computational cost",
+    "viewport": 390,
+    "bodyWidth": 375,
+    "videoCount": 3,
+    "playback": {
+      "readyState": 4,
+      "width": 1280,
+      "height": 892,
+      "currentTime": 2.000188,
+      "error": null
+    }
+  }
+]

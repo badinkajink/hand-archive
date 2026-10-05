@@ -1,0 +1,3324 @@
+[
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 0.001,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.679431075691673,
+        "gain": 0.9338916396410641,
+        "cross_lin_mmps": 3.91383712858442,
+        "cross_ang_dps": 33.513324849502126,
+        "slide_rms_mmps": 0.28698760643102705
+      },
+      "v_up": {
+        "rmse_cmd": 12.02906832172056,
+        "gain": 1.0097358148357463,
+        "cross_lin_mmps": 0.6901697730662838,
+        "cross_ang_dps": 40.243574982868644,
+        "slide_rms_mmps": 0.30774667324874705
+      },
+      "v_tool": {
+        "rmse_cmd": 10.392959484333863,
+        "gain": 0.9522227369563623,
+        "cross_lin_mmps": 5.651457291017035,
+        "cross_ang_dps": 18.956548463439933,
+        "slide_rms_mmps": 0.40637388526442725
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.35364104646934,
+        "gain": -0.010867339314599388,
+        "cross_lin_mmps": 0.3236076632520756,
+        "cross_ang_dps": 0.719682263253489,
+        "slide_rms_mmps": 0.007674255010825883
+      },
+      "w_up": {
+        "rmse_cmd": 22.375799982645677,
+        "gain": 0.7759303812300197,
+        "cross_lin_mmps": 3.200620395580141,
+        "cross_ang_dps": 15.893992937159952,
+        "slide_rms_mmps": 0.12961429239143554
+      },
+      "w_tool": {
+        "rmse_cmd": 23.598389480635873,
+        "gain": 0.5971940642862357,
+        "cross_lin_mmps": 2.623756202728138,
+        "cross_ang_dps": 13.234457159489057,
+        "slide_rms_mmps": 0.05343014790369187
+      }
+    },
+    "pinch_angle_end_deg": -47.62710578337908,
+    "pinch_angle_max_deg": -47.723164210416066,
+    "rmse_lin_mmps": 7.814298564336873,
+    "rmse_ang_dps": 28.073061085653958,
+    "held_end": true,
+    "wall_s": 3.830286741256714,
+    "sim_s": 10.579999999999576,
+    "perf": {
+      "phys": 0.8459112893324345,
+      "ctrl": 0.6198183402884752,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": false,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 0.8331487549003214,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 0.07874751936676322,
+      "p50_interval_ms": 1.4017645735293627,
+      "p95_interval_ms": 4.1176768369041366,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.8809597683301746,
+      "tool_roll_positive_deg": 8.49024,
+      "tool_roll_negative_deg": -7.6021,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_legacy_1000us",
+      "label": "legacy",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    "elapsed_wall_s": 4.225917908130214,
+    "film": "media/timestep-roll50_legacy_1000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy_diagexact",
+    "physics_dt": 0.001,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.714569752528304,
+        "gain": 0.9346149144922165,
+        "cross_lin_mmps": 4.004953618941623,
+        "cross_ang_dps": 33.51520118838235,
+        "slide_rms_mmps": 0.2766641825571147
+      },
+      "v_up": {
+        "rmse_cmd": 12.103733571345535,
+        "gain": 1.0046309379928675,
+        "cross_lin_mmps": 0.7022268516114841,
+        "cross_ang_dps": 40.04506666915039,
+        "slide_rms_mmps": 0.3231530648076107
+      },
+      "v_tool": {
+        "rmse_cmd": 10.37782169852263,
+        "gain": 0.9521586910879948,
+        "cross_lin_mmps": 5.726169066213833,
+        "cross_ang_dps": 19.03412157558307,
+        "slide_rms_mmps": 0.413440900625065
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.34568445269251,
+        "gain": -0.010591728625439122,
+        "cross_lin_mmps": 0.33323850121468573,
+        "cross_ang_dps": 0.76682888624055,
+        "slide_rms_mmps": 0.007848919412011799
+      },
+      "w_up": {
+        "rmse_cmd": 22.098178432553485,
+        "gain": 0.7819728575819499,
+        "cross_lin_mmps": 3.20672009681807,
+        "cross_ang_dps": 15.84771566020728,
+        "slide_rms_mmps": 0.1390446052600266
+      },
+      "w_tool": {
+        "rmse_cmd": 23.35445579229476,
+        "gain": 0.6032862736106757,
+        "cross_lin_mmps": 2.641547112150128,
+        "cross_ang_dps": 13.178373378105801,
+        "slide_rms_mmps": 0.05235061185769898
+      }
+    },
+    "pinch_angle_end_deg": -47.24649141251573,
+    "pinch_angle_max_deg": -47.341378798404236,
+    "rmse_lin_mmps": 7.845839573692268,
+    "rmse_ang_dps": 27.986765552647793,
+    "held_end": true,
+    "wall_s": 3.936619520187378,
+    "sim_s": 10.579999999999576,
+    "perf": {
+      "phys": 0.9440033689606935,
+      "ctrl": 0.6364355699624866,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": true,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 0.9312740101013333,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 0.08802211815702936,
+      "p50_interval_ms": 1.5838019317016006,
+      "p95_interval_ms": 4.59046590840444,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.9008498134339578,
+      "tool_roll_positive_deg": 8.53518,
+      "tool_roll_negative_deg": -7.612,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_legacy_exact_1000us",
+      "label": "legacy_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    "elapsed_wall_s": 4.316629177192226,
+    "film": "media/timestep-roll50_legacy_exact_1000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6799999999999258,
+    "timing": {
+      "physics_wall_s": 0.033703438472002745,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.02006157051905014,
+      "p50_interval_ms": 0.4011478740721941,
+      "p95_interval_ms": 0.45707924291491503,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_physical_1000us",
+      "label": "physical",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.9267454198561609,
+    "film": "media/timestep-roll50_physical_1000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.7199999999999214,
+    "timing": {
+      "physics_wall_s": 0.03499199775978923,
+      "controller_intervals": 86,
+      "physics_seconds_per_sim_second": 0.020344184744064436,
+      "p50_interval_ms": 0.4105749540030956,
+      "p95_interval_ms": 0.48829009756445885,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_physical_exact_1000us",
+      "label": "physical_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.9526166000869125,
+    "film": "media/timestep-roll50_physical_exact_1000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6799999999999258,
+    "timing": {
+      "physics_wall_s": 0.06027283309958875,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.035876686368804415,
+      "p50_interval_ms": 0.6923279725015163,
+      "p95_interval_ms": 0.7942358264699578,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_runtime_approx_1000us",
+      "label": "runtime_approx",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.9875809228979051,
+    "film": "media/timestep-roll50_runtime_approx_1000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6799999999999258,
+    "timing": {
+      "physics_wall_s": 0.0611925155390054,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.036424116392266725,
+      "p50_interval_ms": 0.7057720795273781,
+      "p95_interval_ms": 0.8076595375314355,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_runtime_exact_1000us",
+      "label": "runtime_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.9679463680367917,
+    "film": "media/timestep-roll50_runtime_exact_1000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "drake:hydro:rt0.03:hr1",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 0.001,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.705308543326822,
+        "gain": 0.9309411480059304,
+        "cross_lin_mmps": 4.36329104747503,
+        "cross_ang_dps": 34.53138256563995,
+        "slide_rms_mmps": 0.10813652409102176
+      },
+      "v_up": {
+        "rmse_cmd": 11.93750029760831,
+        "gain": 1.01991903953797,
+        "cross_lin_mmps": 0.7452821694663309,
+        "cross_ang_dps": 40.805275155432014,
+        "slide_rms_mmps": 0.2314501941701019
+      },
+      "v_tool": {
+        "rmse_cmd": 10.280940161761524,
+        "gain": 0.9437500557025876,
+        "cross_lin_mmps": 5.933487682074212,
+        "cross_ang_dps": 20.750584638386417,
+        "slide_rms_mmps": 0.15480329031736476
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.1920722576919,
+        "gain": -0.004747707492320185,
+        "cross_lin_mmps": 0.27929994828139293,
+        "cross_ang_dps": 0.29230971386497223,
+        "slide_rms_mmps": 0.0014737667892063282
+      },
+      "w_up": {
+        "rmse_cmd": 21.47878514356273,
+        "gain": 0.8139750315399159,
+        "cross_lin_mmps": 2.9386470959661053,
+        "cross_ang_dps": 14.869676252741334,
+        "slide_rms_mmps": 0.10639875474689736
+      },
+      "w_tool": {
+        "rmse_cmd": 25.211293750748002,
+        "gain": 0.5820250336323713,
+        "cross_lin_mmps": 2.8431960865311408,
+        "cross_ang_dps": 11.834970191873559,
+        "slide_rms_mmps": 0.047357631995718595
+      }
+    },
+    "pinch_angle_end_deg": -48.975916909181706,
+    "pinch_angle_max_deg": -49.10062861002973,
+    "rmse_lin_mmps": 7.836863491204704,
+    "rmse_ang_dps": 28.42304892658981,
+    "held_end": true,
+    "wall_s": 43.80223846435547,
+    "sim_s": 10.579999999999863,
+    "perf": {
+      "phys": 37.38432668335736,
+      "ctrl": 0.5914467961993068,
+      "sim": 10.579999999999863
+    },
+    "info": {},
+    "label": "Drake hydroelastic 0.03 s",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 37.35080384137109,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 3.5303217241372,
+      "p50_interval_ms": 75.34530898556113,
+      "p95_interval_ms": 128.15581212053073,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.513864678063219,
+      "tool_roll_positive_deg": 7.761,
+      "tool_roll_negative_deg": -6.32078,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_drake_1000us",
+      "label": "drake",
+      "spec": "drake:hydro:rt0.03:hr1",
+      "contact_policy": "legacy",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    "elapsed_wall_s": 44.18091415986419,
+    "film": "media/timestep-roll50_drake_1000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 0.0005,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.675135500298754,
+        "gain": 0.9335426398360378,
+        "cross_lin_mmps": 3.9217019068219265,
+        "cross_ang_dps": 33.4927021565525,
+        "slide_rms_mmps": 0.28123839263258454
+      },
+      "v_up": {
+        "rmse_cmd": 12.036755260892793,
+        "gain": 1.0090891135681628,
+        "cross_lin_mmps": 0.680052274689776,
+        "cross_ang_dps": 40.267653671654806,
+        "slide_rms_mmps": 0.3091188953423973
+      },
+      "v_tool": {
+        "rmse_cmd": 10.376563631443885,
+        "gain": 0.9516952080119123,
+        "cross_lin_mmps": 5.638616765647665,
+        "cross_ang_dps": 19.172404129258712,
+        "slide_rms_mmps": 0.40294143094258533
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.359391745080785,
+        "gain": -0.010957740261497073,
+        "cross_lin_mmps": 0.32272213534253996,
+        "cross_ang_dps": 0.7378454373898605,
+        "slide_rms_mmps": 0.006385330422296515
+      },
+      "w_up": {
+        "rmse_cmd": 22.384156439342956,
+        "gain": 0.7773274061922862,
+        "cross_lin_mmps": 3.190484185667549,
+        "cross_ang_dps": 15.813796047620222,
+        "slide_rms_mmps": 0.1291971809183396
+      },
+      "w_tool": {
+        "rmse_cmd": 23.651235684649485,
+        "gain": 0.5936249325794245,
+        "cross_lin_mmps": 2.615942397158907,
+        "cross_ang_dps": 13.1148080223276,
+        "slide_rms_mmps": 0.04875305929086628
+      }
+    },
+    "pinch_angle_end_deg": -47.97261371505464,
+    "pinch_angle_max_deg": -48.068390840428485,
+    "rmse_lin_mmps": 7.81286584244884,
+    "rmse_ang_dps": 28.090654003750295,
+    "held_end": true,
+    "wall_s": 4.436315536499023,
+    "sim_s": 10.580000000001439,
+    "perf": {
+      "phys": 1.4871605259831995,
+      "ctrl": 0.6105639913585037,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": false,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 1.4747093974146992,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 0.1393865214947541,
+      "p50_interval_ms": 2.568698488175869,
+      "p95_interval_ms": 6.971178029198196,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.8639161482830134,
+      "tool_roll_positive_deg": 8.4542,
+      "tool_roll_negative_deg": -7.5685,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_legacy_500us",
+      "label": "legacy",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    "elapsed_wall_s": 4.814350044820458,
+    "film": "media/timestep-roll50_legacy_500us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy_diagexact",
+    "physics_dt": 0.0005,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.708525623713749,
+        "gain": 0.9347543869843592,
+        "cross_lin_mmps": 4.010401938288032,
+        "cross_ang_dps": 33.486107030355875,
+        "slide_rms_mmps": 0.27539876021654913
+      },
+      "v_up": {
+        "rmse_cmd": 12.098795534011312,
+        "gain": 1.0053728687365706,
+        "cross_lin_mmps": 0.6890579468991628,
+        "cross_ang_dps": 40.06914436255519,
+        "slide_rms_mmps": 0.32361400788481726
+      },
+      "v_tool": {
+        "rmse_cmd": 10.363065460726663,
+        "gain": 0.9489925678829059,
+        "cross_lin_mmps": 5.715926682123959,
+        "cross_ang_dps": 19.213314271830846,
+        "slide_rms_mmps": 0.4088168975979582
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.350996699101216,
+        "gain": -0.010825315100830837,
+        "cross_lin_mmps": 0.33176877259695897,
+        "cross_ang_dps": 0.7866599843022808,
+        "slide_rms_mmps": 0.007294031260622572
+      },
+      "w_up": {
+        "rmse_cmd": 22.126858075186032,
+        "gain": 0.7841078814599969,
+        "cross_lin_mmps": 3.201429836865449,
+        "cross_ang_dps": 15.78122900245309,
+        "slide_rms_mmps": 0.13796073411876034
+      },
+      "w_tool": {
+        "rmse_cmd": 23.41300127559797,
+        "gain": 0.598606099398557,
+        "cross_lin_mmps": 2.630375014825682,
+        "cross_ang_dps": 13.061696834160928,
+        "slide_rms_mmps": 0.04944562023066406
+      }
+    },
+    "pinch_angle_end_deg": -47.55353265130956,
+    "pinch_angle_max_deg": -47.647914907809344,
+    "rmse_lin_mmps": 7.840784646647932,
+    "rmse_ang_dps": 28.003727557813985,
+    "held_end": true,
+    "wall_s": 4.712886571884155,
+    "sim_s": 10.580000000001439,
+    "perf": {
+      "phys": 1.671141700586304,
+      "ctrl": 0.6534553489182144,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": true,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 1.6583111614454538,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 0.15674018539179851,
+      "p50_interval_ms": 2.9084000270813704,
+      "p95_interval_ms": 7.587508996948598,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.8908020793334515,
+      "tool_roll_positive_deg": 8.51174,
+      "tool_roll_negative_deg": -7.5770800000000005,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_legacy_exact_500us",
+      "label": "legacy_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    "elapsed_wall_s": 5.1014342869166285,
+    "film": "media/timestep-roll50_legacy_exact_500us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6799999999998705,
+    "timing": {
+      "physics_wall_s": 0.06552444095723331,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.039002643426927594,
+      "p50_interval_ms": 0.789751997217536,
+      "p95_interval_ms": 0.879041152074933,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_physical_500us",
+      "label": "physical",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.9812154439277947,
+    "film": "media/timestep-roll50_physical_500us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6999999999998683,
+    "timing": {
+      "physics_wall_s": 0.06619577924720943,
+      "controller_intervals": 85,
+      "physics_seconds_per_sim_second": 0.038938693674832096,
+      "p50_interval_ms": 0.7941204821690917,
+      "p95_interval_ms": 0.8820330025628209,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_physical_exact_500us",
+      "label": "physical_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    "elapsed_wall_s": 1.0069031228777021,
+    "film": "media/timestep-roll50_physical_exact_500us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6799999999998705,
+    "timing": {
+      "physics_wall_s": 0.11274112085811794,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.06710781003459919,
+      "p50_interval_ms": 1.3254140503704548,
+      "p95_interval_ms": 1.447931840084493,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_runtime_approx_500us",
+      "label": "runtime_approx",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    "elapsed_wall_s": 1.0000244691036642,
+    "film": "media/timestep-roll50_runtime_approx_500us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6799999999998705,
+    "timing": {
+      "physics_wall_s": 0.11742088804021478,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.06989338573822847,
+      "p50_interval_ms": 1.4086270239204168,
+      "p95_interval_ms": 1.5702479984611273,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_runtime_exact_500us",
+      "label": "runtime_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    "elapsed_wall_s": 1.025648521957919,
+    "film": "media/timestep-roll50_runtime_exact_500us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "drake:hydro:rt0.03:hr1",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 0.0005,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.695996099193891,
+        "gain": 0.9298039836878211,
+        "cross_lin_mmps": 4.384592489175913,
+        "cross_ang_dps": 34.58535639338509,
+        "slide_rms_mmps": 0.10392274734097848
+      },
+      "v_up": {
+        "rmse_cmd": 11.924171341513393,
+        "gain": 1.0167675192042225,
+        "cross_lin_mmps": 0.7480333210692985,
+        "cross_ang_dps": 40.874781646469465,
+        "slide_rms_mmps": 0.2274780710660195
+      },
+      "v_tool": {
+        "rmse_cmd": 10.273379453771136,
+        "gain": 0.9408101551371636,
+        "cross_lin_mmps": 5.966448876281643,
+        "cross_ang_dps": 20.816736498807742,
+        "slide_rms_mmps": 0.1388888172780077
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.18279750136461,
+        "gain": -0.004419648363457867,
+        "cross_lin_mmps": 0.28680825705128554,
+        "cross_ang_dps": 0.2890395532956971,
+        "slide_rms_mmps": 0.001460493841667741
+      },
+      "w_up": {
+        "rmse_cmd": 21.52956974189059,
+        "gain": 0.8151669762957949,
+        "cross_lin_mmps": 2.9654824823497328,
+        "cross_ang_dps": 14.948296451625724,
+        "slide_rms_mmps": 0.10758414814962988
+      },
+      "w_tool": {
+        "rmse_cmd": 25.147211166378508,
+        "gain": 0.5813540315453946,
+        "cross_lin_mmps": 2.852522375234488,
+        "cross_ang_dps": 11.894874520272332,
+        "slide_rms_mmps": 0.046352786172513274
+      }
+    },
+    "pinch_angle_end_deg": -48.97157884595051,
+    "pinch_angle_max_deg": -49.10229702495267,
+    "rmse_lin_mmps": 7.837546560591424,
+    "rmse_ang_dps": 28.452781589679383,
+    "held_end": true,
+    "wall_s": 76.82850694656372,
+    "sim_s": 10.579999999999863,
+    "perf": {
+      "phys": 70.3955647686962,
+      "ctrl": 0.5773538192734122,
+      "sim": 10.579999999999863
+    },
+    "info": {},
+    "label": "Drake hydroelastic 0.03 s",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 70.35744652920403,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 6.6500422050288215,
+      "p50_interval_ms": 143.6189014930278,
+      "p95_interval_ms": 233.9272344135679,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.4980739838399467,
+      "tool_roll_positive_deg": 7.77758,
+      "tool_roll_negative_deg": -6.35614,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_drake_500us",
+      "label": "drake",
+      "spec": "drake:hydro:rt0.03:hr1",
+      "contact_policy": "legacy",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    "elapsed_wall_s": 77.19481340004131,
+    "film": "media/timestep-roll50_drake_500us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 0.002,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.689865902437232,
+        "gain": 0.9373443572088527,
+        "cross_lin_mmps": 3.8902108286137675,
+        "cross_ang_dps": 33.544533459578886,
+        "slide_rms_mmps": 0.2898485593521897
+      },
+      "v_up": {
+        "rmse_cmd": 11.994517134360063,
+        "gain": 1.006619266021243,
+        "cross_lin_mmps": 0.7308174323873546,
+        "cross_ang_dps": 40.15048678246829,
+        "slide_rms_mmps": 0.31011011822643253
+      },
+      "v_tool": {
+        "rmse_cmd": 10.440858847089059,
+        "gain": 0.9488431437982147,
+        "cross_lin_mmps": 5.661074932959406,
+        "cross_ang_dps": 18.558689369067753,
+        "slide_rms_mmps": 0.4144072498579813
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.341585020073026,
+        "gain": -0.010420642719229493,
+        "cross_lin_mmps": 0.3225721154927706,
+        "cross_ang_dps": 0.6878878416038391,
+        "slide_rms_mmps": 0.01178412738182095
+      },
+      "w_up": {
+        "rmse_cmd": 22.344743074650676,
+        "gain": 0.7691422522356318,
+        "cross_lin_mmps": 3.2248994190068214,
+        "cross_ang_dps": 16.10295987956506,
+        "slide_rms_mmps": 0.13139726608023478
+      },
+      "w_tool": {
+        "rmse_cmd": 23.443108691882554,
+        "gain": 0.6067201388666618,
+        "cross_lin_mmps": 2.658751485850726,
+        "cross_ang_dps": 13.51874976099982,
+        "slide_rms_mmps": 0.05554324504095106
+      }
+    },
+    "pinch_angle_end_deg": -46.88720752290945,
+    "pinch_angle_max_deg": -46.98505169137363,
+    "rmse_lin_mmps": 7.81559829691453,
+    "rmse_ang_dps": 28.032009383350044,
+    "held_end": true,
+    "wall_s": 3.4394419193267822,
+    "sim_s": 10.580000000000203,
+    "perf": {
+      "phys": 0.4892696402966976,
+      "ctrl": 0.6106184737291187,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": false,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 0.47657175338827074,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 0.04504458916713248,
+      "p50_interval_ms": 0.7589299930259585,
+      "p95_interval_ms": 2.648183121345937,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.9137071347169491,
+      "tool_roll_positive_deg": 8.57284,
+      "tool_roll_negative_deg": -7.68778,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_legacy_2000us",
+      "label": "legacy",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    "elapsed_wall_s": 3.8064772731158882,
+    "film": "media/timestep-roll50_legacy_2000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy_diagexact",
+    "physics_dt": 0.002,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.727639342205345,
+        "gain": 0.9345623946213221,
+        "cross_lin_mmps": 3.9865600192122375,
+        "cross_ang_dps": 33.57470446249464,
+        "slide_rms_mmps": 0.27974932998473057
+      },
+      "v_up": {
+        "rmse_cmd": 12.092356193615167,
+        "gain": 1.002540669475943,
+        "cross_lin_mmps": 0.7413982729597396,
+        "cross_ang_dps": 39.96427945769206,
+        "slide_rms_mmps": 0.3267999428611707
+      },
+      "v_tool": {
+        "rmse_cmd": 10.415815556210907,
+        "gain": 0.9499195193241431,
+        "cross_lin_mmps": 5.741710182131156,
+        "cross_ang_dps": 18.68571042626801,
+        "slide_rms_mmps": 0.41847649471444587
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.33522878350199,
+        "gain": -0.010216780330686738,
+        "cross_lin_mmps": 0.332740073099138,
+        "cross_ang_dps": 0.7423883734325781,
+        "slide_rms_mmps": 0.012803173453360406
+      },
+      "w_up": {
+        "rmse_cmd": 22.028840252135613,
+        "gain": 0.7768772294744997,
+        "cross_lin_mmps": 3.2201587622258994,
+        "cross_ang_dps": 15.98642302625947,
+        "slide_rms_mmps": 0.13906628120288012
+      },
+      "w_tool": {
+        "rmse_cmd": 23.232535608920006,
+        "gain": 0.610336975851643,
+        "cross_lin_mmps": 2.6726068118744246,
+        "cross_ang_dps": 13.429589815610434,
+        "slide_rms_mmps": 0.055835319335850585
+      }
+    },
+    "pinch_angle_end_deg": -46.58956522184205,
+    "pinch_angle_max_deg": -46.685391357146834,
+    "rmse_lin_mmps": 7.852837410618705,
+    "rmse_ang_dps": 27.948112506180976,
+    "held_end": true,
+    "wall_s": 3.5325188636779785,
+    "sim_s": 10.580000000000203,
+    "perf": {
+      "phys": 0.5520648437086493,
+      "ctrl": 0.6371578490361571,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": true,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 0.5394568091724068,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 0.05098835625447982,
+      "p50_interval_ms": 0.8715980220586061,
+      "p95_interval_ms": 2.93126351898536,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.9314446987751182,
+      "tool_roll_positive_deg": 8.59784,
+      "tool_roll_negative_deg": -7.68414,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_legacy_exact_2000us",
+      "label": "legacy_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    "elapsed_wall_s": 3.9376148032024503,
+    "film": "media/timestep-roll50_legacy_exact_2000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.7000000000000013,
+    "timing": {
+      "physics_wall_s": 0.018159867729991674,
+      "controller_intervals": 85,
+      "physics_seconds_per_sim_second": 0.010682275135289212,
+      "p50_interval_ms": 0.21431688219308853,
+      "p95_interval_ms": 0.2735649002715945,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_physical_2000us",
+      "label": "physical",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.9339664711151272,
+    "film": "media/timestep-roll50_physical_2000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6800000000000013,
+    "timing": {
+      "physics_wall_s": 0.01846941001713276,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.010993696438769492,
+      "p50_interval_ms": 0.21684309467673302,
+      "p95_interval_ms": 0.2538064029067755,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_physical_exact_2000us",
+      "label": "physical_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.9023764850571752,
+    "film": "media/timestep-roll50_physical_exact_2000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.7000000000000013,
+    "timing": {
+      "physics_wall_s": 0.03437973163090646,
+      "controller_intervals": 85,
+      "physics_seconds_per_sim_second": 0.02022337154759202,
+      "p50_interval_ms": 0.3903715405613184,
+      "p95_interval_ms": 0.4677466698922217,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_runtime_approx_2000us",
+      "label": "runtime_approx",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.9493763539940119,
+    "film": "media/timestep-roll50_runtime_approx_2000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.7000000000000013,
+    "timing": {
+      "physics_wall_s": 0.03444675216451287,
+      "controller_intervals": 85,
+      "physics_seconds_per_sim_second": 0.02026279539088991,
+      "p50_interval_ms": 0.3931064857169986,
+      "p95_interval_ms": 0.4799289279617369,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_runtime_exact_2000us",
+      "label": "runtime_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.9538419058080763,
+    "film": "media/timestep-roll50_runtime_exact_2000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "drake:hydro:rt0.03:hr1",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 0.002,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.723188098943995,
+        "gain": 0.9337319874214913,
+        "cross_lin_mmps": 4.311271817345174,
+        "cross_ang_dps": 34.42145980095857,
+        "slide_rms_mmps": 0.1229313378417444
+      },
+      "v_up": {
+        "rmse_cmd": 11.961695988170566,
+        "gain": 1.0262880269000707,
+        "cross_lin_mmps": 0.737014710952906,
+        "cross_ang_dps": 40.645832292890745,
+        "slide_rms_mmps": 0.24183543685477835
+      },
+      "v_tool": {
+        "rmse_cmd": 10.299992136957025,
+        "gain": 0.9495088563663865,
+        "cross_lin_mmps": 5.873485869638061,
+        "cross_ang_dps": 20.591938396736914,
+        "slide_rms_mmps": 0.19258819100920438
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.21132247716436,
+        "gain": -0.005416451546936589,
+        "cross_lin_mmps": 0.2660656584861237,
+        "cross_ang_dps": 0.31801033081974095,
+        "slide_rms_mmps": 0.0014955680806034322
+      },
+      "w_up": {
+        "rmse_cmd": 21.389871503822,
+        "gain": 0.8119517521384394,
+        "cross_lin_mmps": 2.8885772251216175,
+        "cross_ang_dps": 14.723418315041005,
+        "slide_rms_mmps": 0.1047495812252723
+      },
+      "w_tool": {
+        "rmse_cmd": 25.335152339273613,
+        "gain": 0.5767590661431123,
+        "cross_lin_mmps": 2.824892297956176,
+        "cross_ang_dps": 11.705398610523776,
+        "slide_rms_mmps": 0.05008418197818277
+      }
+    },
+    "pinch_angle_end_deg": -48.97520134516399,
+    "pinch_angle_max_deg": -49.08960186806109,
+    "rmse_lin_mmps": 7.8357750052727475,
+    "rmse_ang_dps": 28.358918562070542,
+    "held_end": true,
+    "wall_s": 25.729145288467407,
+    "sim_s": 10.579999999999863,
+    "perf": {
+      "phys": 19.487588675227016,
+      "ctrl": 0.5254531896207482,
+      "sim": 10.579999999999863
+    },
+    "info": {},
+    "label": "Drake hydroelastic 0.03 s",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 19.46013344731182,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 1.8393320838669254,
+      "p50_interval_ms": 39.88029446918517,
+      "p95_interval_ms": 63.2655218592845,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.5562807861501977,
+      "tool_roll_positive_deg": 7.7279800000000005,
+      "tool_roll_negative_deg": -6.25052,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_drake_2000us",
+      "label": "drake",
+      "spec": "drake:hydro:rt0.03:hr1",
+      "contact_policy": "legacy",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    "elapsed_wall_s": 26.076166518963873,
+    "film": "media/timestep-roll50_drake_2000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 0.005,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.764797056519134,
+        "gain": 0.9373944827204281,
+        "cross_lin_mmps": 3.8724144703306256,
+        "cross_ang_dps": 33.679593416411635,
+        "slide_rms_mmps": 0.3069852696690767
+      },
+      "v_up": {
+        "rmse_cmd": 11.886847316667637,
+        "gain": 0.9999690594123836,
+        "cross_lin_mmps": 0.9235427395763781,
+        "cross_ang_dps": 39.63371363028173,
+        "slide_rms_mmps": 0.3237995264002092
+      },
+      "v_tool": {
+        "rmse_cmd": 10.718623551218176,
+        "gain": 0.9588971161388931,
+        "cross_lin_mmps": 5.29855279935477,
+        "cross_ang_dps": 17.843255906223987,
+        "slide_rms_mmps": 0.4378006267709933
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.305854765439754,
+        "gain": -0.009266040222902096,
+        "cross_lin_mmps": 0.32176159481488376,
+        "cross_ang_dps": 0.6031938293782696,
+        "slide_rms_mmps": 0.01676721232020142
+      },
+      "w_up": {
+        "rmse_cmd": 22.192360692015836,
+        "gain": 0.7478992372123605,
+        "cross_lin_mmps": 3.2892799683840863,
+        "cross_ang_dps": 16.697198852289013,
+        "slide_rms_mmps": 0.14785348571008516
+      },
+      "w_tool": {
+        "rmse_cmd": 22.99046524104793,
+        "gain": 0.6234760922205527,
+        "cross_lin_mmps": 2.7870490260356138,
+        "cross_ang_dps": 14.43175348161382,
+        "slide_rms_mmps": 0.06976192310762194
+      }
+    },
+    "pinch_angle_end_deg": -44.89096874419732,
+    "pinch_angle_max_deg": -44.98984982263318,
+    "rmse_lin_mmps": 7.826550324026562,
+    "rmse_ang_dps": 27.91931502981739,
+    "held_end": true,
+    "wall_s": 3.2040462493896484,
+    "sim_s": 10.580000000000254,
+    "perf": {
+      "phys": 0.2548485391307622,
+      "ctrl": 0.6128352913074195,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": false,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 0.24231854127719998,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 0.02290345380691816,
+      "p50_interval_ms": 0.38022955413907766,
+      "p95_interval_ms": 1.2527260347269475,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 1.0165395181084358,
+      "tool_roll_positive_deg": 8.78998,
+      "tool_roll_negative_deg": -7.98162,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_legacy_5000us",
+      "label": "legacy",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    "elapsed_wall_s": 3.599320665001869,
+    "film": "media/timestep-roll50_legacy_5000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy_diagexact",
+    "physics_dt": 0.005,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.774591143096789,
+        "gain": 0.9340267438429966,
+        "cross_lin_mmps": 3.931081105204704,
+        "cross_ang_dps": 33.75201466917766,
+        "slide_rms_mmps": 0.29396810213291097
+      },
+      "v_up": {
+        "rmse_cmd": 11.999150089669232,
+        "gain": 0.9914988364408731,
+        "cross_lin_mmps": 0.8916264676046369,
+        "cross_ang_dps": 39.57293519703586,
+        "slide_rms_mmps": 0.3458218946292727
+      },
+      "v_tool": {
+        "rmse_cmd": 10.63756187311438,
+        "gain": 0.9625924088414118,
+        "cross_lin_mmps": 5.506682027204217,
+        "cross_ang_dps": 18.079377281513697,
+        "slide_rms_mmps": 0.44364652379335523
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.313757462263936,
+        "gain": -0.009515867408381791,
+        "cross_lin_mmps": 0.33243253824031727,
+        "cross_ang_dps": 0.6614601582371159,
+        "slide_rms_mmps": 0.01893308430242022
+      },
+      "w_up": {
+        "rmse_cmd": 21.91084430265019,
+        "gain": 0.7656292866588893,
+        "cross_lin_mmps": 3.2718215447683177,
+        "cross_ang_dps": 16.431793972303545,
+        "slide_rms_mmps": 0.15402606794175983
+      },
+      "w_tool": {
+        "rmse_cmd": 22.923303412083126,
+        "gain": 0.6275869125905787,
+        "cross_lin_mmps": 2.7745350275530165,
+        "cross_ang_dps": 14.277854515933324,
+        "slide_rms_mmps": 0.06615124960360558
+      }
+    },
+    "pinch_angle_end_deg": -44.70001153119727,
+    "pinch_angle_max_deg": -44.79672476458456,
+    "rmse_lin_mmps": 7.8555878904555945,
+    "rmse_ang_dps": 27.876672216839054,
+    "held_end": true,
+    "wall_s": 3.2602365016937256,
+    "sim_s": 10.580000000000254,
+    "perf": {
+      "phys": 0.27035737759433687,
+      "ctrl": 0.63617093116045,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": true,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 0.25796884461306036,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 0.024382688526753703,
+      "p50_interval_ms": 0.42157305870205164,
+      "p95_interval_ms": 1.3511021970771238,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 1.0287019576106768,
+      "tool_roll_positive_deg": 8.8019,
+      "tool_roll_negative_deg": -7.93914,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_legacy_exact_5000us",
+      "label": "legacy_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    "elapsed_wall_s": 3.6279369189869612,
+    "film": "media/timestep-roll50_legacy_exact_5000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.779999999999984,
+    "timing": {
+      "physics_wall_s": 0.010401273146271706,
+      "controller_intervals": 89,
+      "physics_seconds_per_sim_second": 0.005843411879927977,
+      "p50_interval_ms": 0.09989843238145113,
+      "p95_interval_ms": 0.13149243313819167,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_physical_5000us",
+      "label": "physical",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.9348532960284501,
+    "film": "media/timestep-roll50_physical_5000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6799999999999862,
+    "timing": {
+      "physics_wall_s": 0.010962605709210038,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.006525360541196505,
+      "p50_interval_ms": 0.10663806460797787,
+      "p95_interval_ms": 0.12978941667824972,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_physical_exact_5000us",
+      "label": "physical_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.8815882890485227,
+    "film": "media/timestep-roll50_physical_exact_5000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.779999999999984,
+    "timing": {
+      "physics_wall_s": 0.019406088860705495,
+      "controller_intervals": 89,
+      "physics_seconds_per_sim_second": 0.010902297112755994,
+      "p50_interval_ms": 0.19930093549191952,
+      "p95_interval_ms": 0.2537946566008031,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_runtime_approx_5000us",
+      "label": "runtime_approx",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.9328862961847335,
+    "film": "media/timestep-roll50_runtime_approx_5000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6799999999999862,
+    "timing": {
+      "physics_wall_s": 0.01872876542620361,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.01114807465845462,
+      "p50_interval_ms": 0.2253048587590456,
+      "p95_interval_ms": 0.2567848190665245,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_runtime_exact_5000us",
+      "label": "runtime_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.8854430108331144,
+    "film": "media/timestep-roll50_runtime_exact_5000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "drake:hydro:rt0.03:hr1",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 0.005,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.785239462664219,
+        "gain": 0.9441049043783674,
+        "cross_lin_mmps": 4.148603344179964,
+        "cross_ang_dps": 34.12097189998942,
+        "slide_rms_mmps": 0.21494554787848855
+      },
+      "v_up": {
+        "rmse_cmd": 12.044694058707773,
+        "gain": 1.0330545238003346,
+        "cross_lin_mmps": 0.7187052309424657,
+        "cross_ang_dps": 40.22156258988327,
+        "slide_rms_mmps": 0.28470696972732806
+      },
+      "v_tool": {
+        "rmse_cmd": 10.37740590510324,
+        "gain": 0.9613959764229538,
+        "cross_lin_mmps": 5.723295897201334,
+        "cross_ang_dps": 20.097996710359435,
+        "slide_rms_mmps": 0.3179457307965191
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.26296832681261,
+        "gain": -0.007529315953831856,
+        "cross_lin_mmps": 0.2359399978394961,
+        "cross_ang_dps": 0.421618955400747,
+        "slide_rms_mmps": 0.0015688667812599661
+      },
+      "w_up": {
+        "rmse_cmd": 21.20334131482318,
+        "gain": 0.8190624670107656,
+        "cross_lin_mmps": 2.762535854627605,
+        "cross_ang_dps": 14.349178678811656,
+        "slide_rms_mmps": 0.10801657836429822
+      },
+      "w_tool": {
+        "rmse_cmd": 25.682998082168485,
+        "gain": 0.5743295228653074,
+        "cross_lin_mmps": 2.7884709948339785,
+        "cross_ang_dps": 11.413689250086383,
+        "slide_rms_mmps": 0.059239877125447135
+      }
+    },
+    "pinch_angle_end_deg": -48.945596255303435,
+    "pinch_angle_max_deg": -49.04187117958428,
+    "rmse_lin_mmps": 7.847130099122786,
+    "rmse_ang_dps": 28.198035481681714,
+    "held_end": true,
+    "wall_s": 14.225143909454346,
+    "sim_s": 10.579999999999863,
+    "perf": {
+      "phys": 8.233835420571268,
+      "ctrl": 0.50320437643677,
+      "sim": 10.579999999999863
+    },
+    "info": {},
+    "label": "Drake hydroelastic 0.03 s",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 8.210387399187312,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 0.7760290547436123,
+      "p50_interval_ms": 16.953615937381983,
+      "p95_interval_ms": 26.050741458311677,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.7469752764440529,
+      "tool_roll_positive_deg": 7.63908,
+      "tool_roll_negative_deg": -6.05276,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_drake_5000us",
+      "label": "drake",
+      "spec": "drake:hydro:rt0.03:hr1",
+      "contact_policy": "legacy",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    "elapsed_wall_s": 14.565091847907752,
+    "film": "media/timestep-roll50_drake_5000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 0.01,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.82066035277672,
+        "gain": 0.9392503163812382,
+        "cross_lin_mmps": 4.248611245965536,
+        "cross_ang_dps": 33.94035217434413,
+        "slide_rms_mmps": 0.43884655394376726
+      },
+      "v_up": {
+        "rmse_cmd": 12.094936068265014,
+        "gain": 0.9986721091794122,
+        "cross_lin_mmps": 0.8356542238403518,
+        "cross_ang_dps": 40.047247353464805,
+        "slide_rms_mmps": 0.4667879564616839
+      },
+      "v_tool": {
+        "rmse_cmd": 10.392229845022865,
+        "gain": 0.944687358434503,
+        "cross_lin_mmps": 6.3193610840074825,
+        "cross_ang_dps": 19.761222838479277,
+        "slide_rms_mmps": 0.65685737489507
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.412217973023175,
+        "gain": -0.01231526960800528,
+        "cross_lin_mmps": 0.41777295747247,
+        "cross_ang_dps": 0.9691162898897598,
+        "slide_rms_mmps": 0.04600429018281355
+      },
+      "w_up": {
+        "rmse_cmd": 22.243613380963716,
+        "gain": 0.7681326248197313,
+        "cross_lin_mmps": 3.1960545568609664,
+        "cross_ang_dps": 15.812988153770554,
+        "slide_rms_mmps": 0.2458011339307615
+      },
+      "w_tool": {
+        "rmse_cmd": 23.78077178145413,
+        "gain": 0.5991429024865658,
+        "cross_lin_mmps": 2.9066917388744824,
+        "cross_ang_dps": 12.898711534168186,
+        "slide_rms_mmps": 0.11645834654136233
+      }
+    },
+    "pinch_angle_end_deg": -46.76140455004273,
+    "pinch_angle_max_deg": -46.86114701830524,
+    "rmse_lin_mmps": 7.945317720545944,
+    "rmse_ang_dps": 28.17565386470124,
+    "held_end": true,
+    "wall_s": 3.2582788467407227,
+    "sim_s": 10.579999999999819,
+    "perf": {
+      "phys": 0.19785925303585827,
+      "ctrl": 0.684833585517481,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": false,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 0.18536847596988082,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 0.01752064990263554,
+      "p50_interval_ms": 0.3246359992772341,
+      "p95_interval_ms": 0.8611469762399792,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 1.575539907174631,
+      "tool_roll_positive_deg": 8.3871,
+      "tool_roll_negative_deg": -7.05978,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_legacy_10000us",
+      "label": "legacy",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    "elapsed_wall_s": 3.643303230870515,
+    "film": "media/timestep-roll50_legacy_10000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy_diagexact",
+    "physics_dt": 0.01,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.77473310412574,
+        "gain": 0.9378605899154431,
+        "cross_lin_mmps": 4.4416998977539945,
+        "cross_ang_dps": 33.920187076746764,
+        "slide_rms_mmps": 0.43668824795260314
+      },
+      "v_up": {
+        "rmse_cmd": 12.167945354040521,
+        "gain": 0.9927965988933971,
+        "cross_lin_mmps": 0.8646066450474157,
+        "cross_ang_dps": 39.89315039892005,
+        "slide_rms_mmps": 0.49260757597218313
+      },
+      "v_tool": {
+        "rmse_cmd": 10.382957682472064,
+        "gain": 0.9439548573666652,
+        "cross_lin_mmps": 6.425986517406941,
+        "cross_ang_dps": 19.802901843407387,
+        "slide_rms_mmps": 0.6586098116787809
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.42249453041193,
+        "gain": -0.01266264032292544,
+        "cross_lin_mmps": 0.4220712460926457,
+        "cross_ang_dps": 0.9952530656136983,
+        "slide_rms_mmps": 0.037193689681490026
+      },
+      "w_up": {
+        "rmse_cmd": 22.613424691955093,
+        "gain": 0.7564107339831554,
+        "cross_lin_mmps": 3.25402787479416,
+        "cross_ang_dps": 15.673877003519603,
+        "slide_rms_mmps": 0.2558410268612223
+      },
+      "w_tool": {
+        "rmse_cmd": 23.982389017384087,
+        "gain": 0.6173356253395957,
+        "cross_lin_mmps": 2.8760401118993517,
+        "cross_ang_dps": 12.939781677949378,
+        "slide_rms_mmps": 0.11403046153454324
+      }
+    },
+    "pinch_angle_end_deg": -46.082392670042175,
+    "pinch_angle_max_deg": -46.177822687314226,
+    "rmse_lin_mmps": 7.97949185042463,
+    "rmse_ang_dps": 28.21049809687637,
+    "held_end": true,
+    "wall_s": 3.2894692420959473,
+    "sim_s": 10.55999999999982,
+    "perf": {
+      "phys": 0.21065093367360532,
+      "ctrl": 0.7139751953072846,
+      "sim": 10.559999999999864
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": true,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 0.19792279764078557,
+      "controller_intervals": 528,
+      "physics_seconds_per_sim_second": 0.018742689170529257,
+      "p50_interval_ms": 0.3341801930218935,
+      "p95_interval_ms": 0.9196025785058736,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 1.6212732254799314,
+      "tool_roll_positive_deg": 8.40052,
+      "tool_roll_negative_deg": -7.05286,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_legacy_exact_10000us",
+      "label": "legacy_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    "elapsed_wall_s": 3.683887615101412,
+    "film": "media/timestep-roll50_legacy_exact_10000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6800000000000013,
+    "timing": {
+      "physics_wall_s": 0.007118303794413805,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.004237085591912976,
+      "p50_interval_ms": 0.0677409116178751,
+      "p95_interval_ms": 0.07983690593391655,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_physical_10000us",
+      "label": "physical",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.8932921660598367,
+    "film": "media/timestep-roll50_physical_10000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6800000000000013,
+    "timing": {
+      "physics_wall_s": 0.007119349669665098,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.004237708136705412,
+      "p50_interval_ms": 0.06631109863519669,
+      "p95_interval_ms": 0.08365984540432689,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_physical_exact_10000us",
+      "label": "physical_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.8879874148406088,
+    "film": "media/timestep-roll50_physical_exact_10000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6800000000000013,
+    "timing": {
+      "physics_wall_s": 0.012606200063601136,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.0075036905140482895,
+      "p50_interval_ms": 0.13595889322459698,
+      "p95_interval_ms": 0.16097766347229478,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_runtime_approx_10000us",
+      "label": "runtime_approx",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.8762055849656463,
+    "film": "media/timestep-roll50_runtime_approx_10000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "status": "stopped_at_guard",
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "sim_s": 1.6800000000000013,
+    "timing": {
+      "physics_wall_s": 0.012747355038300157,
+      "controller_intervals": 84,
+      "physics_seconds_per_sim_second": 0.007587711332321516,
+      "p50_interval_ms": 0.14112587086856365,
+      "p95_interval_ms": 0.16756253316998476,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0,
+      "tool_roll_positive_deg": 0,
+      "tool_roll_negative_deg": 0,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": false
+    },
+    "case": {
+      "id": "roll50_runtime_exact_10000us",
+      "label": "runtime_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    "elapsed_wall_s": 0.8876864409539849,
+    "film": "media/timestep-roll50_runtime_exact_10000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "drake:hydro:rt0.03:hr1",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 0.01,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.936580452313416,
+        "gain": 0.9542456979963079,
+        "cross_lin_mmps": 3.9280957453392302,
+        "cross_ang_dps": 33.749438869045974,
+        "slide_rms_mmps": 0.3927502366247168
+      },
+      "v_up": {
+        "rmse_cmd": 12.232913643066496,
+        "gain": 1.051023385643044,
+        "cross_lin_mmps": 0.6956748297072103,
+        "cross_ang_dps": 39.59332424922801,
+        "slide_rms_mmps": 0.38054175391585904
+      },
+      "v_tool": {
+        "rmse_cmd": 10.552807224374593,
+        "gain": 0.9761656285405464,
+        "cross_lin_mmps": 5.500494799364284,
+        "cross_ang_dps": 19.26823910734886,
+        "slide_rms_mmps": 0.5392474829341516
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.326203992113285,
+        "gain": -0.00880317633766442,
+        "cross_lin_mmps": 0.21004725144389058,
+        "cross_ang_dps": 0.5830532481609239,
+        "slide_rms_mmps": 0.0016786038347493778
+      },
+      "w_up": {
+        "rmse_cmd": 21.083518399792563,
+        "gain": 0.820147182304925,
+        "cross_lin_mmps": 2.591209390020336,
+        "cross_ang_dps": 13.851522465604717,
+        "slide_rms_mmps": 0.12966993163924054
+      },
+      "w_tool": {
+        "rmse_cmd": 26.216330237823584,
+        "gain": 0.5723455484126507,
+        "cross_lin_mmps": 2.742697546849195,
+        "cross_ang_dps": 10.99571457997291,
+        "slide_rms_mmps": 0.07484909461152219
+      }
+    },
+    "pinch_angle_end_deg": -48.76305732598329,
+    "pinch_angle_max_deg": -48.83477252861013,
+    "rmse_lin_mmps": 7.910347618117608,
+    "rmse_ang_dps": 27.999748932147998,
+    "held_end": true,
+    "wall_s": 10.21143651008606,
+    "sim_s": 10.579999999999863,
+    "perf": {
+      "phys": 4.297514020465314,
+      "ctrl": 0.49358608294278383,
+      "sim": 10.579999999999863
+    },
+    "info": {},
+    "label": "Drake hydroelastic 0.03 s",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 4.275563457049429,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 0.4041175290216904,
+      "p50_interval_ms": 9.046928025782108,
+      "p95_interval_ms": 13.279955962207168,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 1.133015030256908,
+      "tool_roll_positive_deg": 7.5171,
+      "tool_roll_negative_deg": -5.75142,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_drake_10000us",
+      "label": "drake",
+      "spec": "drake:hydro:rt0.03:hr1",
+      "contact_policy": "legacy",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    "elapsed_wall_s": 10.55847026198171,
+    "film": "media/timestep-roll50_drake_10000us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.67025292119686,
+        "gain": 0.9335084841823007,
+        "cross_lin_mmps": 3.9257666745793496,
+        "cross_ang_dps": 33.47241333586929,
+        "slide_rms_mmps": 0.28248593245367704
+      },
+      "v_up": {
+        "rmse_cmd": 12.065301774172884,
+        "gain": 1.007957488292992,
+        "cross_lin_mmps": 0.6691886600023809,
+        "cross_ang_dps": 40.28011290906119,
+        "slide_rms_mmps": 0.30939921670608916
+      },
+      "v_tool": {
+        "rmse_cmd": 10.36340489301358,
+        "gain": 0.9485230179111876,
+        "cross_lin_mmps": 5.619419811900206,
+        "cross_ang_dps": 19.36788905781135,
+        "slide_rms_mmps": 0.40470581556383234
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.36547823182705,
+        "gain": -0.01107064374696798,
+        "cross_lin_mmps": 0.3217987041374096,
+        "cross_ang_dps": 0.7527968776629171,
+        "slide_rms_mmps": 0.006038523706735466
+      },
+      "w_up": {
+        "rmse_cmd": 22.389034675391162,
+        "gain": 0.7775422024729501,
+        "cross_lin_mmps": 3.1824570231135794,
+        "cross_ang_dps": 15.75146996434844,
+        "slide_rms_mmps": 0.1297309286926612
+      },
+      "w_tool": {
+        "rmse_cmd": 23.667393091131565,
+        "gain": 0.5927818547936949,
+        "cross_lin_mmps": 2.6053939802110073,
+        "cross_ang_dps": 13.011307103407583,
+        "slide_rms_mmps": 0.04779292739980883
+      }
+    },
+    "pinch_angle_end_deg": -48.25400114304021,
+    "pinch_angle_max_deg": -48.3492033081868,
+    "rmse_lin_mmps": 7.813898466469295,
+    "rmse_ang_dps": 28.102604208673462,
+    "held_end": true,
+    "wall_s": 15.195064067840576,
+    "sim_s": 10.579999999982013,
+    "perf": {
+      "phys": 11.784884573426098,
+      "ctrl": 0.6243394508492202,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": false,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 11.7705525404308,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 1.1125285955057478,
+      "p50_interval_ms": 22.92363904416561,
+      "p95_interval_ms": 32.87627659738063,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.8652185603219839,
+      "tool_roll_positive_deg": 8.43938,
+      "tool_roll_negative_deg": -7.5426,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_legacy_50us",
+      "label": "legacy",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    "elapsed_wall_s": 15.559078803053126,
+    "film": "media/timestep-roll50_legacy_50us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy_diagexact",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.701172330751657,
+        "gain": 0.935130558133065,
+        "cross_lin_mmps": 4.01823848787788,
+        "cross_ang_dps": 33.464036302171614,
+        "slide_rms_mmps": 0.27395792934277746
+      },
+      "v_up": {
+        "rmse_cmd": 12.103947994374138,
+        "gain": 1.0060581337707895,
+        "cross_lin_mmps": 0.6786426797867683,
+        "cross_ang_dps": 40.08578923220021,
+        "slide_rms_mmps": 0.32287389397370264
+      },
+      "v_tool": {
+        "rmse_cmd": 10.350606439803027,
+        "gain": 0.9459900232095309,
+        "cross_lin_mmps": 5.702824664876792,
+        "cross_ang_dps": 19.380673484801186,
+        "slide_rms_mmps": 0.4111672337185382
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.355428723718,
+        "gain": -0.0109811094408002,
+        "cross_lin_mmps": 0.33095918958696935,
+        "cross_ang_dps": 0.800974142840982,
+        "slide_rms_mmps": 0.007348741092085985
+      },
+      "w_up": {
+        "rmse_cmd": 22.142895385681847,
+        "gain": 0.7862611280794427,
+        "cross_lin_mmps": 3.195187415570973,
+        "cross_ang_dps": 15.713327385655468,
+        "slide_rms_mmps": 0.13804634707020336
+      },
+      "w_tool": {
+        "rmse_cmd": 23.459826621426988,
+        "gain": 0.5961690955401744,
+        "cross_lin_mmps": 2.618605169599112,
+        "cross_ang_dps": 12.96599158823515,
+        "slide_rms_mmps": 0.048100469153602124
+      }
+    },
+    "pinch_angle_end_deg": -47.80271646512198,
+    "pinch_angle_max_deg": -47.89664152046833,
+    "rmse_lin_mmps": 7.837390435098259,
+    "rmse_ang_dps": 28.017572445658374,
+    "held_end": true,
+    "wall_s": 16.737279891967773,
+    "sim_s": 10.579999999982013,
+    "perf": {
+      "phys": 13.234153137309477,
+      "ctrl": 0.6542200439143926,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": true,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 13.220013945829123,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 1.249528728341361,
+      "p50_interval_ms": 25.848471908830106,
+      "p95_interval_ms": 36.53471946017816,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.8869862923575268,
+      "tool_roll_positive_deg": 8.49362,
+      "tool_roll_negative_deg": -7.54954,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_legacy_exact_50us",
+      "label": "legacy_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    "elapsed_wall_s": 17.096086805919185,
+    "film": "media/timestep-roll50_legacy_exact_50us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "physical",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 11.378030537219573,
+        "gain": 1.0124496630413384,
+        "cross_lin_mmps": 2.1424053867503314,
+        "cross_ang_dps": 30.835319886564083,
+        "slide_rms_mmps": 0.4010559390615688
+      },
+      "v_up": {
+        "rmse_cmd": 10.522601854581922,
+        "gain": 0.8259481037054599,
+        "cross_lin_mmps": 2.2700126581154483,
+        "cross_ang_dps": 43.622407842473926,
+        "slide_rms_mmps": 3.092110973496892
+      },
+      "v_tool": {
+        "rmse_cmd": 11.504105658248031,
+        "gain": 0.9992712146158287,
+        "cross_lin_mmps": 2.6037256412734364,
+        "cross_ang_dps": 19.263536734467525,
+        "slide_rms_mmps": 0.40006483922747
+      },
+      "w_pinch": {
+        "rmse_cmd": 41.47688463328537,
+        "gain": -0.0320591348094174,
+        "cross_lin_mmps": 0.7080456214603394,
+        "cross_ang_dps": 1.7595996770174693,
+        "slide_rms_mmps": 0.3066974324000056
+      },
+      "w_up": {
+        "rmse_cmd": 26.472691870956922,
+        "gain": 0.4418275124601586,
+        "cross_lin_mmps": 4.839362285902113,
+        "cross_ang_dps": 22.01877608656171,
+        "slide_rms_mmps": 2.87417025600702
+      },
+      "w_tool": {
+        "rmse_cmd": 34.61543851382913,
+        "gain": 0.12709745481602241,
+        "cross_lin_mmps": 6.651520376880348,
+        "cross_ang_dps": 25.495693440466436,
+        "slide_rms_mmps": 3.75951454344255
+      }
+    },
+    "pinch_angle_end_deg": -55.87859848753603,
+    "pinch_angle_max_deg": -55.87859848753603,
+    "rmse_lin_mmps": 8.196894744118957,
+    "rmse_ang_dps": 32.59601847184306,
+    "held_end": true,
+    "wall_s": 18.297109127044678,
+    "sim_s": 10.579999999982013,
+    "perf": {
+      "phys": 14.803381465841085,
+      "ctrl": 0.5740910896565765,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "tangent_damping_ratio": 10.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": false,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 14.788259960478172,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 1.3977561399341507,
+      "p50_interval_ms": 28.724634437821805,
+      "p95_interval_ms": 43.583653622772545,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 7.7624241945023735,
+      "tool_roll_positive_deg": 2.3662400000000003,
+      "tool_roll_negative_deg": -3.1277600000000003,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_physical_50us",
+      "label": "physical",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    "elapsed_wall_s": 18.65970760700293,
+    "film": "media/timestep-roll50_physical_50us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "physical_diagexact",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 11.099972904950649,
+        "gain": 0.9868008432320381,
+        "cross_lin_mmps": 1.4239004856976718,
+        "cross_ang_dps": 34.874178575824324,
+        "slide_rms_mmps": 0.4776604897554551
+      },
+      "v_up": {
+        "rmse_cmd": 10.475017909433394,
+        "gain": 0.868894684395812,
+        "cross_lin_mmps": 2.6786289008524995,
+        "cross_ang_dps": 30.385526661381512,
+        "slide_rms_mmps": 0.7809379661020713
+      },
+      "v_tool": {
+        "rmse_cmd": 11.085392168366397,
+        "gain": 1.0363000030151577,
+        "cross_lin_mmps": 2.01060720477456,
+        "cross_ang_dps": 22.14250400142437,
+        "slide_rms_mmps": 0.7666932714960869
+      },
+      "w_pinch": {
+        "rmse_cmd": 42.03201328502565,
+        "gain": -0.0489640290488528,
+        "cross_lin_mmps": 1.2672298472382402,
+        "cross_ang_dps": 5.578851653852267,
+        "slide_rms_mmps": 0.4262050988486464
+      },
+      "w_up": {
+        "rmse_cmd": 20.912121019209714,
+        "gain": 0.7190531214189176,
+        "cross_lin_mmps": 3.1908268417222243,
+        "cross_ang_dps": 11.723782686351782,
+        "slide_rms_mmps": 0.4746517958924686
+      },
+      "w_tool": {
+        "rmse_cmd": 23.314059313431592,
+        "gain": 0.6331148840977179,
+        "cross_lin_mmps": 3.868232067747494,
+        "cross_ang_dps": 26.281271746306572,
+        "slide_rms_mmps": 0.8702123403212803
+      }
+    },
+    "pinch_angle_end_deg": -67.23193867929287,
+    "pinch_angle_max_deg": -67.23193867929287,
+    "rmse_lin_mmps": 7.546419640486717,
+    "rmse_ang_dps": 28.43759614156011,
+    "held_end": true,
+    "wall_s": 18.50087594985962,
+    "sim_s": 10.579999999982013,
+    "perf": {
+      "phys": 14.984055690700188,
+      "ctrl": 0.6054077649023384,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "tangent_damping_ratio": 10.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": true,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 14.969613203313202,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 1.4148972781983602,
+      "p50_interval_ms": 27.644373010843992,
+      "p95_interval_ms": 59.55178631702437,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 3.9810499182230172,
+      "tool_roll_positive_deg": 8.71292,
+      "tool_roll_negative_deg": -12.7691,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_physical_exact_50us",
+      "label": "physical_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    "elapsed_wall_s": 18.858861513901502,
+    "film": "media/timestep-roll50_physical_exact_50us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "physical_runtime_approx",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 11.37798407326732,
+        "gain": 1.0124433664202441,
+        "cross_lin_mmps": 2.1423498929826406,
+        "cross_ang_dps": 30.836849196704623,
+        "slide_rms_mmps": 0.40112302881679957
+      },
+      "v_up": {
+        "rmse_cmd": 10.522293458765269,
+        "gain": 0.8258934357807943,
+        "cross_lin_mmps": 2.2677380645099485,
+        "cross_ang_dps": 43.61403849186761,
+        "slide_rms_mmps": 3.0819655407320723
+      },
+      "v_tool": {
+        "rmse_cmd": 11.504066237382196,
+        "gain": 0.9992704192863808,
+        "cross_lin_mmps": 2.603800594239845,
+        "cross_ang_dps": 19.264038050049184,
+        "slide_rms_mmps": 0.4001385481134252
+      },
+      "w_pinch": {
+        "rmse_cmd": 41.472674946383435,
+        "gain": -0.0320172863613222,
+        "cross_lin_mmps": 0.7073007932736771,
+        "cross_ang_dps": 1.757148989093606,
+        "slide_rms_mmps": 0.30655499507448714
+      },
+      "w_up": {
+        "rmse_cmd": 26.475807244569328,
+        "gain": 0.4417799452940997,
+        "cross_lin_mmps": 4.840668022024081,
+        "cross_ang_dps": 22.02802026725691,
+        "slide_rms_mmps": 2.875940855373817
+      },
+      "w_tool": {
+        "rmse_cmd": 34.615076887931224,
+        "gain": 0.12663212891576436,
+        "cross_lin_mmps": 6.651765135159336,
+        "cross_ang_dps": 25.497390868872586,
+        "slide_rms_mmps": 3.7593799492009032
+      }
+    },
+    "pinch_angle_end_deg": -55.872912464035714,
+    "pinch_angle_max_deg": -55.872912464035714,
+    "rmse_lin_mmps": 8.196470586147441,
+    "rmse_ang_dps": 32.59327788739606,
+    "held_end": true,
+    "wall_s": 22.10012674331665,
+    "sim_s": 10.579999999982013,
+    "perf": {
+      "phys": 18.56655208580196,
+      "ctrl": 0.5683902574237436,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "tangent_damping_ratio": 10.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": false,
+      "runtime_contact_mapping": true
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 18.554479454411194,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 1.7537315174331511,
+      "p50_interval_ms": 36.23893193434924,
+      "p95_interval_ms": 51.39220854034647,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 7.758978266710275,
+      "tool_roll_positive_deg": 2.3661,
+      "tool_roll_negative_deg": -3.1277,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_runtime_approx_50us",
+      "label": "runtime_approx",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    "elapsed_wall_s": 22.46769972308539,
+    "film": "media/timestep-roll50_runtime_approx_50us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "physical_runtime_diagexact",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 11.30960444203094,
+        "gain": 1.0232616151112612,
+        "cross_lin_mmps": 2.1678476965311524,
+        "cross_ang_dps": 29.823350704497546,
+        "slide_rms_mmps": 0.4149784881087561
+      },
+      "v_up": {
+        "rmse_cmd": 10.666631817091794,
+        "gain": 0.8282840144639383,
+        "cross_lin_mmps": 1.8845154998897735,
+        "cross_ang_dps": 44.270318731860456,
+        "slide_rms_mmps": 2.3293032521190753
+      },
+      "v_tool": {
+        "rmse_cmd": 11.609945404041225,
+        "gain": 1.0275254208519269,
+        "cross_lin_mmps": 2.8403880265485095,
+        "cross_ang_dps": 22.57049318660808,
+        "slide_rms_mmps": 0.4928619321691134
+      },
+      "w_pinch": {
+        "rmse_cmd": 41.46421230325784,
+        "gain": -0.035342321406818415,
+        "cross_lin_mmps": 0.7247024256752143,
+        "cross_ang_dps": 1.9464787432204833,
+        "slide_rms_mmps": 0.3093169522623187
+      },
+      "w_up": {
+        "rmse_cmd": 24.90994070283657,
+        "gain": 0.461705265948014,
+        "cross_lin_mmps": 4.225320956414654,
+        "cross_ang_dps": 24.053843674174363,
+        "slide_rms_mmps": 3.106971710546493
+      },
+      "w_tool": {
+        "rmse_cmd": 35.11033255305298,
+        "gain": 0.1289768279390528,
+        "cross_lin_mmps": 6.506074113705279,
+        "cross_ang_dps": 24.777905345450304,
+        "slide_rms_mmps": 3.923803619038872
+      }
+    },
+    "pinch_angle_end_deg": -60.84603994500168,
+    "pinch_angle_max_deg": -60.84603994500168,
+    "rmse_lin_mmps": 8.224643501924078,
+    "rmse_ang_dps": 33.35671874927869,
+    "held_end": true,
+    "wall_s": 22.63071060180664,
+    "sim_s": 10.579999999982013,
+    "perf": {
+      "phys": 19.10750559042208,
+      "ctrl": 0.5715396190062165,
+      "sim": 10.579999999999863
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "tangent_damping_ratio": 10.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": true,
+      "runtime_contact_mapping": true
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 19.09499546745792,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 1.8048199874754616,
+      "p50_interval_ms": 37.7600280335173,
+      "p95_interval_ms": 50.40167223196477,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 8.778475609229055,
+      "tool_roll_positive_deg": 2.57784,
+      "tool_roll_negative_deg": -2.23592,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_runtime_exact_50us",
+      "label": "runtime_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    "elapsed_wall_s": 22.987332640914246,
+    "film": "media/timestep-roll50_runtime_exact_50us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  },
+  {
+    "task": "exp2",
+    "spec": "drake:hydro:rt0.03:hr1",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.689617544978926,
+        "gain": 0.9289296392796602,
+        "cross_lin_mmps": 4.397056177076644,
+        "cross_ang_dps": 34.62203150683571,
+        "slide_rms_mmps": 0.10233079588264662
+      },
+      "v_up": {
+        "rmse_cmd": 11.912425949692617,
+        "gain": 1.0138087177639195,
+        "cross_lin_mmps": 0.7509422525846372,
+        "cross_ang_dps": 40.93082081580348,
+        "slide_rms_mmps": 0.2243629410025336
+      },
+      "v_tool": {
+        "rmse_cmd": 10.268505371603698,
+        "gain": 0.9383327925600575,
+        "cross_lin_mmps": 5.993941170071466,
+        "cross_ang_dps": 20.85349709874231,
+        "slide_rms_mmps": 0.12781033796215882
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.17801142909385,
+        "gain": -0.004310234325424772,
+        "cross_lin_mmps": 0.29334081956737235,
+        "cross_ang_dps": 0.29856531511574225,
+        "slide_rms_mmps": 0.0014300577476105741
+      },
+      "w_up": {
+        "rmse_cmd": 21.579871955799575,
+        "gain": 0.8131844418343652,
+        "cross_lin_mmps": 2.989699975235533,
+        "cross_ang_dps": 15.017827710295375,
+        "slide_rms_mmps": 0.10872640184372835
+      },
+      "w_tool": {
+        "rmse_cmd": 25.085327082769343,
+        "gain": 0.5821771762358607,
+        "cross_lin_mmps": 2.860124051177215,
+        "cross_ang_dps": 11.951301458760817,
+        "slide_rms_mmps": 0.0456215073714869
+      }
+    },
+    "pinch_angle_end_deg": -48.93677977706426,
+    "pinch_angle_max_deg": -49.073470929428154,
+    "rmse_lin_mmps": 7.838212166747171,
+    "rmse_ang_dps": 28.47503658456146,
+    "held_end": true,
+    "wall_s": 599.889173746109,
+    "sim_s": 10.579999999999863,
+    "perf": {
+      "phys": 593.3659817802254,
+      "ctrl": 0.6013854178600013,
+      "sim": 10.579999999999863
+    },
+    "info": {},
+    "label": "Drake hydroelastic 0.03 s",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "timing": {
+      "physics_wall_s": 593.3232826623134,
+      "controller_intervals": 529,
+      "physics_seconds_per_sim_second": 56.07970535560691,
+      "p50_interval_ms": 1243.143392028287,
+      "p95_interval_ms": 1859.8737818421796,
+      "excludes": "model setup, controller, diagnostics, rendering, encoding"
+    },
+    "task_diagnostics": {
+      "slip_proxy_integral_mm": 0.48745716427205754,
+      "tool_roll_positive_deg": 7.7953600000000005,
+      "tool_roll_negative_deg": -6.39114,
+      "pose_and_wrench": "native_state.csv",
+      "retention_success": true
+    },
+    "case": {
+      "id": "roll50_drake_50us",
+      "label": "drake",
+      "spec": "drake:hydro:rt0.03:hr1",
+      "contact_policy": "legacy",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    "elapsed_wall_s": 600.2801489720587,
+    "film": "media/timestep-roll50_drake_50us.mp4",
+    "video_decode_ok": true,
+    "video_decode_error": null
+  }
+]

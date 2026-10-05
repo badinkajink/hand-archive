@@ -1,0 +1,41 @@
+{
+  "git_commit": "26228313a14f839e314698b8a37ba8ed20776ecb",
+  "git_status": "M .gitignore\n M docs/experiments/INDEX.md\n M docs/hardware_control_station.md\n M external/mujoco_warp\n M scripts/README.md\n M scripts/real_v1_tracker_service.py\n M src/morphohand/studies/scene_mutate.py\n?? assets/mjcf/experimental/20260906-ablate/\n?? assets/mjcf/experimental/20260920-cem_filmstrip/\n?? docs/experiments/20260910-karma_metric/20260910-karma_metric_evaluation.html\n?? docs/experiments/20260910-karma_metric/media/\n?? docs/experiments/20260916-plant_budget/\n?? docs/experiments/20260916-plant_pivot/\n?? docs/experiments/20260916-plant_probe/20260916-d6_sq10_corrected.mp4\n?? docs/experiments/20260916-plant_probe/20260916-d6_sq10_corrected_seams.png\n?? docs/experiments/20260916-plant_probe/20260916-d6_sq10_shipped.mp4\n?? docs/experiments/20260916-plant_probe/20260916-d6_sq10_shipped_seams.png\n?? docs/experiments/20260916-plant_reference/\n?? docs/experiments/20260916-plant_relief/\n?? docs/experiments/20260916-plant_squeeze/\n?? docs/experiments/20260920-robust_tranche/r_d1_clip_transfer_variants/\n?? docs/experiments/20260920-robust_tranche/r_d1_clipsep_transfer_cpu_variants/\n?? docs/experiments/20260920-robust_tranche/r_d1_clipsep_transfer_variants/\n?? docs/experiments/20260920-robust_tranche/r_d2_clip_transfer_variants/\n?? docs/experiments/20260920-robust_tranche/r_d3_clip_transfer_variants/\n?? docs/experiments/20260920-robust_tranche/r_d3_clipsep_transfer_cpu_variants/\n?? docs/experiments/20260920-robust_tranche/r_d3_clipsep_transfer_variants/\n?? docs/experiments/20260920-robust_tranche/r_d5_clip_transfer_variants/\n?? docs/experiments/20260920-robust_tranche/r_d5_clipsep_transfer_cpu_variants/\n?? docs/experiments/20260920-robust_tranche/r_d5_clipsep_transfer_variants/\n?? docs/experiments/20260920-robust_tranche/r_d6_clip_transfer_variants/\n?? docs/experiments/20260920-robust_tranche/r_d6_clipsep_transfer_variants/\n?? docs/experiments/20260920-robust_tranche/r_d7_clip_transfer_variants/\n?? docs/experiments/20260926-pinch_brake/\n?? docs/experiments/20261001-drake-port/\n?? docs/experiments/20261004-codex/\n?? scripts/contact_surface/\n?? scripts/distributed_contact.py\n?? scripts/distributed_contact_drake.py\n?? scripts/distributed_contact_dynamics.py\n?? scripts/distributed_contact_gpu.py\n?? scripts/distributed_contact_newton.py\n?? scripts/distributed_contact_page.py\n?? scripts/distributed_contact_pressure.py\n?? scripts/distributed_contact_transfer.py\n?? scripts/drake_sr2_hand.py\n?? scripts/drake_sr2_page.py\n?? scripts/drake_sr2_page.template.html\n?? scripts/drake_sr2_probe.py\n?? scripts/profile_contact_mapping.py\n?? scripts/run_tracker_service.sh\n?? tests/test_distributed_contact.py\n?? tests/test_distributed_contact_dynamics.py\n?? tests/test_distributed_contact_transfer.py\n?? tests/test_tracker_station_token.py",
+  "python": "3.12.2 | packaged by conda-forge | (main, Feb 16 2024, 20:50:58) [GCC 12.3.0]",
+  "executable": "/home/humanoid/Programs/hand/logs/20261004-contact-current/venv/bin/python",
+  "packages": {
+    "mujoco": "3.14.0",
+    "drake": null,
+    "numpy": "2.5.3",
+    "matplotlib": "3.11.2",
+    "mujoco-warp": null,
+    "mjlab": null,
+    "warp-lang": null,
+    "newton": null
+  },
+  "cpu": "Intel(R) Core(TM) Ultra 7 265KF",
+  "device": "CPU",
+  "source_sha256": {
+    "scripts/contact_surface/__init__.py": "322df15f6fcb8ac0b416e5590793d4dfd358e55b07d6a422db2f0d3cf31e08de",
+    "scripts/contact_surface/metrics.py": "b9036113becc1a5d5e3815cefefae6105fcd35de8d494da8068064ab28b06c01",
+    "scripts/contact_surface/fillet.py": "2350beaa039eb62075e5e8048afa0886519d72624ddc34660b4ede5d17145eea",
+    "scripts/contact_surface/mujoco_model.py": "c4f9f97da3a44e98cb6e67ec401c47fd449eff8191f940eb9e9dbfa86771cb91",
+    "scripts/contact_surface/runtime.py": "5da8a9498fe366089116b0093edb7148d22eee29dcc7875121293d32945d637e",
+    "scripts/contact_surface/slip.py": "3aec65e07021d2641ac09a64375b479f3b6575447db554c46e8ea4adb159216d",
+    "scripts/contact_surface/geometry.py": "99c67c251bd2f6b497ceffe9e7fb0dcedcc4b097dd8bfcc7461709df8fccfb20",
+    "scripts/contact_surface/scaling.py": "a1bbe665abeab20a71d3bae4c63378fc182e4a7568554b0b22c0e187bf0e5397",
+    "scripts/contact_surface/records.py": "252a13329720f96dbdb95d47196c0ebff381f75b8ca1af6ce3ffeb99ac209f94",
+    "scripts/distributed_contact.py": "ce35f9751c8c4bd08bf3ee97bb486db83d352a9775dc09769cef1505a834f1b8",
+    "scripts/distributed_contact_dynamics.py": "1c64e3febb2e3a6b2baf801e811d1331d29a489bdf816dfa60fd59e23456ced8",
+    "scripts/distributed_contact_transfer.py": "4e12abfaadddc253725147f5ab9489230c7dcdc829d781c3de72272b85e3b6a8",
+    "scripts/distributed_contact_gpu.py": "b03030dffa3f75fb6276dc3c79d7cef32f3dc77adf92624061a73749d6c66b21",
+    "scripts/distributed_contact_newton.py": "8a3b80918fe6d22bc8a565e015784f1181fca0780f4a993b2b6dca11ee4e77aa",
+    "scripts/distributed_contact_drake.py": "18f8214eb5a5265d269dd9d71f5d08442348241e3972b90bc8596c56b4824410",
+    "scripts/distributed_contact_pressure.py": "4aa401bc12833e8217a739656a040f3513066f298d7f7f81dbfd6123029c7dcc",
+    "scripts/profile_contact_mapping.py": "afd08f5eb5fa3bb94bd15124bb2a200c62d39724cf8070486ad9e337b4d262d4",
+    "scripts/hom_chain.py": "d02d872108b380d3ace9b619aadc84c69963790ca853f58182578bf02b242344",
+    "scripts/hom_control.py": "17438ef0ee87ce56ef9f553977f1ce81b23c26d9a4becf702a84f4accce0a272",
+    "scripts/hom_contact_rig.py": "467c08fbeef3729f0886881fe5ec14c50c578ed400ccef9e10809c03f17be563",
+    "scripts/hom_hand_brake.py": "c01b4f7fa9d7f20fc1521ccdf9093f1603dcfee9731080462eba927e7eaaaa5a"
+  }
+}

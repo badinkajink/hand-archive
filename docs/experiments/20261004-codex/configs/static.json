@@ -1,0 +1,64 @@
+{
+  "relaxation_by_spacing": {
+    "0.5": 0.03
+  },
+  "groups": [
+    {
+      "name": "core_load",
+      "grid": {
+        "geometry": [
+          "plane",
+          "cylinder"
+        ],
+        "spacing_mm": [
+          2.0,
+          1.0,
+          0.5
+        ],
+        "load": [
+          0.25,
+          0.5,
+          1.0,
+          2.0,
+          3.0,
+          5.0
+        ],
+        "phase_degrees": [
+          0.0,
+          30.0,
+          60.0
+        ]
+      }
+    },
+    {
+      "name": "core_displacement",
+      "fixed": {
+        "mode": "displacement"
+      },
+      "grid": {
+        "geometry": [
+          "plane",
+          "cylinder"
+        ],
+        "spacing_mm": [
+          2.0,
+          1.0,
+          0.5
+        ],
+        "indentation_mm": [
+          0.05,
+          0.1,
+          0.15,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "phase_degrees": [
+          0.0,
+          30.0,
+          60.0
+        ]
+      }
+    }
+  ]
+}

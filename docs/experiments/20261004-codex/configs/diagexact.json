@@ -1,0 +1,104 @@
+{
+  "defaults": {
+    "engine_version": "3.14.0",
+    "duration": 1.0
+  },
+  "groups": [
+    {
+      "name": "frozen_approx",
+      "fixed": {
+        "mapping_policy": "frozen",
+        "diagexact": false
+      },
+      "grid": {
+        "geometry": [
+          "plane",
+          "cylinder"
+        ],
+        "mass_scale": [
+          0.25,
+          0.5,
+          1.0,
+          2.0,
+          4.0
+        ],
+        "mode": [
+          "displacement",
+          "load"
+        ]
+      }
+    },
+    {
+      "name": "frozen_exact",
+      "fixed": {
+        "mapping_policy": "frozen",
+        "diagexact": true
+      },
+      "grid": {
+        "geometry": [
+          "plane",
+          "cylinder"
+        ],
+        "mass_scale": [
+          0.25,
+          0.5,
+          1.0,
+          2.0,
+          4.0
+        ],
+        "mode": [
+          "displacement",
+          "load"
+        ]
+      }
+    },
+    {
+      "name": "compensated_approx",
+      "fixed": {
+        "mapping_policy": "lambda_compensated_direct",
+        "diagexact": false
+      },
+      "grid": {
+        "geometry": [
+          "plane",
+          "cylinder"
+        ],
+        "mass_scale": [
+          0.25,
+          0.5,
+          1.0,
+          2.0,
+          4.0
+        ],
+        "mode": [
+          "displacement",
+          "load"
+        ]
+      }
+    },
+    {
+      "name": "runtime_exact",
+      "fixed": {
+        "mapping_policy": "runtime_selected_direct",
+        "diagexact": true
+      },
+      "grid": {
+        "geometry": [
+          "plane",
+          "cylinder"
+        ],
+        "mass_scale": [
+          0.25,
+          0.5,
+          1.0,
+          2.0,
+          4.0
+        ],
+        "mode": [
+          "displacement",
+          "load"
+        ]
+      }
+    }
+  ]
+}

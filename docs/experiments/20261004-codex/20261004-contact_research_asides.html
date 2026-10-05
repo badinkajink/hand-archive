@@ -1,0 +1,341 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><title>Contact research asides: priors, coupling and reduced skin</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>
+/* House layout of the MorphoHand result pages: one reading column, figures and tables break out to 1020px.
+   Series colours: Drake hydroelastic blue, MuJoCo sphere pads orange, MuJoCo condim 4 green (dashed),
+   analytic and quasi-static references grey dashed; validated for CVD in both themes. */
+:root{
+  --paper:#EEF1F4; --card:#FFFFFF; --sunk:#E4E9EE;
+  --ink:#1A2127; --ink2:#48545D; --ink3:#77848D; --rule:#D2DAE1; --rule2:#E2E8ED;
+  --s1:#BE7514; --s2:#4A7FC4; --s3:#5E8F5A; --ref:#8A959D;
+  --good:#3F7A46; --bad:#A8443C;
+  --c-drake:#4A7FC4; --c-sphere:#BE7514; --c-c4:#25875A; --c-ref:#8A959D;
+  --shadow:0 1px 2px rgba(16,26,34,.06),0 8px 24px -14px rgba(16,26,34,.28);
+  --f-display:Archivo,"Helvetica Neue",Arial,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#12171B; --card:#1A2026; --sunk:#161C21;
+  --ink:#E5EBF0; --ink2:#A8B4BD; --ink3:#7B8791; --rule:#2A333A; --rule2:#222A30;
+  --s1:#E39A2E; --s2:#7BA7E0; --s3:#8AC286; --ref:#79858E; --good:#6FB076; --bad:#DE8078;
+  --c-drake:#6496DD; --c-sphere:#C47D1C; --c-c4:#3AA56E; --c-ref:#79858E;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -16px rgba(0,0,0,.8);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#12171B; --card:#1A2026; --sunk:#161C21;
+  --ink:#E5EBF0; --ink2:#A8B4BD; --ink3:#7B8791; --rule:#2A333A; --rule2:#222A30;
+  --s1:#E39A2E; --s2:#7BA7E0; --s3:#8AC286; --ref:#79858E; --good:#6FB076; --bad:#DE8078;
+  --c-drake:#6496DD; --c-sphere:#C47D1C; --c-c4:#3AA56E; --c-ref:#79858E;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -16px rgba(0,0,0,.8);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.62 var(--f-body);
+  -webkit-font-smoothing:antialiased;padding-inline:20px;padding-block:0 96px;margin:0}
+.wrap{max-width:1020px;margin:0 auto}
+.col{max-width:70ch}
+h1,h2,h3,.tag,th{font-family:var(--f-display)}
+.mono,code,td.num,.note,pre{font-family:var(--f-mono)}
+header{padding:64px 0 30px;border-bottom:1px solid var(--rule)}
+.eyebrow{font:500 12px/1.4 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+h1{font-size:clamp(28px,4.4vw,44px);line-height:1.08;font-weight:700;letter-spacing:-.022em;
+  margin:16px 0 0;text-wrap:balance;max-width:26ch}
+.lede{font-size:19px;line-height:1.58;color:var(--ink2);margin:18px 0 0;max-width:66ch}
+.byline{margin-top:22px;font:400 13px/1.55 var(--f-mono);color:var(--ink3);max-width:96ch}
+section{padding:46px 0;border-bottom:1px solid var(--rule2)}
+section:last-of-type{border-bottom:0}
+h2{font-size:26px;font-weight:700;letter-spacing:-.018em;margin:0 0 6px;text-wrap:balance}
+h3{font-size:18px;font-weight:600;letter-spacing:-.008em;margin:34px 0 8px}
+h2 + .sub{color:var(--ink3);font:400 14px/1.5 var(--f-mono);margin:0 0 24px}
+p{margin:0 0 17px}
+strong{font-weight:600}
+ul,ol{margin:0 0 17px;padding-left:20px}
+li{margin:0 0 8px}
+figure{margin:28px 0}
+figure video,figure img{display:block;width:100%;max-width:100%;height:auto;border-radius:10px;background:var(--sunk);box-shadow:var(--shadow)}
+figcaption{margin-top:11px;font:400 14px/1.55 var(--f-mono);color:var(--ink3);max-width:86ch}
+.col > .tw,.col > figure,.col > .duo{width:min(1020px,calc(100vw - 40px));max-width:none}
+.col > figure.narrow{width:min(780px,calc(100vw - 40px))}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0}
+.duo > *{min-width:0}
+@media (max-width:760px){.duo{grid-template-columns:1fr}}
+.duo figure{margin:0}
+.tw{overflow-x:auto;margin:24px 0;border:1px solid var(--rule);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th{font:600 12px/1.3 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);
+  text-align:left;padding:13px 14px;border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--rule2);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-size:13.5px;white-space:nowrap}
+td.cell{text-align:center;font-family:var(--f-mono);font-size:13px;font-weight:500;white-space:nowrap}
+td.c4{background:color-mix(in oklab,var(--good) 28%,var(--card));color:var(--ink)}
+td.c3{background:color-mix(in oklab,var(--good) 14%,var(--card))}
+td.c2{background:color-mix(in oklab,var(--s1) 16%,var(--card))}
+td.c0{background:color-mix(in oklab,var(--bad) 20%,var(--card));color:var(--ink2)}
+tr.grp td{background:var(--sunk);font:600 12px/1.3 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.key{display:inline-block;width:18px;height:0;border-top:2.5px solid;vertical-align:middle;margin-right:7px}
+.key.dash{border-top-style:dashed}
+.keep{border:1px solid var(--rule);border-left:3px solid var(--s2);border-radius:10px;
+  padding:20px 24px;margin:28px 0;background:var(--card)}
+.keep .tag{display:block;font:700 12px/1 var(--f-display);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--s2);margin-bottom:11px}
+.keep p:last-child,.keep ul:last-child{margin-bottom:0}
+pre{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;
+  overflow-x:auto;font-size:13px;line-height:1.6;margin:22px 0}
+code{font-size:.9em;background:var(--sunk);padding:1px 4px;border-radius:4px;margin:0 -1px}
+footer{padding:40px 0 0;color:var(--ink3);font:400 13.5px/1.7 var(--f-mono)}
+footer a,.col a{color:var(--s2)}
+a:focus-visible{outline:2px solid var(--s2);outline-offset:2px;border-radius:2px}
+/* charts */
+.chart{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 12px 8px}
+.chart h4{font:600 14px/1.35 var(--f-display);margin:2px 6px 2px;color:var(--ink)}
+.chart .unit{font:400 12.5px/1.4 var(--f-mono);color:var(--ink3);margin:0 6px 6px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y}
+.chart .legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:6px 6px 4px;font:400 12.5px/1.4 var(--f-mono);color:var(--ink2)}
+.chart .gl{stroke:var(--rule2);stroke-width:1}
+.chart .ax{stroke:var(--rule);stroke-width:1}
+.chart .tk{fill:var(--ink3);font:400 12px var(--f-mono)}
+.chart .lb{fill:var(--ink2);font:500 12px var(--f-mono)}
+.chart .at{fill:var(--ink3);font:400 12px var(--f-mono)}
+.chart .ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.chart .mk{stroke:var(--card);stroke-width:2}
+.chart .xh{stroke:var(--ink3);stroke-width:1;opacity:0}
+.chart .tip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--rule);border-radius:8px;
+  padding:8px 10px;font:400 12px/1.5 var(--f-mono);color:var(--ink);box-shadow:var(--shadow);opacity:0;
+  transition:opacity .08s;white-space:nowrap;z-index:2}
+.chart .tip b{font-weight:500}
+.chart .tip i{display:inline-block;width:10px;height:3px;margin-right:6px;vertical-align:middle;font-style:normal}
+@media (prefers-reduced-motion: reduce){.chart .tip{transition:none}}
+
+    .col{max-width:74ch} .toc a{display:inline-block;margin:3px 12px 3px 0}
+    a{color:var(--s2)} details{margin:20px 0} summary{cursor:pointer;font-family:var(--f-display)}
+    p code,li code,a{overflow-wrap:anywhere}
+    blockquote{border-left:3px solid var(--s1);padding-left:20px;margin:20px 0;color:var(--ink2)}
+    img{max-width:100%} @media print{body{background:white;color:black;padding:0} details{display:block}}
+    @media(max-width:760px){.col > .tw,.col > figure,.col > .duo{width:100%;max-width:100%}}
+    </style></head><body><main class="wrap"><header>
+    <div class="eyebrow">MorphoHand · SR2 contact mechanics · 4 October 2026</div>
+    <h1>Contact research asides: priors, coupling and reduced skin</h1><p class="lede">DeliGrasp, the Delassus operator, printed TPU mechanics and a task-level timestep benchmark.</p><div class="byline">Backlog · hypotheses, not experimental conclusions · user-provided discussion</div></header>
+    <section id="catalogue"><div class="col"><h2>Research backlog and provenance</h2>
+    <p>These are user-supplied ChatGPT discussions, checked against primary sources and the local results.
+    The reduced-skin model remains a proposal. The 20 ms controller benchmark now has a
+    <a href="20261004-controller_timestep.html">separate live batch report</a>; pending cases are explicit.</p>
+    <nav class="toc" aria-label="Research notes">
+    <a href="#deligrasp">DeliGrasp</a><a href="#delassus">Delassus operator</a>
+    <a href="#coupled-skin">Lateral coupling / friction</a><a href="#skin-solve">Reduced skin solve</a>
+    <a href="#skin-identification">Printed TPU identification</a>
+    <a href="#timestep-benchmark">20 ms controller benchmark</a><a href="#priority">Priorities</a></nav>
+    <p>Original October 4 commentary: <a href="data/chatgpt_lateral_coupling_guidance.txt">attached
+    lateral-coupling / tangential-friction discussion</a> and
+    <a href="data/chatgpt_control_timestep_guidance.txt">controller / physics timestep proposal</a>.
+    The archives preserve the supplied claims; the qualifications below govern their interpretation.</p>
+    </div></section><section id="deligrasp"><div class="col"><h2>DeliGrasp: physical priors, then analytic translation</h2>
+    <p><strong>Status: speculative backlog note, not an implemented controller or measured result.</strong>
+    The proposed connection is to use language/vision for rough physical priors, then use mechanics to obtain
+    simulator parameters. The user's assessment was “seems too far fetched but worth cataloguing.”</p>
+    <p><a href="https://arxiv.org/abs/2403.07832">DeliGrasp: Inferring Object Properties with LLMs for Adaptive
+    Grasp Policies</a> (Xie, Valentini, Lavering and Correll) estimates mass, friction and a spring constant from
+    semantic object descriptions and uses those estimates in an adaptive grasp policy based on mechanics.
+    Its experiments concern a two-finger gripper and delicate everyday objects. This does not demonstrate
+    fingertip quadrature calibration, inertia identification or MuJoCo parameter prediction.</p>
+    <p><strong>Proposed extension, inferred from that structure:</strong></p>
+    <pre>image / semantics + geometry
+  → priors over mass, density, friction, modulus, hollow/solid construction
+  → estimated COM and full inertia tensor
+  → current constraint-space inverse inertia from the simulator
+  → analytic contact-parameter translation</pre>
+    <p>The language/vision model would predict physical priors with uncertainty, rather than numerical
+    <code>solref/solimp</code>. Object mass and inertia belong to the object model; fingertip modulus belongs to
+    the pad model, and friction belongs to the material pair. A semantic object spring constant is not directly
+    a fingertip Young's modulus. Geometry, material distribution and hollow construction all matter to inertia.</p>
+    <p>A possible refinement is <em>semantic prior → grasp/lift probe → mass estimate → small rotational
+    excitation → COM/inertia refinement</em>. The suggested 1–2 s interaction budget is a hypothesis, not an
+    established identification result. Mass, COM and all inertia components may not be observable from one
+    grasp and one rotation; appropriate excitation and sensing would have to be demonstrated.</p>
+    <p><a href="https://arxiv.org/abs/2310.09893">Adaptive Contact-Implicit Model Predictive Control with Online
+    Residual Learning</a> (Huang, Aydinoglu, Jin and Posa) provides a related prior-plus-online-adaptation
+    pattern: it learns a residual of a hybrid contact model while controlling unknown objects. This is
+    supporting context, not evidence that the proposed semantic-to-inertia pipeline will work.</p>
+    <p>The measured contact audit supplies the qualification: knowing inertia and restoring coefficients at
+    rest does not guarantee independent spring forces during motion. A possible engineering target is an
+    <em>inertia-conditioned MuJoCo surrogate</em> with control equivalence over a declared range of masses,
+    loads, accelerations and slip speeds. That requires held-out control trials and comparison against a
+    physics-only or probe-only baseline; it is not recovered material identification.</p>
+    </div></section><section id="delassus"><div class="col"><h2>Sathya's matrix-free Delassus operator</h2>
+    <p>The user confirmed the intended paper as <a href="https://www.ajaysathya.com/assets/pdf/26_matrix-free_delassus.pdf">
+    Matrix-Free Delassus Operations: Scalable and Memory-Efficient Algorithms</a> by Ajay Suresha Sathya,
+    Louis Montaut, Yann de Mont-Marin and Justin Carpentier. It computes products with the Delassus operator
+    and its regularized inverse using articulated dynamics, avoiding explicit matrix construction.</p>
+    <p>The mathematical connection is direct: the operator is the same J M⁻¹ Jᵀ that the contact audit logs.
+    The proposed benefit is efficient computation and diagnosis of dense-contact coupling, not a different
+    constitutive law. Efficiently applying an operator does not remove physical off-diagonal coupling or
+    make MuJoCo's frictional contact objective equivalent to independent Winkler springs.</p>
+    <div class="tw"><table><thead><tr><th>Notation</th><th>Meaning</th><th>Do not confuse with</th></tr></thead><tbody><tr><td>A = J M⁻¹ Jᵀ</td><td>Delassus / inverse constraint-space inertia</td><td>A material stiffness matrix</td></tr><tr><td>Λᵢ in this audit</td><td>Scalar diagonal used for normal impedance translation</td><td>The paper&#x27;s full operational-space inertia Λ</td></tr><tr><td>Λ⁻¹ in Sathya&#x27;s paper</td><td>The full Delassus operator</td><td>Only its diagonal</td></tr><tr><td>MuJoCo R</td><td>Additive regularizer in A + R</td><td>The paper&#x27;s R convention: its regularized operator uses A + R⁻¹</td></tr></tbody></table></div>
+    <p><strong>Proposed uses:</strong> matrix-vector products A x = J[M⁻¹(Jᵀx)] for coupled-contact diagnostics;
+    an efficient linear algebra component if a future solver needs it; and comparisons of full versus
+    reduced patches that preserve resultant wrench but may alter local force modes. Exact diagonal entries
+    can be probed without storing A, but all diagonals generally require multiple queries or a dedicated
+    diagonal algorithm; one operator product is not automatically a complete diagonal.</p>
+    <p>Our six-DOF audit already exploits a small mass matrix for its reference calculation and saves full
+    normal blocks only at five snapshots. A production articulated-hand implementation would need a
+    scaling benchmark before replacing native MuJoCo routines. The paper's damped-inverse computational
+    advantage does not, by itself, solve unilateral contact, Coulomb friction or quadrature fidelity.</p>
+    <p>Related earlier work: <a href="https://arxiv.org/abs/2310.03676">PV-OSIMr: A Lowest Order Complexity
+    Algorithm for Computing the Delassus Matrix</a> (Sathya, Decré and Swevers), which explicitly constructs
+    the matrix efficiently for kinematic trees. It is a separate result from the matrix-free paper.</p>
+    </div></section><section id="coupled-skin"><div class="col"><h2>Lateral material coupling and tangential friction</h2>
+    <p><strong>Proposal:</strong> represent the known fingertip as a deformable surface with local normal
+    compliance, lateral load spreading and elastic shear before slip. Sphere samples, a triangular mesh,
+    a surface grid or tactile locations could discretize the same idea. Material coupling is distinct
+    from rigid-body coupling through the Delassus operator: changing inverse-inertia scaling does not
+    introduce a deforming skin or a tangential displacement history.</p>
+    <p>Two effects need separate identification: indentation at one location displaces neighboring material;
+    tangential motion stores shear before interfacial sliding. Our rigidly attached native MuJoCo samples
+    have no explicit skin displacement state. MuJoCo's friction constraints do not supply an elastic
+    tangential spring merely by changing <code>solref</code>:
+    <a href="https://mujoco.readthedocs.io/en/3.14.0/modeling.html#friction">the documented friction law
+    is first order, with zero stiffness</a>.</p>
+    <p><strong>Correction to the commentary's model hierarchy:</strong>
+    <a href="https://arxiv.org/html/2608.00263v1">Compliant Sphere Lattice Contact (CSLC)</a> already solves
+    a quasistatic equilibrium using warm-started damped Jacobi iterations. It has three-dimensional
+    displacement, anchor springs and lateral springs. Its presliding friction saturates smoothly;
+    the authors explicitly describe it as tangentially stateless and exclude kinetic sliding dynamics.
+    Thus CSLC is relevant prior art, but does not establish the proposed rolling shear-history model.
+    An explicitly integrated stiff lattice is a possible implementation, not an inherent CSLC requirement.</p>
+    <p><a href="https://drake.mit.edu/doxygen_cxx/group__hydroelastic__user__guide.html">Drake's hydroelastic
+    guide</a> explicitly excludes true deformation and tangential compliance. Its pressure patch remains
+    a useful task comparator. Our tested Newton hydroelastic path also needs qualification: contact
+    reduction affected the torsional envelope, and its dynamic readiness gate remains unresolved; see
+    the <a href="20261004-articulated_contact_transfer.html">articulated report</a> and
+    <a href="20261004-contact_videos.html">native-state videos</a>. This is not a claim about every Newton
+    solver, nor evidence that any simulator is hardware ground truth.</p>
+    </div></section><section id="skin-solve"><div class="col"><h2>A reduced surface law and the solve it still needs</h2>
+    <p><strong>Constitutive sketch, not runnable equations:</strong> a Winkler/Pasternak-like extension
+    adds a surface coupling operator, while a brush-like shear state stores preslip displacement.
+    In a locally planar basis, one candidate elastic energy and trial resistance are:</p>
+    <pre>Hₙ = Kₙ + αₙ Lₙ                  Hₜ = Kₜ + αₜ Lₜ
+E = ½ δₙᵀ Hₙ δₙ + ½ ξᵀ Hₜ ξ
+rₙ = Hₙ δₙ + Cₙ δ̇ₙ              fₜ,trial = −Hₜ ξ − Cₜ vₜ
+fₙ ≥ 0                            ‖fₜ,ᵢ‖ ≤ μᵢ fₙ,ᵢ</pre>
+    <p>Here δₙ is skin compression, ξ is elastic tangential displacement, and rₙ is the internal normal
+    resistance to balance against contact. It is not automatically the admissible normal contact force.
+    Use positive-semidefinite elastic and damping operators with consistent area and spacing weights;
+    refinement must preserve the physical pad stiffness and coupling length. On a curved fingertip,
+    neighboring tangent vectors need a consistent transport rule before applying Lₜ.</p>
+    <p>A solver must also close the gap/deformation relation, enforce unilateral separation, evolve ξ
+    through stick and slip, and handle material entering or leaving a migrating patch. Friction opposes
+    sliding; equality at the Coulomb boundary alone does not specify its direction or history update.
+    A coupled return mapping or equivalent constrained solve is needed: independently clipping the
+    trial force at every node does not generally solve the laterally coupled problem. A smooth friction
+    approximation is a separate modeling choice to validate for creep and energy dissipation.</p>
+    <p>The <a href="https://arxiv.org/abs/2601.06811">rolling-contact brush-model literature</a> motivates
+    carrying distributed shear through a moving patch. Applying that idea to a printed fingertip is
+    a research extension, not a demonstrated equivalence to a tire or to calibrated TPU mechanics.</p>
+    <p><strong>Proposed computational route:</strong> eliminate fast elastic inertia by an implicit or
+    quasistatic skin solve, while retaining object dynamics, patch migration and the shear/viscoelastic
+    history that affects control. The supplied 5–50 kHz cell-mode range is an unverified illustration,
+    not a measured property of our print. Fixed topology can permit reuse of the linear elastic
+    operator; changing active contacts and friction still require a state-dependent solve. Sparse GPU
+    iterations and a modal basis δ ≈ Φz with 10–30 modes are candidates, not established speedups.</p>
+    <p>Implicit stability does not establish accuracy at 10–20 ms. A skin solve followed by a lagged force
+    applied to rigid-body dynamics can itself be unstable; joint solving, coupling iterations or another
+    justified interface treatment must be evaluated. Subcycling only the skin is not sufficient evidence
+    of stable hand–object coupling. Benchmark convergence, energy behavior and wall time together.</p>
+    </div></section><section id="skin-identification"><div class="col"><h2>Identify the printed TPU, then choose the reduction</h2>
+    <p><a href="https://arxiv.org/abs/2506.09994">eFlesh</a> uses cut-cell microstructures to tune geometry
+    and mechanical response. This supports investigating hardware/model co-design; it does not validate
+    the contact law above. Gyroid infill being approximately isotropic or Winkler-like for this particular
+    print remains unverified. Cell size, walls, print direction, boundaries and loading rate can matter.</p>
+    <p>Suggested offline programme: measure indentation influence functions at several locations and
+    loads; measure preslip shear and torsional response at fixed normal loads; then measure unloading,
+    rate dependence and hysteresis. Calibrated cell-scale FEM can supplement hardware measurements.
+    Extract normal/tangential stiffness, spatial coupling and damping/friction laws, with uncertainty,
+    and reserve different loads, speeds and contact paths for validation.</p>
+    <p>The suggested decay u(r) ∼ exp(−r/ℓ) is a fitting hypothesis, not a universal elastic Green's
+    function. Likewise ℓ/r<sub>patch</sub> is a useful heuristic: short influence lengths motivate local
+    foundations, patch-sized influence motivates coupled surfaces, and broad influence motivates global
+    modes. Neither proves a particular reduction adequate. Compare measured influence and task errors
+    across mesh resolutions before choosing parameters or mode counts.</p>
+    <p>The hardware opportunity is to design predictable normal response, lateral coupling, shear and
+    hysteresis that admit a cheap model and useful tactile observations. Keep spherical fingertips as
+    the baseline; any rectangular-tip validation uses the actual <strong>6 mm fillet</strong>. The
+    obsolete sharp box is not the hardware geometry. Online MPC latency and batched RL throughput
+    need separate measurements; neither follows from having a small constitutive model.</p>
+    </div></section><section id="timestep-benchmark"><div class="col"><h2>Proposed benchmark: 20 ms control, variable physics step</h2>
+    <p><strong>Status: nominal sweep launched after this note was catalogued.</strong>
+    The <a href="20261004-controller_timestep.html">live report</a> tracks 42 cases, videos and failures;
+    broader perturbations and high-rate wrench convergence remain future work. Use the existing Sunyu Wang-inspired rolling task
+    with a fixed 20 ms controller (50 Hz), and sweep the internal step as requested. This is our existing
+    task adaptation, not a claim to reproduce the paper's exact apparatus or controller.</p>
+    <div class="tw"><table><thead><tr><th>Physics step</th><th>Physics advances per 20 ms controller interval</th></tr></thead><tbody><tr><td>50 µs</td><td>400</td></tr><tr><td>0.5 ms</td><td>40</td></tr><tr><td>1 ms</td><td>20</td></tr><tr><td>2 ms</td><td>10</td></tr><tr><td>5 ms</td><td>4</td></tr><tr><td>10 ms</td><td>2</td></tr></tbody></table></div>
+    <p><strong>Existing evidence changes the starting point:</strong> the
+    <a href="20261004-task_contact_benchmark.html">task report</a> already tests 100/500 Hz control,
+    with legacy 1 mm MuJoCo spheres working at a 1 ms physics step on the nominal task. At 500 Hz,
+    tool-axis rolling gain was 0.601 for legacy MuJoCo versus 0.571 for Drake, with sliding-speed RMS
+    0.047 versus 0.046 mm/s. These are nominal runs, not robustness or hardware validation.
+    The physical stiffness mapping is a separate variant with poorer task results. The
+    <a href="data/task_chain_results.json">existing task record</a> and
+    <a href="data/task_diagexact_results.json">MuJoCo 3.14 diagexact ablation</a> do not contain the
+    proposed 50 Hz sweep, 5 ms or 10 ms physics trials.</p>
+    <div class="tw"><table><thead><tr><th>Model</th><th>10–20 ms direct physics</th><th>1 ms physics + 10–20 ms control</th></tr></thead><tbody><tr><td>Native MuJoCo spheres</td><td>Unmeasured; evaluate legacy and mapped variants separately</td><td>Legacy nominal task at 10 ms control demonstrated; 20 ms control pending</td></tr><tr><td>Drake hydroelastic</td><td>Unmeasured; no accuracy guarantee</td><td>Nominal task at 10 ms control demonstrated; 20 ms control pending</td></tr><tr><td>Newton hydroelastic</td><td>Unknown in our task</td><td>Requires reproducible preload / rolling readiness first</td></tr><tr><td>Explicit stiff lattice</td><td>Stiffness may restrict stability; not tested</td><td>Depends on integration and stiffness; not tested</td></tr><tr><td>Implicit / quasistatic reduced skin</td><td>Research hypothesis; stability is insufficient</td><td>Promising hypothesis, no implementation or timing yet</td></tr></tbody></table></div>
+    <p>The supplied hierarchy is preserved in the source archive. Its optimistic reduced-skin timing
+    and pessimistic native-sphere timing are predictions, not measured rankings. The requested sweep
+    stops at 10 ms physics; a direct 20 ms step would be a separately declared extension.</p>
+    <ol>
+    <li><strong>Hold the task fixed.</strong> Use the same geometry, mass/inertia, initial state, command
+    trajectory, friction target, grip strategy and actuator limits. Hold control between 20 ms updates;
+    do not retune gains per timestep in the primary comparison. Keep sphere resolution fixed in this
+    sweep; later resolution trials preserve area, pad stiffness and normal load rather than adding
+    unnormalized friction capacity. Retain the full pickup/rolling trial; any common-preload-state
+    diagnostic must be separately labeled.</li>
+    <li><strong>Separate model choices.</strong> Compare legacy spheres, fixed physical mapping and runtime
+    mapping as distinct variants, with diagexact off/on under the same current MuJoCo version where
+    supported. Compare Drake hydroelastic at the same controller period and steps. Record engine version,
+    integrator, solver tolerance/iterations, friction dimensions and actual timestep. Newton joins after
+    its readiness gate passes; an unavailable comparison is not a failed rolling result.</li>
+    <li><strong>Check what a timestep changes.</strong> With positive solref and refsafe enabled,
+    <a href="https://mujoco.readthedocs.io/en/3.14.0/modeling.html#solver-parameters">MuJoCo clamps the
+    time constant to at least twice the physics step</a>. A nominal 15 ms time constant becomes 20 ms
+    at a 10 ms step, changing the effective law despite unchanged XML. Log effective coefficients and
+    active clamps; do not silently disable safeguards or retune materials. Report backend stabilization
+    and regularization changes alongside the task metrics.</li>
+    <li><strong>Judge task behavior.</strong> Record roll angle/gain, accumulated interfacial slip distance
+    and slip speed, object position/orientation, contact wrench in a common frame, retention and task
+    success. Aggregate wrench consistently over controller intervals. Compare each backend with its own
+    converged finer-step reference, then compare backends; Drake agreement alone is not physical truth.
+    Declare task-error tolerances and success criteria before running, then perturb preload, mass,
+    command speed and contact phase to test robustness. Local force-law error stays diagnostic.</li>
+    <li><strong>Measure cost and show motion.</strong> Report physics wall time per simulated second,
+    median/p95 controller-interval cost and MPC rollout throughput; separate initialization, compilation
+    and rendering. Report GPU batch size and steady-state throughput separately. Save synchronized
+    native-state videos for all outcomes, including slip, drops and numerical failures, with timestep,
+    controller rate and simulation time visible.</li>
+    </ol>
+    <p><strong>Decision rule:</strong> choose the coarsest step meeting the predeclared task and cost
+    tolerances. If a required model only works at 50–100 µs and exceeds the rollout budget, prioritize
+    the reduced skin. Failure of the mapped variant alone is not a reason to abandon the already-working
+    legacy baseline. A 50–100 Hz controller is an operating target; whether each interval can afford the
+    required contact solves remains an empirical question.</p>
+    </div></section><section id="priority"><div class="col"><h2>When to revisit</h2>
+    <p>The next proposed discriminator is task accuracy versus computational cost at a fixed controller
+    period, before committing to a new contact model. A reduced skin becomes attractive if measured
+    shear memory or lateral deformation matters to the task and the existing backends cannot reproduce
+    it within the rollout budget. Revisit semantic
+    priors if physical probing is limited or object initialization becomes a demonstrated bottleneck.
+    Revisit the matrix-free implementation if articulated dense-contact operator construction dominates
+    runtime or memory. Neither aside changes the current fingertip material parameters or controller.</p>
+    <p><a href="20261004-distributed_contact.html#dynamic">Measured runtime-inertia and controlled-slip results</a>
+    are the prerequisite evidence. The <a href="20261004-articulated_contact_transfer.html">articulated
+    torsion, holding and CPU/GPU follow-up</a> now separates physical stiffness mapping, exact diagonals,
+    finite tangential creep and backend cost. Its CPU profile does not construct a dense Delassus matrix
+    in the timed loop; matrix-free work is not yet demonstrated as the dominant bottleneck.
+    The archived <a href="data/chatgpt_inertia_mapping_guidance.txt">inertia mapping discussion</a> and
+    <a href="data/chatgpt_speed_fidelity_guidance.txt">speed/fidelity discussion</a> are interpreted in that report.</p>
+    </div></section><footer>Generated by <code>scripts/distributed_contact_page.py</code> from the source DOCX and run manifests.
+    <a href="../INDEX.md">Experiment index</a> · <a href="20261004-distributed_contact.html">Measured results</a> ·
+    <a href="20261004-articulated_contact_transfer.html">Articulated torsion / GPU follow-up</a> ·
+    <a href="20261004-task_contact_benchmark.html">Robot tasks / sliding geometry</a> ·
+    <a href="20261004-contact_videos.html">Video gallery</a> ·
+    <a href="20261004-distributed_contact_spec.html">Original specification</a></footer></main></body></html>

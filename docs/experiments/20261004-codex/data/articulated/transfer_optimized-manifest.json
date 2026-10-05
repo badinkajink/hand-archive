@@ -1,0 +1,22 @@
+[
+  {
+    "run_id": "optimized_s1",
+    "config": {
+      "policy": "runtime",
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "torque_peak": 0.012,
+      "spacing_mm": 1.0
+    }
+  },
+  {
+    "run_id": "optimized_s05",
+    "config": {
+      "policy": "runtime",
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "torque_peak": 0.012,
+      "spacing_mm": 0.5
+    }
+  }
+]

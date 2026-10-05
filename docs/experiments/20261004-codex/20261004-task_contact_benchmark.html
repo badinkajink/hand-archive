@@ -1,0 +1,230 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><title>Contact models on robot tasks and sliding geometry</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>
+/* House layout of the MorphoHand result pages: one reading column, figures and tables break out to 1020px.
+   Series colours: Drake hydroelastic blue, MuJoCo sphere pads orange, MuJoCo condim 4 green (dashed),
+   analytic and quasi-static references grey dashed; validated for CVD in both themes. */
+:root{
+  --paper:#EEF1F4; --card:#FFFFFF; --sunk:#E4E9EE;
+  --ink:#1A2127; --ink2:#48545D; --ink3:#77848D; --rule:#D2DAE1; --rule2:#E2E8ED;
+  --s1:#BE7514; --s2:#4A7FC4; --s3:#5E8F5A; --ref:#8A959D;
+  --good:#3F7A46; --bad:#A8443C;
+  --c-drake:#4A7FC4; --c-sphere:#BE7514; --c-c4:#25875A; --c-ref:#8A959D;
+  --shadow:0 1px 2px rgba(16,26,34,.06),0 8px 24px -14px rgba(16,26,34,.28);
+  --f-display:Archivo,"Helvetica Neue",Arial,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#12171B; --card:#1A2026; --sunk:#161C21;
+  --ink:#E5EBF0; --ink2:#A8B4BD; --ink3:#7B8791; --rule:#2A333A; --rule2:#222A30;
+  --s1:#E39A2E; --s2:#7BA7E0; --s3:#8AC286; --ref:#79858E; --good:#6FB076; --bad:#DE8078;
+  --c-drake:#6496DD; --c-sphere:#C47D1C; --c-c4:#3AA56E; --c-ref:#79858E;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -16px rgba(0,0,0,.8);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#12171B; --card:#1A2026; --sunk:#161C21;
+  --ink:#E5EBF0; --ink2:#A8B4BD; --ink3:#7B8791; --rule:#2A333A; --rule2:#222A30;
+  --s1:#E39A2E; --s2:#7BA7E0; --s3:#8AC286; --ref:#79858E; --good:#6FB076; --bad:#DE8078;
+  --c-drake:#6496DD; --c-sphere:#C47D1C; --c-c4:#3AA56E; --c-ref:#79858E;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -16px rgba(0,0,0,.8);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.62 var(--f-body);
+  -webkit-font-smoothing:antialiased;padding-inline:20px;padding-block:0 96px;margin:0}
+.wrap{max-width:1020px;margin:0 auto}
+.col{max-width:70ch}
+h1,h2,h3,.tag,th{font-family:var(--f-display)}
+.mono,code,td.num,.note,pre{font-family:var(--f-mono)}
+header{padding:64px 0 30px;border-bottom:1px solid var(--rule)}
+.eyebrow{font:500 12px/1.4 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+h1{font-size:clamp(28px,4.4vw,44px);line-height:1.08;font-weight:700;letter-spacing:-.022em;
+  margin:16px 0 0;text-wrap:balance;max-width:26ch}
+.lede{font-size:19px;line-height:1.58;color:var(--ink2);margin:18px 0 0;max-width:66ch}
+.byline{margin-top:22px;font:400 13px/1.55 var(--f-mono);color:var(--ink3);max-width:96ch}
+section{padding:46px 0;border-bottom:1px solid var(--rule2)}
+section:last-of-type{border-bottom:0}
+h2{font-size:26px;font-weight:700;letter-spacing:-.018em;margin:0 0 6px;text-wrap:balance}
+h3{font-size:18px;font-weight:600;letter-spacing:-.008em;margin:34px 0 8px}
+h2 + .sub{color:var(--ink3);font:400 14px/1.5 var(--f-mono);margin:0 0 24px}
+p{margin:0 0 17px}
+strong{font-weight:600}
+ul,ol{margin:0 0 17px;padding-left:20px}
+li{margin:0 0 8px}
+figure{margin:28px 0}
+figure video,figure img{display:block;width:100%;max-width:100%;height:auto;border-radius:10px;background:var(--sunk);box-shadow:var(--shadow)}
+figcaption{margin-top:11px;font:400 14px/1.55 var(--f-mono);color:var(--ink3);max-width:86ch}
+.col > .tw,.col > figure,.col > .duo{width:min(1020px,calc(100vw - 40px));max-width:none}
+.col > figure.narrow{width:min(780px,calc(100vw - 40px))}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0}
+.duo > *{min-width:0}
+@media (max-width:760px){.duo{grid-template-columns:1fr}}
+.duo figure{margin:0}
+.tw{overflow-x:auto;margin:24px 0;border:1px solid var(--rule);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th{font:600 12px/1.3 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);
+  text-align:left;padding:13px 14px;border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--rule2);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-size:13.5px;white-space:nowrap}
+td.cell{text-align:center;font-family:var(--f-mono);font-size:13px;font-weight:500;white-space:nowrap}
+td.c4{background:color-mix(in oklab,var(--good) 28%,var(--card));color:var(--ink)}
+td.c3{background:color-mix(in oklab,var(--good) 14%,var(--card))}
+td.c2{background:color-mix(in oklab,var(--s1) 16%,var(--card))}
+td.c0{background:color-mix(in oklab,var(--bad) 20%,var(--card));color:var(--ink2)}
+tr.grp td{background:var(--sunk);font:600 12px/1.3 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.key{display:inline-block;width:18px;height:0;border-top:2.5px solid;vertical-align:middle;margin-right:7px}
+.key.dash{border-top-style:dashed}
+.keep{border:1px solid var(--rule);border-left:3px solid var(--s2);border-radius:10px;
+  padding:20px 24px;margin:28px 0;background:var(--card)}
+.keep .tag{display:block;font:700 12px/1 var(--f-display);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--s2);margin-bottom:11px}
+.keep p:last-child,.keep ul:last-child{margin-bottom:0}
+pre{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;
+  overflow-x:auto;font-size:13px;line-height:1.6;margin:22px 0}
+code{font-size:.9em;background:var(--sunk);padding:1px 4px;border-radius:4px;margin:0 -1px}
+footer{padding:40px 0 0;color:var(--ink3);font:400 13.5px/1.7 var(--f-mono)}
+footer a,.col a{color:var(--s2)}
+a:focus-visible{outline:2px solid var(--s2);outline-offset:2px;border-radius:2px}
+/* charts */
+.chart{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 12px 8px}
+.chart h4{font:600 14px/1.35 var(--f-display);margin:2px 6px 2px;color:var(--ink)}
+.chart .unit{font:400 12.5px/1.4 var(--f-mono);color:var(--ink3);margin:0 6px 6px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y}
+.chart .legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:6px 6px 4px;font:400 12.5px/1.4 var(--f-mono);color:var(--ink2)}
+.chart .gl{stroke:var(--rule2);stroke-width:1}
+.chart .ax{stroke:var(--rule);stroke-width:1}
+.chart .tk{fill:var(--ink3);font:400 12px var(--f-mono)}
+.chart .lb{fill:var(--ink2);font:500 12px var(--f-mono)}
+.chart .at{fill:var(--ink3);font:400 12px var(--f-mono)}
+.chart .ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.chart .mk{stroke:var(--card);stroke-width:2}
+.chart .xh{stroke:var(--ink3);stroke-width:1;opacity:0}
+.chart .tip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--rule);border-radius:8px;
+  padding:8px 10px;font:400 12px/1.5 var(--f-mono);color:var(--ink);box-shadow:var(--shadow);opacity:0;
+  transition:opacity .08s;white-space:nowrap;z-index:2}
+.chart .tip b{font-weight:500}
+.chart .tip i{display:inline-block;width:10px;height:3px;margin-right:6px;vertical-align:middle;font-style:normal}
+@media (prefers-reduced-motion: reduce){.chart .tip{transition:none}}
+
+    .col{max-width:74ch} .toc a{display:inline-block;margin:3px 12px 3px 0}
+    a{color:var(--s2)} details{margin:20px 0} summary{cursor:pointer;font-family:var(--f-display)}
+    p code,li code,a{overflow-wrap:anywhere}
+    blockquote{border-left:3px solid var(--s1);padding-left:20px;margin:20px 0;color:var(--ink2)}
+    img{max-width:100%} @media print{body{background:white;color:black;padding:0} details{display:block}}
+    @media(max-width:760px){.col > .tw,.col > figure,.col > .duo{width:100%;max-width:100%}}
+    
+    .video-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+    video{width:100%;height:auto;background:#10151a}
+    figure{margin:1.2rem 0} figure h3{margin-bottom:.4rem}
+    .table-scroll{overflow-x:auto;margin:1rem 0} table{min-width:750px}
+    @media(max-width:760px){.video-cards{grid-template-columns:1fr}}
+    </style></head><body><main class="wrap"><header>
+    <div class="eyebrow">MorphoHand · SR2 contact mechanics · 4 October 2026</div>
+    <h1>Contact models on robot tasks and sliding geometry</h1><p class="lede">Native SR2 pickup, braking, insertion and rolling-pinch videos, with a direct MuJoCo diagonal ablation and curvature-sensitive sliding fixtures.</p><div class="byline">Native simulations · fixed controller and declared contact variants</div></header>
+    <nav class="toc"><a href="#outcome">Finding</a><a href="#films">Videos</a><a href="#chain">Chain</a><a href="#rolling">Rolling</a><a href="#diagexact">diagexact</a><a href="#geometry">Geometry</a><a href="#reproduce">Reproduce</a></nav><section id="outcome"><div class="col"><h2>What these runs say</h2>
+    <p><strong>Task behavior does not improve monotonically with a more literal local spring.</strong>
+    The precomputed physical-stiffness mapping recovered the desired per-sample static
+    coefficient in the earlier fixture, but its 1 mm articulated hand tilts during pickup
+    and has weak screwdriver-axis rolling. The legacy MuJoCo spheres and Drake hydroelastic
+    contact complete the same chain; the 0.5 mm mapped spheres recover much of the rolling
+    response at greater CPU cost. These are native trajectories, with guards and failures retained.</p>
+    <p>The <a href="https://arxiv.org/html/2609.25619v2">Wang–Oh–Pollard rolling-pinch
+    experiment</a> motivates the second task. We adapt its cylinder-as-effector step-body-twist
+    protocol to the existing SR2 scene. It is a matched <em>within-repository</em> comparison,
+    not a reproduction of the paper's hardware scores or exact model. Control is 500 Hz in the
+    headline rolling table; physics is 1 kHz for Drake and legacy MuJoCo, 20 kHz for mapped MuJoCo.
+    Earlier 100 Hz variants are retained in the machine-readable data.</p>
+    <p>The legacy sphere model is itself calibrated at the initial pose using the
+    approximate body inverse inertia. The mapped variant instead uses direct-format
+    coefficients for the target sample stiffness and damping, constant impedance
+    d₀ = 0.0001, <code>impratio</code> = 10000 and a declared tangential damping ratio.
+    A legacy-versus-mapped task difference therefore bundles the normal law and contact
+    regularization. The within-family diagonal and tangential controls below isolate
+    parts of that bundle.</p>
+    <p><a href="20261004-contact_videos.html">Earlier contact video gallery</a> ·
+    <a href="20261004-articulated_contact_transfer.html">Holding and torsion</a> ·
+    <a href="20261004-distributed_contact_spec.html">Original contact specification</a></p>
+    </div></section><section id="films"><div class="col"><h2>Watch the native trajectories</h2><figure><h3>Pickup, closed brake, insertion</h3><video controls preload="metadata" playsinline poster="media/compare-task-chain.jpg" src="media/compare-task-chain.mp4"></video><figcaption>Top: mapped 1 mm / mapped 0.5 mm. Bottom: legacy 1 mm / Drake. A stopped panel freezes; the full clips are below. <a href="media/compare-task-chain.mp4">MP4</a></figcaption></figure><figure><h3>Cylinder-as-effector rolling commands</h3><video controls preload="metadata" playsinline poster="media/compare-task-rolling.jpg" src="media/compare-task-rolling.mp4"></video><figcaption>Top: mapped 1 mm / mapped 0.5 mm. Bottom: legacy 1 mm / Drake. All use the same 500 Hz controller. <a href="media/compare-task-rolling.mp4">MP4</a></figcaption></figure><figure><h3>Guided sliding on distinct geometries</h3><video controls preload="metadata" playsinline poster="media/compare-task-geometry.jpg" src="media/compare-task-geometry.mp4"></video><figcaption>Plane, cylinder along axis, cylinder across curvature and sphere. All request the same 3 mm tangent travel. <a href="media/compare-task-geometry.mp4">MP4</a></figcaption></figure><div class="video-cards"><figure><video controls preload="metadata" playsinline poster="media/task-mj_physical_s1_50us.jpg" src="media/task-mj_physical_s1_50us.mp4"></video><figcaption>mj_physical_s1_50us · <a href="media/task-mj_physical_s1_50us.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-mj_physical_s05_50us.jpg" src="media/task-mj_physical_s05_50us.mp4"></video><figcaption>mj_physical_s05_50us · <a href="media/task-mj_physical_s05_50us.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-mj_legacy_s1_1ms.jpg" src="media/task-mj_legacy_s1_1ms.mp4"></video><figcaption>mj_legacy_s1_1ms · <a href="media/task-mj_legacy_s1_1ms.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-drake_hydro_1ms.jpg" src="media/task-drake_hydro_1ms.mp4"></video><figcaption>drake_hydro_1ms · <a href="media/task-drake_hydro_1ms.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-roll_mj_physical_s1_50us_ctrl500.jpg" src="media/task-roll_mj_physical_s1_50us_ctrl500.mp4"></video><figcaption>roll_mj_physical_s1_50us_ctrl500 · <a href="media/task-roll_mj_physical_s1_50us_ctrl500.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-roll_mj_physical_s05_50us_ctrl500.jpg" src="media/task-roll_mj_physical_s05_50us_ctrl500.mp4"></video><figcaption>roll_mj_physical_s05_50us_ctrl500 · <a href="media/task-roll_mj_physical_s05_50us_ctrl500.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-roll_mj_legacy_s1_1ms_ctrl500.jpg" src="media/task-roll_mj_legacy_s1_1ms_ctrl500.mp4"></video><figcaption>roll_mj_legacy_s1_1ms_ctrl500 · <a href="media/task-roll_mj_legacy_s1_1ms_ctrl500.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-roll_drake_hydro_1ms_ctrl500.jpg" src="media/task-roll_drake_hydro_1ms_ctrl500.mp4"></video><figcaption>roll_drake_hydro_1ms_ctrl500 · <a href="media/task-roll_drake_hydro_1ms_ctrl500.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-v314_chain_legacy_exact_s1_50us.jpg" src="media/task-v314_chain_legacy_exact_s1_50us.mp4"></video><figcaption>v314_chain_legacy_exact_s1_50us · <a href="media/task-v314_chain_legacy_exact_s1_50us.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-v314_chain_physical_exact_s1_50us.jpg" src="media/task-v314_chain_physical_exact_s1_50us.mp4"></video><figcaption>v314_chain_physical_exact_s1_50us · <a href="media/task-v314_chain_physical_exact_s1_50us.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-v314_chain_physical_runtime_exact_s1_50us.jpg" src="media/task-v314_chain_physical_runtime_exact_s1_50us.mp4"></video><figcaption>v314_chain_physical_runtime_exact_s1_50us · <a href="media/task-v314_chain_physical_runtime_exact_s1_50us.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-v314_roll_legacy_exact_s1_50us.jpg" src="media/task-v314_roll_legacy_exact_s1_50us.mp4"></video><figcaption>v314_roll_legacy_exact_s1_50us · <a href="media/task-v314_roll_legacy_exact_s1_50us.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-v314_roll_physical_exact_s1_50us.jpg" src="media/task-v314_roll_physical_exact_s1_50us.mp4"></video><figcaption>v314_roll_physical_exact_s1_50us · <a href="media/task-v314_roll_physical_exact_s1_50us.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-v314_roll_physical_runtime_exact_s1_50us.jpg" src="media/task-v314_roll_physical_runtime_exact_s1_50us.mp4"></video><figcaption>v314_roll_physical_runtime_exact_s1_50us · <a href="media/task-v314_roll_physical_runtime_exact_s1_50us.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-v314_chain_physical_runtime_ct100_exact_s1_50us.jpg" src="media/task-v314_chain_physical_runtime_ct100_exact_s1_50us.mp4"></video><figcaption>v314_chain_physical_runtime_ct100_exact_s1_50us · <a href="media/task-v314_chain_physical_runtime_ct100_exact_s1_50us.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline poster="media/task-v314_roll_physical_runtime_ct100_exact_s1_50us.jpg" src="media/task-v314_roll_physical_runtime_ct100_exact_s1_50us.mp4"></video><figcaption>v314_roll_physical_runtime_ct100_exact_s1_50us · <a href="media/task-v314_roll_physical_runtime_ct100_exact_s1_50us.mp4">MP4</a></figcaption></figure></div><p>The two force-ramp geometry clips stop at the same fixture-exit time as their original measured runs; their red badges mark the stop.</p><div class="video-cards"><figure><video controls preload="metadata" playsinline src="media/geometry-guided-plane-x-s1.mp4"></video><figcaption>Plane R12.5 mm | tangent x | 1 mm samples · <a href="media/geometry-guided-plane-x-s1.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline src="media/geometry-guided-cylinder-x-s1.mp4"></video><figcaption>Cylinder R12.5 mm | along axis | 1 mm samples · <a href="media/geometry-guided-cylinder-x-s1.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline src="media/geometry-guided-cylinder-y-s1.mp4"></video><figcaption>Cylinder R12.5 mm | across curvature | 1 mm samples · <a href="media/geometry-guided-cylinder-y-s1.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline src="media/geometry-guided-sphere-y-s1.mp4"></video><figcaption>Sphere R25 mm | tangent y | 1 mm samples · <a href="media/geometry-guided-sphere-y-s1.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline src="media/geometry-guided-cylinder-y-s0.5.mp4"></video><figcaption>Cylinder R12.5 mm | across curvature | 0.5 mm samples · <a href="media/geometry-guided-cylinder-y-s0.5.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline src="media/geometry-force-cylinder-y-r12p5.mp4"></video><figcaption>Cylinder R12.5 mm | force ramp | fixture exit · <a href="media/geometry-force-cylinder-y-r12p5.mp4">MP4</a></figcaption></figure><figure><video controls preload="metadata" playsinline src="media/geometry-force-sphere-y-r12p5.mp4"></video><figcaption>Sphere R12.5 mm | force ramp | fixture exit · <a href="media/geometry-force-sphere-y-r12p5.mp4">MP4</a></figcaption></figure></div></div></section><section id="chain"><div class="col"><h2>The complete hand chain</h2>
+    <p>One fixed-palm SR2 picks up a 24.54 g screwdriver, lifts it, brakes it toward 90°,
+    holds, transports, aims and inserts. The same controller, tool and friction are used
+    across cases. A pass requires all stages; a run that merely completes is not a pass.
+    The two seeds are separate deterministic perturbations, not a statistical success rate.</p>
+    <div class="table-scroll"><table><thead><tr><th>Case</th><th>Run status</th><th>Picked</th><th>Chain pass</th><th>Tilt after lift °</th><th>Brake angle °</th><th>Axial slip mm</th><th>Physics wall / sim</th><th>Film</th></tr></thead><tbody><tr><td>mj_physical / 1 mm / 50us</td><td>stopped_at_guard</td><td>True</td><td>False</td><td>33.2</td><td>146.8</td><td>314.4</td><td>0.75</td><td><a href="media/task-mj_physical_s1_50us.mp4">video</a></td></tr><tr><td>mj_physical / 0.5 mm / 50us</td><td>complete</td><td>True</td><td>False</td><td>10.9</td><td>81.1</td><td>0.5</td><td>2.56</td><td><a href="media/task-mj_physical_s05_50us.mp4">video</a></td></tr><tr><td>mj_physical / 1 mm / 500us</td><td>stopped_at_guard</td><td>False</td><td>False</td><td>—</td><td>—</td><td>—</td><td>0.03</td><td><a href="media/task-mj_physical_s1_500us.mp4">video</a></td></tr><tr><td>mj_physical / 1 mm / 2ms</td><td>stopped_at_guard</td><td>False</td><td>False</td><td>—</td><td>—</td><td>—</td><td>0.01</td><td><a href="media/task-mj_physical_s1_2ms.mp4">video</a></td></tr><tr><td>mj_legacy / 1 mm / 1ms</td><td>complete</td><td>True</td><td>True</td><td>1.9</td><td>91.0</td><td>0.2</td><td>0.08</td><td><a href="media/task-mj_legacy_s1_1ms.mp4">video</a></td></tr><tr><td>mj_point4s_1ms</td><td>complete</td><td>True</td><td>True</td><td>3.0</td><td>88.2</td><td>0.4</td><td>0.02</td><td>—</td></tr><tr><td>drake_hydro_1ms</td><td>complete</td><td>True</td><td>True</td><td>0.5</td><td>92.4</td><td>0.5</td><td>2.30</td><td><a href="media/task-drake_hydro_1ms.mp4">video</a></td></tr><tr><td>drake_hydro_500us</td><td>complete</td><td>True</td><td>True</td><td>0.5</td><td>92.4</td><td>0.5</td><td>4.38</td><td>—</td></tr><tr><td>mj_physical / 1 mm / 50us_seed1</td><td>complete</td><td>False</td><td>False</td><td>0.0</td><td>0.0</td><td>264.2</td><td>0.27</td><td>—</td></tr><tr><td>drake_hydro_1ms_seed1</td><td>complete</td><td>True</td><td>True</td><td>0.4</td><td>88.4</td><td>0.5</td><td>2.20</td><td>—</td></tr></tbody></table></div></div></section><section id="rolling"><div class="col"><h2>Rolling-pinch transfer at 500 Hz</h2>
+    <p>After pickup, the controller requests positive and negative 20 mm/s translations
+    and 40°/s body rotations while suppressing relative contact motion. Tool-axis twist
+    gain is achieved angular velocity divided by commanded angular velocity for that step.
+    A picked and retained cylinder can still track that twist badly. Lower RMSE alone does
+    not establish faithful rolling if cross-axis motion is large.</p>
+    <div class="table-scroll"><table><thead><tr><th>Case</th><th>Run status</th><th>Picked</th><th>Held at end</th><th>Tool-axis twist gain</th><th>Tool-axis slide RMS mm/s</th><th>Angular RMSE °/s</th><th>Physics wall / sim</th><th>Film</th></tr></thead><tbody><tr><td>roll_mj_physical / 1 mm / 50us_ctrl500</td><td>complete</td><td>True</td><td>True</td><td>0.163</td><td>0.720</td><td>31.7</td><td>1.19</td><td><a href="media/task-roll_mj_physical_s1_50us_ctrl500.mp4">video</a></td></tr><tr><td>roll_mj_physical / 0.5 mm / 50us_ctrl500</td><td>complete</td><td>True</td><td>True</td><td>0.551</td><td>0.098</td><td>26.3</td><td>3.28</td><td><a href="media/task-roll_mj_physical_s05_50us_ctrl500.mp4">video</a></td></tr><tr><td>roll_mj_legacy / 1 mm / 1ms_ctrl500</td><td>complete</td><td>True</td><td>True</td><td>0.601</td><td>0.047</td><td>28.2</td><td>0.08</td><td><a href="media/task-roll_mj_legacy_s1_1ms_ctrl500.mp4">video</a></td></tr><tr><td>roll_drake_hydro_1ms_ctrl500</td><td>complete</td><td>True</td><td>True</td><td>0.571</td><td>0.046</td><td>28.5</td><td>3.52</td><td><a href="media/task-roll_drake_hydro_1ms_ctrl500.mp4">video</a></td></tr></tbody></table></div></div></section><section id="diagexact"><div class="col"><h2>What diagexact changes</h2>
+    <p>MuJoCo 3.14 ablates the diagonal flag on the same 1 mm hand at 50 µs. The legacy
+    pair compares flag off/on without altering its contact parameters. The physical pairs
+    compare compiled fixed coefficients and per-step retranslation against the diagonal
+    selected by MuJoCo, again with the flag off/on. This tests whether the frozen-body
+    approximation caused the task failure; it does not equate a better task score with a
+    more faithful material model. In particular, a higher tool-axis twist gain accompanied
+    by more relative sliding is not successful rolling contact. Physics cost excludes
+    video rendering. The runtime-approximate and fixed-approximate variants agree closely,
+    a control for the split-step adapter itself. The runtime-exact variant changes both
+    the selected inertia and the contact coefficients to preserve the prescribed local
+    stiffness; the fixed-exact variant changes only the selected inertia. The extra
+    Cₜ/Cᵢ = 100/1000 rows change tangential damping while holding normal mapping fixed.
+    Raising that ratio from 10 to 100 raises tool-axis twist gain from 0.19 to 0.78,
+    but slide RMS rises from 4.1 to 16.2 mm/s and angular RMSE from 32.7 to
+    56.2°/s. At 1000 the slide reaches 24.8 mm/s. A higher twist gain here is
+    more motion through the contact, not recovered rolling.</p>
+    <div class="table-scroll"><table><thead><tr><th>Case</th><th>Run status</th><th>Picked</th><th>Chain pass</th><th>Tilt after lift °</th><th>Brake angle °</th><th>Axial slip mm</th><th>Physics wall / sim</th><th>Film</th></tr></thead><tbody><tr><td>v314_chain_legacy / 1 mm / 50us</td><td>complete</td><td>True</td><td>True</td><td>1.8</td><td>90.7</td><td>0.2</td><td>0.89</td><td>—</td></tr><tr><td>v314_chain_legacy_exact / 1 mm / 50us</td><td>complete</td><td>True</td><td>True</td><td>1.7</td><td>90.8</td><td>0.2</td><td>0.98</td><td><a href="media/task-v314_chain_legacy_exact_s1_50us.mp4">video</a></td></tr><tr><td>v314_chain_physical / 1 mm / 50us</td><td>stopped_at_guard</td><td>True</td><td>False</td><td>33.1</td><td>-116.5</td><td>245.3</td><td>0.82</td><td>—</td></tr><tr><td>v314_chain_physical_exact / 1 mm / 50us</td><td>stopped_at_guard</td><td>True</td><td>False</td><td>40.6</td><td>-121.4</td><td>272.7</td><td>1.03</td><td><a href="media/task-v314_chain_physical_exact_s1_50us.mp4">video</a></td></tr><tr><td>v314_chain_physical_runtime_approx / 1 mm / 50us</td><td>stopped_at_guard</td><td>True</td><td>False</td><td>33.1</td><td>-115.7</td><td>245.4</td><td>1.12</td><td>—</td></tr><tr><td>v314_chain_physical_runtime_exact / 1 mm / 50us</td><td>stopped_at_guard</td><td>True</td><td>False</td><td>22.1</td><td>-99.9</td><td>223.3</td><td>1.17</td><td><a href="media/task-v314_chain_physical_runtime_exact_s1_50us.mp4">video</a></td></tr><tr><td>v314_chain_physical_runtime_ct100_exact / 1 mm / 50us</td><td>stopped_at_guard</td><td>True</td><td>False</td><td>79.0</td><td>14.1</td><td>207.3</td><td>1.25</td><td><a href="media/task-v314_chain_physical_runtime_ct100_exact_s1_50us.mp4">video</a></td></tr></tbody></table></div><div class="table-scroll"><table><thead><tr><th>Case</th><th>Run status</th><th>Picked</th><th>Held at end</th><th>Tool-axis twist gain</th><th>Tool-axis slide RMS mm/s</th><th>Angular RMSE °/s</th><th>Physics wall / sim</th><th>Film</th></tr></thead><tbody><tr><td>v314_roll_legacy / 1 mm / 50us</td><td>complete</td><td>True</td><td>True</td><td>0.584</td><td>0.047</td><td>28.2</td><td>1.08</td><td>—</td></tr><tr><td>v314_roll_legacy_exact / 1 mm / 50us</td><td>complete</td><td>True</td><td>True</td><td>0.593</td><td>0.048</td><td>28.1</td><td>1.22</td><td><a href="media/task-v314_roll_legacy_exact_s1_50us.mp4">video</a></td></tr><tr><td>v314_roll_physical / 1 mm / 50us</td><td>complete</td><td>True</td><td>True</td><td>0.513</td><td>2.056</td><td>32.6</td><td>1.28</td><td>—</td></tr><tr><td>v314_roll_physical_exact / 1 mm / 50us</td><td>complete</td><td>True</td><td>True</td><td>0.649</td><td>0.836</td><td>28.2</td><td>1.43</td><td><a href="media/task-v314_roll_physical_exact_s1_50us.mp4">video</a></td></tr><tr><td>v314_roll_physical_runtime_approx / 1 mm / 50us</td><td>complete</td><td>True</td><td>True</td><td>0.513</td><td>2.056</td><td>32.6</td><td>1.64</td><td>—</td></tr><tr><td>v314_roll_physical_runtime_exact / 1 mm / 50us</td><td>complete</td><td>True</td><td>True</td><td>0.186</td><td>4.115</td><td>32.7</td><td>1.86</td><td><a href="media/task-v314_roll_physical_runtime_exact_s1_50us.mp4">video</a></td></tr><tr><td>v314_roll_physical_runtime_ct100_exact / 1 mm / 50us</td><td>complete</td><td>True</td><td>True</td><td>0.776</td><td>16.229</td><td>56.2</td><td>2.59</td><td><a href="media/task-v314_roll_physical_runtime_ct100_exact_s1_50us.mp4">video</a></td></tr><tr><td>v314_roll_physical_runtime_ct1000_exact / 1 mm / 50us</td><td>complete</td><td>True</td><td>True</td><td>0.354</td><td>24.825</td><td>87.7</td><td>2.23</td><td>—</td></tr></tbody></table></div></div></section><section id="geometry"><div class="col"><h2>Fundamental sliding geometry</h2>
+    <p>The initial force-ramp sweep revisits the specification's plane, cylinders of radius
+    6.25/12.5/25/50 mm and spheres of radius 12.5/25 mm. Cylinder <code>x</code> is axial;
+    <code>y</code> crosses its curvature. Samples use 1 mm spacing, with selected 0.5 mm and
+    30°/60° phase controls. The same 1 N normal load, 1.2 N tangential ramp, braking
+    schedule and 50 µs step are used in each run. A fixture exit is a real loss of
+    controlled contact, not an unreported solver result. The table's exit time is the
+    last saved physics step when a run fails. In this setup, 6.25 and 12.5 mm cylinders
+    complete axial travel but cross-curvature motion leaves the local patch around
+    0.76–0.78 s. Increasing sample resolution or rotating its phase does not prevent
+    that loss. The larger 25 and 50 mm cylinders remain in the fixture.</p>
+    <div class="table-scroll"><table><thead><tr><th>Surface</th><th>Radius mm</th><th>Slide axis</th><th>Spacing mm</th><th>Phase °</th><th>Status</th><th>Travel mm</th><th>Peak local slip mm/s</th><th>Normal-law L1</th><th>Max active</th><th>Exit time s</th></tr></thead><tbody><tr><td>plane</td><td>—</td><td>x</td><td>1.0</td><td>0</td><td>complete</td><td>6.01</td><td>45.9</td><td>0.002</td><td>14</td><td>—</td></tr><tr><td>plane</td><td>—</td><td>y</td><td>1.0</td><td>0</td><td>complete</td><td>6.05</td><td>46.2</td><td>0.002</td><td>14</td><td>—</td></tr><tr><td>cylinder</td><td>6.25</td><td>x</td><td>1.0</td><td>0</td><td>complete</td><td>6.08</td><td>46.1</td><td>0.001</td><td>11</td><td>—</td></tr><tr><td>cylinder</td><td>6.25</td><td>y</td><td>1.0</td><td>0</td><td>failed</td><td>—</td><td>419.4</td><td>—</td><td>—</td><td>0.758</td></tr><tr><td>cylinder</td><td>12.50</td><td>x</td><td>1.0</td><td>0</td><td>complete</td><td>7.00</td><td>50.7</td><td>0.002</td><td>13</td><td>—</td></tr><tr><td>cylinder</td><td>12.50</td><td>y</td><td>1.0</td><td>0</td><td>failed</td><td>—</td><td>430.7</td><td>—</td><td>—</td><td>0.775</td></tr><tr><td>cylinder</td><td>25.00</td><td>x</td><td>1.0</td><td>0</td><td>complete</td><td>8.66</td><td>58.4</td><td>0.003</td><td>13</td><td>—</td></tr><tr><td>cylinder</td><td>25.00</td><td>y</td><td>1.0</td><td>0</td><td>complete</td><td>23.08</td><td>140.6</td><td>0.006</td><td>12</td><td>—</td></tr><tr><td>cylinder</td><td>50.00</td><td>x</td><td>1.0</td><td>0</td><td>complete</td><td>11.34</td><td>70.9</td><td>0.003</td><td>13</td><td>—</td></tr><tr><td>cylinder</td><td>50.00</td><td>y</td><td>1.0</td><td>0</td><td>complete</td><td>20.43</td><td>122.5</td><td>0.005</td><td>13</td><td>—</td></tr><tr><td>sphere</td><td>12.50</td><td>y</td><td>1.0</td><td>0</td><td>failed</td><td>—</td><td>428.4</td><td>—</td><td>—</td><td>0.776</td></tr><tr><td>sphere</td><td>25.00</td><td>y</td><td>1.0</td><td>0</td><td>complete</td><td>22.97</td><td>139.4</td><td>0.005</td><td>12</td><td>—</td></tr><tr><td>cylinder</td><td>12.50</td><td>x</td><td>0.5</td><td>0</td><td>complete</td><td>6.99</td><td>50.7</td><td>0.002</td><td>47</td><td>—</td></tr><tr><td>cylinder</td><td>12.50</td><td>y</td><td>0.5</td><td>0</td><td>failed</td><td>—</td><td>424.4</td><td>—</td><td>—</td><td>0.776</td></tr><tr><td>sphere</td><td>12.50</td><td>y</td><td>0.5</td><td>0</td><td>failed</td><td>—</td><td>420.0</td><td>—</td><td>—</td><td>0.777</td></tr><tr><td>cylinder</td><td>12.50</td><td>y</td><td>1.0</td><td>30</td><td>failed</td><td>—</td><td>428.8</td><td>—</td><td>—</td><td>0.775</td></tr><tr><td>cylinder</td><td>12.50</td><td>y</td><td>1.0</td><td>60</td><td>failed</td><td>—</td><td>421.0</td><td>—</td><td>—</td><td>0.776</td></tr></tbody></table></div>
+    <p>The guided-path follow-up requests only 3 mm of travel with the same 1 N load and a
+    declared 1000 N/m normal height spring that follows each analytic surface profile.
+    This holds the comparison in the local contact patch. It changes the fixture, so its
+    force and travel scores should not be compared numerically with the force-ramp runs.
+    Both protocols use the runtime-selected local stiffness mapping and diagexact.
+    At 12.5 mm cylinder radius, the 1 and 0.5 mm across-curvature cases both travel
+    about 2.40 mm with about 9.8 mm/s peak local slip, while maximum active samples
+    rise from 11 to 43. The 30°/60° phase controls are similar. The 50 mm cases
+    remain below the 1 mm/s local-slip threshold, so their travel is a sticking
+    control rather than a sliding comparison.</p>
+    <div class="table-scroll"><table><thead><tr><th>Surface</th><th>Radius mm</th><th>Slide axis</th><th>Spacing mm</th><th>Phase °</th><th>Status</th><th>Travel mm</th><th>Peak local slip mm/s</th><th>Normal-law L1</th><th>Max active</th><th>Exit time s</th></tr></thead><tbody><tr><td>plane</td><td>—</td><td>x</td><td>1.0</td><td>0</td><td>complete</td><td>2.35</td><td>9.7</td><td>0.001</td><td>12</td><td>—</td></tr><tr><td>plane</td><td>—</td><td>y</td><td>1.0</td><td>0</td><td>complete</td><td>2.35</td><td>9.7</td><td>0.001</td><td>12</td><td>—</td></tr><tr><td>cylinder</td><td>6.25</td><td>x</td><td>1.0</td><td>0</td><td>complete</td><td>2.41</td><td>9.6</td><td>0.001</td><td>9</td><td>—</td></tr><tr><td>cylinder</td><td>6.25</td><td>y</td><td>1.0</td><td>0</td><td>complete</td><td>2.39</td><td>10.8</td><td>0.001</td><td>10</td><td>—</td></tr><tr><td>cylinder</td><td>12.50</td><td>x</td><td>1.0</td><td>0</td><td>complete</td><td>2.39</td><td>9.6</td><td>0.001</td><td>10</td><td>—</td></tr><tr><td>cylinder</td><td>12.50</td><td>y</td><td>1.0</td><td>0</td><td>complete</td><td>2.40</td><td>9.8</td><td>0.001</td><td>11</td><td>—</td></tr><tr><td>cylinder</td><td>25.00</td><td>x</td><td>1.0</td><td>0</td><td>complete</td><td>2.37</td><td>9.0</td><td>0.000</td><td>11</td><td>—</td></tr><tr><td>cylinder</td><td>25.00</td><td>y</td><td>1.0</td><td>0</td><td>complete</td><td>2.33</td><td>9.4</td><td>0.000</td><td>12</td><td>—</td></tr><tr><td>cylinder</td><td>50.00</td><td>x</td><td>1.0</td><td>0</td><td>complete</td><td>2.55</td><td>0.2</td><td>0.000</td><td>12</td><td>—</td></tr><tr><td>cylinder</td><td>50.00</td><td>y</td><td>1.0</td><td>0</td><td>complete</td><td>2.55</td><td>0.2</td><td>0.000</td><td>12</td><td>—</td></tr><tr><td>sphere</td><td>12.50</td><td>y</td><td>1.0</td><td>0</td><td>complete</td><td>2.43</td><td>9.9</td><td>0.001</td><td>11</td><td>—</td></tr><tr><td>sphere</td><td>25.00</td><td>y</td><td>1.0</td><td>0</td><td>complete</td><td>2.35</td><td>9.6</td><td>0.000</td><td>10</td><td>—</td></tr><tr><td>cylinder</td><td>12.50</td><td>x</td><td>0.5</td><td>0</td><td>complete</td><td>2.39</td><td>9.6</td><td>0.001</td><td>42</td><td>—</td></tr><tr><td>cylinder</td><td>12.50</td><td>y</td><td>0.5</td><td>0</td><td>complete</td><td>2.40</td><td>9.8</td><td>0.001</td><td>43</td><td>—</td></tr><tr><td>sphere</td><td>12.50</td><td>y</td><td>0.5</td><td>0</td><td>complete</td><td>2.43</td><td>9.7</td><td>0.001</td><td>36</td><td>—</td></tr><tr><td>cylinder</td><td>12.50</td><td>y</td><td>1.0</td><td>30</td><td>complete</td><td>2.40</td><td>9.7</td><td>0.001</td><td>11</td><td>—</td></tr><tr><td>cylinder</td><td>12.50</td><td>y</td><td>1.0</td><td>60</td><td>complete</td><td>2.40</td><td>9.8</td><td>0.001</td><td>11</td><td>—</td></tr></tbody></table></div></div></section><section id="reproduce"><div class="col"><h2>Reproduce and limits</h2>
+    <p>Raw per-run configurations, MJCF, aggregate traces, contact logs and solver-coupling
+    snapshots live in <code>results/20261004-distributed-contact/</code>. Portable summaries
+    and video manifests are in <a href="data/task_chain_results.json">task data</a>,
+    <a href="data/task_diagexact_results.json">diagexact data</a>,
+    <a href="data/task_sliding_geometry_results.json">force-ramp geometry</a> and
+    <a href="data/task_sliding_geometry_guided_results.json">guided geometry</a>.
+    Source/package provenance is in the <a href="data/task_chain_versions_36.json">pinned</a>
+    and <a href="data/task_chain_versions_314.json">current-engine</a> version records.</p>
+    <pre>MUJOCO_GL=egl logs/20261001-hom_contact/venv/bin/python scripts/distributed_contact_tasks.py
+MUJOCO_GL=egl logs/20261004-contact-current/venv/bin/python scripts/distributed_contact_diagexact_tasks.py
+logs/20261004-contact-current/venv/bin/python scripts/distributed_contact_dynamics.py slip --config docs/experiments/20261004-codex/configs/sliding_geometry.json --out results/20261004-distributed-contact/sliding_geometry
+logs/20261004-contact-current/venv/bin/python scripts/distributed_contact_dynamics.py slip --config docs/experiments/20261004-codex/configs/sliding_geometry_guided.json --out results/20261004-distributed-contact/sliding_geometry_guided
+MUJOCO_GL=egl logs/20261001-hom_contact/venv/bin/python scripts/distributed_contact_task_page.py</pre>
+    <p>Newton's earlier native pressure/reduction transfer runs are a readiness gate, not a
+    matched pickup or rolling score. The articulated task has not been ported to Newton;
+    the <a href="20261004-articulated_contact_transfer.html">backend report</a> records
+    the pressure/contact instability and the transfer limitations. The 6 mm hardware
+    fillet has a static audit but no dynamic sliding task here. The spherical fingertips
+    remain the task baseline.</p>
+    <figure><video controls preload="metadata" playsinline
+    src="media/newton_transfer-native_h05.mp4"></video>
+    <figcaption>Newton native hydroelastic preload gate: stopped at 0.075 s before a
+    task-level controller can be scored. <a href="media/newton_transfer-native_h05.mp4">MP4</a> ·
+    <a href="20261004-contact_videos.html#newton-replay">Replay audit</a>.</figcaption></figure>
+    </div></section><footer>Generated by <code>scripts/distributed_contact_page.py</code> from the source DOCX and run manifests.
+    <a href="../INDEX.md">Experiment index</a> · <a href="20261004-distributed_contact.html">Measured results</a> ·
+    <a href="20261004-articulated_contact_transfer.html">Articulated torsion / GPU follow-up</a> ·
+    <a href="20261004-task_contact_benchmark.html">Robot tasks / sliding geometry</a> ·
+    <a href="20261004-contact_videos.html">Video gallery</a> ·
+    <a href="20261004-distributed_contact_spec.html">Original specification</a></footer></main></body></html>

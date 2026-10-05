@@ -1,0 +1,2380 @@
+[
+  {
+    "backend": "cpu",
+    "phase": "transfer",
+    "run_id": "fine_s1.0_tau0.003",
+    "video_id": "transfer-fine_s1.0_tau0.003",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 1.0,
+      "torque_peak": 0.003
+    },
+    "reference": "results/20261004-distributed-contact/transfer/fine_s1.0_tau0.003",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/transfer-fine_s1.0_tau0.003.mp4",
+    "poster": "media/transfer-fine_s1.0_tau0.003.jpg",
+    "status": "complete",
+    "simulation_end": 0.7950499999999207,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.3995690817918565,
+        "captured": 0.399569081791856,
+        "difference": -4.996003610813204e-16
+      },
+      "peak_displacement_mm": {
+        "reference": 0.17633662496882796,
+        "captured": 0.17633662496882885,
+        "difference": 8.881784197001252e-16
+      },
+      "normal_L1_relative": {
+        "reference": 5.493453958839995e-06,
+        "captured": 5.493453958840069e-06,
+        "difference": 7.369186641112413e-20
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999201,
+        "captured": 0.7999999999999201,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "transfer",
+    "run_id": "fine_s1.0_tau0.012",
+    "video_id": "transfer-fine_s1.0_tau0.012",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 1.0,
+      "torque_peak": 0.012
+    },
+    "reference": "results/20261004-distributed-contact/transfer/fine_s1.0_tau0.012",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/transfer-fine_s1.0_tau0.012.mp4",
+    "poster": "media/transfer-fine_s1.0_tau0.012.jpg",
+    "status": "complete",
+    "simulation_end": 0.7950499999999207,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 19.250913597134492,
+        "captured": 19.250913597134495,
+        "difference": 3.552713678800501e-15
+      },
+      "peak_displacement_mm": {
+        "reference": 0.46875312963947174,
+        "captured": 0.46875312963946236,
+        "difference": -9.381384558082573e-15
+      },
+      "normal_L1_relative": {
+        "reference": 0.0017424539560542923,
+        "captured": 0.0017424539560542884,
+        "difference": -3.903127820947816e-18
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999201,
+        "captured": 0.7999999999999201,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "transfer",
+    "run_id": "fine_s0.5_tau0.003",
+    "video_id": "transfer-fine_s0.5_tau0.003",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.003
+    },
+    "reference": "results/20261004-distributed-contact/transfer/fine_s0.5_tau0.003",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/transfer-fine_s0.5_tau0.003.mp4",
+    "poster": "media/transfer-fine_s0.5_tau0.003.jpg",
+    "status": "complete",
+    "simulation_end": 0.7950499999999207,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.40201981920405144,
+        "captured": 0.4020198192040515,
+        "difference": 5.551115123125783e-17
+      },
+      "peak_displacement_mm": {
+        "reference": 0.1791621358590874,
+        "captured": 0.1791621358590891,
+        "difference": 1.6930901125533637e-15
+      },
+      "normal_L1_relative": {
+        "reference": 5.915700233827922e-06,
+        "captured": 5.915700233828232e-06,
+        "difference": 3.1001405869507392e-19
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999201,
+        "captured": 0.7999999999999201,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "transfer",
+    "run_id": "fine_s0.5_tau0.012",
+    "video_id": "transfer-fine_s0.5_tau0.012",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.012
+    },
+    "reference": "results/20261004-distributed-contact/transfer/fine_s0.5_tau0.012",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/transfer-fine_s0.5_tau0.012.mp4",
+    "poster": "media/transfer-fine_s0.5_tau0.012.jpg",
+    "status": "complete",
+    "simulation_end": 0.7950499999999207,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 19.274657891845244,
+        "captured": 19.274657891845248,
+        "difference": 3.552713678800501e-15
+      },
+      "peak_displacement_mm": {
+        "reference": 0.42276889399045303,
+        "captured": 0.4227688939904552,
+        "difference": 2.1649348980190553e-15
+      },
+      "normal_L1_relative": {
+        "reference": 0.0017049937446210533,
+        "captured": 0.0017049937446210512,
+        "difference": -2.168404344971009e-18
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999201,
+        "captured": 0.7999999999999201,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "transfer",
+    "run_id": "refine_s0.25",
+    "video_id": "transfer-refine_s0.25",
+    "config": {
+      "timestep": 2.5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.25,
+      "torque_peak": 0.012
+    },
+    "reference": "results/20261004-distributed-contact/transfer/refine_s0.25",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/transfer-refine_s0.25.mp4",
+    "poster": "media/transfer-refine_s0.25.jpg",
+    "status": "complete",
+    "simulation_end": 0.7950250000005716,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 19.245360013348545,
+        "captured": 19.24536001334854,
+        "difference": -3.552713678800501e-15
+      },
+      "peak_displacement_mm": {
+        "reference": 0.37128769409290624,
+        "captured": 0.37128769409301104,
+        "difference": 1.0480505352461478e-13
+      },
+      "normal_L1_relative": {
+        "reference": 0.001684910058910342,
+        "captured": 0.001684910058910339,
+        "difference": -3.0357660829594124e-18
+      },
+      "simulated_s": {
+        "reference": 0.8000000000005821,
+        "captured": 0.8000000000005821,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "transfer",
+    "run_id": "fine_s1.0_tau0.048",
+    "video_id": "transfer-fine_s1.0_tau0.048",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 1.0,
+      "torque_peak": 0.048
+    },
+    "reference": "results/20261004-distributed-contact/transfer/fine_s1.0_tau0.048",
+    "stopped": true,
+    "playback_speed": 0.2,
+    "src": "media/transfer-fine_s1.0_tau0.048.mp4",
+    "poster": "media/transfer-fine_s1.0_tau0.048.jpg",
+    "status": "failed",
+    "simulation_end": 0.4656499999999569,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 129.97639830399777,
+        "captured": 129.9763983039978,
+        "difference": 2.842170943040401e-14
+      },
+      "peak_displacement_mm": {
+        "reference": 25.00801198918999,
+        "captured": 25.008011989188777,
+        "difference": -1.2114753644709708e-12
+      },
+      "normal_L1_relative": {
+        "reference": 0.01108562609296642,
+        "captured": 0.011085626092966412,
+        "difference": -8.673617379884035e-18
+      },
+      "simulated_s": {
+        "reference": 0.4656499999999569,
+        "captured": 0.4656499999999569,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "transfer",
+    "run_id": "fine_s0.5_tau0.048",
+    "video_id": "transfer-fine_s0.5_tau0.048",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.048
+    },
+    "reference": "results/20261004-distributed-contact/transfer/fine_s0.5_tau0.048",
+    "stopped": true,
+    "playback_speed": 0.2,
+    "src": "media/transfer-fine_s0.5_tau0.048.mp4",
+    "poster": "media/transfer-fine_s0.5_tau0.048.jpg",
+    "status": "failed",
+    "simulation_end": 0.47424999999995593,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 131.05915676473683,
+        "captured": 131.05915676471471,
+        "difference": -2.2112089936854318e-11
+      },
+      "peak_displacement_mm": {
+        "reference": 25.023470101882847,
+        "captured": 25.023470102440417,
+        "difference": 5.575699901783082e-10
+      },
+      "normal_L1_relative": {
+        "reference": 0.011699487245649594,
+        "captured": 0.011699487245578136,
+        "difference": -7.145846414591261e-14
+      },
+      "simulated_s": {
+        "reference": 0.47424999999995593,
+        "captured": 0.47424999999995593,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "transfer",
+    "run_id": "fast_refine_s025",
+    "video_id": "transfer-fast_refine_s025",
+    "config": {
+      "timestep": 2.5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.25,
+      "torque_peak": 0.048
+    },
+    "reference": "results/20261004-distributed-contact/transfer/fast_refine_s025",
+    "stopped": true,
+    "playback_speed": 0.2,
+    "src": "media/transfer-fast_refine_s025.mp4",
+    "poster": "media/transfer-fast_refine_s025.jpg",
+    "status": "failed",
+    "simulation_end": 0.4922999999999499,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 131.179360629925,
+        "captured": 131.1793606299229,
+        "difference": -2.0747847884194925e-12
+      },
+      "peak_displacement_mm": {
+        "reference": 25.016443574458393,
+        "captured": 25.016443573962466,
+        "difference": -4.959268551374407e-10
+      },
+      "normal_L1_relative": {
+        "reference": 0.012615996891594648,
+        "captured": 0.01261599689166713,
+        "difference": 7.248195099673893e-14
+      },
+      "simulated_s": {
+        "reference": 0.4922999999999499,
+        "captured": 0.4922999999999499,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "transfer",
+    "run_id": "coarse_s0.5_dt0.0005",
+    "video_id": "transfer-coarse_s0.5_dt0.0005",
+    "config": {
+      "timestep": 0.0005,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.012
+    },
+    "reference": "results/20261004-distributed-contact/transfer/coarse_s0.5_dt0.0005",
+    "stopped": true,
+    "playback_speed": 0.002125000000000001,
+    "src": "media/transfer-coarse_s0.5_dt0.0005.mp4",
+    "poster": "media/transfer-coarse_s0.5_dt0.0005.jpg",
+    "status": "failed",
+    "simulation_end": 0.008500000000000004,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.010411383519632084,
+        "captured": 0.010411383519632125,
+        "difference": 4.163336342344337e-17
+      },
+      "peak_displacement_mm": {
+        "reference": 270.9370848045123,
+        "captured": 270.9370848045123,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.008500000000000004,
+        "captured": 0.008500000000000004,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "transfer",
+    "run_id": "compiled_s1.0",
+    "video_id": "transfer-compiled_s1.0",
+    "config": {
+      "timestep": 0.0005,
+      "duration": 0.8,
+      "policy": "compiled",
+      "pad_load": 2.0,
+      "spacing_mm": 1.0,
+      "torque_peak": 0.012
+    },
+    "reference": "results/20261004-distributed-contact/transfer/compiled_s1.0",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/transfer-compiled_s1.0.mp4",
+    "poster": "media/transfer-compiled_s1.0.jpg",
+    "status": "complete",
+    "simulation_end": 0.7954999999999678,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 18.011684933687064,
+        "captured": 18.011684933687064,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 0.5559895474049685,
+        "captured": 0.5559895474049685,
+        "difference": 0.0
+      },
+      "normal_L1_relative": {
+        "reference": 0.20482817404938514,
+        "captured": 0.20482817404938514,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999673,
+        "captured": 0.7999999999999673,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "transfer",
+    "run_id": "compiled_s0.5",
+    "video_id": "transfer-compiled_s0.5",
+    "config": {
+      "timestep": 0.0005,
+      "duration": 0.8,
+      "policy": "compiled",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.012
+    },
+    "reference": "results/20261004-distributed-contact/transfer/compiled_s0.5",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/transfer-compiled_s0.5.mp4",
+    "poster": "media/transfer-compiled_s0.5.jpg",
+    "status": "complete",
+    "simulation_end": 0.7954999999999678,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 18.83694866635669,
+        "captured": 18.83694866635669,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 2.2889682218706833,
+        "captured": 2.2889682218706833,
+        "difference": 0.0
+      },
+      "normal_L1_relative": {
+        "reference": 0.5197047250561458,
+        "captured": 0.5197047250561458,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999673,
+        "captured": 0.7999999999999673,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "holding",
+    "run_id": "hold_s2.0_m1.0",
+    "video_id": "holding-hold_s2.0_m1.0",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 2.0,
+      "mass_scale": 1.0
+    },
+    "reference": "results/20261004-distributed-contact/holding/hold_s2.0_m1.0",
+    "stopped": true,
+    "playback_speed": 0.2,
+    "src": "media/holding-hold_s2.0_m1.0.mp4",
+    "poster": "media/holding-hold_s2.0_m1.0.jpg",
+    "status": "failed",
+    "simulation_end": 1.2788000000004864,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 79.89628541076449,
+        "captured": 79.89628541079881,
+        "difference": 3.431921413721284e-11
+      },
+      "peak_displacement_mm": {
+        "reference": 25.02102179205038,
+        "captured": 25.021021791983262,
+        "difference": -6.711786681989906e-11
+      },
+      "normal_L1_relative": {
+        "reference": 0.003045737488654806,
+        "captured": 0.0030457374886524694,
+        "difference": -2.336672522140759e-15
+      },
+      "simulated_s": {
+        "reference": 1.2788000000004864,
+        "captured": 1.2788000000004864,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "holding",
+    "run_id": "hold_s1.0_m1.0",
+    "video_id": "holding-hold_s1.0_m1.0",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 1.0,
+      "mass_scale": 1.0
+    },
+    "reference": "results/20261004-distributed-contact/holding/hold_s1.0_m1.0",
+    "stopped": true,
+    "playback_speed": 0.2,
+    "src": "media/holding-hold_s1.0_m1.0.mp4",
+    "poster": "media/holding-hold_s1.0_m1.0.jpg",
+    "status": "failed",
+    "simulation_end": 1.2508000000004273,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 65.15156257503283,
+        "captured": 65.15156257503233,
+        "difference": -4.973799150320701e-13
+      },
+      "peak_displacement_mm": {
+        "reference": 25.003258427121825,
+        "captured": 25.00325842712256,
+        "difference": 7.354117315117037e-13
+      },
+      "normal_L1_relative": {
+        "reference": 0.0027038926980634285,
+        "captured": 0.0027038926980633956,
+        "difference": -3.2959746043559335e-17
+      },
+      "simulated_s": {
+        "reference": 1.2508000000004273,
+        "captured": 1.2508000000004273,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "holding",
+    "run_id": "hold_s0.5_m1.0",
+    "video_id": "holding-hold_s0.5_m1.0",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 0.5,
+      "mass_scale": 1.0
+    },
+    "reference": "results/20261004-distributed-contact/holding/hold_s0.5_m1.0",
+    "stopped": true,
+    "playback_speed": 0.2,
+    "src": "media/holding-hold_s0.5_m1.0.mp4",
+    "poster": "media/holding-hold_s0.5_m1.0.jpg",
+    "status": "failed",
+    "simulation_end": 1.254950000000436,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 65.44130598811077,
+        "captured": 65.44130598811076,
+        "difference": -1.4210854715202004e-14
+      },
+      "peak_displacement_mm": {
+        "reference": 25.007022946840678,
+        "captured": 25.007022946840532,
+        "difference": -1.4566126083082054e-13
+      },
+      "normal_L1_relative": {
+        "reference": 0.0027882593878467777,
+        "captured": 0.0027882593878467777,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 1.254950000000436,
+        "captured": 1.254950000000436,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "holding",
+    "run_id": "hold_s0.5_m4.0",
+    "video_id": "holding-hold_s0.5_m4.0",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 0.5,
+      "mass_scale": 4.0
+    },
+    "reference": "results/20261004-distributed-contact/holding/hold_s0.5_m4.0",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/holding-hold_s0.5_m4.0.mp4",
+    "poster": "media/holding-hold_s0.5_m4.0.jpg",
+    "status": "complete",
+    "simulation_end": 1.3950500000007318,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 35.258677584678225,
+        "captured": 35.25867758467826,
+        "difference": 3.552713678800501e-14
+      },
+      "peak_displacement_mm": {
+        "reference": 1.3861335185424288,
+        "captured": 1.3861335185436092,
+        "difference": 1.1803891197814664e-12
+      },
+      "normal_L1_relative": {
+        "reference": 0.0020430193381956673,
+        "captured": 0.0020430193381956747,
+        "difference": 7.37257477290143e-18
+      },
+      "simulated_s": {
+        "reference": 1.4000000000007422,
+        "captured": 1.4000000000007422,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "holding",
+    "run_id": "hold_s0.5_m0.25",
+    "video_id": "holding-hold_s0.5_m0.25",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 2.5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 0.5,
+      "mass_scale": 0.25
+    },
+    "reference": "results/20261004-distributed-contact/holding/hold_s0.5_m0.25",
+    "stopped": true,
+    "playback_speed": 0.2,
+    "src": "media/holding-hold_s0.5_m0.25.mp4",
+    "poster": "media/holding-hold_s0.5_m0.25.jpg",
+    "status": "failed",
+    "simulation_end": 0.974775000000951,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 71.40363283688376,
+        "captured": 71.40363284247933,
+        "difference": 5.5955666766749346e-09
+      },
+      "peak_displacement_mm": {
+        "reference": 25.00487343781188,
+        "captured": 25.004873434754614,
+        "difference": -3.0572664400096983e-09
+      },
+      "normal_L1_relative": {
+        "reference": 0.0048977257734976135,
+        "captured": 0.004897725773388384,
+        "difference": -1.0922946575009362e-13
+      },
+      "simulated_s": {
+        "reference": 0.974775000000951,
+        "captured": 0.974775000000951,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "holding",
+    "run_id": "hold_load4_s0.5",
+    "video_id": "holding-hold_load4_s0.5",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 4.0,
+      "torque_peak": 0.02,
+      "spacing_mm": 0.5
+    },
+    "reference": "results/20261004-distributed-contact/holding/hold_load4_s0.5",
+    "stopped": true,
+    "playback_speed": 0.2,
+    "src": "media/holding-hold_load4_s0.5.mp4",
+    "poster": "media/holding-hold_load4_s0.5.jpg",
+    "status": "failed",
+    "simulation_end": 1.298050000000527,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 73.81827698259357,
+        "captured": 73.81827698471974,
+        "difference": 2.126171239069663e-09
+      },
+      "peak_displacement_mm": {
+        "reference": 25.014724560012667,
+        "captured": 25.01472455425583,
+        "difference": -5.756835008696726e-09
+      },
+      "normal_L1_relative": {
+        "reference": 0.0027626730341155023,
+        "captured": 0.00276267303419322,
+        "difference": 7.771778012810593e-14
+      },
+      "simulated_s": {
+        "reference": 1.298050000000527,
+        "captured": 1.298050000000527,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "holding_refine",
+    "run_id": "quarter_s0.5_dt1.25e-05",
+    "video_id": "holding_refine-quarter_s0.5_dt1.25e-05",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 0.8,
+      "timestep": 1.25e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.006,
+      "spacing_mm": 0.5,
+      "mass_scale": 0.25
+    },
+    "reference": "results/20261004-distributed-contact/holding_refine/quarter_s0.5_dt1.25e-05",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/holding_refine-quarter_s0.5_dt1.25e-05.mp4",
+    "poster": "media/holding_refine-quarter_s0.5_dt1.25e-05.jpg",
+    "status": "complete",
+    "simulation_end": 0.7950124999998145,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.32626682248750394,
+        "captured": 0.32626682248750355,
+        "difference": -3.885780586188048e-16
+      },
+      "peak_displacement_mm": {
+        "reference": 0.20519144642394907,
+        "captured": 0.2051914464239485,
+        "difference": -5.828670879282072e-16
+      },
+      "normal_L1_relative": {
+        "reference": 8.369391232876125e-06,
+        "captured": 8.369391232876146e-06,
+        "difference": 2.0328790734103208e-20
+      },
+      "simulated_s": {
+        "reference": 0.7999999999998029,
+        "captured": 0.7999999999998029,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "friction_transfer",
+    "run_id": "creep_ct100.0",
+    "video_id": "friction_transfer-creep_ct100.0",
+    "config": {
+      "policy": "runtime",
+      "spacing_mm": 0.5,
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "pad_load": 2.0,
+      "tangent_damping_ratio": 100.0,
+      "torque_peak": 0.003
+    },
+    "reference": "results/20261004-distributed-contact/friction_transfer/creep_ct100.0",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/friction_transfer-creep_ct100.0.mp4",
+    "poster": "media/friction_transfer-creep_ct100.0.jpg",
+    "status": "complete",
+    "simulation_end": 0.7950499999999207,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.12580912580636916,
+        "captured": 0.12580912580636922,
+        "difference": 5.551115123125783e-17
+      },
+      "peak_displacement_mm": {
+        "reference": 0.1761150407198519,
+        "captured": 0.17611504071984316,
+        "difference": -8.743006318923108e-15
+      },
+      "normal_L1_relative": {
+        "reference": 7.285250834820553e-06,
+        "captured": 7.285250834820504e-06,
+        "difference": -4.828087799349512e-20
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999201,
+        "captured": 0.7999999999999201,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "friction_transfer",
+    "run_id": "creep_ct1000.0",
+    "video_id": "friction_transfer-creep_ct1000.0",
+    "config": {
+      "policy": "runtime",
+      "spacing_mm": 0.5,
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "pad_load": 2.0,
+      "tangent_damping_ratio": 1000.0,
+      "torque_peak": 0.003
+    },
+    "reference": "results/20261004-distributed-contact/friction_transfer/creep_ct1000.0",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/friction_transfer-creep_ct1000.0.mp4",
+    "poster": "media/friction_transfer-creep_ct1000.0.jpg",
+    "status": "complete",
+    "simulation_end": 0.7950499999999207,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 3.663109438460033,
+        "captured": 3.663109438460031,
+        "difference": -2.220446049250313e-15
+      },
+      "peak_displacement_mm": {
+        "reference": 0.3124197480051165,
+        "captured": 0.3124197480051722,
+        "difference": 5.56776846849516e-14
+      },
+      "normal_L1_relative": {
+        "reference": 0.1444794838738173,
+        "captured": 0.14447948387381696,
+        "difference": -3.3306690738754696e-16
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999201,
+        "captured": 0.7999999999999201,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "friction_refine",
+    "run_id": "creep_ct1000_dt6.25",
+    "video_id": "friction_refine-creep_ct1000_dt6.25",
+    "config": {
+      "policy": "runtime",
+      "spacing_mm": 0.5,
+      "pad_load": 2.0,
+      "tangent_damping_ratio": 1000.0,
+      "torque_peak": 0.003,
+      "duration": 0.8,
+      "timestep": 6.25e-06
+    },
+    "reference": "results/20261004-distributed-contact/friction_refine/creep_ct1000_dt6.25",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/friction_refine-creep_ct1000_dt6.25.mp4",
+    "poster": "media/friction_refine-creep_ct1000_dt6.25.jpg",
+    "status": "complete",
+    "simulation_end": 0.7950062499989808,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.0928709065112791,
+        "captured": 0.0928709065112791,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 0.16388092584896277,
+        "captured": 0.1638809258489609,
+        "difference": -1.8596235662471372e-15
+      },
+      "normal_L1_relative": {
+        "reference": 5.2262155730448274e-05,
+        "captured": 5.226215573044853e-05,
+        "difference": 2.574980159653073e-19
+      },
+      "simulated_s": {
+        "reference": 0.7999999999989692,
+        "captured": 0.7999999999989692,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "friction_refine",
+    "run_id": "hold_ct100_dt25",
+    "video_id": "friction_refine-hold_ct100_dt25",
+    "config": {
+      "policy": "runtime",
+      "spacing_mm": 0.5,
+      "pad_load": 2.0,
+      "tangent_damping_ratio": 100.0,
+      "scenario": "holding_ramp",
+      "torque_peak": 0.008,
+      "duration": 1.1,
+      "timestep": 2.5e-05
+    },
+    "reference": "results/20261004-distributed-contact/friction_refine/hold_ct100_dt25",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/friction_refine-hold_ct100_dt25.mp4",
+    "poster": "media/friction_refine-hold_ct100_dt25.jpg",
+    "status": "complete",
+    "simulation_end": 1.0950250000007826,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 11.220792489759246,
+        "captured": 11.220792489759205,
+        "difference": -4.085620730620576e-14
+      },
+      "peak_displacement_mm": {
+        "reference": 0.28046911774223005,
+        "captured": 0.2804691177422851,
+        "difference": 5.5067062021407764e-14
+      },
+      "normal_L1_relative": {
+        "reference": 0.003464352636940003,
+        "captured": 0.0034643526369400103,
+        "difference": 7.37257477290143e-18
+      },
+      "simulated_s": {
+        "reference": 1.100000000000771,
+        "captured": 1.100000000000771,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "payload",
+    "run_id": "payload_s1_m1",
+    "video_id": "payload-payload_s1_m1",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 1.0,
+      "mass_scale": 1.0
+    },
+    "reference": "results/20261004-distributed-contact/payload/payload_s1_m1",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/payload-payload_s1_m1.mp4",
+    "poster": "media/payload-payload_s1_m1.jpg",
+    "status": "complete",
+    "simulation_end": 0.6950499999999317,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.016335669598417257,
+        "captured": 0.016335669598417257,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 0.34680758383960547,
+        "captured": 0.34680758383960547,
+        "difference": 0.0
+      },
+      "normal_L1_relative": {
+        "reference": 1.893896064723308e-06,
+        "captured": 1.893896064723308e-06,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.6999999999999311,
+        "captured": 0.6999999999999311,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "payload",
+    "run_id": "payload_s05_m1",
+    "video_id": "payload-payload_s05_m1",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 0.5,
+      "mass_scale": 1.0
+    },
+    "reference": "results/20261004-distributed-contact/payload/payload_s05_m1",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/payload-payload_s05_m1.mp4",
+    "poster": "media/payload-payload_s05_m1.jpg",
+    "status": "complete",
+    "simulation_end": 0.6950499999999317,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.0020017913663695165,
+        "captured": 0.0020017913663695165,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 0.3458143768712656,
+        "captured": 0.3458143768712656,
+        "difference": 0.0
+      },
+      "normal_L1_relative": {
+        "reference": 1.2512189864455345e-06,
+        "captured": 1.2512189864455345e-06,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.6999999999999311,
+        "captured": 0.6999999999999311,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "payload",
+    "run_id": "payload_s1_m8",
+    "video_id": "payload-payload_s1_m8",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 1.0,
+      "mass_scale": 8.0
+    },
+    "reference": "results/20261004-distributed-contact/payload/payload_s1_m8",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/payload-payload_s1_m8.mp4",
+    "poster": "media/payload-payload_s1_m8.jpg",
+    "status": "complete",
+    "simulation_end": 0.6950499999999317,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.020232551167273218,
+        "captured": 0.020232551167273218,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 4.757238869696992,
+        "captured": 4.757238869696992,
+        "difference": 0.0
+      },
+      "normal_L1_relative": {
+        "reference": 8.87203590891603e-05,
+        "captured": 8.87203590891603e-05,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.6999999999999311,
+        "captured": 0.6999999999999311,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "payload",
+    "run_id": "payload_s05_m8",
+    "video_id": "payload-payload_s05_m8",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 0.5,
+      "mass_scale": 8.0
+    },
+    "reference": "results/20261004-distributed-contact/payload/payload_s05_m8",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/payload-payload_s05_m8.mp4",
+    "poster": "media/payload-payload_s05_m8.jpg",
+    "status": "complete",
+    "simulation_end": 0.6950499999999317,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.0045845956978733254,
+        "captured": 0.0045845956978733254,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 4.764108835877179,
+        "captured": 4.764108835877179,
+        "difference": 0.0
+      },
+      "normal_L1_relative": {
+        "reference": 8.851746612539378e-05,
+        "captured": 8.851746612539378e-05,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.6999999999999311,
+        "captured": 0.6999999999999311,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "payload",
+    "run_id": "payload_s1_m16",
+    "video_id": "payload-payload_s1_m16",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 1.0,
+      "mass_scale": 16.0
+    },
+    "reference": "results/20261004-distributed-contact/payload/payload_s1_m16",
+    "stopped": true,
+    "playback_speed": 0.2,
+    "src": "media/payload-payload_s1_m16.mp4",
+    "poster": "media/payload-payload_s1_m16.jpg",
+    "status": "failed",
+    "simulation_end": 0.47024999999995637,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.03344391854323503,
+        "captured": 0.03344391854323503,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 25.00773528079756,
+        "captured": 25.00773528079756,
+        "difference": 0.0
+      },
+      "normal_L1_relative": {
+        "reference": 0.0039274413855948,
+        "captured": 0.0039274413855948,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.47024999999995637,
+        "captured": 0.47024999999995637,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "payload",
+    "run_id": "payload_s05_m16",
+    "video_id": "payload-payload_s05_m16",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 0.5,
+      "mass_scale": 16.0
+    },
+    "reference": "results/20261004-distributed-contact/payload/payload_s05_m16",
+    "stopped": true,
+    "playback_speed": 0.2,
+    "src": "media/payload-payload_s05_m16.mp4",
+    "poster": "media/payload-payload_s05_m16.jpg",
+    "status": "failed",
+    "simulation_end": 0.47059999999995633,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.002914708383414358,
+        "captured": 0.002914708383414358,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 25.010425816064153,
+        "captured": 25.010425816064153,
+        "difference": 0.0
+      },
+      "normal_L1_relative": {
+        "reference": 0.004378185063043683,
+        "captured": 0.004378185063043683,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.47059999999995633,
+        "captured": 0.47059999999995633,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "payload",
+    "run_id": "payload_s1_m32",
+    "video_id": "payload-payload_s1_m32",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 1.0,
+      "mass_scale": 32.0
+    },
+    "reference": "results/20261004-distributed-contact/payload/payload_s1_m32",
+    "stopped": true,
+    "playback_speed": 0.2,
+    "src": "media/payload-payload_s1_m32.mp4",
+    "poster": "media/payload-payload_s1_m32.jpg",
+    "status": "failed",
+    "simulation_end": 0.4398499999999597,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.006438694583222108,
+        "captured": 0.006438694583222108,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 25.02379206279633,
+        "captured": 25.02379206279633,
+        "difference": 0.0
+      },
+      "normal_L1_relative": {
+        "reference": 0.005592160969264063,
+        "captured": 0.005592160969264063,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.4398499999999597,
+        "captured": 0.4398499999999597,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "payload",
+    "run_id": "payload_s05_m32",
+    "video_id": "payload-payload_s05_m32",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.7,
+      "torque_peak": 0.0,
+      "guide_stiffness": 0.0,
+      "payload_gravity": 9.81,
+      "spacing_mm": 0.5,
+      "mass_scale": 32.0
+    },
+    "reference": "results/20261004-distributed-contact/payload/payload_s05_m32",
+    "stopped": true,
+    "playback_speed": 0.2,
+    "src": "media/payload-payload_s05_m32.mp4",
+    "poster": "media/payload-payload_s05_m32.jpg",
+    "status": "failed",
+    "simulation_end": 0.4399499999999597,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.0027192997277384265,
+        "captured": 0.0027192997277384265,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 25.025881108033868,
+        "captured": 25.025881108033868,
+        "difference": 0.0
+      },
+      "normal_L1_relative": {
+        "reference": 0.006644097237898852,
+        "captured": 0.006644097237898852,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.4399499999999597,
+        "captured": 0.4399499999999597,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "transfer_compiled_fine",
+    "run_id": "compiled_fine_s1",
+    "video_id": "transfer_compiled_fine-compiled_fine_s1",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "torque_peak": 0.012,
+      "spacing_mm": 1.0
+    },
+    "reference": "results/20261004-distributed-contact/transfer_compiled_fine/compiled_fine_s1",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/transfer_compiled_fine-compiled_fine_s1.mp4",
+    "poster": "media/transfer_compiled_fine-compiled_fine_s1.jpg",
+    "status": "complete",
+    "simulation_end": 0.7950499999999207,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 19.25092845936898,
+        "captured": 19.25092845936898,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 0.4687575903436527,
+        "captured": 0.4687575903436527,
+        "difference": 0.0
+      },
+      "normal_L1_relative": {
+        "reference": 0.0017424567532587532,
+        "captured": 0.0017424567532587532,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999201,
+        "captured": 0.7999999999999201,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "cpu",
+    "phase": "transfer_compiled_fine",
+    "run_id": "compiled_fine_s05",
+    "video_id": "transfer_compiled_fine-compiled_fine_s05",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "torque_peak": 0.012,
+      "spacing_mm": 0.5
+    },
+    "reference": "results/20261004-distributed-contact/transfer_compiled_fine/compiled_fine_s05",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/transfer_compiled_fine-compiled_fine_s05.mp4",
+    "poster": "media/transfer_compiled_fine-compiled_fine_s05.jpg",
+    "status": "complete",
+    "simulation_end": 0.7950499999999207,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 19.27471346032788,
+        "captured": 19.27471346032788,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 0.42277665743285736,
+        "captured": 0.42277665743285736,
+        "difference": 0.0
+      },
+      "normal_L1_relative": {
+        "reference": 0.001705006568324176,
+        "captured": 0.001705006568324176,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999201,
+        "captured": 0.7999999999999201,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "drake",
+    "phase": "drake_transfer",
+    "run_id": "drake_tau0.003",
+    "video_id": "drake_transfer-drake_tau0.003",
+    "config": {
+      "name": "drake_tau0.003",
+      "timestep": 0.0005,
+      "torque_peak": 0.003
+    },
+    "reference": "results/20261004-distributed-contact/drake_transfer/drake_tau0.003",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/drake_transfer-drake_tau0.003.mp4",
+    "poster": "media/drake_transfer-drake_tau0.003.jpg",
+    "status": "complete",
+    "simulation_end": 0.7954999999999678,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.08324233025385035,
+        "captured": 0.08324233025385035,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 0.1564034258292133,
+        "captured": 0.1564034258292133,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999673,
+        "captured": 0.7999999999999673,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "drake",
+    "phase": "drake_transfer",
+    "run_id": "drake_tau0.012",
+    "video_id": "drake_transfer-drake_tau0.012",
+    "config": {
+      "name": "drake_tau0.012",
+      "timestep": 0.0005,
+      "torque_peak": 0.012
+    },
+    "reference": "results/20261004-distributed-contact/drake_transfer/drake_tau0.012",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/drake_transfer-drake_tau0.012.mp4",
+    "poster": "media/drake_transfer-drake_tau0.012.jpg",
+    "status": "complete",
+    "simulation_end": 0.7954999999999678,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 18.742465018439244,
+        "captured": 18.742465018439244,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 0.23614470665993653,
+        "captured": 0.23614470665993653,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999673,
+        "captured": 0.7999999999999673,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "drake",
+    "phase": "drake_transfer",
+    "run_id": "drake_tau0.048",
+    "video_id": "drake_transfer-drake_tau0.048",
+    "config": {
+      "name": "drake_tau0.048",
+      "timestep": 0.0005,
+      "torque_peak": 0.048
+    },
+    "reference": "results/20261004-distributed-contact/drake_transfer/drake_tau0.048",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/drake_transfer-drake_tau0.048.mp4",
+    "poster": "media/drake_transfer-drake_tau0.048.jpg",
+    "status": "complete",
+    "simulation_end": 0.7954999999999678,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 141.89745680672738,
+        "captured": 141.89745680672738,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 0.2306656257914835,
+        "captured": 0.2306656257914835,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.7999999999999673,
+        "captured": 0.7999999999999673,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "drake",
+    "phase": "drake_transfer",
+    "run_id": "drake_hold_m1.0",
+    "video_id": "drake_transfer-drake_hold_m1.0",
+    "config": {
+      "name": "drake_hold_m1.0",
+      "scenario": "holding_ramp",
+      "duration": 1.1,
+      "timestep": 0.0005,
+      "torque_peak": 0.008,
+      "mass_scale": 1.0
+    },
+    "reference": "results/20261004-distributed-contact/drake_transfer/drake_hold_m1.0",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/drake_transfer-drake_hold_m1.0.mp4",
+    "poster": "media/drake_transfer-drake_hold_m1.0.jpg",
+    "status": "complete",
+    "simulation_end": 1.0954999999999349,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 8.563296480243757,
+        "captured": 8.563296480243757,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 0.278803604481891,
+        "captured": 0.278803604481891,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 1.0999999999999344,
+        "captured": 1.0999999999999344,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "drake",
+    "phase": "drake_transfer",
+    "run_id": "drake_hold_m0.25",
+    "video_id": "drake_transfer-drake_hold_m0.25",
+    "config": {
+      "name": "drake_hold_m0.25",
+      "scenario": "holding_ramp",
+      "duration": 1.1,
+      "timestep": 0.0005,
+      "torque_peak": 0.008,
+      "mass_scale": 0.25
+    },
+    "reference": "results/20261004-distributed-contact/drake_transfer/drake_hold_m0.25",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/drake_transfer-drake_hold_m0.25.mp4",
+    "poster": "media/drake_transfer-drake_hold_m0.25.jpg",
+    "status": "complete",
+    "simulation_end": 1.0954999999999349,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 50.3698858316052,
+        "captured": 50.3698858316052,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 0.2749492540941958,
+        "captured": 0.2749492540941958,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 1.0999999999999344,
+        "captured": 1.0999999999999344,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "drake",
+    "phase": "drake_transfer",
+    "run_id": "drake_hold_m4.0",
+    "video_id": "drake_transfer-drake_hold_m4.0",
+    "config": {
+      "name": "drake_hold_m4.0",
+      "scenario": "holding_ramp",
+      "duration": 1.1,
+      "timestep": 0.0005,
+      "torque_peak": 0.008,
+      "mass_scale": 4.0
+    },
+    "reference": "results/20261004-distributed-contact/drake_transfer/drake_hold_m4.0",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/drake_transfer-drake_hold_m4.0.mp4",
+    "poster": "media/drake_transfer-drake_hold_m4.0.jpg",
+    "status": "complete",
+    "simulation_end": 1.0954999999999349,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 2.0896398210906018,
+        "captured": 2.0896398210906018,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 0.2822488726663323,
+        "captured": 0.2822488726663323,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 1.0999999999999344,
+        "captured": 1.0999999999999344,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "drake",
+    "phase": "drake_transfer",
+    "run_id": "drake_hold_load4",
+    "video_id": "drake_transfer-drake_hold_load4",
+    "config": {
+      "name": "drake_hold_load4",
+      "scenario": "holding_ramp",
+      "duration": 1.1,
+      "timestep": 0.0005,
+      "torque_peak": 0.015,
+      "pad_load": 4.0
+    },
+    "reference": "results/20261004-distributed-contact/drake_transfer/drake_hold_load4",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/drake_transfer-drake_hold_load4.mp4",
+    "poster": "media/drake_transfer-drake_hold_load4.jpg",
+    "status": "complete",
+    "simulation_end": 1.0954999999999349,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.994839947706214,
+        "captured": 0.994839947706214,
+        "difference": 0.0
+      },
+      "peak_displacement_mm": {
+        "reference": 1.0521736661530439,
+        "captured": 1.0521736661530439,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 1.0999999999999344,
+        "captured": 1.0999999999999344,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "newton",
+    "phase": "newton_transfer",
+    "run_id": "translated_unreduced",
+    "video_id": "newton_transfer-translated_unreduced",
+    "config": {
+      "name": "translated_unreduced",
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "mapping": "translated",
+      "reduce_contacts": false
+    },
+    "reference": "results/20261004-distributed-contact/newton_transfer/translated_unreduced",
+    "stopped": true,
+    "playback_speed": 0.0012499988079071045,
+    "src": "media/newton_transfer-translated_unreduced.mp4",
+    "poster": "media/newton_transfer-translated_unreduced.jpg",
+    "status": "failed",
+    "simulation_end": 0.004999995231628418,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 35.752774421788345,
+        "captured": 0.0,
+        "difference": -35.752774421788345
+      },
+      "peak_displacement_mm": {
+        "reference": 5.6542127375076765,
+        "captured": 0.0,
+        "difference": -5.6542127375076765
+      },
+      "simulated_s": {
+        "reference": 0.8,
+        "captured": 0.0,
+        "difference": -0.8
+      }
+    }
+  },
+  {
+    "backend": "newton",
+    "phase": "newton_transfer",
+    "run_id": "native_h05",
+    "video_id": "newton_transfer-native_h05",
+    "config": {
+      "name": "native_h05",
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "mapping": "native"
+    },
+    "reference": "results/20261004-distributed-contact/newton_transfer/native_h05",
+    "stopped": true,
+    "playback_speed": 0.020000265911221504,
+    "src": "media/newton_transfer-native_h05.mp4",
+    "poster": "media/newton_transfer-native_h05.jpg",
+    "status": "failed",
+    "simulation_end": 0.08000106364488602,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_angular_speed": {
+        "reference": 0.033541268147133735,
+        "captured": 0.033541205478801336,
+        "difference": -6.266833239843006e-08
+      },
+      "peak_displacement_mm": {
+        "reference": 0.06898604841629058,
+        "captured": 0.06898604841629058,
+        "difference": 0.0
+      },
+      "simulated_s": {
+        "reference": 0.075,
+        "captured": 0.075,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "backend": "gpu",
+    "phase": "mjlab_transfer",
+    "run_id": "fine_s1.0_batch128",
+    "video_id": "mjlab_transfer-fine_s1.0_batch128",
+    "config": {
+      "name": "fine_s1.0_batch128",
+      "spacing_mm": 1.0,
+      "nworld": 128,
+      "timestep": 5e-05,
+      "policy": "runtime_approx",
+      "torque_peak": 0.012,
+      "duration": 0.8,
+      "solver_tolerance": 1e-08
+    },
+    "reference": "results/20261004-distributed-contact/mjlab_transfer/fine_s1.0_batch128",
+    "title": "fine_s1.0_batch128 (actual GPU world 0; geometry view)",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/mjlab_transfer-fine_s1.0_batch128.mp4",
+    "poster": "media/mjlab_transfer-fine_s1.0_batch128.jpg",
+    "status": "complete",
+    "simulation_end": 0.8000765442848206,
+    "source": "original GPU states",
+    "reference_comparison": null
+  },
+  {
+    "backend": "gpu",
+    "phase": "mjlab_transfer",
+    "run_id": "fine_s0.5_batch128",
+    "video_id": "mjlab_transfer-fine_s0.5_batch128",
+    "config": {
+      "name": "fine_s0.5_batch128",
+      "spacing_mm": 0.5,
+      "nworld": 128,
+      "timestep": 5e-05,
+      "policy": "runtime_approx",
+      "torque_peak": 0.012,
+      "duration": 0.8,
+      "solver_tolerance": 1e-08
+    },
+    "reference": "results/20261004-distributed-contact/mjlab_transfer/fine_s0.5_batch128",
+    "title": "fine_s0.5_batch128 (actual GPU world 0; geometry view)",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/mjlab_transfer-fine_s0.5_batch128.mp4",
+    "poster": "media/mjlab_transfer-fine_s0.5_batch128.jpg",
+    "status": "complete",
+    "simulation_end": 0.8000765442848206,
+    "source": "original GPU states",
+    "reference_comparison": null
+  },
+  {
+    "backend": "gpu",
+    "phase": "mjlab_transfer",
+    "run_id": "s1.0_batch128",
+    "video_id": "mjlab_transfer-s1.0_batch128",
+    "config": {
+      "name": "s1.0_batch128",
+      "spacing_mm": 1.0,
+      "nworld": 128,
+      "timestep": 0.0005,
+      "policy": "compiled",
+      "torque_peak": 0.012,
+      "duration": 0.8,
+      "solver_tolerance": 1e-08
+    },
+    "reference": "results/20261004-distributed-contact/mjlab_transfer/s1.0_batch128",
+    "title": "s1.0_batch128 (actual GPU world 0; geometry view)",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/mjlab_transfer-s1.0_batch128.mp4",
+    "poster": "media/mjlab_transfer-s1.0_batch128.jpg",
+    "status": "complete",
+    "simulation_end": 0.8000093698501587,
+    "source": "original GPU states",
+    "reference_comparison": null
+  },
+  {
+    "backend": "gpu",
+    "phase": "mjlab_transfer",
+    "run_id": "s0.5_batch128",
+    "video_id": "mjlab_transfer-s0.5_batch128",
+    "config": {
+      "name": "s0.5_batch128",
+      "spacing_mm": 0.5,
+      "nworld": 128,
+      "timestep": 0.0005,
+      "policy": "compiled",
+      "torque_peak": 0.012,
+      "duration": 0.8,
+      "solver_tolerance": 1e-08
+    },
+    "reference": "results/20261004-distributed-contact/mjlab_transfer/s0.5_batch128",
+    "title": "s0.5_batch128 (actual GPU world 0; geometry view)",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/mjlab_transfer-s0.5_batch128.mp4",
+    "poster": "media/mjlab_transfer-s0.5_batch128.jpg",
+    "status": "complete",
+    "simulation_end": 0.8000093698501587,
+    "source": "original GPU states",
+    "reference_comparison": null
+  },
+  {
+    "backend": "isolated",
+    "phase": "slip_fine",
+    "run_id": "slip-fine_separated_friction-a9be25895d38",
+    "video_id": "isolated-plane-normal_pulse",
+    "config": {
+      "backend": "mujoco",
+      "geometry": "plane",
+      "object_radius_mm": 12.5,
+      "spacing_mm": 0.5,
+      "relaxation": 0.03,
+      "phase_degrees": 0.0,
+      "mass_scale": 1.0,
+      "inertia_scale": 1.0,
+      "timestep": 5e-05,
+      "iterations": 200,
+      "tolerance": 1e-10,
+      "impratio": 10000.0,
+      "seed": 0,
+      "mode": "dynamic",
+      "load": 1.0,
+      "indentation_mm": 0.2,
+      "duration": 1.3,
+      "engine_version": "3.14.0",
+      "tangent_fixture_damping": 5.0,
+      "mapping_policy": "runtime_selected_direct",
+      "diagexact": true,
+      "impedance_override": 0.0001,
+      "tangent_damping_ratio": 10.0,
+      "contact_log_stride": 10,
+      "scenario": "normal_pulse",
+      "phase": "slip",
+      "group": "fine_separated_friction"
+    },
+    "reference": "results/20261004-distributed-contact/slip_fine/slip-fine_separated_friction-a9be25895d38",
+    "title": "Isolated plane: normal pulse",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/isolated-plane-normal_pulse.mp4",
+    "poster": "media/isolated-plane-normal_pulse.jpg",
+    "status": "complete",
+    "simulation_end": 1.2950500000005207,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_velocity": {
+        "reference": 2.5791138649483846e-06,
+        "captured": 2.5791138649483846e-06,
+        "difference": 0.0
+      },
+      "slip_distance_mm": {
+        "reference": 5.521465658303577e-07,
+        "captured": 5.521749199322933e-07,
+        "difference": 2.8354101935590096e-11
+      },
+      "final_normal_force": {
+        "reference": 1.000000000023218,
+        "captured": 1.000000000023118,
+        "difference": -1.0014211682118912e-13
+      }
+    }
+  },
+  {
+    "backend": "isolated",
+    "phase": "slip_fine",
+    "run_id": "slip-fine_separated_friction-bc5a53502da2",
+    "video_id": "isolated-plane-controlled_slip",
+    "config": {
+      "backend": "mujoco",
+      "geometry": "plane",
+      "object_radius_mm": 12.5,
+      "spacing_mm": 0.5,
+      "relaxation": 0.03,
+      "phase_degrees": 0.0,
+      "mass_scale": 1.0,
+      "inertia_scale": 1.0,
+      "timestep": 5e-05,
+      "iterations": 200,
+      "tolerance": 1e-10,
+      "impratio": 10000.0,
+      "seed": 0,
+      "mode": "dynamic",
+      "load": 1.0,
+      "indentation_mm": 0.2,
+      "duration": 1.3,
+      "engine_version": "3.14.0",
+      "tangent_fixture_damping": 5.0,
+      "mapping_policy": "runtime_selected_direct",
+      "diagexact": true,
+      "impedance_override": 0.0001,
+      "tangent_damping_ratio": 10.0,
+      "contact_log_stride": 10,
+      "scenario": "controlled_slip",
+      "phase": "slip",
+      "group": "fine_separated_friction"
+    },
+    "reference": "results/20261004-distributed-contact/slip_fine/slip-fine_separated_friction-bc5a53502da2",
+    "title": "Isolated plane: controlled slip",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/isolated-plane-controlled_slip.mp4",
+    "poster": "media/isolated-plane-controlled_slip.jpg",
+    "status": "complete",
+    "simulation_end": 1.2950500000005207,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_velocity": {
+        "reference": 0.04628673227950188,
+        "captured": 0.04628673227950188,
+        "difference": 0.0
+      },
+      "slip_distance_mm": {
+        "reference": 6.0103789061551,
+        "captured": 6.010379088658399,
+        "difference": 1.8250329958391376e-07
+      },
+      "final_normal_force": {
+        "reference": 0.999930865150394,
+        "captured": 0.999930865567596,
+        "difference": 4.172020506842955e-10
+      }
+    }
+  },
+  {
+    "backend": "isolated",
+    "phase": "slip_fine",
+    "run_id": "slip-fine_separated_friction-29421103f59d",
+    "video_id": "isolated-cylinder-normal_pulse",
+    "config": {
+      "backend": "mujoco",
+      "geometry": "cylinder",
+      "object_radius_mm": 12.5,
+      "spacing_mm": 0.5,
+      "relaxation": 0.03,
+      "phase_degrees": 0.0,
+      "mass_scale": 1.0,
+      "inertia_scale": 1.0,
+      "timestep": 5e-05,
+      "iterations": 200,
+      "tolerance": 1e-10,
+      "impratio": 10000.0,
+      "seed": 0,
+      "mode": "dynamic",
+      "load": 1.0,
+      "indentation_mm": 0.2,
+      "duration": 1.3,
+      "engine_version": "3.14.0",
+      "tangent_fixture_damping": 5.0,
+      "mapping_policy": "runtime_selected_direct",
+      "diagexact": true,
+      "impedance_override": 0.0001,
+      "tangent_damping_ratio": 10.0,
+      "contact_log_stride": 10,
+      "scenario": "normal_pulse",
+      "phase": "slip",
+      "group": "fine_separated_friction"
+    },
+    "reference": "results/20261004-distributed-contact/slip_fine/slip-fine_separated_friction-29421103f59d",
+    "title": "Isolated cylinder: normal pulse",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/isolated-cylinder-normal_pulse.mp4",
+    "poster": "media/isolated-cylinder-normal_pulse.jpg",
+    "status": "complete",
+    "simulation_end": 1.2950500000005207,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_velocity": {
+        "reference": 9.263784565272808e-06,
+        "captured": 9.263784565272808e-06,
+        "difference": 0.0
+      },
+      "slip_distance_mm": {
+        "reference": -7.076536879585077e-07,
+        "captured": -7.076753655624821e-07,
+        "difference": -2.1677603974372816e-11
+      },
+      "final_normal_force": {
+        "reference": 1.0011463273019205,
+        "captured": 1.00114632717226,
+        "difference": -1.2966050455531786e-10
+      }
+    }
+  },
+  {
+    "backend": "isolated",
+    "phase": "slip_fine",
+    "run_id": "slip-fine_separated_friction-0699c63e8178",
+    "video_id": "isolated-cylinder-controlled_slip",
+    "config": {
+      "backend": "mujoco",
+      "geometry": "cylinder",
+      "object_radius_mm": 12.5,
+      "spacing_mm": 0.5,
+      "relaxation": 0.03,
+      "phase_degrees": 0.0,
+      "mass_scale": 1.0,
+      "inertia_scale": 1.0,
+      "timestep": 5e-05,
+      "iterations": 200,
+      "tolerance": 1e-10,
+      "impratio": 10000.0,
+      "seed": 0,
+      "mode": "dynamic",
+      "load": 1.0,
+      "indentation_mm": 0.2,
+      "duration": 1.3,
+      "engine_version": "3.14.0",
+      "tangent_fixture_damping": 5.0,
+      "mapping_policy": "runtime_selected_direct",
+      "diagexact": true,
+      "impedance_override": 0.0001,
+      "tangent_damping_ratio": 10.0,
+      "contact_log_stride": 10,
+      "scenario": "controlled_slip",
+      "phase": "slip",
+      "group": "fine_separated_friction"
+    },
+    "reference": "results/20261004-distributed-contact/slip_fine/slip-fine_separated_friction-0699c63e8178",
+    "title": "Isolated cylinder: controlled slip",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/isolated-cylinder-controlled_slip.mp4",
+    "poster": "media/isolated-cylinder-controlled_slip.jpg",
+    "status": "complete",
+    "simulation_end": 1.2950500000005207,
+    "source": "native rerun captured separately",
+    "reference_comparison": {
+      "peak_velocity": {
+        "reference": 0.051798901571988236,
+        "captured": 0.051798901571988236,
+        "difference": 0.0
+      },
+      "slip_distance_mm": {
+        "reference": 6.990227099325128,
+        "captured": 6.990227347399212,
+        "difference": 2.4807408394167396e-07
+      },
+      "final_normal_force": {
+        "reference": 1.001059869447266,
+        "captured": 1.001059870322673,
+        "difference": 8.754068581140473e-10
+      }
+    }
+  },
+  {
+    "backend": "fillet",
+    "phase": "fillet",
+    "run_id": "fillet_6mm_static_tilt",
+    "video_id": "fillet_6mm_static_tilt",
+    "config": {
+      "backend": "mujoco",
+      "geometry": "plane",
+      "object_radius_mm": 12.5,
+      "spacing_mm": 0.5,
+      "relaxation": 0.03,
+      "phase_degrees": 0.0,
+      "mass_scale": 1.0,
+      "inertia_scale": 1.0,
+      "timestep": 0.001,
+      "iterations": 200,
+      "tolerance": 1e-10,
+      "impratio": 10.0,
+      "seed": 0,
+      "mode": "displacement",
+      "load": 1.0,
+      "indentation_mm": 0.2,
+      "duration": 0.6,
+      "tip_shape": "filleted_prism",
+      "tilt_degrees": 0.0,
+      "azimuth_degrees": 0.0,
+      "phase": "fillet",
+      "group": "front_edge_corner"
+    },
+    "reference": "results/20261004-distributed-contact/fillet/fillet-front_edge_corner-b1002ca0e17e",
+    "title": "STATIC 6 mm fillet: front-surface tilt snapshots",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/fillet_6mm_static_tilt.mp4",
+    "poster": "media/fillet_6mm_static_tilt.jpg",
+    "status": "complete",
+    "simulation_end": null,
+    "source": "native prescribed static snapshots",
+    "reference_comparison": null
+  },
+  {
+    "backend": "pressure",
+    "phase": "newton_pressure",
+    "run_id": "pressure_h1.0_reducedFalse_momentFalse",
+    "video_id": "pressure_h1.0_reducedFalse_momentFalse",
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 1.0,
+      "timestep": 5e-05,
+      "reduce_contacts": false,
+      "moment_matching": false
+    },
+    "reference": "results/20261004-distributed-contact/newton_pressure",
+    "title": "STATIC pressure: 1 mm SDF, unreduced",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/pressure_h1.0_reducedFalse_momentFalse.mp4",
+    "poster": "media/pressure_h1.0_reducedFalse_momentFalse.jpg",
+    "status": "complete",
+    "simulation_end": null,
+    "source": "native prescribed static snapshots",
+    "reference_comparison": null
+  },
+  {
+    "backend": "pressure",
+    "phase": "newton_pressure",
+    "run_id": "pressure_h1.0_reducedTrue_momentFalse",
+    "video_id": "pressure_h1.0_reducedTrue_momentFalse",
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 1.0,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": false
+    },
+    "reference": "results/20261004-distributed-contact/newton_pressure",
+    "title": "STATIC pressure: 1 mm SDF, reduced",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/pressure_h1.0_reducedTrue_momentFalse.mp4",
+    "poster": "media/pressure_h1.0_reducedTrue_momentFalse.jpg",
+    "status": "complete",
+    "simulation_end": null,
+    "source": "native prescribed static snapshots",
+    "reference_comparison": null
+  },
+  {
+    "backend": "pressure",
+    "phase": "newton_pressure",
+    "run_id": "pressure_h1.0_reducedTrue_momentTrue",
+    "video_id": "pressure_h1.0_reducedTrue_momentTrue",
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 1.0,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": true
+    },
+    "reference": "results/20261004-distributed-contact/newton_pressure",
+    "title": "STATIC pressure: 1 mm SDF, reduced + moment matching",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/pressure_h1.0_reducedTrue_momentTrue.mp4",
+    "poster": "media/pressure_h1.0_reducedTrue_momentTrue.jpg",
+    "status": "complete",
+    "simulation_end": null,
+    "source": "native prescribed static snapshots",
+    "reference_comparison": null
+  },
+  {
+    "backend": "pressure",
+    "phase": "newton_pressure",
+    "run_id": "pressure_h0.5_reducedFalse_momentFalse",
+    "video_id": "pressure_h0.5_reducedFalse_momentFalse",
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "reduce_contacts": false,
+      "moment_matching": false
+    },
+    "reference": "results/20261004-distributed-contact/newton_pressure",
+    "title": "STATIC pressure: 0.5 mm SDF, unreduced",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/pressure_h0.5_reducedFalse_momentFalse.mp4",
+    "poster": "media/pressure_h0.5_reducedFalse_momentFalse.jpg",
+    "status": "complete",
+    "simulation_end": null,
+    "source": "native prescribed static snapshots",
+    "reference_comparison": null
+  },
+  {
+    "backend": "pressure",
+    "phase": "newton_pressure",
+    "run_id": "pressure_h0.5_reducedTrue_momentFalse",
+    "video_id": "pressure_h0.5_reducedTrue_momentFalse",
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": false
+    },
+    "reference": "results/20261004-distributed-contact/newton_pressure",
+    "title": "STATIC pressure: 0.5 mm SDF, reduced",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/pressure_h0.5_reducedTrue_momentFalse.mp4",
+    "poster": "media/pressure_h0.5_reducedTrue_momentFalse.jpg",
+    "status": "complete",
+    "simulation_end": null,
+    "source": "native prescribed static snapshots",
+    "reference_comparison": null
+  },
+  {
+    "backend": "pressure",
+    "phase": "newton_pressure",
+    "run_id": "pressure_h0.5_reducedTrue_momentTrue",
+    "video_id": "pressure_h0.5_reducedTrue_momentTrue",
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": true
+    },
+    "reference": "results/20261004-distributed-contact/newton_pressure",
+    "title": "STATIC pressure: 0.5 mm SDF, reduced + moment matching",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/pressure_h0.5_reducedTrue_momentTrue.mp4",
+    "poster": "media/pressure_h0.5_reducedTrue_momentTrue.jpg",
+    "status": "complete",
+    "simulation_end": null,
+    "source": "native prescribed static snapshots",
+    "reference_comparison": null
+  },
+  {
+    "backend": "pressure",
+    "phase": "newton_pressure",
+    "run_id": "pressure_h0.25_reducedFalse_momentFalse",
+    "video_id": "pressure_h0.25_reducedFalse_momentFalse",
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 0.25,
+      "timestep": 5e-05,
+      "reduce_contacts": false,
+      "moment_matching": false
+    },
+    "reference": "results/20261004-distributed-contact/newton_pressure",
+    "title": "STATIC pressure: 0.25 mm SDF, unreduced",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/pressure_h0.25_reducedFalse_momentFalse.mp4",
+    "poster": "media/pressure_h0.25_reducedFalse_momentFalse.jpg",
+    "status": "complete",
+    "simulation_end": null,
+    "source": "native prescribed static snapshots",
+    "reference_comparison": null
+  },
+  {
+    "backend": "pressure",
+    "phase": "newton_pressure",
+    "run_id": "pressure_h0.25_reducedTrue_momentFalse",
+    "video_id": "pressure_h0.25_reducedTrue_momentFalse",
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 0.25,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": false
+    },
+    "reference": "results/20261004-distributed-contact/newton_pressure",
+    "title": "STATIC pressure: 0.25 mm SDF, reduced",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/pressure_h0.25_reducedTrue_momentFalse.mp4",
+    "poster": "media/pressure_h0.25_reducedTrue_momentFalse.jpg",
+    "status": "complete",
+    "simulation_end": null,
+    "source": "native prescribed static snapshots",
+    "reference_comparison": null
+  },
+  {
+    "backend": "pressure",
+    "phase": "newton_pressure",
+    "run_id": "pressure_h0.25_reducedTrue_momentTrue",
+    "video_id": "pressure_h0.25_reducedTrue_momentTrue",
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 0.25,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": true
+    },
+    "reference": "results/20261004-distributed-contact/newton_pressure",
+    "title": "STATIC pressure: 0.25 mm SDF, reduced + moment matching",
+    "stopped": false,
+    "playback_speed": 0.2,
+    "src": "media/pressure_h0.25_reducedTrue_momentTrue.mp4",
+    "poster": "media/pressure_h0.25_reducedTrue_momentTrue.jpg",
+    "status": "complete",
+    "simulation_end": null,
+    "source": "native prescribed static snapshots",
+    "reference_comparison": null
+  }
+]

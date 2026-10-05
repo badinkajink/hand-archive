@@ -1,0 +1,436 @@
+{
+  "controller_period_s": 0.02,
+  "cases": [
+    {
+      "id": "roll50_legacy_1000us",
+      "label": "legacy",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    {
+      "id": "roll50_legacy_exact_1000us",
+      "label": "legacy_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    {
+      "id": "roll50_physical_1000us",
+      "label": "physical",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    {
+      "id": "roll50_physical_exact_1000us",
+      "label": "physical_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    {
+      "id": "roll50_runtime_approx_1000us",
+      "label": "runtime_approx",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    {
+      "id": "roll50_runtime_exact_1000us",
+      "label": "runtime_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    {
+      "id": "roll50_drake_1000us",
+      "label": "drake",
+      "spec": "drake:hydro:rt0.03:hr1",
+      "contact_policy": "legacy",
+      "physics_dt": 0.001,
+      "controller_hz": 50,
+      "physics_steps_per_control": 20,
+      "seed": 0
+    },
+    {
+      "id": "roll50_legacy_500us",
+      "label": "legacy",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    {
+      "id": "roll50_legacy_exact_500us",
+      "label": "legacy_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    {
+      "id": "roll50_physical_500us",
+      "label": "physical",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    {
+      "id": "roll50_physical_exact_500us",
+      "label": "physical_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    {
+      "id": "roll50_runtime_approx_500us",
+      "label": "runtime_approx",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    {
+      "id": "roll50_runtime_exact_500us",
+      "label": "runtime_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    {
+      "id": "roll50_drake_500us",
+      "label": "drake",
+      "spec": "drake:hydro:rt0.03:hr1",
+      "contact_policy": "legacy",
+      "physics_dt": 0.0005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 40,
+      "seed": 0
+    },
+    {
+      "id": "roll50_legacy_2000us",
+      "label": "legacy",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    {
+      "id": "roll50_legacy_exact_2000us",
+      "label": "legacy_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    {
+      "id": "roll50_physical_2000us",
+      "label": "physical",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    {
+      "id": "roll50_physical_exact_2000us",
+      "label": "physical_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    {
+      "id": "roll50_runtime_approx_2000us",
+      "label": "runtime_approx",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    {
+      "id": "roll50_runtime_exact_2000us",
+      "label": "runtime_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    {
+      "id": "roll50_drake_2000us",
+      "label": "drake",
+      "spec": "drake:hydro:rt0.03:hr1",
+      "contact_policy": "legacy",
+      "physics_dt": 0.002,
+      "controller_hz": 50,
+      "physics_steps_per_control": 10,
+      "seed": 0
+    },
+    {
+      "id": "roll50_legacy_5000us",
+      "label": "legacy",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    {
+      "id": "roll50_legacy_exact_5000us",
+      "label": "legacy_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    {
+      "id": "roll50_physical_5000us",
+      "label": "physical",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    {
+      "id": "roll50_physical_exact_5000us",
+      "label": "physical_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    {
+      "id": "roll50_runtime_approx_5000us",
+      "label": "runtime_approx",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    {
+      "id": "roll50_runtime_exact_5000us",
+      "label": "runtime_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    {
+      "id": "roll50_drake_5000us",
+      "label": "drake",
+      "spec": "drake:hydro:rt0.03:hr1",
+      "contact_policy": "legacy",
+      "physics_dt": 0.005,
+      "controller_hz": 50,
+      "physics_steps_per_control": 4,
+      "seed": 0
+    },
+    {
+      "id": "roll50_legacy_10000us",
+      "label": "legacy",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    {
+      "id": "roll50_legacy_exact_10000us",
+      "label": "legacy_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    {
+      "id": "roll50_physical_10000us",
+      "label": "physical",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    {
+      "id": "roll50_physical_exact_10000us",
+      "label": "physical_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    {
+      "id": "roll50_runtime_approx_10000us",
+      "label": "runtime_approx",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    {
+      "id": "roll50_runtime_exact_10000us",
+      "label": "runtime_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    {
+      "id": "roll50_drake_10000us",
+      "label": "drake",
+      "spec": "drake:hydro:rt0.03:hr1",
+      "contact_policy": "legacy",
+      "physics_dt": 0.01,
+      "controller_hz": 50,
+      "physics_steps_per_control": 2,
+      "seed": 0
+    },
+    {
+      "id": "roll50_legacy_50us",
+      "label": "legacy",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    {
+      "id": "roll50_legacy_exact_50us",
+      "label": "legacy_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    {
+      "id": "roll50_physical_50us",
+      "label": "physical",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    {
+      "id": "roll50_physical_exact_50us",
+      "label": "physical_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    {
+      "id": "roll50_runtime_approx_50us",
+      "label": "runtime_approx",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    {
+      "id": "roll50_runtime_exact_50us",
+      "label": "runtime_exact",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    },
+    {
+      "id": "roll50_drake_50us",
+      "label": "drake",
+      "spec": "drake:hydro:rt0.03:hr1",
+      "contact_policy": "legacy",
+      "physics_dt": 5e-05,
+      "controller_hz": 50,
+      "physics_steps_per_control": 400,
+      "seed": 0
+    }
+  ],
+  "scope": "nominal screen; perturbations and higher-rate wrench capture deferred",
+  "schedule_time_tolerance_s": 1e-08,
+  "provisional_reference_tolerances": {
+    "roll_lobe_degrees": 3.0,
+    "gain_absolute": 0.05,
+    "slip_proxy_integral_mm": 0.5,
+    "note": "versus same backend/policy at 50 us; require pickup/retention too; screening targets, not hardware validation"
+  },
+  "success": "report pickup + final retention separately from gain/slip/pose errors; no fidelity pass inferred",
+  "timeout_s_per_case": 1800,
+  "source_sha256": "7a0b83447d9fc5dabd3ab9f3d144ba3d02bf73786c23625b10ac5a3bc2465b75"
+}

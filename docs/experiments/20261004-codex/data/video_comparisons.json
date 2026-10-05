@@ -1,0 +1,119 @@
+[
+  {
+    "video_id": "compare-resolution",
+    "title": "Sphere resolution: the same 12 mN\u00b7m pulse",
+    "src": "media/compare-resolution.mp4",
+    "poster": "media/compare-resolution.jpg",
+    "caption": "1 mm / 50 \u00b5s, 0.5 mm / 50 \u00b5s, 0.25 mm / 25 \u00b5s and Drake / 500 \u00b5s. Total sample area and stiffness stay fixed. All cameras and input pulse timing agree.",
+    "source_ids": [
+      "transfer-fine_s1.0_tau0.012",
+      "transfer-fine_s0.5_tau0.012",
+      "transfer-refine_s0.25",
+      "drake_transfer-drake_tau0.012"
+    ]
+  },
+  {
+    "video_id": "compare-backends",
+    "title": "Matched pulse across CPU, GPU and Drake",
+    "src": "media/compare-backends.mp4",
+    "poster": "media/compare-backends.jpg",
+    "caption": "GPU footage replays actual world 0 of the 128-world batch. Its neutral sample colors reflect missing per-point force logs. The other cases show native contact pressure in their individual close-ups.",
+    "source_ids": [
+      "transfer-fine_s1.0_tau0.012",
+      "mjlab_transfer-fine_s1.0_batch128",
+      "transfer-fine_s0.5_tau0.012",
+      "drake_transfer-drake_tau0.012"
+    ]
+  },
+  {
+    "video_id": "compare-creep",
+    "title": "Small-torque holding and friction creep",
+    "src": "media/compare-creep.mp4",
+    "poster": "media/compare-creep.jpg",
+    "caption": "The same 3 mN\u00b7m pulses with C\u209c/C\u1d62 = 10, 100 and 1000, then Drake. The 1000 case uses 6.25 \u00b5s; the other CPU cases use 50 \u00b5s. These are declared operating points, not a solver-only comparison.",
+    "source_ids": [
+      "transfer-fine_s0.5_tau0.003",
+      "friction_transfer-creep_ct100.0",
+      "friction_refine-creep_ct1000_dt6.25",
+      "drake_transfer-drake_tau0.003"
+    ]
+  },
+  {
+    "video_id": "compare-holding",
+    "title": "Holding ramps across contact resolution",
+    "src": "media/compare-holding.mp4",
+    "poster": "media/compare-holding.jpg",
+    "caption": "2, 1 and 0.5 mm spacing at nominal preload; the fourth panel doubles requested pad load. The fourth ramp is faster. Motion thresholds and measured normal load are exported alongside the videos.",
+    "source_ids": [
+      "holding-hold_s2.0_m1.0",
+      "holding-hold_s1.0_m1.0",
+      "holding-hold_s0.5_m1.0",
+      "holding-hold_load4_s0.5"
+    ]
+  },
+  {
+    "video_id": "compare-mass",
+    "title": "Mass and timestep sensitivity",
+    "src": "media/compare-mass.mp4",
+    "poster": "media/compare-mass.jpg",
+    "caption": "Quarter mass at 25 \u00b5s and 12.5 \u00b5s, nominal mass at 50 \u00b5s, then four-times mass at 50 \u00b5s. The refined quarter-mass ramp is slower and shorter. 200 Hz video sampling cannot resolve every physics-step load oscillation; the underlying traces are retained.",
+    "source_ids": [
+      "holding-hold_s0.5_m0.25",
+      "holding_refine-quarter_s0.5_dt1.25e-05",
+      "holding-hold_s0.5_m1.0",
+      "holding-hold_s0.5_m4.0"
+    ]
+  },
+  {
+    "video_id": "compare-payload",
+    "title": "Payload retention at matched resolution",
+    "src": "media/compare-payload.mp4",
+    "poster": "media/compare-payload.jpg",
+    "caption": "196.3 g at 1 and 0.5 mm, then 392.7 g at 1 and 0.5 mm. Object-only weight ramps after settling; no translational spring supports it. Red badges identify the 25 mm escape guard. Retention with drift is visible.",
+    "source_ids": [
+      "payload-payload_s1_m8",
+      "payload-payload_s05_m8",
+      "payload-payload_s1_m16",
+      "payload-payload_s05_m16"
+    ]
+  },
+  {
+    "video_id": "compare-release",
+    "title": "Strong-torque release across resolutions",
+    "src": "media/compare-release.mp4",
+    "poster": "media/compare-release.jpg",
+    "caption": "The same 48 mN\u00b7m pulses. Each stopped panel freezes its last recorded state with a red badge; it is not continued motion. Drake's differing trajectory is retained.",
+    "source_ids": [
+      "transfer-fine_s1.0_tau0.048",
+      "transfer-fine_s0.5_tau0.048",
+      "transfer-fast_refine_s025",
+      "drake_transfer-drake_tau0.048"
+    ]
+  },
+  {
+    "video_id": "compare-numerics",
+    "title": "Timestep and impedance controls",
+    "src": "media/compare-numerics.mp4",
+    "poster": "media/compare-numerics.jpg",
+    "caption": "Original impedance / 500 \u00b5s, fine normal law / 50 \u00b5s, underresolved strong-friction damping / 50 \u00b5s, and the precomputed fine mapping / 50 \u00b5s. The third panel uses the smaller 3 mN\u00b7m pulse; its oscillation must not be read as a matched-input improvement.",
+    "source_ids": [
+      "transfer-compiled_s0.5",
+      "transfer-fine_s0.5_tau0.012",
+      "friction_transfer-creep_ct1000.0",
+      "transfer_compiled_fine-compiled_fine_s05"
+    ]
+  },
+  {
+    "video_id": "compare-isolated",
+    "title": "Isolated normal pulses and controlled sliding",
+    "src": "media/compare-isolated.mp4",
+    "poster": "media/compare-isolated.jpg",
+    "caption": "Actual native isolated-fixture trajectories at 0.5 mm spacing. Plane/cylinder normal pulses occupy the top row; force-ramp sliding and braking occupy the bottom row.",
+    "source_ids": [
+      "isolated-plane-normal_pulse",
+      "isolated-cylinder-normal_pulse",
+      "isolated-plane-controlled_slip",
+      "isolated-cylinder-controlled_slip"
+    ]
+  }
+]

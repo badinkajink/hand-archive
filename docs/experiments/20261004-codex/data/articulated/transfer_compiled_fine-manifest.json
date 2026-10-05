@@ -1,0 +1,22 @@
+[
+  {
+    "run_id": "compiled_fine_s1",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "torque_peak": 0.012,
+      "spacing_mm": 1.0
+    }
+  },
+  {
+    "run_id": "compiled_fine_s05",
+    "config": {
+      "policy": "compiled_fine",
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "torque_peak": 0.012,
+      "spacing_mm": 0.5
+    }
+  }
+]

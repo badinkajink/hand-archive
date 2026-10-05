@@ -1,0 +1,192 @@
+[
+  {
+    "run_id": "hold_s2.0_m0.25",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 2.5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 2.0,
+      "mass_scale": 0.25
+    }
+  },
+  {
+    "run_id": "hold_s2.0_m1.0",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 2.0,
+      "mass_scale": 1.0
+    }
+  },
+  {
+    "run_id": "hold_s2.0_m4.0",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 2.0,
+      "mass_scale": 4.0
+    }
+  },
+  {
+    "run_id": "hold_s1.0_m0.25",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 2.5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 1.0,
+      "mass_scale": 0.25
+    }
+  },
+  {
+    "run_id": "hold_s1.0_m1.0",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 1.0,
+      "mass_scale": 1.0
+    }
+  },
+  {
+    "run_id": "hold_s1.0_m4.0",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 1.0,
+      "mass_scale": 4.0
+    }
+  },
+  {
+    "run_id": "hold_s0.5_m0.25",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 2.5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 0.5,
+      "mass_scale": 0.25
+    }
+  },
+  {
+    "run_id": "hold_s0.5_m1.0",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 0.5,
+      "mass_scale": 1.0
+    }
+  },
+  {
+    "run_id": "hold_s0.5_m4.0",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 0.5,
+      "mass_scale": 4.0
+    }
+  },
+  {
+    "run_id": "hold_s025_m1",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 2.5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 0.25,
+      "mass_scale": 1.0
+    }
+  },
+  {
+    "run_id": "hold_load4_s1.0",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 4.0,
+      "torque_peak": 0.02,
+      "spacing_mm": 1.0
+    }
+  },
+  {
+    "run_id": "hold_approx_s1.0",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime_approx",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 1.0
+    }
+  },
+  {
+    "run_id": "hold_load4_s0.5",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 4.0,
+      "torque_peak": 0.02,
+      "spacing_mm": 0.5
+    }
+  },
+  {
+    "run_id": "hold_approx_s0.5",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 5e-05,
+      "policy": "runtime_approx",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 0.5
+    }
+  },
+  {
+    "run_id": "hold_refine_dt",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 1.4,
+      "timestep": 2.5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.012,
+      "spacing_mm": 0.5
+    }
+  }
+]

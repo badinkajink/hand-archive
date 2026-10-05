@@ -1,0 +1,62 @@
+[
+  {
+    "name": "native_lowfrictiongain",
+    "voxel_mm": 0.5,
+    "timestep": 5e-05,
+    "mapping": "native",
+    "friction_gain": 10.0
+  },
+  {
+    "name": "native_finite_tool",
+    "voxel_mm": 0.5,
+    "timestep": 5e-05,
+    "mapping": "native",
+    "friction_gain": 10.0,
+    "tool_stiffness_ratio": 100.0
+  },
+  {
+    "name": "translated_finite_tool",
+    "voxel_mm": 0.5,
+    "timestep": 5e-05,
+    "mapping": "translated",
+    "tool_stiffness_ratio": 100.0
+  },
+  {
+    "name": "native_h05",
+    "voxel_mm": 0.5,
+    "timestep": 5e-05,
+    "mapping": "native"
+  },
+  {
+    "name": "translated_h05",
+    "voxel_mm": 0.5,
+    "timestep": 5e-05,
+    "mapping": "translated"
+  },
+  {
+    "name": "translated_h025",
+    "voxel_mm": 0.25,
+    "timestep": 5e-05,
+    "mapping": "translated"
+  },
+  {
+    "name": "translated_dt25",
+    "voxel_mm": 0.5,
+    "timestep": 2.5e-05,
+    "mapping": "translated"
+  },
+  {
+    "name": "translated_unreduced",
+    "voxel_mm": 0.5,
+    "timestep": 5e-05,
+    "mapping": "translated",
+    "reduce_contacts": false
+  },
+  {
+    "name": "translated_fast",
+    "voxel_mm": 0.5,
+    "timestep": 5e-05,
+    "mapping": "translated",
+    "torque_peak": 0.048
+  }
+]

@@ -1,0 +1,200 @@
+[
+  {
+    "run_id": "fine_s1.0_tau0.003",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 1.0,
+      "torque_peak": 0.003
+    }
+  },
+  {
+    "run_id": "fine_s1.0_tau0.012",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 1.0,
+      "torque_peak": 0.012
+    }
+  },
+  {
+    "run_id": "fine_s1.0_tau0.048",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 1.0,
+      "torque_peak": 0.048
+    }
+  },
+  {
+    "run_id": "fine_s0.5_tau0.003",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.003
+    }
+  },
+  {
+    "run_id": "fine_s0.5_tau0.012",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.012
+    }
+  },
+  {
+    "run_id": "fine_s0.5_tau0.048",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.048
+    }
+  },
+  {
+    "run_id": "coarse_s1.0_dt0.0005",
+    "config": {
+      "timestep": 0.0005,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 1.0,
+      "torque_peak": 0.012
+    }
+  },
+  {
+    "run_id": "coarse_s1.0_dt0.0001",
+    "config": {
+      "timestep": 0.0001,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 1.0,
+      "torque_peak": 0.012
+    }
+  },
+  {
+    "run_id": "coarse_s0.5_dt0.0005",
+    "config": {
+      "timestep": 0.0005,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.012
+    }
+  },
+  {
+    "run_id": "coarse_s0.5_dt0.0001",
+    "config": {
+      "timestep": 0.0001,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.012
+    }
+  },
+  {
+    "run_id": "refine_s0.5",
+    "config": {
+      "timestep": 2.5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.012
+    }
+  },
+  {
+    "run_id": "refine_s0.25",
+    "config": {
+      "timestep": 2.5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.25,
+      "torque_peak": 0.012
+    }
+  },
+  {
+    "run_id": "compiled_s1.0",
+    "config": {
+      "timestep": 0.0005,
+      "duration": 0.8,
+      "policy": "compiled",
+      "pad_load": 2.0,
+      "spacing_mm": 1.0,
+      "torque_peak": 0.012
+    }
+  },
+  {
+    "run_id": "compiled_s0.5",
+    "config": {
+      "timestep": 0.0005,
+      "duration": 0.8,
+      "policy": "compiled",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.012
+    }
+  },
+  {
+    "run_id": "standard_runtime",
+    "config": {
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "policy": "runtime_standard",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.012
+    }
+  },
+  {
+    "run_id": "fast_refine_s05",
+    "config": {
+      "timestep": 2.5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.048
+    }
+  },
+  {
+    "run_id": "fast_refine_s025",
+    "config": {
+      "timestep": 2.5e-05,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.25,
+      "torque_peak": 0.048
+    }
+  },
+  {
+    "run_id": "coarse_safe_refine",
+    "config": {
+      "timestep": 0.0001,
+      "duration": 0.8,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.003
+    }
+  }
+]

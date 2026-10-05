@@ -1,0 +1,1613 @@
+[
+  {
+    "exp": "chain",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "brake": "closed",
+    "trial": {
+      "seed": 0,
+      "d_cg": 0.015,
+      "clearance": 0.001,
+      "dx": 0.0,
+      "dy": 0.0,
+      "dyaw": 0.0,
+      "mu": 1.0,
+      "mscale": 1.0,
+      "perc": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "ik_err_mm": 6.128252014305872e-05,
+    "contact_policy": "legacy",
+    "physics_dt": 5e-05,
+    "closed_t": 2.170000000001612,
+    "lift_axis_tilt_deg": 1.8222022546933767,
+    "brake_end_t": 1.8099999999957816,
+    "phi_brake_end": 90.71276380029545,
+    "phi_hold": 90.48282058778821,
+    "aim_err_mm": 0.07619725475377948,
+    "pick_ok": true,
+    "phi_end": 90.718,
+    "phi_max": 90.898,
+    "rate_max_dps": 93.9,
+    "brake_held": true,
+    "brake_ok": true,
+    "phi_hold_end": 90.483,
+    "hold_ok": true,
+    "end_depth_mm": 22.09,
+    "end_tilt_deg": 2.28,
+    "end_held": true,
+    "insert_ok": true,
+    "slip_mm": 0.1609999999999996,
+    "chain_ok": true,
+    "wall_s": 9.782002687454224,
+    "sim_s": 10.339999999982572,
+    "perf": {
+      "phys": {
+        "approach": 0.29494975763373077,
+        "close": 0.7461201623082161,
+        "lift": 1.798929154407233,
+        "brake": 1.824034522054717,
+        "hold": 0.5822127792052925,
+        "transport": 1.2398680276237428,
+        "aim": 0.30963422381319106,
+        "insert": 2.356114106019959,
+        "end": 0.01117578404955566
+      },
+      "sim": {
+        "approach": 1.1000000000000008,
+        "close": 1.0700000000000007,
+        "lift": 1.5100000000000011,
+        "brake": 1.8100000000000014,
+        "hold": 0.7100000000000004,
+        "transport": 1.410000000000001,
+        "aim": 0.4100000000000002,
+        "insert": 2.3099999999999947,
+        "end": 0.01
+      },
+      "ctrl": 0.48506223037838936,
+      "log": 0.028414157684892416,
+      "render": 0.0001828803215175867
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": false,
+      "runtime_contact_mapping": false
+    },
+    "trace_cols": [
+      "t",
+      "phase",
+      "F_thumb",
+      "F_index",
+      "phi",
+      "phidot",
+      "N_thumb",
+      "N_index",
+      "N_middle",
+      "N_support",
+      "n_thumb",
+      "n_index",
+      "sax_mm",
+      "end_z_mm",
+      "end_off_mm",
+      "tilt_deg",
+      "floor",
+      "oop_deg",
+      "pinch_tilt_deg"
+    ],
+    "status": "complete",
+    "film": null,
+    "case": {
+      "id": "v314_chain_legacy_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 5e-05,
+      "seed": 0,
+      "film": false
+    },
+    "elapsed_wall_s": 9.784956351853907
+  },
+  {
+    "exp": "chain",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "brake": "closed",
+    "trial": {
+      "seed": 0,
+      "d_cg": 0.015,
+      "clearance": 0.001,
+      "dx": 0.0,
+      "dy": 0.0,
+      "dyaw": 0.0,
+      "mu": 1.0,
+      "mscale": 1.0,
+      "perc": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "ik_err_mm": 6.128252014305872e-05,
+    "contact_policy": "legacy_diagexact",
+    "physics_dt": 5e-05,
+    "closed_t": 2.170000000001612,
+    "lift_axis_tilt_deg": 1.7494265628767467,
+    "brake_end_t": 1.8099999999957816,
+    "phi_brake_end": 90.78482185225424,
+    "phi_hold": 90.55651772889289,
+    "aim_err_mm": 0.0660654922162909,
+    "pick_ok": true,
+    "phi_end": 90.789,
+    "phi_max": 90.924,
+    "rate_max_dps": 93.23,
+    "brake_held": true,
+    "brake_ok": true,
+    "phi_hold_end": 90.557,
+    "hold_ok": true,
+    "end_depth_mm": 22.09,
+    "end_tilt_deg": 2.31,
+    "end_held": true,
+    "insert_ok": true,
+    "slip_mm": 0.1639999999999997,
+    "chain_ok": true,
+    "wall_s": 13.1673104763031,
+    "sim_s": 10.339999999982572,
+    "perf": {
+      "phys": {
+        "approach": 0.3041467017028481,
+        "close": 0.8081190958619118,
+        "lift": 2.096654012799263,
+        "brake": 2.0532480934634805,
+        "hold": 0.6459953335579485,
+        "transport": 1.3632968193851411,
+        "aim": 0.3336105984635651,
+        "insert": 2.5390880031045526,
+        "end": 0.011757266940549016
+      },
+      "sim": {
+        "approach": 1.1000000000000008,
+        "close": 1.0700000000000007,
+        "lift": 1.5100000000000011,
+        "brake": 1.8100000000000014,
+        "hold": 0.7100000000000004,
+        "transport": 1.410000000000001,
+        "aim": 0.4100000000000002,
+        "insert": 2.3099999999999947,
+        "end": 0.01
+      },
+      "ctrl": 0.2749193008057773,
+      "log": 0.033450804417952895,
+      "render": 2.45008303062059
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": true,
+      "runtime_contact_mapping": false
+    },
+    "trace_cols": [
+      "t",
+      "phase",
+      "F_thumb",
+      "F_index",
+      "phi",
+      "phidot",
+      "N_thumb",
+      "N_index",
+      "N_middle",
+      "N_support",
+      "n_thumb",
+      "n_index",
+      "sax_mm",
+      "end_z_mm",
+      "end_off_mm",
+      "tilt_deg",
+      "floor",
+      "oop_deg",
+      "pinch_tilt_deg"
+    ],
+    "film": "docs/experiments/20261004-codex/media/task-v314_chain_legacy_exact_s1_50us.mp4",
+    "status": "complete",
+    "case": {
+      "id": "v314_chain_legacy_exact_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 5e-05,
+      "seed": 0,
+      "film": true
+    },
+    "elapsed_wall_s": 13.506982983089983
+  },
+  {
+    "exp": "chain",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "brake": "closed",
+    "trial": {
+      "seed": 0,
+      "d_cg": 0.015,
+      "clearance": 0.001,
+      "dx": 0.0,
+      "dy": 0.0,
+      "dyaw": 0.0,
+      "mu": 1.0,
+      "mscale": 1.0,
+      "perc": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "ik_err_mm": 6.128252014305872e-05,
+    "contact_policy": "physical",
+    "physics_dt": 5e-05,
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "closed_t": 2.170000000001612,
+    "lift_axis_tilt_deg": 33.09030045579636,
+    "pick_ok": true,
+    "phi_end": -116.479,
+    "phi_max": 179.571,
+    "rate_max_dps": 768.98,
+    "brake_held": false,
+    "brake_ok": false,
+    "phi_hold_end": null,
+    "hold_ok": false,
+    "end_depth_mm": null,
+    "end_tilt_deg": null,
+    "end_held": false,
+    "insert_ok": false,
+    "slip_mm": 245.28199999999998,
+    "chain_ok": false,
+    "wall_s": 5.899493932723999,
+    "sim_s": 6.919999999990542,
+    "perf": {
+      "phys": {
+        "approach": 0.373344789724797,
+        "close": 0.6798418192192912,
+        "lift": 3.0518359860870987,
+        "brake": 1.5942003212403506
+      },
+      "sim": {
+        "approach": 1.1000000000000008,
+        "close": 1.0700000000000007,
+        "lift": 1.5100000000000011,
+        "brake": 3.229999999999975
+      },
+      "ctrl": 0.09587984741665423,
+      "log": 0.012063159374520183,
+      "render": 0.00011392543092370033
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": false,
+      "runtime_contact_mapping": false
+    },
+    "trace_cols": [
+      "t",
+      "phase",
+      "F_thumb",
+      "F_index",
+      "phi",
+      "phidot",
+      "N_thumb",
+      "N_index",
+      "N_middle",
+      "N_support",
+      "n_thumb",
+      "n_index",
+      "sax_mm",
+      "end_z_mm",
+      "end_off_mm",
+      "tilt_deg",
+      "floor",
+      "oop_deg",
+      "pinch_tilt_deg"
+    ],
+    "status": "stopped_at_guard",
+    "film": null,
+    "case": {
+      "id": "v314_chain_physical_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 5e-05,
+      "seed": 0,
+      "film": false
+    },
+    "elapsed_wall_s": 5.901606210041791
+  },
+  {
+    "exp": "chain",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "brake": "closed",
+    "trial": {
+      "seed": 0,
+      "d_cg": 0.015,
+      "clearance": 0.001,
+      "dx": 0.0,
+      "dy": 0.0,
+      "dyaw": 0.0,
+      "mu": 1.0,
+      "mscale": 1.0,
+      "perc": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "ik_err_mm": 6.128252014305872e-05,
+    "contact_policy": "physical_diagexact",
+    "physics_dt": 5e-05,
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "closed_t": 2.170000000001612,
+    "lift_axis_tilt_deg": 40.57006612110597,
+    "pick_ok": true,
+    "phi_end": -121.381,
+    "phi_max": 176.773,
+    "rate_max_dps": 648.95,
+    "brake_held": false,
+    "brake_ok": false,
+    "phi_hold_end": null,
+    "hold_ok": false,
+    "end_depth_mm": null,
+    "end_tilt_deg": null,
+    "end_held": false,
+    "insert_ok": false,
+    "slip_mm": 272.74199999999996,
+    "chain_ok": false,
+    "wall_s": 10.261738777160645,
+    "sim_s": 7.829999999988421,
+    "perf": {
+      "phys": {
+        "approach": 0.38177133700810373,
+        "close": 0.7111508373636752,
+        "lift": 3.9737706421874464,
+        "brake": 3.0317566306330264
+      },
+      "sim": {
+        "approach": 1.1000000000000008,
+        "close": 1.0700000000000007,
+        "lift": 1.5100000000000011,
+        "brake": 4.139999999999956
+      },
+      "ctrl": 0.1299972226843238,
+      "log": 0.018412358360365033,
+      "render": 1.81596623477526
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": true,
+      "runtime_contact_mapping": false
+    },
+    "trace_cols": [
+      "t",
+      "phase",
+      "F_thumb",
+      "F_index",
+      "phi",
+      "phidot",
+      "N_thumb",
+      "N_index",
+      "N_middle",
+      "N_support",
+      "n_thumb",
+      "n_index",
+      "sax_mm",
+      "end_z_mm",
+      "end_off_mm",
+      "tilt_deg",
+      "floor",
+      "oop_deg",
+      "pinch_tilt_deg"
+    ],
+    "film": "docs/experiments/20261004-codex/media/task-v314_chain_physical_exact_s1_50us.mp4",
+    "status": "stopped_at_guard",
+    "case": {
+      "id": "v314_chain_physical_exact_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 5e-05,
+      "seed": 0,
+      "film": true
+    },
+    "elapsed_wall_s": 10.570176330162212
+  },
+  {
+    "exp": "chain",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "brake": "closed",
+    "trial": {
+      "seed": 0,
+      "d_cg": 0.015,
+      "clearance": 0.001,
+      "dx": 0.0,
+      "dy": 0.0,
+      "dyaw": 0.0,
+      "mu": 1.0,
+      "mscale": 1.0,
+      "perc": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "ik_err_mm": 6.128252014305872e-05,
+    "contact_policy": "physical_runtime_approx",
+    "physics_dt": 5e-05,
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "closed_t": 2.170000000001612,
+    "lift_axis_tilt_deg": 33.083504281353484,
+    "pick_ok": true,
+    "phi_end": -115.703,
+    "phi_max": 172.059,
+    "rate_max_dps": 35592.89,
+    "brake_held": false,
+    "brake_ok": false,
+    "phi_hold_end": null,
+    "hold_ok": false,
+    "end_depth_mm": null,
+    "end_tilt_deg": null,
+    "end_held": false,
+    "insert_ok": false,
+    "slip_mm": 245.405,
+    "chain_ok": false,
+    "wall_s": 7.954978942871094,
+    "sim_s": 6.919999999990542,
+    "perf": {
+      "phys": {
+        "approach": 0.650568475946784,
+        "close": 1.0155906446743757,
+        "lift": 3.643921862123534,
+        "brake": 2.4309492690954357
+      },
+      "sim": {
+        "approach": 1.1000000000000008,
+        "close": 1.0700000000000007,
+        "lift": 1.5100000000000011,
+        "brake": 3.229999999999975
+      },
+      "ctrl": 0.1057519989553839,
+      "log": 0.012725149746984243,
+      "render": 0.00012784567661583424
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": false,
+      "runtime_contact_mapping": true
+    },
+    "trace_cols": [
+      "t",
+      "phase",
+      "F_thumb",
+      "F_index",
+      "phi",
+      "phidot",
+      "N_thumb",
+      "N_index",
+      "N_middle",
+      "N_support",
+      "n_thumb",
+      "n_index",
+      "sax_mm",
+      "end_z_mm",
+      "end_off_mm",
+      "tilt_deg",
+      "floor",
+      "oop_deg",
+      "pinch_tilt_deg"
+    ],
+    "status": "stopped_at_guard",
+    "film": null,
+    "case": {
+      "id": "v314_chain_physical_runtime_approx_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 5e-05,
+      "seed": 0,
+      "film": false
+    },
+    "elapsed_wall_s": 7.957385232904926
+  },
+  {
+    "exp": "chain",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "brake": "closed",
+    "trial": {
+      "seed": 0,
+      "d_cg": 0.015,
+      "clearance": 0.001,
+      "dx": 0.0,
+      "dy": 0.0,
+      "dyaw": 0.0,
+      "mu": 1.0,
+      "mscale": 1.0,
+      "perc": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "ik_err_mm": 6.128252014305872e-05,
+    "contact_policy": "physical_runtime_diagexact",
+    "physics_dt": 5e-05,
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "closed_t": 2.170000000001612,
+    "lift_axis_tilt_deg": 22.07353167178689,
+    "pick_ok": true,
+    "phi_end": -99.898,
+    "phi_max": 178.91,
+    "rate_max_dps": 499.3,
+    "brake_held": false,
+    "brake_ok": false,
+    "phi_hold_end": null,
+    "hold_ok": false,
+    "end_depth_mm": null,
+    "end_tilt_deg": null,
+    "end_held": false,
+    "insert_ok": false,
+    "slip_mm": 223.342,
+    "chain_ok": false,
+    "wall_s": 9.997894763946533,
+    "sim_s": 6.909999999990565,
+    "perf": {
+      "phys": {
+        "approach": 0.6945786490105093,
+        "close": 1.320148694794625,
+        "lift": 3.623452106723562,
+        "brake": 2.453796634450555
+      },
+      "sim": {
+        "approach": 1.1000000000000008,
+        "close": 1.0700000000000007,
+        "lift": 1.5100000000000011,
+        "brake": 3.2199999999999753
+      },
+      "ctrl": 0.11509187147021294,
+      "log": 0.014650717377662659,
+      "render": 1.5753596387803555
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": true,
+      "runtime_contact_mapping": true
+    },
+    "trace_cols": [
+      "t",
+      "phase",
+      "F_thumb",
+      "F_index",
+      "phi",
+      "phidot",
+      "N_thumb",
+      "N_index",
+      "N_middle",
+      "N_support",
+      "n_thumb",
+      "n_index",
+      "sax_mm",
+      "end_z_mm",
+      "end_off_mm",
+      "tilt_deg",
+      "floor",
+      "oop_deg",
+      "pinch_tilt_deg"
+    ],
+    "film": "docs/experiments/20261004-codex/media/task-v314_chain_physical_runtime_exact_s1_50us.mp4",
+    "status": "stopped_at_guard",
+    "case": {
+      "id": "v314_chain_physical_runtime_exact_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 5e-05,
+      "seed": 0,
+      "film": true
+    },
+    "elapsed_wall_s": 10.283103115856647
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.489930872296851,
+        "gain": 0.9442796445719341,
+        "cross_lin_mmps": 3.928433744301101,
+        "cross_ang_dps": 33.98157408929447,
+        "slide_rms_mmps": 0.2801273534340359
+      },
+      "v_up": {
+        "rmse_cmd": 11.950909338985811,
+        "gain": 1.0327227974780349,
+        "cross_lin_mmps": 0.6581147009119023,
+        "cross_ang_dps": 40.61084172935061,
+        "slide_rms_mmps": 0.3174918508209029
+      },
+      "v_tool": {
+        "rmse_cmd": 10.176331797794628,
+        "gain": 0.9524449430772197,
+        "cross_lin_mmps": 5.685396961809982,
+        "cross_ang_dps": 20.079496262620378,
+        "slide_rms_mmps": 0.4034878849770491
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.37450668377333,
+        "gain": -0.011169717517905619,
+        "cross_lin_mmps": 0.33074242805765847,
+        "cross_ang_dps": 0.7895662467033684,
+        "slide_rms_mmps": 0.005987145775032969
+      },
+      "w_up": {
+        "rmse_cmd": 21.647844916721,
+        "gain": 0.8089697614828655,
+        "cross_lin_mmps": 2.963041704080263,
+        "cross_ang_dps": 15.210125334434617,
+        "slide_rms_mmps": 0.12790441711264505
+      },
+      "w_tool": {
+        "rmse_cmd": 23.747997167022497,
+        "gain": 0.5844384808238933,
+        "cross_lin_mmps": 2.6880357107186397,
+        "cross_ang_dps": 12.5872761296628,
+        "slide_rms_mmps": 0.04687087193349504
+      }
+    },
+    "pinch_angle_end_deg": -50.31287973061666,
+    "pinch_angle_max_deg": -50.38695587714264,
+    "rmse_lin_mmps": 7.732592876868588,
+    "rmse_ang_dps": 28.175710444104602,
+    "held_end": true,
+    "wall_s": 13.05712628364563,
+    "sim_s": 10.599999999981966,
+    "perf": {
+      "phys": 11.463122179964557,
+      "ctrl": 1.371421817690134,
+      "sim": 10.60000000000021
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": false,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "film": null,
+    "case": {
+      "id": "v314_roll_legacy_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy",
+      "physics_dt": 5e-05,
+      "controller_hz": 500,
+      "film": false
+    },
+    "elapsed_wall_s": 13.071346651064232
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "legacy_diagexact",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.520776739578467,
+        "gain": 0.9459113390063503,
+        "cross_lin_mmps": 4.029775818576366,
+        "cross_ang_dps": 33.92224442793956,
+        "slide_rms_mmps": 0.2725094389202739
+      },
+      "v_up": {
+        "rmse_cmd": 11.96377810786805,
+        "gain": 1.0303965163292559,
+        "cross_lin_mmps": 0.6690294176417826,
+        "cross_ang_dps": 40.45503343251796,
+        "slide_rms_mmps": 0.3219691512803397
+      },
+      "v_tool": {
+        "rmse_cmd": 10.166772000571411,
+        "gain": 0.9520140611189184,
+        "cross_lin_mmps": 5.773670953332024,
+        "cross_ang_dps": 19.93843805805859,
+        "slide_rms_mmps": 0.410144328710704
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.36210342387979,
+        "gain": -0.011086224697149753,
+        "cross_lin_mmps": 0.33824896318467346,
+        "cross_ang_dps": 0.8301908605577352,
+        "slide_rms_mmps": 0.007334725000272041
+      },
+      "w_up": {
+        "rmse_cmd": 21.444453842112242,
+        "gain": 0.8075695032852579,
+        "cross_lin_mmps": 2.98345465346732,
+        "cross_ang_dps": 15.142759220663503,
+        "slide_rms_mmps": 0.13616327429398045
+      },
+      "w_tool": {
+        "rmse_cmd": 23.60564865339344,
+        "gain": 0.5930937089961792,
+        "cross_lin_mmps": 2.692565114422256,
+        "cross_ang_dps": 12.619018733940067,
+        "slide_rms_mmps": 0.0476087208147419
+      }
+    },
+    "pinch_angle_end_deg": -49.65595088087352,
+    "pinch_angle_max_deg": -49.72956491338388,
+    "rmse_lin_mmps": 7.749116921547556,
+    "rmse_ang_dps": 28.086779185633347,
+    "held_end": true,
+    "wall_s": 17.151121377944946,
+    "sim_s": 10.599999999981966,
+    "perf": {
+      "phys": 12.909475648775697,
+      "ctrl": 1.4265462551265955,
+      "sim": 10.60000000000021
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.015,
+      "solimp_d0": 0.8848128718419035,
+      "diagApprox": 47.21483925057961,
+      "diagexact": true,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "film": "docs/experiments/20261004-codex/media/task-v314_roll_legacy_exact_s1_50us.mp4",
+    "case": {
+      "id": "v314_roll_legacy_exact_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "legacy_diagexact",
+      "physics_dt": 5e-05,
+      "controller_hz": 500,
+      "film": true
+    },
+    "elapsed_wall_s": 17.55123592307791
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "physical",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 11.099025224993301,
+        "gain": 1.0139732521922553,
+        "cross_lin_mmps": 2.041503856780383,
+        "cross_ang_dps": 32.71980338466605,
+        "slide_rms_mmps": 0.3870068368050557
+      },
+      "v_up": {
+        "rmse_cmd": 10.21674541047673,
+        "gain": 0.9589599471191279,
+        "cross_lin_mmps": 3.1884262065757674,
+        "cross_ang_dps": 41.83303984381974,
+        "slide_rms_mmps": 1.236593886121668
+      },
+      "v_tool": {
+        "rmse_cmd": 11.322311619323916,
+        "gain": 1.0825085166393236,
+        "cross_lin_mmps": 2.0050000704947992,
+        "cross_ang_dps": 24.929115994941753,
+        "slide_rms_mmps": 0.7625594692287412
+      },
+      "w_pinch": {
+        "rmse_cmd": 42.58667562578181,
+        "gain": -0.04534702570056477,
+        "cross_lin_mmps": 1.7535912901525863,
+        "cross_ang_dps": 8.195056536697411,
+        "slide_rms_mmps": 0.4844090706473502
+      },
+      "w_up": {
+        "rmse_cmd": 20.319712999757993,
+        "gain": 0.7840926745086545,
+        "cross_lin_mmps": 3.5275212145371873,
+        "cross_ang_dps": 12.610031007605807,
+        "slide_rms_mmps": 0.5377143197278011
+      },
+      "w_tool": {
+        "rmse_cmd": 31.194942563529416,
+        "gain": 0.5130092115139097,
+        "cross_lin_mmps": 2.9327392288905036,
+        "cross_ang_dps": 35.619644924266844,
+        "slide_rms_mmps": 2.056168427595042
+      }
+    },
+    "pinch_angle_end_deg": -92.77560905530703,
+    "pinch_angle_max_deg": -93.81077265015871,
+    "rmse_lin_mmps": 7.653064822218516,
+    "rmse_ang_dps": 32.61739230545708,
+    "held_end": true,
+    "wall_s": 15.212472915649414,
+    "sim_s": 10.599999999981966,
+    "perf": {
+      "phys": 13.553894885350019,
+      "ctrl": 1.458335847593844,
+      "sim": 10.60000000000021
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": false,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "film": null,
+    "case": {
+      "id": "v314_roll_physical_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical",
+      "physics_dt": 5e-05,
+      "controller_hz": 500,
+      "film": false
+    },
+    "elapsed_wall_s": 15.226807752158493
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "physical_diagexact",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 10.960033679249312,
+        "gain": 0.9964942782322428,
+        "cross_lin_mmps": 1.4680070216612207,
+        "cross_ang_dps": 35.18711341877396,
+        "slide_rms_mmps": 0.47483913088743795
+      },
+      "v_up": {
+        "rmse_cmd": 10.27803325626801,
+        "gain": 0.885579086583884,
+        "cross_lin_mmps": 2.7208594949516756,
+        "cross_ang_dps": 30.024078409519202,
+        "slide_rms_mmps": 0.7674266572846885
+      },
+      "v_tool": {
+        "rmse_cmd": 10.896428762295164,
+        "gain": 1.0464165888546741,
+        "cross_lin_mmps": 2.0645582762472015,
+        "cross_ang_dps": 21.728076901027716,
+        "slide_rms_mmps": 0.7666133648667617
+      },
+      "w_pinch": {
+        "rmse_cmd": 42.048121389810255,
+        "gain": -0.04820126492950758,
+        "cross_lin_mmps": 1.2610741775124858,
+        "cross_ang_dps": 5.458367111216766,
+        "slide_rms_mmps": 0.4223477844765884
+      },
+      "w_up": {
+        "rmse_cmd": 20.599843779514988,
+        "gain": 0.7208102028940346,
+        "cross_lin_mmps": 3.226602358725838,
+        "cross_ang_dps": 11.732590814019039,
+        "slide_rms_mmps": 0.47054245480239193
+      },
+      "w_tool": {
+        "rmse_cmd": 22.326219059318586,
+        "gain": 0.6489133633497952,
+        "cross_lin_mmps": 3.822303560377166,
+        "cross_ang_dps": 25.766391958634358,
+        "slide_rms_mmps": 0.8360951494298016
+      }
+    },
+    "pinch_angle_end_deg": -66.24324676235496,
+    "pinch_angle_max_deg": -66.24324676235496,
+    "rmse_lin_mmps": 7.4486572095018015,
+    "rmse_ang_dps": 28.17949864718935,
+    "held_end": true,
+    "wall_s": 19.458738565444946,
+    "sim_s": 10.599999999981966,
+    "perf": {
+      "phys": 15.19432577630505,
+      "ctrl": 1.5066378863994032,
+      "sim": 10.60000000000021
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": true,
+      "runtime_contact_mapping": false
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "film": "docs/experiments/20261004-codex/media/task-v314_roll_physical_exact_s1_50us.mp4",
+    "case": {
+      "id": "v314_roll_physical_exact_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_diagexact",
+      "physics_dt": 5e-05,
+      "controller_hz": 500,
+      "film": true
+    },
+    "elapsed_wall_s": 19.9025424818974
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "physical_runtime_approx",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 11.099608929248163,
+        "gain": 1.0139782722390986,
+        "cross_lin_mmps": 2.041447531788454,
+        "cross_ang_dps": 32.71987261661158,
+        "slide_rms_mmps": 0.3870708928554604
+      },
+      "v_up": {
+        "rmse_cmd": 10.21673331634155,
+        "gain": 0.9589551713046227,
+        "cross_lin_mmps": 3.18843895273199,
+        "cross_ang_dps": 41.83296207610058,
+        "slide_rms_mmps": 1.236588938768632
+      },
+      "v_tool": {
+        "rmse_cmd": 11.322307085925065,
+        "gain": 1.0825106104700646,
+        "cross_lin_mmps": 2.0049942370435394,
+        "cross_ang_dps": 24.92894234844798,
+        "slide_rms_mmps": 0.7625578206876173
+      },
+      "w_pinch": {
+        "rmse_cmd": 42.586699151452805,
+        "gain": -0.04534850386142694,
+        "cross_lin_mmps": 1.7535773291403072,
+        "cross_ang_dps": 8.194964317613401,
+        "slide_rms_mmps": 0.4844096187654155
+      },
+      "w_up": {
+        "rmse_cmd": 20.319713058989905,
+        "gain": 0.7840938869092791,
+        "cross_lin_mmps": 3.5275190646170693,
+        "cross_ang_dps": 12.609965925380036,
+        "slide_rms_mmps": 0.5377137753545979
+      },
+      "w_tool": {
+        "rmse_cmd": 31.19480023124181,
+        "gain": 0.5130134728350779,
+        "cross_lin_mmps": 2.9327205295882015,
+        "cross_ang_dps": 35.61960413353796,
+        "slide_rms_mmps": 2.056168546053011
+      }
+    },
+    "pinch_angle_end_deg": -92.77519694303588,
+    "pinch_angle_max_deg": -93.81034877765018,
+    "rmse_lin_mmps": 7.653160248999053,
+    "rmse_ang_dps": 32.6173380067155,
+    "held_end": true,
+    "wall_s": 19.1408748626709,
+    "sim_s": 10.599999999981966,
+    "perf": {
+      "phys": 17.410990523872897,
+      "ctrl": 1.5262575016822666,
+      "sim": 10.60000000000021
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": false,
+      "runtime_contact_mapping": true
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "film": null,
+    "case": {
+      "id": "v314_roll_physical_runtime_approx_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_approx",
+      "physics_dt": 5e-05,
+      "controller_hz": 500,
+      "film": false
+    },
+    "elapsed_wall_s": 19.155483656795695
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "physical_runtime_diagexact",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 11.183251436970567,
+        "gain": 1.0302945833714992,
+        "cross_lin_mmps": 2.1029257386295086,
+        "cross_ang_dps": 30.544051049767567,
+        "slide_rms_mmps": 0.41580658840209184
+      },
+      "v_up": {
+        "rmse_cmd": 10.389942874360406,
+        "gain": 0.8420820973709221,
+        "cross_lin_mmps": 1.855181123160255,
+        "cross_ang_dps": 44.82287309637227,
+        "slide_rms_mmps": 1.0969908442116416
+      },
+      "v_tool": {
+        "rmse_cmd": 11.494465852724428,
+        "gain": 1.0360086143433227,
+        "cross_lin_mmps": 2.9399270457147155,
+        "cross_ang_dps": 22.85280245125671,
+        "slide_rms_mmps": 0.40431065892065443
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.8962929243555,
+        "gain": -0.01951033968152452,
+        "cross_lin_mmps": 0.5106129212186115,
+        "cross_ang_dps": 1.3914896769372505,
+        "slide_rms_mmps": 0.35574945252367657
+      },
+      "w_up": {
+        "rmse_cmd": 25.555381720690573,
+        "gain": 0.47354069525911646,
+        "cross_lin_mmps": 4.631466382102297,
+        "cross_ang_dps": 26.846272351002803,
+        "slide_rms_mmps": 3.8233244149022676
+      },
+      "w_tool": {
+        "rmse_cmd": 33.855560271437334,
+        "gain": 0.18601442633390441,
+        "cross_lin_mmps": 6.320624463256217,
+        "cross_ang_dps": 24.523964233211224,
+        "slide_rms_mmps": 4.114627503148561
+      }
+    },
+    "pinch_angle_end_deg": -59.13151313892727,
+    "pinch_angle_max_deg": -59.13151313892727,
+    "rmse_lin_mmps": 7.987819580772127,
+    "rmse_ang_dps": 32.71132361062906,
+    "held_end": true,
+    "wall_s": 24.139370679855347,
+    "sim_s": 10.599999999981966,
+    "perf": {
+      "phys": 19.747981292195618,
+      "ctrl": 1.5675893393345177,
+      "sim": 10.60000000000021
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": true,
+      "runtime_contact_mapping": true
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "film": "docs/experiments/20261004-codex/media/task-v314_roll_physical_runtime_exact_s1_50us.mp4",
+    "case": {
+      "id": "v314_roll_physical_runtime_exact_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_diagexact",
+      "physics_dt": 5e-05,
+      "controller_hz": 500,
+      "film": true
+    },
+    "elapsed_wall_s": 24.49448603298515
+  },
+  {
+    "exp": "chain",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "brake": "closed",
+    "trial": {
+      "seed": 0,
+      "d_cg": 0.015,
+      "clearance": 0.001,
+      "dx": 0.0,
+      "dy": 0.0,
+      "dyaw": 0.0,
+      "mu": 1.0,
+      "mscale": 1.0,
+      "perc": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "ik_err_mm": 6.128252014305872e-05,
+    "contact_policy": "physical_runtime_ct100_diagexact",
+    "physics_dt": 5e-05,
+    "guard_failure": "nonfinite/0.5 m escape/2000 rad/s bound",
+    "closed_t": 2.170000000001612,
+    "lift_axis_tilt_deg": 79.01058612943913,
+    "pick_ok": true,
+    "phi_end": 14.087,
+    "phi_max": 14.087,
+    "rate_max_dps": 800.02,
+    "brake_held": false,
+    "brake_ok": false,
+    "phi_hold_end": null,
+    "hold_ok": false,
+    "end_depth_mm": null,
+    "end_tilt_deg": null,
+    "end_held": false,
+    "insert_ok": false,
+    "slip_mm": 207.308,
+    "chain_ok": false,
+    "wall_s": 10.570645570755005,
+    "sim_s": 6.789999999990845,
+    "perf": {
+      "phys": {
+        "approach": 0.6689651052001864,
+        "close": 1.682408138178289,
+        "lift": 4.369655266404152,
+        "brake": 1.7967769380193204
+      },
+      "sim": {
+        "approach": 1.1000000000000008,
+        "close": 1.0700000000000007,
+        "lift": 1.5100000000000011,
+        "brake": 3.099999999999978
+      },
+      "ctrl": 0.20623606047593057,
+      "log": 0.013311124872416258,
+      "render": 1.5779929154086858
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "tangent_damping_ratio": 100.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": true,
+      "runtime_contact_mapping": true
+    },
+    "trace_cols": [
+      "t",
+      "phase",
+      "F_thumb",
+      "F_index",
+      "phi",
+      "phidot",
+      "N_thumb",
+      "N_index",
+      "N_middle",
+      "N_support",
+      "n_thumb",
+      "n_index",
+      "sax_mm",
+      "end_z_mm",
+      "end_off_mm",
+      "tilt_deg",
+      "floor",
+      "oop_deg",
+      "pinch_tilt_deg"
+    ],
+    "film": "docs/experiments/20261004-codex/media/task-v314_chain_physical_runtime_ct100_exact_s1_50us.mp4",
+    "status": "stopped_at_guard",
+    "case": {
+      "id": "v314_chain_physical_runtime_ct100_exact_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_ct100_diagexact",
+      "physics_dt": 5e-05,
+      "seed": 0,
+      "film": true
+    },
+    "elapsed_wall_s": 10.908264297991991
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "physical_runtime_ct100_diagexact",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 15.079710757708925,
+        "gain": 0.8185019009471983,
+        "cross_lin_mmps": 10.949787871210772,
+        "cross_ang_dps": 60.58045304507289,
+        "slide_rms_mmps": 19.22064375772349
+      },
+      "v_up": {
+        "rmse_cmd": 12.84286977318435,
+        "gain": 0.968942555186546,
+        "cross_lin_mmps": 11.712804346056389,
+        "cross_ang_dps": 71.15109520137095,
+        "slide_rms_mmps": 17.654375553168485
+      },
+      "v_tool": {
+        "rmse_cmd": 15.202032592413527,
+        "gain": 0.33950849915880577,
+        "cross_lin_mmps": 12.57629024076234,
+        "cross_ang_dps": 58.704724984572515,
+        "slide_rms_mmps": 17.72987561440095
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.56065925372059,
+        "gain": -0.0031196102601353075,
+        "cross_lin_mmps": 12.248080389803784,
+        "cross_ang_dps": 45.65334663641395,
+        "slide_rms_mmps": 19.42457904231742
+      },
+      "w_up": {
+        "rmse_cmd": 34.31450099685824,
+        "gain": 0.4799291327882965,
+        "cross_lin_mmps": 11.287616092117918,
+        "cross_ang_dps": 44.836508683829514,
+        "slide_rms_mmps": 16.83596925151014
+      },
+      "w_tool": {
+        "rmse_cmd": 35.12027101041398,
+        "gain": 0.7764482481510296,
+        "cross_lin_mmps": 10.21256634975881,
+        "cross_ang_dps": 27.031675621062245,
+        "slide_rms_mmps": 16.228916613962333
+      }
+    },
+    "pinch_angle_end_deg": -25.39289720382293,
+    "pinch_angle_max_deg": -30.690324014923654,
+    "rmse_lin_mmps": 14.843961789591352,
+    "rmse_ang_dps": 56.15935222109733,
+    "held_end": true,
+    "wall_s": 31.99690008163452,
+    "sim_s": 10.599999999981966,
+    "perf": {
+      "phys": 27.465855817310512,
+      "ctrl": 1.6715319086797535,
+      "sim": 10.60000000000021
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "tangent_damping_ratio": 100.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": true,
+      "runtime_contact_mapping": true
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "film": "docs/experiments/20261004-codex/media/task-v314_roll_physical_runtime_ct100_exact_s1_50us.mp4",
+    "case": {
+      "id": "v314_roll_physical_runtime_ct100_exact_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_ct100_diagexact",
+      "physics_dt": 5e-05,
+      "controller_hz": 500,
+      "film": true
+    },
+    "elapsed_wall_s": 32.424898392055184
+  },
+  {
+    "task": "exp2",
+    "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+    "pick_ok": true,
+    "w_spin": 0.0,
+    "contact_policy": "physical_runtime_ct1000_diagexact",
+    "physics_dt": 5e-05,
+    "per_comp": {
+      "v_pinch": {
+        "rmse_cmd": 13.374584204793209,
+        "gain": 0.8125715930414473,
+        "cross_lin_mmps": 15.61293284754851,
+        "cross_ang_dps": 98.38452791763059,
+        "slide_rms_mmps": 32.42857962072604
+      },
+      "v_up": {
+        "rmse_cmd": 15.246912854670185,
+        "gain": 0.7330765449892461,
+        "cross_lin_mmps": 10.314026807242387,
+        "cross_ang_dps": 87.321282294192,
+        "slide_rms_mmps": 26.864730500553417
+      },
+      "v_tool": {
+        "rmse_cmd": 12.13024980862729,
+        "gain": 0.599018180541995,
+        "cross_lin_mmps": 16.869380320805423,
+        "cross_ang_dps": 94.82998676874803,
+        "slide_rms_mmps": 27.50515492523974
+      },
+      "w_pinch": {
+        "rmse_cmd": 40.5057709290456,
+        "gain": 0.010298540177161065,
+        "cross_lin_mmps": 14.171327003204889,
+        "cross_ang_dps": 83.39311976364652,
+        "slide_rms_mmps": 27.855054576904074
+      },
+      "w_up": {
+        "rmse_cmd": 29.986514467224996,
+        "gain": 0.3331694591739456,
+        "cross_lin_mmps": 12.981053986230723,
+        "cross_ang_dps": 74.7897120984438,
+        "slide_rms_mmps": 25.270707205772894
+      },
+      "w_tool": {
+        "rmse_cmd": 81.6240374237281,
+        "gain": 0.35366045878825025,
+        "cross_lin_mmps": 10.748790018126158,
+        "cross_ang_dps": 9.788219916162216,
+        "slide_rms_mmps": 24.825495830452915
+      }
+    },
+    "pinch_angle_end_deg": 1.7098903083916226,
+    "pinch_angle_max_deg": 6.7799952948461275,
+    "rmse_lin_mmps": 16.161633429126038,
+    "rmse_ang_dps": 87.6949258900473,
+    "held_end": true,
+    "wall_s": 25.439154148101807,
+    "sim_s": 10.599999999981966,
+    "perf": {
+      "phys": 23.608234335901216,
+      "ctrl": 1.6181033600587398,
+      "sim": 10.60000000000021
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "contact_policy": "physical_selected_direct",
+      "sample_stiffness_N_per_m": 817.2125281276058,
+      "relaxation_s": 0.03,
+      "impedance": 0.0001,
+      "impratio": 10000.0,
+      "tangent_damping_ratio": 1000.0,
+      "selected_inverse_inertia_range": [
+        47.20802770689377,
+        47.21483925057961
+      ],
+      "diagexact": true,
+      "runtime_contact_mapping": true
+    },
+    "label": "MuJoCo 1 mm spheres",
+    "trace_cols": [
+      "t",
+      "comp",
+      "ref_v_pinch",
+      "ref_v_up",
+      "ref_v_tool",
+      "ref_w_pinch",
+      "ref_w_up",
+      "ref_w_tool",
+      "ach_v_pinch",
+      "ach_v_up",
+      "ach_v_tool",
+      "ach_w_pinch",
+      "ach_w_up",
+      "ach_w_tool",
+      "slide_mmps"
+    ],
+    "status": "complete",
+    "film": null,
+    "case": {
+      "id": "v314_roll_physical_runtime_ct1000_exact_s1_50us",
+      "spec": "mj:spheres:s1:rs0.75:tr0.03:ir100",
+      "contact_policy": "physical_runtime_ct1000_diagexact",
+      "physics_dt": 5e-05,
+      "controller_hz": 500,
+      "film": false
+    },
+    "elapsed_wall_s": 25.453351689036936
+  }
+]

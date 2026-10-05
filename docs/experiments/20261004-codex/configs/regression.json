@@ -1,0 +1,10 @@
+{
+  "runs": [
+    {
+      "backend": "mujoco"
+    },
+    {
+      "backend": "drake"
+    }
+  ]
+}

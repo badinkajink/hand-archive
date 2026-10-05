@@ -1,0 +1,369 @@
+[
+  {
+    "video_id": "geometry-guided-plane-x-s1",
+    "title": "Plane R12.5 mm | tangent x | 1 mm samples",
+    "src": "media/geometry-guided-plane-x-s1.mp4",
+    "poster": "media/geometry-guided-plane-x-s1.jpg",
+    "reference": "results/20261004-distributed-contact/sliding_geometry_guided/slip-plane_direction-aecba7b4572a",
+    "config": {
+      "backend": "mujoco",
+      "geometry": "plane",
+      "object_radius_mm": 12.5,
+      "spacing_mm": 1.0,
+      "relaxation": 0.03,
+      "phase_degrees": 0.0,
+      "mass_scale": 1.0,
+      "inertia_scale": 1.0,
+      "timestep": 5e-05,
+      "iterations": 200,
+      "tolerance": 1e-10,
+      "impratio": 10000.0,
+      "seed": 0,
+      "mode": "dynamic",
+      "load": 1.0,
+      "indentation_mm": 0.2,
+      "duration": 1.3,
+      "engine_version": "3.14.0",
+      "scenario": "guided_slip",
+      "tangent_fixture_damping": 5.0,
+      "mapping_policy": "runtime_selected_direct",
+      "diagexact": true,
+      "impedance_override": 0.0001,
+      "tangent_damping_ratio": 10.0,
+      "contact_log_stride": 50,
+      "slide_axis": "x",
+      "phase": "slip",
+      "group": "plane_direction"
+    },
+    "stopped": false,
+    "reproduced": true,
+    "comparison": {
+      "slip_distance_mm": {
+        "reference": 2.354536871136155,
+        "captured": 2.354551883203761,
+        "difference": 1.5012067605901791e-05
+      },
+      "peak_velocity": {
+        "reference": 0.009827417118355029,
+        "captured": 0.009827417118355029,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "video_id": "geometry-guided-cylinder-x-s1",
+    "title": "Cylinder R12.5 mm | along axis | 1 mm samples",
+    "src": "media/geometry-guided-cylinder-x-s1.mp4",
+    "poster": "media/geometry-guided-cylinder-x-s1.jpg",
+    "reference": "results/20261004-distributed-contact/sliding_geometry_guided/slip-cylinder_curvature-2cd28b0412b8",
+    "config": {
+      "backend": "mujoco",
+      "geometry": "cylinder",
+      "object_radius_mm": 12.5,
+      "spacing_mm": 1.0,
+      "relaxation": 0.03,
+      "phase_degrees": 0.0,
+      "mass_scale": 1.0,
+      "inertia_scale": 1.0,
+      "timestep": 5e-05,
+      "iterations": 200,
+      "tolerance": 1e-10,
+      "impratio": 10000.0,
+      "seed": 0,
+      "mode": "dynamic",
+      "load": 1.0,
+      "indentation_mm": 0.2,
+      "duration": 1.3,
+      "engine_version": "3.14.0",
+      "scenario": "guided_slip",
+      "tangent_fixture_damping": 5.0,
+      "mapping_policy": "runtime_selected_direct",
+      "diagexact": true,
+      "impedance_override": 0.0001,
+      "tangent_damping_ratio": 10.0,
+      "contact_log_stride": 50,
+      "slide_axis": "x",
+      "phase": "slip",
+      "group": "cylinder_curvature"
+    },
+    "stopped": false,
+    "reproduced": true,
+    "comparison": {
+      "slip_distance_mm": {
+        "reference": 2.3929836533872746,
+        "captured": 2.3929968818658596,
+        "difference": 1.3228478584981218e-05
+      },
+      "peak_velocity": {
+        "reference": 0.010054540736626254,
+        "captured": 0.010054540736626254,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "video_id": "geometry-guided-cylinder-y-s1",
+    "title": "Cylinder R12.5 mm | across curvature | 1 mm samples",
+    "src": "media/geometry-guided-cylinder-y-s1.mp4",
+    "poster": "media/geometry-guided-cylinder-y-s1.jpg",
+    "reference": "results/20261004-distributed-contact/sliding_geometry_guided/slip-cylinder_curvature-df4b0b9e23ec",
+    "config": {
+      "backend": "mujoco",
+      "geometry": "cylinder",
+      "object_radius_mm": 12.5,
+      "spacing_mm": 1.0,
+      "relaxation": 0.03,
+      "phase_degrees": 0.0,
+      "mass_scale": 1.0,
+      "inertia_scale": 1.0,
+      "timestep": 5e-05,
+      "iterations": 200,
+      "tolerance": 1e-10,
+      "impratio": 10000.0,
+      "seed": 0,
+      "mode": "dynamic",
+      "load": 1.0,
+      "indentation_mm": 0.2,
+      "duration": 1.3,
+      "engine_version": "3.14.0",
+      "scenario": "guided_slip",
+      "tangent_fixture_damping": 5.0,
+      "mapping_policy": "runtime_selected_direct",
+      "diagexact": true,
+      "impedance_override": 0.0001,
+      "tangent_damping_ratio": 10.0,
+      "contact_log_stride": 50,
+      "slide_axis": "y",
+      "phase": "slip",
+      "group": "cylinder_curvature"
+    },
+    "stopped": false,
+    "reproduced": true,
+    "comparison": {
+      "slip_distance_mm": {
+        "reference": 2.4015497164456407,
+        "captured": 2.4015641413755198,
+        "difference": 1.4424929879019999e-05
+      },
+      "peak_velocity": {
+        "reference": 0.009735507363943888,
+        "captured": 0.009735507363943888,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "video_id": "geometry-guided-sphere-y-s1",
+    "title": "Sphere R25 mm | tangent y | 1 mm samples",
+    "src": "media/geometry-guided-sphere-y-s1.mp4",
+    "poster": "media/geometry-guided-sphere-y-s1.jpg",
+    "reference": "results/20261004-distributed-contact/sliding_geometry_guided/slip-sphere_curvature-125a17eaf1aa",
+    "config": {
+      "backend": "mujoco",
+      "geometry": "sphere",
+      "object_radius_mm": 25.0,
+      "spacing_mm": 1.0,
+      "relaxation": 0.03,
+      "phase_degrees": 0.0,
+      "mass_scale": 1.0,
+      "inertia_scale": 1.0,
+      "timestep": 5e-05,
+      "iterations": 200,
+      "tolerance": 1e-10,
+      "impratio": 10000.0,
+      "seed": 0,
+      "mode": "dynamic",
+      "load": 1.0,
+      "indentation_mm": 0.2,
+      "duration": 1.3,
+      "engine_version": "3.14.0",
+      "scenario": "guided_slip",
+      "tangent_fixture_damping": 5.0,
+      "mapping_policy": "runtime_selected_direct",
+      "diagexact": true,
+      "impedance_override": 0.0001,
+      "tangent_damping_ratio": 10.0,
+      "contact_log_stride": 50,
+      "slide_axis": "y",
+      "phase": "slip",
+      "group": "sphere_curvature"
+    },
+    "stopped": false,
+    "reproduced": true,
+    "comparison": {
+      "slip_distance_mm": {
+        "reference": 2.350429859697778,
+        "captured": 2.3504393349840003,
+        "difference": 9.475286222304646e-06
+      },
+      "peak_velocity": {
+        "reference": 0.009501621718196313,
+        "captured": 0.009501621718196313,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "video_id": "geometry-guided-cylinder-y-s0.5",
+    "title": "Cylinder R12.5 mm | across curvature | 0.5 mm samples",
+    "src": "media/geometry-guided-cylinder-y-s0.5.mp4",
+    "poster": "media/geometry-guided-cylinder-y-s0.5.jpg",
+    "reference": "results/20261004-distributed-contact/sliding_geometry_guided/slip-dense_curvature-9845d4c94bde",
+    "config": {
+      "backend": "mujoco",
+      "geometry": "cylinder",
+      "object_radius_mm": 12.5,
+      "spacing_mm": 0.5,
+      "relaxation": 0.03,
+      "phase_degrees": 0.0,
+      "mass_scale": 1.0,
+      "inertia_scale": 1.0,
+      "timestep": 5e-05,
+      "iterations": 200,
+      "tolerance": 1e-10,
+      "impratio": 10000.0,
+      "seed": 0,
+      "mode": "dynamic",
+      "load": 1.0,
+      "indentation_mm": 0.2,
+      "duration": 1.3,
+      "engine_version": "3.14.0",
+      "scenario": "guided_slip",
+      "tangent_fixture_damping": 5.0,
+      "mapping_policy": "runtime_selected_direct",
+      "diagexact": true,
+      "impedance_override": 0.0001,
+      "tangent_damping_ratio": 10.0,
+      "contact_log_stride": 50,
+      "slide_axis": "y",
+      "phase": "slip",
+      "group": "dense_curvature"
+    },
+    "stopped": false,
+    "reproduced": true,
+    "comparison": {
+      "slip_distance_mm": {
+        "reference": 2.4000265964356156,
+        "captured": 2.400040924890475,
+        "difference": 1.4328454859491302e-05
+      },
+      "peak_velocity": {
+        "reference": 0.009791956684018997,
+        "captured": 0.009791956684018997,
+        "difference": 0.0
+      }
+    }
+  },
+  {
+    "video_id": "geometry-force-cylinder-y-r12p5",
+    "title": "Cylinder R12.5 mm | force ramp | fixture exit",
+    "src": "media/geometry-force-cylinder-y-r12p5.mp4",
+    "poster": "media/geometry-force-cylinder-y-r12p5.jpg",
+    "reference": "results/20261004-distributed-contact/sliding_geometry/slip-cylinder_curvature-c60969b9424e",
+    "config": {
+      "backend": "mujoco",
+      "geometry": "cylinder",
+      "object_radius_mm": 12.5,
+      "spacing_mm": 1.0,
+      "relaxation": 0.03,
+      "phase_degrees": 0.0,
+      "mass_scale": 1.0,
+      "inertia_scale": 1.0,
+      "timestep": 5e-05,
+      "iterations": 200,
+      "tolerance": 1e-10,
+      "impratio": 10000.0,
+      "seed": 0,
+      "mode": "dynamic",
+      "load": 1.0,
+      "indentation_mm": 0.2,
+      "duration": 1.3,
+      "engine_version": "3.14.0",
+      "scenario": "controlled_slip",
+      "tangent_fixture_damping": 5.0,
+      "mapping_policy": "runtime_selected_direct",
+      "diagexact": true,
+      "impedance_override": 0.0001,
+      "tangent_damping_ratio": 10.0,
+      "contact_log_stride": 50,
+      "slide_axis": "y",
+      "phase": "slip",
+      "group": "cylinder_curvature"
+    },
+    "stopped": true,
+    "reproduced": true,
+    "comparison": {
+      "time_s": {
+        "reference": 0.7754500000000001,
+        "captured": 0.7754999999999228,
+        "difference": 4.999999992272297e-05
+      },
+      "x_m": {
+        "reference": 0.01830550257582492,
+        "captured": 0.01832454707262053,
+        "difference": 1.9044496795610905e-05
+      },
+      "z_m": {
+        "reference": 0.013055196677226917,
+        "captured": 0.013017493806896633,
+        "difference": -3.7702870330284105e-05
+      }
+    }
+  },
+  {
+    "video_id": "geometry-force-sphere-y-r12p5",
+    "title": "Sphere R12.5 mm | force ramp | fixture exit",
+    "src": "media/geometry-force-sphere-y-r12p5.mp4",
+    "poster": "media/geometry-force-sphere-y-r12p5.jpg",
+    "reference": "results/20261004-distributed-contact/sliding_geometry/slip-sphere_curvature-6b30209e0ffe",
+    "config": {
+      "backend": "mujoco",
+      "geometry": "sphere",
+      "object_radius_mm": 12.5,
+      "spacing_mm": 1.0,
+      "relaxation": 0.03,
+      "phase_degrees": 0.0,
+      "mass_scale": 1.0,
+      "inertia_scale": 1.0,
+      "timestep": 5e-05,
+      "iterations": 200,
+      "tolerance": 1e-10,
+      "impratio": 10000.0,
+      "seed": 0,
+      "mode": "dynamic",
+      "load": 1.0,
+      "indentation_mm": 0.2,
+      "duration": 1.3,
+      "engine_version": "3.14.0",
+      "scenario": "controlled_slip",
+      "tangent_fixture_damping": 5.0,
+      "mapping_policy": "runtime_selected_direct",
+      "diagexact": true,
+      "impedance_override": 0.0001,
+      "tangent_damping_ratio": 10.0,
+      "contact_log_stride": 50,
+      "slide_axis": "y",
+      "phase": "slip",
+      "group": "sphere_curvature"
+    },
+    "stopped": true,
+    "reproduced": true,
+    "comparison": {
+      "time_s": {
+        "reference": 0.77595,
+        "captured": 0.7759999999999228,
+        "difference": 4.999999992272297e-05
+      },
+      "x_m": {
+        "reference": 0.018225354611014027,
+        "captured": 0.018244375142606614,
+        "difference": 1.902053159258746e-05
+      },
+      "z_m": {
+        "reference": 0.013057973017438633,
+        "captured": 0.013020138390144466,
+        "difference": -3.783462729416674e-05
+      }
+    }
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "defaults": {
+    "policy": "runtime",
+    "spacing_mm": 0.5,
+    "timestep": 5e-05,
+    "duration": 0.8,
+    "pad_load": 2.0
+  },
+  "cases": [
+    {
+      "name": "creep_ct100.0",
+      "tangent_damping_ratio": 100.0,
+      "torque_peak": 0.003
+    },
+    {
+      "name": "creep_ct1000.0",
+      "tangent_damping_ratio": 1000.0,
+      "torque_peak": 0.003
+    },
+    {
+      "name": "creep_ct1000_dt25",
+      "tangent_damping_ratio": 1000.0,
+      "torque_peak": 0.003,
+      "timestep": 2.5e-05
+    },
+    {
+      "name": "hold_ct1000",
+      "tangent_damping_ratio": 1000.0,
+      "scenario": "holding_ramp",
+      "torque_peak": 0.008,
+      "duration": 1.1,
+      "timestep": 2.5e-05
+    }
+  ]
+}

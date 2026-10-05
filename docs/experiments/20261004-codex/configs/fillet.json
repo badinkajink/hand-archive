@@ -1,0 +1,39 @@
+{
+  "defaults": {
+    "mode": "displacement",
+    "tip_shape": "filleted_prism"
+  },
+  "relaxation_by_spacing": {
+    "0.5": 0.03
+  },
+  "groups": [
+    {
+      "name": "front_edge_corner",
+      "grid": {
+        "spacing_mm": [
+          2.0,
+          1.0,
+          0.5
+        ],
+        "indentation_mm": [
+          0.1,
+          0.2,
+          0.3
+        ],
+        "tilt_degrees": [
+          0.0,
+          15.0,
+          30.0,
+          45.0,
+          60.0,
+          75.0,
+          85.0
+        ],
+        "azimuth_degrees": [
+          0.0,
+          45.0
+        ]
+      }
+    }
+  ]
+}

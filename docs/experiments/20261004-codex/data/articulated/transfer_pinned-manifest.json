@@ -1,0 +1,24 @@
+[
+  {
+    "run_id": "pinned_compiled_s1.0",
+    "config": {
+      "timestep": 0.0005,
+      "duration": 0.8,
+      "policy": "compiled",
+      "pad_load": 2.0,
+      "spacing_mm": 1.0,
+      "torque_peak": 0.012
+    }
+  },
+  {
+    "run_id": "pinned_compiled_s0.5",
+    "config": {
+      "timestep": 0.0005,
+      "duration": 0.8,
+      "policy": "compiled",
+      "pad_load": 2.0,
+      "spacing_mm": 0.5,
+      "torque_peak": 0.012
+    }
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "run_id": "creep_ct1000_dt6.25",
+    "config": {
+      "policy": "runtime",
+      "spacing_mm": 0.5,
+      "pad_load": 2.0,
+      "tangent_damping_ratio": 1000.0,
+      "torque_peak": 0.003,
+      "duration": 0.8,
+      "timestep": 6.25e-06
+    }
+  },
+  {
+    "run_id": "hold_ct100_dt25",
+    "config": {
+      "policy": "runtime",
+      "spacing_mm": 0.5,
+      "pad_load": 2.0,
+      "tangent_damping_ratio": 100.0,
+      "scenario": "holding_ramp",
+      "torque_peak": 0.008,
+      "duration": 1.1,
+      "timestep": 2.5e-05
+    }
+  }
+]

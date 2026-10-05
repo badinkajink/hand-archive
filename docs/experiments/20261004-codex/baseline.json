@@ -1,0 +1,56 @@
+{
+  "source": "docs/experiments/20261002-hom_chain/films.jsonl",
+  "reason": "Published page uses films, including corrected Drake collision exclusions, not older chain rows.",
+  "runs": {
+    "mujoco": {
+      "spec": "mj:spheres:s1:rs0.75:tr0.02",
+      "phi_end": 90.462,
+      "end_depth_mm": 22.05,
+      "chain_ok": true,
+      "info": {
+        "n_spheres": 205,
+        "K_sphere": 817.2125281276058,
+        "solref_timeconst": 0.01,
+        "solimp_d0": 0.740828961644283,
+        "diagApprox": 47.21483925057961
+      },
+      "trial": {
+        "seed": 0,
+        "d_cg": 0.015,
+        "clearance": 0.001,
+        "dx": 0.0,
+        "dy": 0.0,
+        "dyaw": 0.0,
+        "mu": 1.0,
+        "mscale": 1.0,
+        "perc": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "drake": {
+      "spec": "drake:hydro:rt0.01",
+      "phi_end": 91.316,
+      "end_depth_mm": 22.06,
+      "chain_ok": true,
+      "info": {},
+      "trial": {
+        "seed": 0,
+        "d_cg": 0.015,
+        "clearance": 0.001,
+        "dx": 0.0,
+        "dy": 0.0,
+        "dyaw": 0.0,
+        "mu": 1.0,
+        "mscale": 1.0,
+        "perc": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  }
+}

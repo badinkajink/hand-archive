@@ -1,0 +1,226 @@
+[
+  {
+    "run_id": "regression-mujoco-3a12edf52ec0",
+    "phase": "regression",
+    "backend": "mujoco",
+    "exp": "chain",
+    "spec": "mj:spheres:s1:rs0.75:tr0.02",
+    "brake": "closed",
+    "trial": {
+      "seed": 0,
+      "d_cg": 0.015,
+      "clearance": 0.001,
+      "dx": 0.0,
+      "dy": 0.0,
+      "dyaw": 0.0,
+      "mu": 1.0,
+      "mscale": 1.0,
+      "perc": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "ik_err_mm": 6.128252014305872e-05,
+    "closed_t": 2.1999999999998687,
+    "lift_axis_tilt_deg": 2.363146888608581,
+    "brake_end_t": 1.8000000000004723,
+    "phi_brake_end": 90.45228078025177,
+    "phi_hold": 90.14748903870999,
+    "aim_err_mm": 0.16213736855822594,
+    "pick_ok": true,
+    "phi_end": 90.462,
+    "phi_max": 90.855,
+    "rate_max_dps": 91.22,
+    "brake_held": true,
+    "brake_ok": true,
+    "phi_hold_end": 90.148,
+    "hold_ok": true,
+    "end_depth_mm": 22.05,
+    "end_tilt_deg": 3.63,
+    "end_held": true,
+    "insert_ok": true,
+    "slip_mm": 0.2579999999999991,
+    "chain_ok": true,
+    "wall_s": 4.081670522689819,
+    "sim_s": 10.329999999999714,
+    "perf": {
+      "phys": {
+        "approach": 0.015982941491529346,
+        "close": 0.2264136045705527,
+        "lift": 0.8004324173089117,
+        "brake": 0.47526357136666775,
+        "hold": 0.22962913755327463,
+        "transport": 0.6528096960391849,
+        "aim": 0.1444915640167892,
+        "insert": 1.00385322002694,
+        "end": 0.003941431874409318
+      },
+      "sim": {
+        "approach": 1.1100000000000008,
+        "close": 1.0900000000000007,
+        "lift": 1.5100000000000011,
+        "brake": 1.8000000000000014,
+        "hold": 0.7000000000000004,
+        "transport": 1.400000000000001,
+        "aim": 0.4000000000000002,
+        "insert": 2.3099999999999947,
+        "end": 0.01
+      },
+      "ctrl": 0.3526698788627982,
+      "log": 0.039101694943383336,
+      "render": 0.00021808268502354622
+    },
+    "info": {
+      "n_spheres": 205,
+      "K_sphere": 817.2125281276058,
+      "solref_timeconst": 0.01,
+      "solimp_d0": 0.740828961644283,
+      "diagApprox": 47.21483925057961
+    },
+    "status": "complete",
+    "regression_passed": true,
+    "reference": {
+      "spec": "mj:spheres:s1:rs0.75:tr0.02",
+      "phi_end": 90.462,
+      "end_depth_mm": 22.05,
+      "chain_ok": true,
+      "info": {
+        "n_spheres": 205,
+        "K_sphere": 817.2125281276058,
+        "solref_timeconst": 0.01,
+        "solimp_d0": 0.740828961644283,
+        "diagApprox": 47.21483925057961
+      },
+      "trial": {
+        "seed": 0,
+        "d_cg": 0.015,
+        "clearance": 0.001,
+        "dx": 0.0,
+        "dy": 0.0,
+        "dyaw": 0.0,
+        "mu": 1.0,
+        "mscale": 1.0,
+        "perc": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "absolute_errors": {
+      "phi_end": 0.0,
+      "end_depth_mm": 0.0
+    },
+    "tolerances": {
+      "phi_end": 0.1,
+      "end_depth_mm": 0.1
+    }
+  },
+  {
+    "run_id": "regression-drake-246bf2fd5174",
+    "phase": "regression",
+    "backend": "drake",
+    "exp": "chain",
+    "spec": "drake:hydro:rt0.01",
+    "brake": "closed",
+    "trial": {
+      "seed": 0,
+      "d_cg": 0.015,
+      "clearance": 0.001,
+      "dx": 0.0,
+      "dy": 0.0,
+      "dyaw": 0.0,
+      "mu": 1.0,
+      "mscale": 1.0,
+      "perc": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "ik_err_mm": 6.128252014305872e-05,
+    "closed_t": 2.1699999999999977,
+    "lift_axis_tilt_deg": 0.44949092010118,
+    "brake_end_t": 2.3299999999999508,
+    "phi_brake_end": 91.31592590137234,
+    "phi_hold": 90.97492537177665,
+    "aim_err_mm": 0.0341687227248214,
+    "pick_ok": true,
+    "phi_end": 91.316,
+    "phi_max": 92.582,
+    "rate_max_dps": 93.58,
+    "brake_held": true,
+    "brake_ok": true,
+    "phi_hold_end": 90.975,
+    "hold_ok": true,
+    "end_depth_mm": 22.06,
+    "end_tilt_deg": 1.57,
+    "end_held": true,
+    "insert_ok": true,
+    "slip_mm": 0.39400000000000013,
+    "chain_ok": true,
+    "wall_s": 26.997989892959595,
+    "sim_s": 10.859999999999813,
+    "perf": {
+      "phys": {
+        "approach": 0.11435134033672512,
+        "close": 1.6470636574085802,
+        "lift": 6.427490500034764,
+        "brake": 3.96862142928876,
+        "hold": 1.5990128717385232,
+        "transport": 4.483180004404858,
+        "aim": 0.9560610197950155,
+        "insert": 6.8010782992932945,
+        "end": 0.023666649125516415
+      },
+      "sim": {
+        "approach": 1.1000000000000008,
+        "close": 1.0700000000000007,
+        "lift": 1.5100000000000011,
+        "brake": 2.3299999999999943,
+        "hold": 0.7100000000000004,
+        "transport": 1.410000000000001,
+        "aim": 0.4100000000000002,
+        "insert": 2.3099999999999947,
+        "end": 0.01
+      },
+      "ctrl": 0.3840455855242908,
+      "log": 0.056942722061648965,
+      "render": 0.0002927060704678297
+    },
+    "info": {},
+    "status": "complete",
+    "regression_passed": true,
+    "reference": {
+      "spec": "drake:hydro:rt0.01",
+      "phi_end": 91.316,
+      "end_depth_mm": 22.06,
+      "chain_ok": true,
+      "info": {},
+      "trial": {
+        "seed": 0,
+        "d_cg": 0.015,
+        "clearance": 0.001,
+        "dx": 0.0,
+        "dy": 0.0,
+        "dyaw": 0.0,
+        "mu": 1.0,
+        "mscale": 1.0,
+        "perc": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "absolute_errors": {
+      "phi_end": 0.0,
+      "end_depth_mm": 0.0
+    },
+    "tolerances": {
+      "phi_end": 0.1,
+      "end_depth_mm": 0.1
+    }
+  }
+]

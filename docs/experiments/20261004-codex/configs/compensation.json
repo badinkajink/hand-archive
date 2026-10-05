@@ -1,0 +1,31 @@
+{
+  "defaults": {
+    "duration": 1.0
+  },
+  "groups": [
+    {
+      "name": "paired_mass",
+      "grid": {
+        "geometry": [
+          "plane",
+          "cylinder"
+        ],
+        "mapping_policy": [
+          "frozen",
+          "lambda_compensated_direct"
+        ],
+        "mass_scale": [
+          0.25,
+          0.5,
+          1.0,
+          2.0,
+          4.0
+        ],
+        "mode": [
+          "displacement",
+          "load"
+        ]
+      }
+    }
+  ]
+}

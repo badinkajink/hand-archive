@@ -1,0 +1,51 @@
+[
+  {
+    "run_id": "creep_ct100.0",
+    "config": {
+      "policy": "runtime",
+      "spacing_mm": 0.5,
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "pad_load": 2.0,
+      "tangent_damping_ratio": 100.0,
+      "torque_peak": 0.003
+    }
+  },
+  {
+    "run_id": "creep_ct1000.0",
+    "config": {
+      "policy": "runtime",
+      "spacing_mm": 0.5,
+      "timestep": 5e-05,
+      "duration": 0.8,
+      "pad_load": 2.0,
+      "tangent_damping_ratio": 1000.0,
+      "torque_peak": 0.003
+    }
+  },
+  {
+    "run_id": "creep_ct1000_dt25",
+    "config": {
+      "policy": "runtime",
+      "spacing_mm": 0.5,
+      "timestep": 2.5e-05,
+      "duration": 0.8,
+      "pad_load": 2.0,
+      "tangent_damping_ratio": 1000.0,
+      "torque_peak": 0.003
+    }
+  },
+  {
+    "run_id": "hold_ct1000",
+    "config": {
+      "policy": "runtime",
+      "spacing_mm": 0.5,
+      "timestep": 2.5e-05,
+      "duration": 1.1,
+      "pad_load": 2.0,
+      "tangent_damping_ratio": 1000.0,
+      "scenario": "holding_ramp",
+      "torque_peak": 0.008
+    }
+  }
+]

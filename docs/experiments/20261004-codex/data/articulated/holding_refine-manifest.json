@@ -1,0 +1,79 @@
+[
+  {
+    "run_id": "quarter_s1.0_dt1.25e-05",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 0.8,
+      "timestep": 1.25e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.006,
+      "spacing_mm": 1.0,
+      "mass_scale": 0.25
+    }
+  },
+  {
+    "run_id": "quarter_s1.0_dt6.25e-06",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 0.8,
+      "timestep": 6.25e-06,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.006,
+      "spacing_mm": 1.0,
+      "mass_scale": 0.25
+    }
+  },
+  {
+    "run_id": "quarter_s0.5_dt1.25e-05",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 0.8,
+      "timestep": 1.25e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.006,
+      "spacing_mm": 0.5,
+      "mass_scale": 0.25
+    }
+  },
+  {
+    "run_id": "quarter_s0.5_dt6.25e-06",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 0.8,
+      "timestep": 6.25e-06,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.006,
+      "spacing_mm": 0.5,
+      "mass_scale": 0.25
+    }
+  },
+  {
+    "run_id": "hold_fine_boundary",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 0.8,
+      "timestep": 2.5e-05,
+      "policy": "runtime",
+      "pad_load": 2.0,
+      "torque_peak": 0.006,
+      "spacing_mm": 0.5,
+      "mass_scale": 1.0
+    }
+  },
+  {
+    "run_id": "hold_load4_boundary",
+    "config": {
+      "scenario": "holding_ramp",
+      "duration": 0.8,
+      "timestep": 5e-05,
+      "policy": "runtime",
+      "pad_load": 4.0,
+      "torque_peak": 0.006,
+      "spacing_mm": 0.5
+    }
+  }
+]

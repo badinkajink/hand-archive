@@ -1,0 +1,704 @@
+[
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0001,
+      "voxel_mm": 0.25,
+      "timestep": 5e-05,
+      "reduce_contacts": false,
+      "moment_matching": false
+    },
+    "contact_count": 462,
+    "normal_force_projection": 0.4398996520709749,
+    "pressure_force_sum": 0.4402316212654114,
+    "torsion_capacity": 0.00029353575349445193,
+    "torsion_capacity_friction_scaled": 0.00029353575349445193,
+    "continuum_normal_2pads": 0.460565867968628,
+    "continuum_torque_2pads": 0.00031092260817908965,
+    "stiffness_max": 33.24358367919922,
+    "minimum_distance_m": -9.756303916219622e-05,
+    "geometry_parity": {
+      "thumb_tip": 2.4593747819218272e-08,
+      "index_tip": 2.4516606893708195e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.25_d0.0001_redFalse_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0001,
+      "voxel_mm": 0.25,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": false
+    },
+    "contact_count": 18,
+    "normal_force_projection": 0.4398324042909064,
+    "pressure_force_sum": 0.44047024846076965,
+    "torsion_capacity": 0.00023353860047008567,
+    "torsion_capacity_friction_scaled": 0.00023353860047008567,
+    "continuum_normal_2pads": 0.460565867968628,
+    "continuum_torque_2pads": 0.00031092260817908965,
+    "stiffness_max": 354.3062438964844,
+    "minimum_distance_m": -9.756303916219622e-05,
+    "geometry_parity": {
+      "thumb_tip": 2.4593747819218272e-08,
+      "index_tip": 2.4516606893708195e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.25_d0.0001_redTrue_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0001,
+      "voxel_mm": 0.25,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": true
+    },
+    "contact_count": 18,
+    "normal_force_projection": 0.4398324042909064,
+    "pressure_force_sum": 0.44047024846076965,
+    "torsion_capacity": 0.00023353860047008567,
+    "torsion_capacity_friction_scaled": 0.0002840268724640159,
+    "continuum_normal_2pads": 0.460565867968628,
+    "continuum_torque_2pads": 0.00031092260817908965,
+    "stiffness_max": 354.3062438964844,
+    "minimum_distance_m": -9.756303916219622e-05,
+    "geometry_parity": {
+      "thumb_tip": 2.4593747819218272e-08,
+      "index_tip": 2.4516606893708195e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.25_d0.0001_redTrue_momentTrue",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 0.25,
+      "timestep": 5e-05,
+      "reduce_contacts": false,
+      "moment_matching": false
+    },
+    "contact_count": 920,
+    "normal_force_projection": 1.792448160367148,
+    "pressure_force_sum": 1.794792890548706,
+    "torsion_capacity": 0.0017016974879352934,
+    "torsion_capacity_friction_scaled": 0.0017016974879352934,
+    "continuum_normal_2pads": 1.833702446606446,
+    "continuum_torque_2pads": 0.0017470168603716438,
+    "stiffness_max": 35.81578826904297,
+    "minimum_distance_m": -0.00019896664889529347,
+    "geometry_parity": {
+      "thumb_tip": 2.4570646238515738e-08,
+      "index_tip": 2.4377279845979834e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.25_d0.0002_redFalse_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 0.25,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": false
+    },
+    "contact_count": 24,
+    "normal_force_projection": 1.7909466737029551,
+    "pressure_force_sum": 1.795238971710205,
+    "torsion_capacity": 0.0014023696967018424,
+    "torsion_capacity_friction_scaled": 0.0014023696967018424,
+    "continuum_normal_2pads": 1.833702446606446,
+    "continuum_torque_2pads": 0.0017470168603716438,
+    "stiffness_max": 658.3035278320312,
+    "minimum_distance_m": -0.00019896664889529347,
+    "geometry_parity": {
+      "thumb_tip": 2.4570646238515738e-08,
+      "index_tip": 2.4377279845979834e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.25_d0.0002_redTrue_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 0.25,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": true
+    },
+    "contact_count": 24,
+    "normal_force_projection": 1.790946844970641,
+    "pressure_force_sum": 1.795238971710205,
+    "torsion_capacity": 0.0014023698197779917,
+    "torsion_capacity_friction_scaled": 0.0016014568117501623,
+    "continuum_normal_2pads": 1.833702446606446,
+    "continuum_torque_2pads": 0.0017470168603716438,
+    "stiffness_max": 658.3036499023438,
+    "minimum_distance_m": -0.00019896664889529347,
+    "geometry_parity": {
+      "thumb_tip": 2.4570646238515738e-08,
+      "index_tip": 2.4377279845979834e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.25_d0.0002_redTrue_momentTrue",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0004,
+      "voxel_mm": 0.25,
+      "timestep": 5e-05,
+      "reduce_contacts": false,
+      "moment_matching": false
+    },
+    "contact_count": 1860,
+    "normal_force_projection": 7.182749150356852,
+    "pressure_force_sum": 7.2008185386657715,
+    "torsion_capacity": 0.009656587193807641,
+    "torsion_capacity_friction_scaled": 0.009656587193807641,
+    "continuum_normal_2pads": 7.26612574328459,
+    "continuum_torque_2pads": 0.009748966660103735,
+    "stiffness_max": 30.48448371887207,
+    "minimum_distance_m": -0.0003983578353654593,
+    "geometry_parity": {
+      "thumb_tip": 2.3789160390691383e-08,
+      "index_tip": 2.3672456199142563e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.25_d0.0004_redFalse_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0004,
+      "voxel_mm": 0.25,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": false
+    },
+    "contact_count": 30,
+    "normal_force_projection": 7.168075075213246,
+    "pressure_force_sum": 7.219253063201904,
+    "torsion_capacity": 0.00817692043135889,
+    "torsion_capacity_friction_scaled": 0.00817692043135889,
+    "continuum_normal_2pads": 7.26612574328459,
+    "continuum_torque_2pads": 0.009748966660103735,
+    "stiffness_max": 1100.42578125,
+    "minimum_distance_m": -0.0003983578353654593,
+    "geometry_parity": {
+      "thumb_tip": 2.3789160390691383e-08,
+      "index_tip": 2.3672456199142563e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.25_d0.0004_redTrue_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0004,
+      "voxel_mm": 0.25,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": true
+    },
+    "contact_count": 30,
+    "normal_force_projection": 7.168072803499825,
+    "pressure_force_sum": 7.21925163269043,
+    "torsion_capacity": 0.008176917959090809,
+    "torsion_capacity_friction_scaled": 0.008288815201947113,
+    "continuum_normal_2pads": 7.26612574328459,
+    "continuum_torque_2pads": 0.009748966660103735,
+    "stiffness_max": 1100.42578125,
+    "minimum_distance_m": -0.0003983578353654593,
+    "geometry_parity": {
+      "thumb_tip": 2.3789160390691383e-08,
+      "index_tip": 2.3672456199142563e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.25_d0.0004_redTrue_momentTrue",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0001,
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "reduce_contacts": false,
+      "moment_matching": false
+    },
+    "contact_count": 111,
+    "normal_force_projection": 0.38432856119969244,
+    "pressure_force_sum": 0.3845677375793457,
+    "torsion_capacity": 0.0002497874946444638,
+    "torsion_capacity_friction_scaled": 0.0002497874946444638,
+    "continuum_normal_2pads": 0.460565867968628,
+    "continuum_torque_2pads": 0.00031092260817908965,
+    "stiffness_max": 119.95397186279297,
+    "minimum_distance_m": -9.302954276790842e-05,
+    "geometry_parity": {
+      "thumb_tip": 2.4593747819218272e-08,
+      "index_tip": 2.4516606893708195e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.5_d0.0001_redFalse_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0001,
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": false
+    },
+    "contact_count": 22,
+    "normal_force_projection": 0.38429735103362084,
+    "pressure_force_sum": 0.3844367563724518,
+    "torsion_capacity": 0.00021471679167666495,
+    "torsion_capacity_friction_scaled": 0.00021471679167666495,
+    "continuum_normal_2pads": 0.460565867968628,
+    "continuum_torque_2pads": 0.00031092260817908965,
+    "stiffness_max": 338.45538330078125,
+    "minimum_distance_m": -9.302954276790842e-05,
+    "geometry_parity": {
+      "thumb_tip": 2.4593747819218272e-08,
+      "index_tip": 2.4516606893708195e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.5_d0.0001_redTrue_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0001,
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": true
+    },
+    "contact_count": 22,
+    "normal_force_projection": 0.38429735103362084,
+    "pressure_force_sum": 0.3844367563724518,
+    "torsion_capacity": 0.00021471679167666495,
+    "torsion_capacity_friction_scaled": 0.00024420438154746195,
+    "continuum_normal_2pads": 0.460565867968628,
+    "continuum_torque_2pads": 0.00031092260817908965,
+    "stiffness_max": 338.45538330078125,
+    "minimum_distance_m": -9.302954276790842e-05,
+    "geometry_parity": {
+      "thumb_tip": 2.4593747819218272e-08,
+      "index_tip": 2.4516606893708195e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.5_d0.0001_redTrue_momentTrue",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "reduce_contacts": false,
+      "moment_matching": false
+    },
+    "contact_count": 225,
+    "normal_force_projection": 1.665340476521198,
+    "pressure_force_sum": 1.667546272277832,
+    "torsion_capacity": 0.0015509728899094823,
+    "torsion_capacity_friction_scaled": 0.0015509728899094823,
+    "continuum_normal_2pads": 1.833702446606446,
+    "continuum_torque_2pads": 0.0017470168603716438,
+    "stiffness_max": 120.58663177490234,
+    "minimum_distance_m": -0.00019039631297346205,
+    "geometry_parity": {
+      "thumb_tip": 2.4570646238515738e-08,
+      "index_tip": 2.4377279845979834e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.5_d0.0002_redFalse_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": false
+    },
+    "contact_count": 24,
+    "normal_force_projection": 1.663806944684358,
+    "pressure_force_sum": 1.6674091815948486,
+    "torsion_capacity": 0.001370910595184263,
+    "torsion_capacity_friction_scaled": 0.001370910595184263,
+    "continuum_normal_2pads": 1.833702446606446,
+    "continuum_torque_2pads": 0.0017470168603716438,
+    "stiffness_max": 653.4922485351562,
+    "minimum_distance_m": -0.00019039631297346205,
+    "geometry_parity": {
+      "thumb_tip": 2.4570646238515738e-08,
+      "index_tip": 2.4377279845979834e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.5_d0.0002_redTrue_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": true
+    },
+    "contact_count": 24,
+    "normal_force_projection": 1.6638071084861537,
+    "pressure_force_sum": 1.6674091815948486,
+    "torsion_capacity": 0.001370910719448592,
+    "torsion_capacity_friction_scaled": 0.0014556669036140798,
+    "continuum_normal_2pads": 1.833702446606446,
+    "continuum_torque_2pads": 0.0017470168603716438,
+    "stiffness_max": 653.4923095703125,
+    "minimum_distance_m": -0.00019039631297346205,
+    "geometry_parity": {
+      "thumb_tip": 2.4570646238515738e-08,
+      "index_tip": 2.4377279845979834e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.5_d0.0002_redTrue_momentTrue",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0004,
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "reduce_contacts": false,
+      "moment_matching": false
+    },
+    "contact_count": 459,
+    "normal_force_projection": 6.895851239134734,
+    "pressure_force_sum": 6.913235187530518,
+    "torsion_capacity": 0.009147174523218154,
+    "torsion_capacity_friction_scaled": 0.009147174523218154,
+    "continuum_normal_2pads": 7.26612574328459,
+    "continuum_torque_2pads": 0.009748966660103735,
+    "stiffness_max": 121.37834167480469,
+    "minimum_distance_m": -0.00038972828770056367,
+    "geometry_parity": {
+      "thumb_tip": 2.3789160390691383e-08,
+      "index_tip": 2.3672456199142563e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.5_d0.0004_redFalse_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0004,
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": false
+    },
+    "contact_count": 29,
+    "normal_force_projection": 6.897719382314444,
+    "pressure_force_sum": 6.910280227661133,
+    "torsion_capacity": 0.007784398162745059,
+    "torsion_capacity_friction_scaled": 0.007784398162745059,
+    "continuum_normal_2pads": 7.26612574328459,
+    "continuum_torque_2pads": 0.009748966660103735,
+    "stiffness_max": 1125.4827880859375,
+    "minimum_distance_m": -0.00038972828770056367,
+    "geometry_parity": {
+      "thumb_tip": 2.3789160390691383e-08,
+      "index_tip": 2.3672456199142563e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.5_d0.0004_redTrue_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0004,
+      "voxel_mm": 0.5,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": true
+    },
+    "contact_count": 29,
+    "normal_force_projection": 6.897720066819267,
+    "pressure_force_sum": 6.910281181335449,
+    "torsion_capacity": 0.007784398894852047,
+    "torsion_capacity_friction_scaled": 0.008426531305300244,
+    "continuum_normal_2pads": 7.26612574328459,
+    "continuum_torque_2pads": 0.009748966660103735,
+    "stiffness_max": 1125.4827880859375,
+    "minimum_distance_m": -0.00038972828770056367,
+    "geometry_parity": {
+      "thumb_tip": 2.3789160390691383e-08,
+      "index_tip": 2.3672456199142563e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h0.5_d0.0004_redTrue_momentTrue",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0001,
+      "voxel_mm": 1.0,
+      "timestep": 5e-05,
+      "reduce_contacts": false,
+      "moment_matching": false
+    },
+    "contact_count": 27,
+    "normal_force_projection": 0.217355747843212,
+    "pressure_force_sum": 0.21748411655426025,
+    "torsion_capacity": 0.0001139715660115117,
+    "torsion_capacity_friction_scaled": 0.0001139715660115117,
+    "continuum_normal_2pads": 0.460565867968628,
+    "continuum_torque_2pads": 0.00031092260817908965,
+    "stiffness_max": 367.1570129394531,
+    "minimum_distance_m": -7.3272742156405e-05,
+    "geometry_parity": {
+      "thumb_tip": 2.4593747819218272e-08,
+      "index_tip": 2.4516606893708195e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h1.0_d0.0001_redFalse_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0001,
+      "voxel_mm": 1.0,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": false
+    },
+    "contact_count": 14,
+    "normal_force_projection": 0.21733722822841506,
+    "pressure_force_sum": 0.21742430329322815,
+    "torsion_capacity": 9.710428516172188e-05,
+    "torsion_capacity_friction_scaled": 9.710428516172188e-05,
+    "continuum_normal_2pads": 0.460565867968628,
+    "continuum_torque_2pads": 0.00031092260817908965,
+    "stiffness_max": 319.4610290527344,
+    "minimum_distance_m": -7.3272742156405e-05,
+    "geometry_parity": {
+      "thumb_tip": 2.4593747819218272e-08,
+      "index_tip": 2.4516606893708195e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h1.0_d0.0001_redTrue_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0001,
+      "voxel_mm": 1.0,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": true
+    },
+    "contact_count": 14,
+    "normal_force_projection": 0.21733722822841506,
+    "pressure_force_sum": 0.21742430329322815,
+    "torsion_capacity": 9.710428516172188e-05,
+    "torsion_capacity_friction_scaled": 0.0001123482151248101,
+    "continuum_normal_2pads": 0.460565867968628,
+    "continuum_torque_2pads": 0.00031092260817908965,
+    "stiffness_max": 319.4610290527344,
+    "minimum_distance_m": -7.3272742156405e-05,
+    "geometry_parity": {
+      "thumb_tip": 2.4593747819218272e-08,
+      "index_tip": 2.4516606893708195e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h1.0_d0.0001_redTrue_momentTrue",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 1.0,
+      "timestep": 5e-05,
+      "reduce_contacts": false,
+      "moment_matching": false
+    },
+    "contact_count": 68,
+    "normal_force_projection": 1.319325752339905,
+    "pressure_force_sum": 1.3208867311477661,
+    "torsion_capacity": 0.001130315206469031,
+    "torsion_capacity_friction_scaled": 0.001130315206469031,
+    "continuum_normal_2pads": 1.833702446606446,
+    "continuum_torque_2pads": 0.0017470168603716438,
+    "stiffness_max": 875.9260864257812,
+    "minimum_distance_m": -0.0001734226825647056,
+    "geometry_parity": {
+      "thumb_tip": 2.4570646238515738e-08,
+      "index_tip": 2.4377279845979834e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h1.0_d0.0002_redFalse_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 1.0,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": false
+    },
+    "contact_count": 19,
+    "normal_force_projection": 1.319275495846925,
+    "pressure_force_sum": 1.320494532585144,
+    "torsion_capacity": 0.0010264701490030222,
+    "torsion_capacity_friction_scaled": 0.0010264701490030222,
+    "continuum_normal_2pads": 1.833702446606446,
+    "continuum_torque_2pads": 0.0017470168603716438,
+    "stiffness_max": 640.3555908203125,
+    "minimum_distance_m": -0.0001734226825647056,
+    "geometry_parity": {
+      "thumb_tip": 2.4570646238515738e-08,
+      "index_tip": 2.4377279845979834e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h1.0_d0.0002_redTrue_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0002,
+      "voxel_mm": 1.0,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": true
+    },
+    "contact_count": 19,
+    "normal_force_projection": 1.319275495846925,
+    "pressure_force_sum": 1.320494532585144,
+    "torsion_capacity": 0.0010264701490030222,
+    "torsion_capacity_friction_scaled": 0.001085712180359189,
+    "continuum_normal_2pads": 1.833702446606446,
+    "continuum_torque_2pads": 0.0017470168603716438,
+    "stiffness_max": 640.3555908203125,
+    "minimum_distance_m": -0.0001734226825647056,
+    "geometry_parity": {
+      "thumb_tip": 2.4570646238515738e-08,
+      "index_tip": 2.4377279845979834e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h1.0_d0.0002_redTrue_momentTrue",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0004,
+      "voxel_mm": 1.0,
+      "timestep": 5e-05,
+      "reduce_contacts": false,
+      "moment_matching": false
+    },
+    "contact_count": 142,
+    "normal_force_projection": 6.191196603161895,
+    "pressure_force_sum": 6.2073564529418945,
+    "torsion_capacity": 0.008004153153345385,
+    "torsion_capacity_friction_scaled": 0.008004153153345385,
+    "continuum_normal_2pads": 7.26612574328459,
+    "continuum_torque_2pads": 0.009748966660103735,
+    "stiffness_max": 375.01470947265625,
+    "minimum_distance_m": -0.0003727895091287792,
+    "geometry_parity": {
+      "thumb_tip": 2.3789160390691383e-08,
+      "index_tip": 2.3672456199142563e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h1.0_d0.0004_redFalse_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0004,
+      "voxel_mm": 1.0,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": false
+    },
+    "contact_count": 28,
+    "normal_force_projection": 6.186436307250364,
+    "pressure_force_sum": 6.283162593841553,
+    "torsion_capacity": 0.007612281033431348,
+    "torsion_capacity_friction_scaled": 0.007612281033431348,
+    "continuum_normal_2pads": 7.26612574328459,
+    "continuum_torque_2pads": 0.009748966660103735,
+    "stiffness_max": 1125.3162841796875,
+    "minimum_distance_m": -0.0003700931847561151,
+    "geometry_parity": {
+      "thumb_tip": 2.3789160390691383e-08,
+      "index_tip": 2.3672456199142563e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h1.0_d0.0004_redTrue_momentFalse",
+    "phase": "newton_pressure"
+  },
+  {
+    "config": {
+      "pressure_only": true,
+      "static_squeeze_m": 0.0004,
+      "voxel_mm": 1.0,
+      "timestep": 5e-05,
+      "reduce_contacts": true,
+      "moment_matching": true
+    },
+    "contact_count": 28,
+    "normal_force_projection": 6.1864363072503625,
+    "pressure_force_sum": 6.2831621170043945,
+    "torsion_capacity": 0.007612281033431348,
+    "torsion_capacity_friction_scaled": 0.007957331378388922,
+    "continuum_normal_2pads": 7.26612574328459,
+    "continuum_torque_2pads": 0.009748966660103735,
+    "stiffness_max": 1125.3162841796875,
+    "minimum_distance_m": -0.0003700931847561151,
+    "geometry_parity": {
+      "thumb_tip": 2.3789160390691383e-08,
+      "index_tip": 2.3672456199142563e-08,
+      "tool": 8.922892723719551e-10
+    },
+    "run_id": "h1.0_d0.0004_redTrue_momentTrue",
+    "phase": "newton_pressure"
+  }
+]

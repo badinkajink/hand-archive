@@ -1,0 +1,96 @@
+{
+  "defaults": {
+    "engine_version": "3.14.0",
+    "duration": 1.3,
+    "timestep": 5e-05,
+    "relaxation": 0.03,
+    "mode": "dynamic",
+    "tangent_fixture_damping": 5.0,
+    "mapping_policy": "runtime_selected_direct",
+    "diagexact": true,
+    "impedance_override": 0.0001,
+    "impratio": 10000.0,
+    "tangent_damping_ratio": 10.0,
+    "contact_log_stride": 10
+  },
+  "groups": [
+    {
+      "name": "fine_separated_friction",
+      "fixed": {
+        "spacing_mm": 0.5
+      },
+      "grid": {
+        "mass_scale": [
+          1.0,
+          4.0
+        ],
+        "geometry": [
+          "plane",
+          "cylinder"
+        ],
+        "scenario": [
+          "normal_pulse",
+          "controlled_slip"
+        ]
+      }
+    },
+    {
+      "name": "fine_low_mass",
+      "fixed": {
+        "spacing_mm": 0.5,
+        "mass_scale": 0.25,
+        "timestep": 2.5e-05
+      },
+      "grid": {
+        "geometry": [
+          "plane",
+          "cylinder"
+        ],
+        "scenario": [
+          "normal_pulse",
+          "controlled_slip"
+        ]
+      }
+    },
+    {
+      "name": "fine_resolution",
+      "fixed": {
+        "mass_scale": 1.0,
+        "spacing_mm": 1.0,
+        "scenario": "controlled_slip"
+      },
+      "grid": {
+        "geometry": [
+          "plane",
+          "cylinder"
+        ]
+      }
+    },
+    {
+      "name": "fine_timestep",
+      "fixed": {
+        "mass_scale": 1.0,
+        "spacing_mm": 0.5,
+        "scenario": "controlled_slip",
+        "timestep": 2.5e-05
+      },
+      "grid": {
+        "geometry": [
+          "plane",
+          "cylinder"
+        ]
+      }
+    },
+    {
+      "name": "fine_friction_ratio",
+      "fixed": {
+        "mass_scale": 1.0,
+        "spacing_mm": 0.5,
+        "scenario": "controlled_slip",
+        "geometry": "plane",
+        "impratio": 100.0
+      },
+      "grid": {}
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "defaults": {
+    "timestep": 5e-05,
+    "duration": 0.8,
+    "policy": "runtime",
+    "pad_load": 2.0
+  },
+  "cases": [
+    {
+      "name": "fine_s1.0_tau0.003",
+      "spacing_mm": 1.0,
+      "torque_peak": 0.003
+    },
+    {
+      "name": "fine_s1.0_tau0.012",
+      "spacing_mm": 1.0,
+      "torque_peak": 0.012
+    },
+    {
+      "name": "fine_s1.0_tau0.048",
+      "spacing_mm": 1.0,
+      "torque_peak": 0.048
+    },
+    {
+      "name": "fine_s0.5_tau0.003",
+      "spacing_mm": 0.5,
+      "torque_peak": 0.003
+    },
+    {
+      "name": "fine_s0.5_tau0.012",
+      "spacing_mm": 0.5,
+      "torque_peak": 0.012
+    },
+    {
+      "name": "fine_s0.5_tau0.048",
+      "spacing_mm": 0.5,
+      "torque_peak": 0.048
+    },
+    {
+      "name": "coarse_s1.0_dt0.0005",
+      "spacing_mm": 1.0,
+      "timestep": 0.0005,
+      "torque_peak": 0.012
+    },
+    {
+      "name": "coarse_s1.0_dt0.0001",
+      "spacing_mm": 1.0,
+      "timestep": 0.0001,
+      "torque_peak": 0.012
+    },
+    {
+      "name": "coarse_s0.5_dt0.0005",
+      "spacing_mm": 0.5,
+      "timestep": 0.0005,
+      "torque_peak": 0.012
+    },
+    {
+      "name": "coarse_s0.5_dt0.0001",
+      "spacing_mm": 0.5,
+      "timestep": 0.0001,
+      "torque_peak": 0.012
+    },
+    {
+      "name": "refine_s0.5",
+      "spacing_mm": 0.5,
+      "timestep": 2.5e-05,
+      "torque_peak": 0.012
+    },
+    {
+      "name": "refine_s0.25",
+      "spacing_mm": 0.25,
+      "timestep": 2.5e-05,
+      "torque_peak": 0.012
+    },
+    {
+      "name": "compiled_s1.0",
+      "spacing_mm": 1.0,
+      "timestep": 0.0005,
+      "policy": "compiled",
+      "torque_peak": 0.012
+    },
+    {
+      "name": "compiled_s0.5",
+      "spacing_mm": 0.5,
+      "timestep": 0.0005,
+      "policy": "compiled",
+      "torque_peak": 0.012
+    },
+    {
+      "name": "standard_runtime",
+      "spacing_mm": 0.5,
+      "policy": "runtime_standard",
+      "torque_peak": 0.012
+    },
+    {
+      "name": "fast_refine_s05",
+      "spacing_mm": 0.5,
+      "timestep": 2.5e-05,
+      "torque_peak": 0.048
+    },
+    {
+      "name": "fast_refine_s025",
+      "spacing_mm": 0.25,
+      "timestep": 2.5e-05,
+      "torque_peak": 0.048
+    },
+    {
+      "name": "coarse_safe_refine",
+      "spacing_mm": 0.5,
+      "timestep": 0.0001,
+      "torque_peak": 0.003
+    }
+  ]
+}

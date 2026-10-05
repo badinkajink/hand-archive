@@ -1,0 +1,4 @@
+{
+  "defaults": {"policy": "runtime", "timestep": 0.00005, "duration": 0.8, "torque_peak": 0.012},
+  "cases": [{"name": "optimized_s1", "spacing_mm": 1.0}, {"name": "optimized_s05", "spacing_mm": 0.5}]
+}
