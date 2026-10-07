@@ -1,0 +1,126 @@
+{
+  "scene": "assets/mjcf/experimental/20261007-diffmjx/D1_tpu6_padsT_fast_bed_ir100_mu2.4_mjx_no_post.xml",
+  "base_scene": "/home/humanoid/Programs/hand/assets/mjcf/experimental/20261007-diffmjx/plants/sv1_w6689_b060__fast.xml",
+  "hand": "D1",
+  "seed": 1,
+  "steps": 1,
+  "numerics": "bed",
+  "impratio": 100.0,
+  "post_collides": false,
+  "tool_geom": "cylinder",
+  "tip": "tpu6",
+  "contact_model": "padsT",
+  "n_pads": {
+    "thumb": 796,
+    "index": 796,
+    "middle": 796
+  },
+  "mujoco_version": "3.6.0",
+  "jax_version": "0.4.38",
+  "jax_backend": "cpu",
+  "nq": 16,
+  "nv": 15,
+  "ngeom": 2404,
+  "timestep_s": 0.001,
+  "initial_contact": {
+    "finger_normal_force_N": {
+      "thumb": 2.8167640585219864,
+      "index": 1.8193452608195797,
+      "middle": 1.2709426264373511
+    },
+    "finger_min_dist_m": {
+      "thumb": -0.00028707499750082674,
+      "index": -0.0002878948354000724,
+      "middle": -0.00035526685185918727
+    },
+    "palm_plate_contacts": 0,
+    "total_contacts": 62
+  },
+  "mjx_initial_contact": {
+    "thumb": {
+      "n": 14,
+      "normal_force_N": 2.812517676502466,
+      "min_dist_m": -0.0002870748285204172
+    },
+    "index": {
+      "n": 13,
+      "normal_force_N": 1.8345204999204725,
+      "min_dist_m": -0.00028787876362912357
+    },
+    "middle": {
+      "n": 20,
+      "normal_force_N": 1.3022778239101171,
+      "min_dist_m": -0.0003534277784638107
+    }
+  },
+  "cpu_contact": {
+    "finger_normal_force_N": {
+      "thumb": 2.8167640585219864,
+      "index": 1.8193452608195797,
+      "middle": 1.2709426264373511
+    },
+    "finger_min_dist_m": {
+      "thumb": -0.00028707499750082674,
+      "index": -0.0002878948354000724,
+      "middle": -0.00035526685185918727
+    },
+    "palm_plate_contacts": 0,
+    "total_contacts": 62
+  },
+  "mjx_contact": {
+    "thumb": {
+      "n": 14,
+      "normal_force_N": 2.812513016164303,
+      "min_dist_m": -0.0002870748285204172
+    },
+    "index": {
+      "n": 13,
+      "normal_force_N": 1.8345429578330368,
+      "min_dist_m": -0.00028787876362912357
+    },
+    "middle": {
+      "n": 20,
+      "normal_force_N": 1.3022679947316647,
+      "min_dist_m": -0.0003534277784638107
+    }
+  },
+  "cpu_tool_qpos": [
+    -0.005531822735994508,
+    0.0009139091440709598,
+    0.096517296124293,
+    0.7215060907642651,
+    0.642927163273416,
+    -0.17470909336269552,
+    0.1885480215002313
+  ],
+  "mjx_tool_qpos": [
+    -0.0055318558588624,
+    0.000913891417440027,
+    0.09651731699705124,
+    0.7215054631233215,
+    0.6429271697998047,
+    -0.1747107356786728,
+    0.18854892253875732
+  ],
+  "cpu_tool_qvel": [
+    -0.004980581350270177,
+    -0.00027895381126306814,
+    -0.004298835518800996,
+    -0.018385023178746823,
+    -0.05480217000000096,
+    0.11571095916854557
+  ],
+  "mjx_tool_qvel": [
+    -0.005013774614781141,
+    -0.0002966695465147495,
+    -0.004276865627616644,
+    -0.017803167924284935,
+    -0.05625241994857788,
+    0.11935660988092422
+  ],
+  "max_qpos_abs_error": 1.6423159772682716e-06,
+  "max_qvel_abs_error": 0.0036456507123786563,
+  "cpu_rollout_s": 0.0002112609799951315,
+  "mjx_first_s": 48.97371257492341,
+  "mjx_warm_s": 0.13562844297848642
+}

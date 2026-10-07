@@ -1,0 +1,62 @@
+{
+  "measurement": "one native MJX 3.6 step on the D1 1 mm packed-tip cylinder scene",
+  "backend": "cpu",
+  "guard_memory_GB": 8,
+  "attempts": [
+    {
+      "contact_model": "pads",
+      "pad_count": 2388,
+      "step_completed": false,
+      "stopped_by": "operator",
+      "elapsed_s": 94.64,
+      "max_resident_kB": 3115036,
+      "source_log": "logs/20261007-diffmjx/native_pads_cylinder_1.log"
+    }
+  ],
+  "completed": [
+    {
+      "name": "native MJX 3.6, 1 mm packed tip, one forward step",
+      "elapsed_s": 102.69,
+      "max_resident_kB": 8520332,
+      "terminated_after_output": true,
+      "source_data": "docs/experiments/20261007-diffmjx/20261007-native_padsT_cylinder_1.json",
+      "source_log": "logs/20261007-diffmjx/native_padsT_cylinder_1.log"
+    },
+    {
+      "name": "released fork, 1 mm packed tip, one forward step",
+      "elapsed_s": 64.68,
+      "max_resident_kB": 6082124,
+      "source_log": "logs/20261007-diffmjx/official_padsT1_cylinder_1.log"
+    },
+    {
+      "name": "released fork, 2 mm packed tip, one directional derivative",
+      "elapsed_s": 43.64,
+      "max_resident_kB": 2910444,
+      "source_log": "logs/20261007-diffmjx/official_padsT2_cylinder_jvp_1.log"
+    },
+    {
+      "name": "released fork, 1 mm packed tip, one directional derivative",
+      "elapsed_s": 78.71,
+      "max_resident_kB": 7555868,
+      "source_log": "logs/20261007-diffmjx/official_padsT1_cylinder_jvp_1.log"
+    },
+    {
+      "name": "released fork, 1 mm packed tip, two simulator finite differences",
+      "elapsed_s": 37.81,
+      "max_resident_kB": 4080796,
+      "source_log": "logs/20261007-diffmjx/official_padsT1_cylinder_fd_1.log"
+    },
+    {
+      "name": "released fork, 1 mm packed tip, 20 ms three-control gradient",
+      "elapsed_s": 131.96,
+      "max_resident_kB": 7796884,
+      "source_data": "docs/experiments/20261007-diffmjx/20261007-official_padsT1_cylinder_jacobian_20.json"
+    },
+    {
+      "name": "released fork with CFD and scan-loop, 1 mm packed tip, 20 ms three-control gradient",
+      "elapsed_s": 193.69,
+      "max_resident_kB": 10790420,
+      "source_data": "docs/experiments/20261007-diffmjx/20261007-official_padsT1_cylinder_cfd_jacobian_20.json"
+    }
+  ]
+}

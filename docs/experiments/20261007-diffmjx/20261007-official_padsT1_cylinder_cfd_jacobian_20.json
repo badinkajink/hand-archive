@@ -1,0 +1,127 @@
+{
+  "scene": "assets/mjcf/experimental/20261007-diffmjx/D1_tpu6_padsT_fast_bed_ir100_mu2.4_mjx_no_post.xml",
+  "base_scene": "/home/humanoid/Programs/hand/assets/mjcf/experimental/20261007-diffmjx/plants/sv1_w6689_b060__fast.xml",
+  "mujoco_version": "3.3.1",
+  "jax_version": "0.11.2",
+  "jax_backend": "cpu",
+  "mjx_package": "/home/humanoid/Programs/hand/logs/20261007-diffmjx/mujoco/mjx/mujoco/mjx/__init__.py",
+  "n_pads": {
+    "thumb": 796,
+    "index": 796,
+    "middle": 796
+  },
+  "pad_spacing_m": 0.001,
+  "steps": 20,
+  "timestep_s": 0.001,
+  "cfd_enable": true,
+  "scan_loop": true,
+  "mode": "directional_jvp",
+  "direction_index": 1,
+  "finite_difference_step_rad": 0.01,
+  "metric_names": [
+    "tool_vertical_cos",
+    "tool_z_m",
+    "tool_omega_x_rad_s",
+    "tool_contact_torque_x_Nm"
+  ],
+  "fork_base_metrics": [
+    0.11100339477465981,
+    0.09637046677252974,
+    -0.0006746643101511266,
+    1.714663762136413e-05
+  ],
+  "cpu_base_metrics": [
+    0.1110390909563519,
+    0.09636980650466544,
+    -0.0015543728342212587,
+    2.4815319666978298e-05
+  ],
+  "ad_nonfinite_count": 0,
+  "ad_directional_derivative": [
+    0.0016261758581006,
+    -9.533638665442806e-06,
+    -0.02452111475966444,
+    2.3360372973779018e-05
+  ],
+  "ad_jacobian": [
+    [
+      -0.000904224044695889,
+      0.0016261758581006,
+      6.522165345877205e-06
+    ],
+    [
+      8.45783348103624e-05,
+      -9.533638665442806e-06,
+      6.440423892704163e-05
+    ],
+    [
+      -0.01968531174985044,
+      -0.02452111475966444,
+      0.07874926966164263
+    ],
+    [
+      2.3408264748761885e-05,
+      2.3360372973779018e-05,
+      1.6095740508844525e-05
+    ]
+  ],
+  "cpu_fd_jacobian": [
+    [
+      -0.0005945871641654943,
+      0.001860533253672525,
+      6.391585196663385e-05
+    ],
+    [
+      8.237453968037989e-05,
+      -1.3059531856624007e-05,
+      6.54398405151857e-05
+    ],
+    [
+      -0.030636626874807237,
+      -0.03564339432991087,
+      0.0786347414016859
+    ],
+    [
+      3.988264635223799e-06,
+      1.0825938318340892e-05,
+      -4.101704017699017e-06
+    ]
+  ],
+  "local_search": {
+    "radius_rad": 0.1,
+    "ad_direction_rad": [
+      -0.04859655920819057,
+      0.08739709127917997,
+      0.0003505268370773412
+    ],
+    "cpu_fd_direction_rad": [
+      -0.030424899426175524,
+      0.0952030930595167,
+      0.0032705606259638307
+    ],
+    "direction_cosine": 0.9800165259821915,
+    "cpu_score_zero": 0.1110390909563519,
+    "cpu_score_ad_direction": 0.11123895119043792,
+    "cpu_score_fd_direction": 0.11124454182191101
+  },
+  "fork_fd_directional_derivative": null,
+  "cpu_fd_directional_derivative": [
+    0.001860533253672525,
+    -1.3059531856624007e-05,
+    -0.03564339432991087,
+    1.0825938318340892e-05
+  ],
+  "fork_fd_sweep": null,
+  "cpu_fd_sweep": {
+    "0.01": [
+      0.001860533253672525,
+      -1.3059531856624007e-05,
+      -0.03564339432991087,
+      1.0825938318340892e-05
+    ]
+  },
+  "put_model_s": 4.0415193610824645,
+  "gradient_compile_s": 123.44376530800946,
+  "gradient_warm_s": 56.694380406988785,
+  "cpu_fd_3_evals_s": 0.044431468937546015
+}

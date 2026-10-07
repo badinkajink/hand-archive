@@ -1,0 +1,56 @@
+{
+  "scene": "assets/mjcf/experimental/20261007-diffmjx/D1_tpu6_padsT_fast_bed_ir100_mu2.4_mjx_no_post.xml",
+  "base_scene": "/home/humanoid/Programs/hand/assets/mjcf/experimental/20261007-diffmjx/plants/sv1_w6689_b060__fast.xml",
+  "mujoco_version": "3.3.1",
+  "jax_version": "0.11.2",
+  "jax_backend": "cpu",
+  "mjx_package": "/home/humanoid/Programs/hand/logs/20261007-diffmjx/mujoco/mjx/mujoco/mjx/__init__.py",
+  "n_pads": {
+    "thumb": 796,
+    "index": 796,
+    "middle": 796
+  },
+  "pad_spacing_m": 0.001,
+  "steps": 1,
+  "timestep_s": 0.001,
+  "cfd_enable": false,
+  "scan_loop": false,
+  "direction_index": 1,
+  "finite_difference_step_rad": 0.01,
+  "metric_names": [
+    "tool_vertical_cos",
+    "tool_z_m",
+    "tool_omega_x_rad_s",
+    "tool_contact_torque_x_Nm"
+  ],
+  "fork_base_metrics": [
+    0.11223551198058801,
+    0.09651761588484463,
+    -0.01826486244906471,
+    0.00022702225615810895
+  ],
+  "cpu_base_metrics": [
+    0.11223634929272552,
+    0.09651759990536243,
+    -0.018393441091369443,
+    0.00022426915403501112
+  ],
+  "ad_nonfinite_count": 0,
+  "ad_directional_derivative": [
+    3.903200824969211e-05,
+    -3.2834670487404076e-07,
+    -0.010192446607673551,
+    -0.00021823878283486198
+  ],
+  "fork_fd_directional_derivative": null,
+  "cpu_fd_directional_derivative": [
+    3.499056864253447e-05,
+    -3.591242241085535e-07,
+    -0.007854839532270286,
+    -0.00016818637220971126
+  ],
+  "put_model_s": 4.295702388975769,
+  "gradient_compile_s": 65.38627231912687,
+  "gradient_warm_s": 0.6230217278935015,
+  "cpu_fd_3_evals_s": 0.005203964188694954
+}

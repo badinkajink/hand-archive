@@ -1,0 +1,102 @@
+{
+  "mujoco_version": "3.6.0",
+  "steps": 20,
+  "timestep_s": 0.001,
+  "rows": {
+    "pads": {
+      "scene": "assets/mjcf/experimental/20261007-diffmjx/D1_tpu6_pads_fast_bed_ir100_mu2.4_mjx_no_post.xml",
+      "n_pads": {
+        "thumb": 796,
+        "index": 796,
+        "middle": 796
+      },
+      "initial_contact": {
+        "finger_normal_force_N": {
+          "thumb": 2.8167640585219864,
+          "index": 1.8193452608195797,
+          "middle": 1.2709426264373511
+        },
+        "finger_min_dist_m": {
+          "thumb": -0.00028707499750082674,
+          "index": -0.0002878948354000724,
+          "middle": -0.00035526685185918727
+        },
+        "palm_plate_contacts": 0,
+        "total_contacts": 62
+      },
+      "final_contact": {
+        "finger_normal_force_N": {
+          "thumb": 2.8257000277987476,
+          "index": 1.8133757348602397,
+          "middle": 1.120782629532965
+        },
+        "finger_min_dist_m": {
+          "thumb": -0.0003035773429419745,
+          "index": -0.000277014040198198,
+          "middle": -0.00019949035550000972
+        },
+        "palm_plate_contacts": 0,
+        "total_contacts": 50
+      },
+      "final_tool_qpos": [
+        -0.0056418581692971245,
+        0.0008964843539338945,
+        0.09636950319118552,
+        0.7216379729703387,
+        0.6434113709278179,
+        -0.1746404605423465,
+        0.1864434318221042
+      ],
+      "grip_cpu_s": 0.12167992908507586,
+      "rollout_20_cpu_s": 0.0030344699043780565
+    },
+    "padsT": {
+      "scene": "assets/mjcf/experimental/20261007-diffmjx/D1_tpu6_padsT_fast_bed_ir100_mu2.4_mjx_no_post.xml",
+      "n_pads": {
+        "thumb": 796,
+        "index": 796,
+        "middle": 796
+      },
+      "initial_contact": {
+        "finger_normal_force_N": {
+          "thumb": 2.8167640585219864,
+          "index": 1.8193452608195797,
+          "middle": 1.2709426264373511
+        },
+        "finger_min_dist_m": {
+          "thumb": -0.00028707499750082674,
+          "index": -0.0002878948354000724,
+          "middle": -0.00035526685185918727
+        },
+        "palm_plate_contacts": 0,
+        "total_contacts": 62
+      },
+      "final_contact": {
+        "finger_normal_force_N": {
+          "thumb": 2.8257000277987476,
+          "index": 1.8133757348602397,
+          "middle": 1.120782629532965
+        },
+        "finger_min_dist_m": {
+          "thumb": -0.0003035773429419745,
+          "index": -0.000277014040198198,
+          "middle": -0.00019949035550000972
+        },
+        "palm_plate_contacts": 0,
+        "total_contacts": 50
+      },
+      "final_tool_qpos": [
+        -0.0056418581692971245,
+        0.0008964843539338945,
+        0.09636950319118552,
+        0.7216379729703387,
+        0.6434113709278179,
+        -0.1746404605423465,
+        0.1864434318221042
+      ],
+      "grip_cpu_s": 0.12092949403449893,
+      "rollout_20_cpu_s": 0.003048419952392578
+    }
+  },
+  "final_tool_qpos_max_abs_error": 0.0
+}

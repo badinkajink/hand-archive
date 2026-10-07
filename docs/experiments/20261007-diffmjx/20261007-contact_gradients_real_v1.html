@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact gradients in the real_v1 screwdriver grasp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* House layout of the MorphoHand result pages: one reading column, figures and tables break out to 1020px.
+   Series colours: Drake hydroelastic blue, MuJoCo sphere pads orange, MuJoCo condim 4 green (dashed),
+   analytic and quasi-static references grey dashed; validated for CVD in both themes. */
+:root{
+  --paper:#EEF1F4; --card:#FFFFFF; --sunk:#E4E9EE;
+  --ink:#1A2127; --ink2:#48545D; --ink3:#77848D; --rule:#D2DAE1; --rule2:#E2E8ED;
+  --s1:#BE7514; --s2:#4A7FC4; --s3:#5E8F5A; --ref:#8A959D;
+  --good:#3F7A46; --bad:#A8443C;
+  --c-drake:#4A7FC4; --c-sphere:#BE7514; --c-c4:#25875A; --c-ref:#8A959D;
+  --shadow:0 1px 2px rgba(16,26,34,.06),0 8px 24px -14px rgba(16,26,34,.28);
+  --f-display:Archivo,"Helvetica Neue",Arial,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#12171B; --card:#1A2026; --sunk:#161C21;
+  --ink:#E5EBF0; --ink2:#A8B4BD; --ink3:#7B8791; --rule:#2A333A; --rule2:#222A30;
+  --s1:#E39A2E; --s2:#7BA7E0; --s3:#8AC286; --ref:#79858E; --good:#6FB076; --bad:#DE8078;
+  --c-drake:#6496DD; --c-sphere:#C47D1C; --c-c4:#3AA56E; --c-ref:#79858E;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -16px rgba(0,0,0,.8);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#12171B; --card:#1A2026; --sunk:#161C21;
+  --ink:#E5EBF0; --ink2:#A8B4BD; --ink3:#7B8791; --rule:#2A333A; --rule2:#222A30;
+  --s1:#E39A2E; --s2:#7BA7E0; --s3:#8AC286; --ref:#79858E; --good:#6FB076; --bad:#DE8078;
+  --c-drake:#6496DD; --c-sphere:#C47D1C; --c-c4:#3AA56E; --c-ref:#79858E;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -16px rgba(0,0,0,.8);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.62 var(--f-body);
+  -webkit-font-smoothing:antialiased;padding-inline:20px;padding-block:0 96px;margin:0}
+.wrap{max-width:1020px;margin:0 auto}
+.col{max-width:70ch}
+h1,h2,h3,.tag,th{font-family:var(--f-display)}
+.mono,code,td.num,.note,pre{font-family:var(--f-mono)}
+header{padding:64px 0 30px;border-bottom:1px solid var(--rule)}
+.eyebrow{font:500 12px/1.4 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+h1{font-size:clamp(28px,4.4vw,44px);line-height:1.08;font-weight:700;letter-spacing:-.022em;
+  margin:16px 0 0;text-wrap:balance;max-width:26ch}
+.lede{font-size:19px;line-height:1.58;color:var(--ink2);margin:18px 0 0;max-width:66ch}
+.byline{margin-top:22px;font:400 13px/1.55 var(--f-mono);color:var(--ink3);max-width:96ch}
+section{padding:46px 0;border-bottom:1px solid var(--rule2)}
+section:last-of-type{border-bottom:0}
+h2{font-size:26px;font-weight:700;letter-spacing:-.018em;margin:0 0 6px;text-wrap:balance}
+h3{font-size:18px;font-weight:600;letter-spacing:-.008em;margin:34px 0 8px}
+h2 + .sub{color:var(--ink3);font:400 14px/1.5 var(--f-mono);margin:0 0 24px}
+p{margin:0 0 17px}
+strong{font-weight:600}
+ul,ol{margin:0 0 17px;padding-left:20px}
+li{margin:0 0 8px}
+figure{margin:28px 0}
+figure video,figure img{display:block;width:100%;max-width:100%;height:auto;border-radius:10px;background:var(--sunk);box-shadow:var(--shadow)}
+figcaption{margin-top:11px;font:400 14px/1.55 var(--f-mono);color:var(--ink3);max-width:86ch}
+.col > .tw,.col > figure,.col > .duo{width:min(1020px,calc(100vw - 40px));max-width:none}
+.col > figure.narrow{width:min(780px,calc(100vw - 40px))}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0}
+.duo > *{min-width:0}
+@media (max-width:760px){.duo{grid-template-columns:1fr}}
+.duo figure{margin:0}
+.tw{overflow-x:auto;margin:24px 0;border:1px solid var(--rule);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th{font:600 12px/1.3 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);
+  text-align:left;padding:13px 14px;border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--rule2);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-size:13.5px;white-space:nowrap}
+td.cell{text-align:center;font-family:var(--f-mono);font-size:13px;font-weight:500;white-space:nowrap}
+td.c4{background:color-mix(in oklab,var(--good) 28%,var(--card));color:var(--ink)}
+td.c3{background:color-mix(in oklab,var(--good) 14%,var(--card))}
+td.c2{background:color-mix(in oklab,var(--s1) 16%,var(--card))}
+td.c0{background:color-mix(in oklab,var(--bad) 20%,var(--card));color:var(--ink2)}
+tr.grp td{background:var(--sunk);font:600 12px/1.3 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.key{display:inline-block;width:18px;height:0;border-top:2.5px solid;vertical-align:middle;margin-right:7px}
+.key.dash{border-top-style:dashed}
+.keep{border:1px solid var(--rule);border-left:3px solid var(--s2);border-radius:10px;
+  padding:20px 24px;margin:28px 0;background:var(--card)}
+.keep .tag{display:block;font:700 12px/1 var(--f-display);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--s2);margin-bottom:11px}
+.keep p:last-child,.keep ul:last-child{margin-bottom:0}
+pre{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;
+  overflow-x:auto;font-size:13px;line-height:1.6;margin:22px 0}
+code{font-size:.9em;background:var(--sunk);padding:1px 4px;border-radius:4px;margin:0 -1px}
+footer{padding:40px 0 0;color:var(--ink3);font:400 13.5px/1.7 var(--f-mono)}
+footer a,.col a{color:var(--s2)}
+a:focus-visible{outline:2px solid var(--s2);outline-offset:2px;border-radius:2px}
+/* charts */
+.chart{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 12px 8px}
+.chart h4{font:600 14px/1.35 var(--f-display);margin:2px 6px 2px;color:var(--ink)}
+.chart .unit{font:400 12.5px/1.4 var(--f-mono);color:var(--ink3);margin:0 6px 6px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y}
+.chart .legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:6px 6px 4px;font:400 12.5px/1.4 var(--f-mono);color:var(--ink2)}
+.chart .gl{stroke:var(--rule2);stroke-width:1}
+.chart .ax{stroke:var(--rule);stroke-width:1}
+.chart .tk{fill:var(--ink3);font:400 12px var(--f-mono)}
+.chart .lb{fill:var(--ink2);font:500 12px var(--f-mono)}
+.chart .at{fill:var(--ink3);font:400 12px var(--f-mono)}
+.chart .ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.chart .mk{stroke:var(--card);stroke-width:2}
+.chart .xh{stroke:var(--ink3);stroke-width:1;opacity:0}
+.chart .tip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--rule);border-radius:8px;
+  padding:8px 10px;font:400 12px/1.5 var(--f-mono);color:var(--ink);box-shadow:var(--shadow);opacity:0;
+  transition:opacity .08s;white-space:nowrap;z-index:2}
+.chart .tip b{font-weight:500}
+.chart .tip i{display:inline-block;width:10px;height:3px;margin-right:6px;vertical-align:middle;font-style:normal}
+@media (prefers-reduced-motion: reduce){.chart .tip{transition:none}}
+
+.diagram > svg{display:block;width:100%;height:auto;color:var(--ink);overflow:visible}
+/* math: LaTeX pre-rendered to SVG by scripts/texsvg.py; glyphs draw in currentColor */
+.tex-d{display:block;margin:.5em auto;max-width:100%;height:auto}
+.eq{position:relative;margin:18px 0;padding:0 3.4em}
+.eq .tex-d{margin:0 auto}
+.eqno{position:absolute;right:0;top:50%;transform:translateY(-50%);font:400 14px/1 var(--f-mono);color:var(--ink3)}
+@media (max-width:560px){.eq{padding:0 2.4em 0 0}}
+.step{font:600 13px/1 var(--f-mono);color:var(--s2);letter-spacing:.04em;margin-right:6px}
+.derive h3{margin-top:38px}
+.numbers{border:1px solid var(--rule);border-radius:10px;background:var(--card);padding:14px 18px;margin:20px 0;
+  font-size:15.5px}
+.numbers p:last-child{margin-bottom:0}
+.diagram{margin:30px 0}
+.handoff h3{font:600 16px/1.4 var(--f-display);margin:26px 0 8px}
+.handoff li{margin:6px 0}
+.handoff pre{white-space:pre-wrap}
+
+.viz{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px;box-shadow:var(--shadow)}
+.viz svg{display:block;width:100%;height:auto}.viz .label{fill:var(--ink);font:600 15px var(--f-display)}
+.viz .small{fill:var(--ink2);font:400 12px var(--f-mono)}.decision td:first-child{font-weight:600}
+@media print{.col>.tw{width:100%}table{font-size:11px;table-layout:fixed}th{font-size:9px;white-space:normal;padding:7px 6px}td{padding:7px 6px;overflow-wrap:anywhere}.tw{overflow:visible}}
+</style>
+</head><body><div class="wrap">
+<header>
+<div class="eyebrow">MorphoHand &#183; real_v1 / D1 &#183; 7 October 2026 &#183; built 2026-10-07 17:40</div>
+<h1>Contact gradients in the real_v1 screwdriver grasp</h1>
+<p class="lede">Native MJX 3.6 and the released fork completed one step of the 2,388-pad grasp with at most 1.84 µm initial tool-gap difference from CPU MuJoCo. Over 20 ms, the fork gradient selected a 0.1 rad control action that scored 0.111245 in CPU MuJoCo; CPU finite differences scored 0.111245 and the best of 128 samples scored 0.111241. The warm three-control gradient took 35.7 s versus 23.5 ms for six CPU finite-difference evaluations. Contact-from-distance with the scan-loop solver scored 0.111239 at 56.7 s.</p>
+<div class="byline">Deployed D1 hand and grip plan &#183; 1 ms step &#183; CPU MuJoCo, native MJX 3.6, released DiffMJX fork of MJX 3.3.1 &#183; scripts <code>scripts/real_v1_diffmjx_gate.py</code>, <code>scripts/real_v1_diffmjx_official_gate.py</code>, <code>scripts/real_v1_diffmjx_local_search.py</code> &#183; builder <code>scripts/real_v1_diffmjx_page.py</code></div>
+</header>
+
+<section id="terms"><div class="col"><h2>Terms and metrics</h2>
+<p><strong>MuJoCo XLA (MJX)</strong> is MuJoCo&#8217;s JAX simulation backend. <strong>Central processing unit (CPU)</strong> identifies the processor used for every measured JAX run. <strong>Jacobian-vector product (JVP)</strong> is one directional automatic derivative of a simulator output.</p>
+<p><strong>Contact gap</strong> is the signed minimum distance between a fingertip sphere and the tool surface, in millimetres; a negative value is penetration and zero is first touch. <strong>Forward error</strong> is the largest absolute difference in generalized position or velocity after the same command from the same initial state. The position maximum mixes metres, radians and quaternion components. The velocity maximum mixes metres per second and radians per second. The position column multiplies its raw numerical value by 10<sup>6</sup>; it is a parity check, not a physical distance.</p>
+<p><strong>Control derivative</strong> is the change in a final tool quantity per radian of finger-yaw servo target bias. Automatic differentiation (AD) differentiates JAX code. Central finite difference (FD) evaluates positive and negative yaw-target perturbations; the step size appears beside each result. <strong>Vertical cosine</strong> is the cosine between the tool axis and world vertical; 1 is upright. <strong>Contact torque</strong> is the tool constraint torque around world x, in newton-metres, at the end of the stated rollout. <strong>AD error</strong> is the absolute difference between AD and CPU FD divided by the magnitude of CPU FD for the indicated yaw target. <strong>Direction cosine</strong> is the dot product of two unit-length three-yaw gradient directions; 1 means identical directions. <strong>Action gain</strong> is final vertical cosine minus the unchanged-yaw result after 20 ms.</p>
+</div></section>
+
+<section id="context"><div class="col"><h2>Software and earlier experiments</h2>
+<p>Our April <code>diffmjx-mvp</code> used ordinary MJX with a sigmoid distance reward on a cube. It did not run the authors&#8217; DiffMJX code. The released <a href="https://github.com/martius-lab/diffmjx">DiffMJX project</a> supplies an <a href="https://github.com/martius-lab/mujoco/tree/diffmjx/mjx">MJX fork</a> with contacts from distance, a scan-based solver loop and smooth collision options, plus <a href="https://github.com/martius-lab/mjx_diffrax">adaptive integration</a>. This study ran the fork&#8217;s first two switches. Sphere-to-capsule collision already has a smooth collision routine; the soft collision option was off.</p>
+<p><a href="https://github.com/google-deepmind/mujoco_playground">MuJoCo Playground</a> can use MJX-JAX or MJX-Warp. Its reinforcement-learning examples use trajectory samples for policy-gradient training. Simulator derivatives enter through a trajectory-optimization or differentiable-learning algorithm. Our current reorientation trainer uses MuJoCo-Warp through mjlab.</p>
+</div></section>
+
+<section id="forward"><div class="col"><h2>Contact geometry and forward dynamics</h2>
+<p>The deployed D1 plan was replayed for 0.8 s with the printed thermoplastic polyurethane fingertip model. The 1 mm sphere-packed surface has 796 pads per finger and produced 62 contacts after the post was disabled. The tool-only pad collision mask retained all pad-to-tool contacts. The full and masked CPU scenes had identical finger forces and tool pose after 20 ms (maximum recorded pose difference 0). The 2 mm surface has 227 pads per finger. Both MJX probes used the deployed cylinder tool.</p>
+<figure class="diagram"><div class="viz"><svg viewBox="0 0 920 598" role="img" aria-label="Absolute CPU versus MJX fingertip gap error"><text x="235" y="29" class="label" style="font-weight:700">Absolute fingertip gap difference at the held state</text><text x="235" y="50" class="small">micrometres; log scale</text><line x1="235.0" y1="56" x2="235.0" y2="550" stroke="var(--rule2)"/><text x="235.0" y="576" text-anchor="middle" class="small">0.01</text><line x1="362.8" y1="56" x2="362.8" y2="550" stroke="var(--rule2)"/><text x="362.8" y="576" text-anchor="middle" class="small">0.1</text><line x1="490.6" y1="56" x2="490.6" y2="550" stroke="var(--rule2)"/><text x="490.6" y="576" text-anchor="middle" class="small">1</text><line x1="618.4" y1="56" x2="618.4" y2="550" stroke="var(--rule2)"/><text x="618.4" y="576" text-anchor="middle" class="small">10</text><line x1="746.2" y1="56" x2="746.2" y2="550" stroke="var(--rule2)"/><text x="746.2" y="576" text-anchor="middle" class="small">100</text><line x1="874.0" y1="56" x2="874.0" y2="550" stroke="var(--rule2)"/><text x="874.0" y="576" text-anchor="middle" class="small">1000</text><text x="218" y="76" text-anchor="end" class="small">1 mm native · thumb</text><line x1="235" y1="72" x2="235.0" y2="72" stroke="var(--ink3)" stroke-width="2" opacity=".42"/><circle cx="235.0" cy="72" r="5.5" fill="var(--ink3)"><title>1 mm native · thumb: 0.000169 µm</title></circle><text x="247.0" y="76" class="small">&lt;0.01</text><text x="218" y="114" text-anchor="end" class="small">1 mm native · index</text><line x1="235" y1="110" x2="261.3" y2="110" stroke="var(--ink3)" stroke-width="2" opacity=".42"/><circle cx="261.3" cy="110" r="5.5" fill="var(--ink3)"><title>1 mm native · index: 0.01607 µm</title></circle><text x="273.3" y="114" class="small">0.0161</text><text x="218" y="152" text-anchor="end" class="small">1 mm native · middle</text><line x1="235" y1="148" x2="524.4" y2="148" stroke="var(--ink3)" stroke-width="2" opacity=".42"/><circle cx="524.4" cy="148" r="5.5" fill="var(--ink3)"><title>1 mm native · middle: 1.839 µm</title></circle><text x="536.4" y="152" class="small">1.84</text><text x="218" y="190" text-anchor="end" class="small">1 mm fork · thumb</text><line x1="235" y1="186" x2="235.0" y2="186" stroke="var(--s1)" stroke-width="2" opacity=".42"/><circle cx="235.0" cy="186" r="5.5" fill="var(--s1)"><title>1 mm fork · thumb: 1.591e-10 µm</title></circle><text x="247.0" y="190" class="small">&lt;0.01</text><text x="218" y="228" text-anchor="end" class="small">1 mm fork · index</text><line x1="235" y1="224" x2="243.9" y2="224" stroke="var(--s1)" stroke-width="2" opacity=".42"/><circle cx="243.9" cy="224" r="5.5" fill="var(--s1)"><title>1 mm fork · index: 0.01174 µm</title></circle><text x="255.9" y="228" class="small">0.0117</text><text x="218" y="266" text-anchor="end" class="small">1 mm fork · middle</text><line x1="235" y1="262" x2="524.3" y2="262" stroke="var(--s1)" stroke-width="2" opacity=".42"/><circle cx="524.3" cy="262" r="5.5" fill="var(--s1)"><title>1 mm fork · middle: 1.834 µm</title></circle><text x="536.3" y="266" class="small">1.83</text><text x="218" y="304" text-anchor="end" class="small">2 mm fork · thumb</text><line x1="235" y1="300" x2="492.5" y2="300" stroke="var(--good)" stroke-width="2" opacity=".42"/><circle cx="492.5" cy="300" r="5.5" fill="var(--good)"><title>2 mm fork · thumb: 1.035 µm</title></circle><text x="504.5" y="304" class="small">1.04</text><text x="218" y="342" text-anchor="end" class="small">2 mm fork · index</text><line x1="235" y1="338" x2="332.8" y2="338" stroke="var(--good)" stroke-width="2" opacity=".42"/><circle cx="332.8" cy="338" r="5.5" fill="var(--good)"><title>2 mm fork · index: 0.0582 µm</title></circle><text x="344.8" y="342" class="small">0.0582</text><text x="218" y="380" text-anchor="end" class="small">2 mm fork · middle</text><line x1="235" y1="376" x2="289.0" y2="376" stroke="var(--good)" stroke-width="2" opacity=".42"/><circle cx="289.0" cy="376" r="5.5" fill="var(--good)"><title>2 mm fork · middle: 0.02647 µm</title></circle><text x="301.0" y="380" class="small">0.0265</text><text x="218" y="418" text-anchor="end" class="small">single sphere · thumb</text><line x1="235" y1="414" x2="802.8" y2="414" stroke="var(--s2)" stroke-width="2" opacity=".42"/><circle cx="802.8" cy="414" r="5.5" fill="var(--s2)"><title>single sphere · thumb: 277.3 µm</title></circle><text x="814.8" y="418" class="small">277</text><text x="218" y="456" text-anchor="end" class="small">single sphere · index</text><line x1="235" y1="452" x2="796.8" y2="452" stroke="var(--s2)" stroke-width="2" opacity=".42"/><circle cx="796.8" cy="452" r="5.5" fill="var(--s2)"><title>single sphere · index: 248.7 µm</title></circle><text x="808.8" y="456" class="small">249</text><text x="218" y="494" text-anchor="end" class="small">single sphere · middle</text><line x1="235" y1="490" x2="807.4" y2="490" stroke="var(--s2)" stroke-width="2" opacity=".42"/><circle cx="807.4" cy="490" r="5.5" fill="var(--s2)"><title>single sphere · middle: 301.4 µm</title></circle><text x="819.0" y="494" class="small">301</text></svg></div><figcaption>Figure 1. Absolute difference between CPU MuJoCo and each MJX implementation in each finger&#8217;s minimum tool gap at the 0.8 s held state. All scenes use the cylinder tool. The post is disabled in the continuation.</figcaption></figure>
+<div class="tw"><table><thead><tr><th>Scene / MJX</th><th>Spheres</th><th>Gap error µm</th><th>Position ×10⁻⁶</th><th>Velocity error</th><th>First compiled step s</th></tr></thead><tbody><tr><td>1 mm pads, native MJX 3.6</td><td>2,388</td><td>1.84</td><td>1.64</td><td>0.00365</td><td>49</td></tr><tr><td>1 mm pads, released fork</td><td>2388</td><td>1.83</td><td>1.45</td><td>0.0029</td><td>26.7</td></tr><tr><td>2 mm pads, released fork</td><td>681</td><td>1.04</td><td>1.7</td><td>0.00416</td><td>7.62</td></tr><tr><td>single sphere, released fork</td><td>3</td><td>301</td><td>154</td><td>0.33</td><td>3.13</td></tr></tbody></table></div>
+<p class="tnote">Table 1. One-step forward comparison from the same held state. The first compiled step includes JAX compilation. Position and velocity maxima include mixed coordinate types, as defined above. The CPU reference uses the MuJoCo version installed alongside each MJX package.</p>
+</div></section>
+
+<section id="gradients"><div class="col"><h2>Derivatives during sustained contact</h2>
+<p>The released fork returned finite index-yaw derivatives on the 1 mm packed surface after 1 ms. The fork finite difference agrees with its automatic derivative. The table and Figure 2 compare the fork with CPU MuJoCo. The first JVP compiled in 65.4 s; a warm JVP took 623 ms, while three CPU finite-difference evaluations took 5.2 ms. The native MJX 3.6 pad derivative was not measured. At 2 mm pad spacing, the fork contact-torque derivative was -5.85e-05 N m/rad and the CPU derivative was 0.000227 N m/rad; their signs differ.</p>
+<figure class="diagram"><div class="viz"><svg viewBox="0 0 920 275" role="img" aria-label="Automatic and finite-difference derivatives relative to CPU finite differences"><text x="260" y="27" class="label" style="font-weight:700">1 mm packed surface: index yaw derivative</text><text x="260" y="47" class="small">ratio to CPU central finite difference; 1 means agreement</text><line x1="260.0" y1="85" x2="260.0" y2="240" stroke="var(--rule2)"/><text x="260.0" y="262" text-anchor="middle" class="small">0.75</text><line x1="475.0" y1="85" x2="475.0" y2="240" stroke="var(--ink3)" stroke-width="2"/><text x="475.0" y="262" text-anchor="middle" class="small">1</text><line x1="690.0" y1="85" x2="690.0" y2="240" stroke="var(--rule2)"/><text x="690.0" y="262" text-anchor="middle" class="small">1.25</text><text x="244" y="89" text-anchor="end" class="small">Vertical cosine</text><circle cx="574.4" cy="78" r="5" fill="var(--s1)"><title>AD: 3.9032e-05; CPU FD: 3.49906e-05; ratio 1.1155</title></circle><circle cx="574.3" cy="92" r="5" fill="var(--s2)"><title>MJX FD: 3.90283e-05; CPU FD: 3.49906e-05; ratio 1.1154</title></circle><text x="244" y="131" text-anchor="end" class="small">Tool height</text><circle cx="401.3" cy="120" r="5" fill="var(--s1)"><title>AD: -3.28347e-07; CPU FD: -3.59124e-07; ratio 0.9143</title></circle><circle cx="401.2" cy="134" r="5" fill="var(--s2)"><title>MJX FD: -3.2831e-07; CPU FD: -3.59124e-07; ratio 0.9142</title></circle><text x="244" y="173" text-anchor="end" class="small">Tool angular speed x</text><circle cx="731.0" cy="162" r="5" fill="var(--s1)"><title>AD: -0.0101924; CPU FD: -0.00785484; ratio 1.2976</title></circle><circle cx="730.5" cy="176" r="5" fill="var(--s2)"><title>MJX FD: -0.0101876; CPU FD: -0.00785484; ratio 1.297</title></circle><text x="244" y="215" text-anchor="end" class="small">Contact torque x</text><circle cx="731.0" cy="204" r="5" fill="var(--s1)"><title>AD: -0.000218239; CPU FD: -0.000168186; ratio 1.2976</title></circle><circle cx="730.5" cy="218" r="5" fill="var(--s2)"><title>MJX FD: -0.000218136; CPU FD: -0.000168186; ratio 1.297</title></circle><text x="260" y="235" class="small" style="fill:var(--s1)">● automatic derivative</text><text x="510" y="235" class="small" style="fill:var(--s2)">● fork finite difference</text></svg></div><figcaption>Figure 2. Derivative with respect to the index-finger yaw target, divided by the CPU finite-difference derivative for each final quantity. The horizon and fingertip model are stated in the text. The 1.0 line is agreement with CPU MuJoCo.</figcaption></figure>
+<div class="tw"><table><thead><tr><th>Output</th><th>Derivative unit</th><th>CPU FD</th><th>Fork FD</th><th>Fork AD</th><th>AD error</th></tr></thead><tbody><tr><td>Vertical cosine</td><td>per rad</td><td>3.499e-05</td><td>3.903e-05</td><td>3.903e-05</td><td>11.6%</td></tr><tr><td>Tool height</td><td>m/rad</td><td>-3.591e-07</td><td>-3.283e-07</td><td>-3.283e-07</td><td>8.57%</td></tr><tr><td>Tool angular speed x</td><td>rad/s per rad</td><td>-0.007855</td><td>-0.01019</td><td>-0.01019</td><td>29.8%</td></tr><tr><td>Contact torque x</td><td>N m/rad</td><td>-0.0001682</td><td>-0.0002181</td><td>-0.0002182</td><td>29.8%</td></tr></tbody></table></div>
+<p class="tnote">Table 2. Index-yaw derivatives at the stated horizon. The released fork ran with 64-bit JAX on CPU.</p>
+<h3>Twenty-millisecond control response</h3>
+<p>The plain fork returned finite derivatives for all three yaw targets after 20 ms. Its 0.1 rad action raised CPU vertical cosine from 0.111039 to 0.111245. The CPU finite-difference action reached 0.111245; the contact-from-distance action reached 0.111239. The plain and contact-from-distance three-direction gradients took 35.7 and 56.7 s when warm, after 83.1 and 123 s compilation.</p>
+<p>On the 1 mm packed surface, contact-from-distance and the scan-loop solver changed the 20 ms index-yaw vertical-cosine derivative from 0.0019291 to 0.0016262 per radian. The three-control action direction moved from cosine 0.9984 to 0.98 against CPU finite differences. The single-sphere capsule control gave a -5.13% change in the same index-yaw derivative.</p>
+<p>The 20 ms fork index-yaw finite difference for vertical cosine was 0.0021183 per radian at 0.01 rad and 0.0019306 at 0.0003 rad; the automatic derivative was 0.0019291. CPU finite differences stayed between 0.0018586 and 0.0018605 over the sweep. The 0.01 rad fork finite difference samples a wider response than its local derivative.</p>
+<figure class="diagram"><div class="viz"><svg viewBox="0 0 920 310" role="img" aria-label="Finite-difference orientation derivative versus perturbation size"><text x="95" y="28" class="label" style="font-weight:700">Index-yaw derivative over 20 ms</text><text x="95" y="48" class="small">finite difference / plain fork automatic derivative</text><line x1="95" y1="224.0" x2="864" y2="224.0" stroke="var(--rule2)"/><text x="81" y="228.0" text-anchor="end" class="small">0.9</text><line x1="95" y1="180.0" x2="864" y2="180.0" stroke="var(--rule2)"/><text x="81" y="184.0" text-anchor="end" class="small">1</text><line x1="95" y1="136.0" x2="864" y2="136.0" stroke="var(--rule2)"/><text x="81" y="140.0" text-anchor="end" class="small">1.1</text><line x1="95" y1="92.0" x2="864" y2="92.0" stroke="var(--rule2)"/><text x="81" y="96.0" text-anchor="end" class="small">1.2</text><line x1="95.0" y1="70" x2="95.0" y2="246" stroke="var(--rule2)"/><text x="95.0" y="270" text-anchor="middle" class="small">0.0001</text><line x1="479.5" y1="70" x2="479.5" y2="246" stroke="var(--rule2)"/><text x="479.5" y="270" text-anchor="middle" class="small">0.001</text><line x1="864.0" y1="70" x2="864.0" y2="246" stroke="var(--rule2)"/><text x="864.0" y="270" text-anchor="middle" class="small">0.01</text><polyline points="95.0,180.9 278.5,179.7 479.5,105.1 663.0,117.8 864.0,136.8" fill="none" stroke="var(--s1)" stroke-width="2.5"/><circle cx="95.0" cy="180.9" r="5" fill="var(--s1)"><title>fork FD: 0.9979 at 0.0001 rad</title></circle><circle cx="278.5" cy="179.7" r="5" fill="var(--s1)"><title>fork FD: 1.0008 at 0.0003 rad</title></circle><circle cx="479.5" cy="105.1" r="5" fill="var(--s1)"><title>fork FD: 1.1702 at 0.001 rad</title></circle><circle cx="663.0" cy="117.8" r="5" fill="var(--s1)"><title>fork FD: 1.1413 at 0.003 rad</title></circle><circle cx="864.0" cy="136.8" r="5" fill="var(--s1)"><title>fork FD: 1.0981 at 0.01 rad</title></circle><polyline points="95.0,196.0 278.5,196.0 479.5,196.1 663.0,195.8 864.0,195.6" fill="none" stroke="var(--s2)" stroke-width="2.5"/><circle cx="95.0" cy="196.0" r="5" fill="var(--s2)"><title>CPU FD: 0.9637 at 0.0001 rad</title></circle><circle cx="278.5" cy="196.0" r="5" fill="var(--s2)"><title>CPU FD: 0.9637 at 0.0003 rad</title></circle><circle cx="479.5" cy="196.1" r="5" fill="var(--s2)"><title>CPU FD: 0.9634 at 0.001 rad</title></circle><circle cx="663.0" cy="195.8" r="5" fill="var(--s2)"><title>CPU FD: 0.9640 at 0.003 rad</title></circle><circle cx="864.0" cy="195.6" r="5" fill="var(--s2)"><title>CPU FD: 0.9645 at 0.01 rad</title></circle><text x="864" y="78" text-anchor="end" class="small" style="fill:var(--s1)">● fork FD</text><text x="864" y="99" text-anchor="end" class="small" style="fill:var(--s2)">● CPU FD</text><text x="864" y="301" text-anchor="end" class="small">yaw target perturbation, rad</text></svg></div><figcaption>Figure 3. The index-yaw vertical-cosine finite difference changes with perturbation size in the released fork. The horizontal 1.0 line is the plain fork automatic derivative at the same held state. CPU MuJoCo 3.3.1 supplies the second curve.</figcaption></figure>
+<div class="tw"><table><thead><tr><th>Method</th><th>Yaw step rad</th><th>Fork orientation /rad</th><th>CPU orientation /rad</th><th>Fork torque N m/rad</th><th>CPU torque N m/rad</th></tr></thead><tbody><tr><td>Automatic derivative</td><td>—</td><td>0.0019291</td><td>—</td><td>2.3559e-05</td><td>—</td></tr><tr><td>Central finite difference</td><td>0.01</td><td>0.0021183</td><td>0.0018605</td><td>8.2778e-05</td><td>1.0826e-05</td></tr><tr><td>Central finite difference</td><td>0.003</td><td>0.0022017</td><td>0.0018597</td><td>7.8659e-05</td><td>1.5626e-05</td></tr><tr><td>Central finite difference</td><td>0.001</td><td>0.0022574</td><td>0.0018586</td><td>1.9006e-05</td><td>1.6586e-05</td></tr><tr><td>Central finite difference</td><td>0.0003</td><td>0.0019306</td><td>0.001859</td><td>2.3414e-05</td><td>1.6588e-05</td></tr><tr><td>Central finite difference</td><td>0.0001</td><td>0.0019251</td><td>0.001859</td><td>2.3493e-05</td><td>1.6588e-05</td></tr></tbody></table></div>
+<p class="tnote">Table 3. Twenty-millisecond index-yaw derivatives on the 1 mm packed surface. Contact torque is the final tool constraint torque around world x. Each finite difference uses positive and negative yaw-target perturbations of the stated size.</p>
+</div></section>
+
+<section id="search"><div class="col"><h2>Local control search</h2>
+<p>At a 0.1 rad three-yaw-target radius, the plain fork gradient increased CPU vertical cosine by 0.0002057. The CPU finite-difference direction increased it by 0.0002055, the contact-from-distance direction by 0.0001999, and the best of 128 sampled directions by 0.0002018. All 128 sampled actions retained positive fingertip normal force.</p>
+<figure class="diagram"><div class="viz"><svg viewBox="0 0 920 330" role="img" aria-label="Distribution of 128 sampled control changes and the finite-difference direction"><text x="85" y="28" class="label" style="font-weight:700">Local yaw-target search on the 1 mm packed surface</text><text x="85" y="48" class="small">change in tool vertical cosine after 20 ms, in units of 0.0001</text><line x1="109.7" y1="56" x2="109.7" y2="260" stroke="var(--rule2)"/><text x="109.7" y="284" text-anchor="middle" class="small">-2</text><line x1="274.5" y1="56" x2="274.5" y2="260" stroke="var(--rule2)"/><text x="274.5" y="284" text-anchor="middle" class="small">-1</text><line x1="439.3" y1="56" x2="439.3" y2="260" stroke="var(--rule2)"/><text x="439.3" y="284" text-anchor="middle" class="small">0</text><line x1="604.1" y1="56" x2="604.1" y2="260" stroke="var(--rule2)"/><text x="604.1" y="284" text-anchor="middle" class="small">1</text><line x1="768.9" y1="56" x2="768.9" y2="260" stroke="var(--rule2)"/><text x="768.9" y="284" text-anchor="middle" class="small">2</text><rect x="86.0" y="260.0" width="31.0" height="0.0" fill="var(--s2)" opacity=".65"/><rect x="119.0" y="207.1" width="31.0" height="52.9" fill="var(--s2)" opacity=".65"/><rect x="151.9" y="66.0" width="31.0" height="194.0" fill="var(--s2)" opacity=".65"/><rect x="184.9" y="171.8" width="31.0" height="88.2" fill="var(--s2)" opacity=".65"/><rect x="217.8" y="136.5" width="31.0" height="123.5" fill="var(--s2)" opacity=".65"/><rect x="250.8" y="207.1" width="31.0" height="52.9" fill="var(--s2)" opacity=".65"/><rect x="283.8" y="171.8" width="31.0" height="88.2" fill="var(--s2)" opacity=".65"/><rect x="316.7" y="118.9" width="31.0" height="141.1" fill="var(--s2)" opacity=".65"/><rect x="349.7" y="101.3" width="31.0" height="158.7" fill="var(--s2)" opacity=".65"/><rect x="382.6" y="136.5" width="31.0" height="123.5" fill="var(--s2)" opacity=".65"/><rect x="415.6" y="189.5" width="31.0" height="70.5" fill="var(--s2)" opacity=".65"/><rect x="448.5" y="154.2" width="31.0" height="105.8" fill="var(--s2)" opacity=".65"/><rect x="481.5" y="83.6" width="31.0" height="176.4" fill="var(--s2)" opacity=".65"/><rect x="514.5" y="118.9" width="31.0" height="141.1" fill="var(--s2)" opacity=".65"/><rect x="547.4" y="154.2" width="31.0" height="105.8" fill="var(--s2)" opacity=".65"/><rect x="580.4" y="136.5" width="31.0" height="123.5" fill="var(--s2)" opacity=".65"/><rect x="613.3" y="136.5" width="31.0" height="123.5" fill="var(--s2)" opacity=".65"/><rect x="646.3" y="207.1" width="31.0" height="52.9" fill="var(--s2)" opacity=".65"/><rect x="679.2" y="118.9" width="31.0" height="141.1" fill="var(--s2)" opacity=".65"/><rect x="712.2" y="136.5" width="31.0" height="123.5" fill="var(--s2)" opacity=".65"/><rect x="745.2" y="189.5" width="31.0" height="70.5" fill="var(--s2)" opacity=".65"/><rect x="778.1" y="260.0" width="31.0" height="0.0" fill="var(--s2)" opacity=".65"/><rect x="811.1" y="260.0" width="31.0" height="0.0" fill="var(--s2)" opacity=".65"/><rect x="844.0" y="260.0" width="31.0" height="0.0" fill="var(--s2)" opacity=".65"/><line x1="777.9" y1="56" x2="777.9" y2="260" stroke="var(--s1)" stroke-width="3"/><text x="710.0" y="74" class="small" fill="var(--s1)">CPU finite difference: 2.055</text><line x1="778.2" y1="56" x2="778.2" y2="260" stroke="var(--s2)" stroke-width="3"/><text x="710.0" y="94" class="small" fill="var(--s2)">Plain fork AD: 2.057</text><line x1="768.7" y1="56" x2="768.7" y2="260" stroke="var(--ink3)" stroke-width="3"/><text x="710.0" y="114" class="small" fill="var(--ink3)">Distance + scan-loop AD: 1.999</text><line x1="771.9" y1="56" x2="771.9" y2="260" stroke="var(--good)" stroke-width="3"/><text x="710.0" y="134" class="small" fill="var(--good)">Best of 128 samples: 2.018</text><text x="85" y="322" class="small">128 sampled directions at 0.1 rad radius</text></svg></div><figcaption>Figure 4. Changes in vertical cosine from 128 sampled directions on the 1 mm packed-tip cylinder scene. The lines show the best sample and the three gradient-based actions. Every direction has a 0.1 rad three-control norm and is scored in CPU MuJoCo 3.3.1.</figcaption></figure>
+<div class="tw"><table><thead><tr><th>Direction</th><th>Cosine</th><th>Gain ×0.0001</th><th>Min finger force N</th><th>Search time ms</th></tr></thead><tbody><tr><td>No yaw change</td><td>0.111039</td><td>0</td><td>1.12</td><td>0</td></tr><tr><td>CPU finite-difference direction</td><td>0.111245</td><td>2.05</td><td>1.27</td><td>23.5</td></tr><tr><td>Best of 128 sampled directions</td><td>0.111241</td><td>2.02</td><td>1.24</td><td>506</td></tr><tr><td>Plain fork gradient</td><td>0.111245</td><td>2.057</td><td>1.27</td><td>35,701</td></tr><tr><td>Contact-from-distance gradient</td><td>0.111239</td><td>1.999</td><td>1.29</td><td>56,694</td></tr></tbody></table></div>
+<p class="tnote">Table 4. Each direction has Euclidean length 0.1 rad across three yaw targets. CPU MuJoCo 3.3.1 supplies the tool vertical cosine and smallest fingertip normal force after 20 ms. The random-search row is the best of 128 fixed-seed directions. Gradient search times are warm three-direction evaluations; CPU and sample search times are their finite-difference or sample batches.</p>
+</div></section>
+
+<section id="decision"><div class="col"><h2>Implications for the task suite</h2>
+<p>The released fork produced finite force and motion derivatives on the packed held grasp. Its plain gradient selected a turn action with the same gain as CPU finite differences at substantially higher CPU cost. Contact-from-distance with the scan-loop solver changed the gradient and slightly reduced this action's 20 ms CPU score. First-touch optimization is the remaining test of that contact-gradient modification.</p>
+<div class="tw"><table><thead><tr><th>Use</th><th>Result and next test</th></tr></thead><tbody><tr><td>Initial grasp synthesis</td><td>Test contact-from-distance during first touch on the D1–D8 packed tips. Score retained grasps and wall time against the current cross-entropy method search.</td></tr><tr><td>Reorientation control</td><td>Use six CPU finite differences as the local baseline. The plain fork gave the same 20 ms turn gain at much higher CPU cost. Measure 100 ms forward parity before a longer-horizon controller comparison.</td></tr><tr><td>Policy training in MuJoCo Playground</td><td>Playground can run MJX-JAX, but sampled policy-gradient training does not differentiate through its simulator. A simulator change alone retains the same training objective.</td></tr><tr><td>High-dimensional tip design</td><td>Test a design vector large enough that CPU finite differences become costly. Compare gain per wall second, including compilation and transfer to the MuJoCo-Warp task suite.</td></tr></tbody></table></div>
+<p>The next measurements are a 100 ms forward comparison at the turn onset and a first-touch grasp search from tool gaps of 0&#8211;3 mm. Both use the 1 mm packed scene. The longer-turn comparison should score retained grasps, vertical turn and wall time over D1&#8211;D8.</p>
+</div></section>
+
+<section id="methods"><div class="col"><h2>Methods and reproducibility</h2>
+<p>The D1 design and plan come from the real_v1 hardware family; the starting tool pose has seed 1 jitter. The palm is fixed, the grip lasts 0.8 s, and each continuation uses 1 ms implicit-fast MuJoCo steps, an elliptic friction cone and Newton contact solver with impratio 100. The CPU pad-mask check used MuJoCo 3.6.0; the official fork used MuJoCo 3.3.1 and JAX 0.11.2. The fork packages were cloned at pinned commits in the runbook. All JAX runs used CPU, so GPU throughput is unmeasured. The released 1 mm forward process peaked at 5.8 GiB resident memory; the one-direction derivative peaked at 7.21 GiB. The native 1 mm forward process peaked at 8.13 GiB and wrote its one-step output before the resource guard stopped the process. The plain and contact-from-distance 20 ms three-control gradient processes peaked at 7.44 and 10.3 GiB.</p>
+<p>Source revisions and installation commands are in <code>docs/experiments/20261007-diffmjx/README.md</code>. The JSON measurements are in the same directory. The historical strategy is <code>src/morphohand/optimization/phase1_strategy_diffmjx.py</code>. The <a href="https://mujoco.readthedocs.io/en/latest/mjx.html">MuJoCo MJX documentation</a> describes the JAX and Warp backends; the <a href="https://openreview.net/pdf?id=2EGtfFwxx8">DiffMJX paper</a> describes its backward contact forces and integration experiments.</p>
+</div></section>
+
+<footer><div class="col">Local source: <code>docs/experiments/20261007-diffmjx/20261007-contact_gradients_real_v1.html</code> &#183; Regenerate: <code>python scripts/real_v1_diffmjx_page.py</code>.</div></footer>
+</div></body></html>
