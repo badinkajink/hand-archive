@@ -26,8 +26,11 @@ while read -r arm role tag it; do
   out=$M/${tag}_${role}.mp4
   [ -s "$out" ] || gpu $UVP scripts/rl_render_reorient.py --run results/rl/$tag --checkpoint model_$it.pt --output $out \
     --steps 250 --width 960 --height 720 --distance 0.24 --elevation -6 --azimuth 0
-  [ -s "${out%.mp4}_strip.png" ] || uv run --extra rl python scripts/policy_filmstrip.py --video $out --at 20,58,90,120,160,249 \
-    --cols 6 --out ${out%.mp4}_strip.png
+  [ -s "${out%.mp4}_strip.jpg" ] || uv run --extra rl python scripts/policy_filmstrip.py --video $out --at 20,58,90,120,160,249 \
+    --cols 3 --scale 0.5 --out ${out%.mp4}_strip.jpg
+  [ -s "${out%.mp4}.jpg" ] || uv run --extra rl python -c "import imageio.v2 as io, sys; r = io.get_reader(sys.argv[1]); \
+n = r.count_frames(); from PIL import Image; Image.fromarray(r.get_data(int(0.75 * (n - 1)))).save(sys.argv[2], quality=86)" \
+    $out ${out%.mp4}.jpg
 done < $L/films.txt
 # three-engine replay films: the median seed of each arm (the best one when an arm has one finished seed), world 0
 while read -r arm role tag it; do
