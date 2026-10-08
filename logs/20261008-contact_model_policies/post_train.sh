@@ -22,7 +22,7 @@ gpu $UVP scripts/rl_contact_eval.py robust --all --perturb friction=0.7 friction
   dt=0.001 noise=2,5
 python3 $L/pick_films.py --json > $L/films.txt
 mkdir -p $M
-while read -r arm role tag it; do
+while read -r arm role tag it <&3; do
   out=$M/${tag}_${role}.mp4
   [ -s "$out" ] || gpu $UVP scripts/rl_render_reorient.py --run results/rl/$tag --checkpoint model_$it.pt --output $out \
     --steps 250 --width 960 --height 720 --distance 0.24 --elevation -6 --azimuth 0
@@ -31,9 +31,9 @@ while read -r arm role tag it; do
   [ -s "${out%.mp4}.jpg" ] || uv run --extra rl python -c "import imageio.v2 as io, sys; r = io.get_reader(sys.argv[1]); \
 n = r.count_frames(); from PIL import Image; Image.fromarray(r.get_data(int(0.75 * (n - 1)))).save(sys.argv[2], quality=86)" \
     $out ${out%.mp4}.jpg
-done < $L/films.txt
+done 3< $L/films.txt
 # three-engine replay films: the median seed of each arm (the best one when an arm has one finished seed), world 0
-while read -r arm role tag it; do
+while read -r arm role tag it <&3; do
   [ "$role" = median ] || continue
   d=$L/replay/$tag
   [ -f $d/rec.npz ] || continue
@@ -46,5 +46,5 @@ while read -r arm role tag it; do
     --out $M/${tag}_replay_newton.mp4 --title "$arm, $tag"
   $PYD scripts/rl_policy_replay.py tile --clips $M/${tag}_replay_mjw.mp4 $M/${tag}_replay_drake.mp4 $M/${tag}_replay_newton.mp4 \
     --out $M/${tag}_replay_three.mp4 --poster $M/${tag}_replay_three.jpg
-done < $L/films.txt
+done 3< $L/films.txt
 echo "$(date '+%F %H:%M:%S') post_train done"
