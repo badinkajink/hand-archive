@@ -33,3 +33,4 @@ then
   touch $L/post_train.started
   bash $L/post_train.sh >> $L/post_train.log 2>&1
 fi
+uv run --extra rl python scripts/rl_contact_eval.py costs
