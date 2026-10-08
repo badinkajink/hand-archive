@@ -20,3 +20,16 @@ python3 logs/20261008-contact_model_policies/replays.py
 rc=$?
 echo "$(date '+%F %H:%M:%S') replays exit $rc"
 uv run --extra rl python scripts/rl_contact_eval.py tb --all
+# after the last run: the transfer matrix, robustness and films (once; post_train.sh skips what exists)
+L=logs/20261008-contact_model_policies
+if [ ! -e $L/post_train.started ] && python3 - <<'PY'
+import sys
+sys.path.insert(0, "logs/20261008-contact_model_policies")
+from replays import JOBS, finished
+n = sum(1 for l in open(JOBS) if len(l.split("#")[0].split()) == 4)
+sys.exit(0 if len(finished()) == n else 1)
+PY
+then
+  touch $L/post_train.started
+  bash $L/post_train.sh >> $L/post_train.log 2>&1
+fi
