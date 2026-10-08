@@ -1,0 +1,25 @@
+{
+ "checks": [
+  {
+   "run": "results/phase1/real_v1/20261008-sv1_u0308_b050_work_tip_tpu2.7skin",
+   "step60": {
+    "tool_z_mm_median": 107.56925964355469,
+    "held_worlds": 64,
+    "tip_contacts_mean": [
+     57.0,
+     40.0,
+     18.0
+    ]
+   },
+   "step150": {
+    "tool_z_mm_median": 107.68302154541016,
+    "held_worlds": 64,
+    "tip_contacts_mean": [
+     59.6,
+     37.0,
+     17.0
+    ]
+   }
+  }
+ ]
+}
