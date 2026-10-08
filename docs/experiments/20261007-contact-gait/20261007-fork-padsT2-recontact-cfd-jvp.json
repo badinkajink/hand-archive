@@ -1,0 +1,84 @@
+{
+  "backend": "released DiffMJX fork of MJX 3.3.1",
+  "jax_backend": "gpu",
+  "precision": "float64",
+  "scene": "/home/humanoid/Programs/hand/assets/mjcf/experimental/20261007-diffmjx/D1_tpu6_padsT_fast_bed_ir100_mu2.4_s2_mjx_no_post.xml",
+  "plans": "docs/experiments/20261007-contact-gait/20261007-padsT-release-seed1-256.json",
+  "method": "cem",
+  "pad_spacing_mm": 2,
+  "start_ms": 280,
+  "steps": 10,
+  "control": "index MCP target bias (rad)",
+  "cfd": true,
+  "scan_loop": true,
+  "metric_names": [
+    "vertical_cos",
+    "tool_z_m",
+    "tool_omega_x_rad_s",
+    "tool_contact_torque_x_Nm"
+  ],
+  "initial_cpu_index_force_N": 0.0,
+  "initial_fork_index_min_gap_m": 3.841455668434409e-05,
+  "final_cpu_index_force_N": 0.5714067822743821,
+  "cpu_zero": [
+    0.235808747710196,
+    0.09479295627089744,
+    0.02615381254926067,
+    0.00019781806688990442
+  ],
+  "fork_zero": [
+    0.23577419343890738,
+    0.09479337800016142,
+    0.027295015488418242,
+    0.0001832172430575492
+  ],
+  "cpu_fd": {
+    "0.01": {
+      "derivative": [
+        -0.0010525931283644763,
+        3.2238538325013444e-06,
+        0.34803822575770416,
+        0.0008989288116737978
+      ],
+      "plus_index_force_N": 0.5821291718321819,
+      "minus_index_force_N": 0.5606795403381756
+    },
+    "0.003": {
+      "derivative": [
+        -0.001051620672672578,
+        3.232807949578772e-06,
+        0.3479322532107653,
+        0.0009003253620556607
+      ],
+      "plus_index_force_N": 0.5746240177168854,
+      "minus_index_force_N": 0.5681891110727755
+    },
+    "0.001": {
+      "derivative": [
+        -0.0010516223063472552,
+        3.2327877319549003e-06,
+        0.34793248873868365,
+        0.0009003243867291427
+      ],
+      "plus_index_force_N": 0.5724792426960574,
+      "minus_index_force_N": 0.5703342734236363
+    }
+  },
+  "fork_fd_0.01": [
+    -0.0010269494645664956,
+    3.5221129748852498e-06,
+    0.3408039217215008,
+    0.0008893112745859792
+  ],
+  "fork_ad": [
+    -0.003565189340814836,
+    3.397405466643417e-05,
+    0.46977596498406454,
+    8.625612047431439e-05
+  ],
+  "put_model_s": 0.6035871100611985,
+  "forward_compile_s": 56.81141537101939,
+  "rollout_compile_s": 75.27540505188517,
+  "derivative_compile_s": 122.75735398801044,
+  "derivative_warm_s": 17.31128751602955
+}

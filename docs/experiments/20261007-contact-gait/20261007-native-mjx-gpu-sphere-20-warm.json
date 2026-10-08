@@ -1,0 +1,133 @@
+{
+  "scene": "assets/mjcf/experimental/20261007-diffmjx/D1_sphere_pt_fast_bed_ir100_mu2.4_mjx_no_post.xml",
+  "base_scene": "/home/humanoid/Programs/hand/assets/mjcf/experimental/20261007-diffmjx/plants/sv1_w6689_b060__fast.xml",
+  "hand": "D1",
+  "seed": 1,
+  "steps": 20,
+  "numerics": "bed",
+  "impratio": 100.0,
+  "post_collides": false,
+  "tool_geom": "cylinder",
+  "tip": "sphere",
+  "contact_model": "pt",
+  "n_pads": null,
+  "pad_spacing_m": null,
+  "mujoco_version": "3.6.0",
+  "jax_version": "0.11.2",
+  "jax_backend": "gpu",
+  "nq": 16,
+  "nv": 15,
+  "ngeom": 16,
+  "timestep_s": 0.001,
+  "put_model_s": 0.31696120789274573,
+  "put_data_s": 0.004852799000218511,
+  "initial_contact": {
+    "finger_normal_force_N": {
+      "thumb": 2.522450525388879,
+      "index": 1.3692300824677737,
+      "middle": 1.156590436885405
+    },
+    "finger_min_dist_m": {
+      "thumb": -6.712990081443604e-05,
+      "index": -9.22710519535748e-05,
+      "middle": -0.00024483325972214295
+    },
+    "palm_plate_contacts": 0,
+    "total_contacts": 3
+  },
+  "mjx_initial_contact": {
+    "thumb": {
+      "n": 0,
+      "normal_force_N": 0.0,
+      "min_dist_m": 0.000210137853474077
+    },
+    "index": {
+      "n": 0,
+      "normal_force_N": 0.0,
+      "min_dist_m": 0.00015636690169682117
+    },
+    "middle": {
+      "n": 0,
+      "normal_force_N": 0.0,
+      "min_dist_m": 5.6557213110723994e-05
+    }
+  },
+  "cpu_contact": {
+    "finger_normal_force_N": {
+      "thumb": 2.34460172085073,
+      "index": 1.400836782878282,
+      "middle": 0.8942553140463341
+    },
+    "finger_min_dist_m": {
+      "thumb": -0.00010256702351413641,
+      "index": -7.151497074584998e-05,
+      "middle": -7.754314567402776e-05
+    },
+    "palm_plate_contacts": 0,
+    "total_contacts": 3
+  },
+  "mjx_contact": {
+    "thumb": {
+      "n": 0,
+      "normal_force_N": 0.0,
+      "min_dist_m": 8.66014468014556e-05
+    },
+    "index": {
+      "n": 0,
+      "normal_force_N": 0.0,
+      "min_dist_m": 0.0009978210907127232
+    },
+    "middle": {
+      "n": 0,
+      "normal_force_N": 0.0,
+      "min_dist_m": 0.0004772709938529948
+    }
+  },
+  "cpu_tool_qpos": [
+    -0.004464409974404168,
+    0.0013180643982247946,
+    0.09495763071957565,
+    0.7438916407090755,
+    0.6264156932242416,
+    -0.16472341736900856,
+    0.16460498757883582
+  ],
+  "mjx_tool_qpos": [
+    -0.004440650796363297,
+    0.0013215877666798946,
+    0.09299225696280387,
+    0.7432151470226716,
+    0.6248871469804812,
+    -0.1676481666162164,
+    0.17041534850149154
+  ],
+  "cpu_tool_qvel": [
+    -0.002866753437046509,
+    -0.00020287553295837013,
+    -0.006199990881840662,
+    -0.0023133113751893316,
+    -0.09582360295463109,
+    -0.2458979758054614
+  ],
+  "mjx_tool_qvel": [
+    -0.004607445029142487,
+    0.00042611692690365554,
+    -0.19793760452415726,
+    -0.04806974691993257,
+    0.004112658873907977,
+    0.3966572160111711
+  ],
+  "max_qpos_abs_error": 0.005810360922655716,
+  "max_qvel_abs_error": 0.6425551918166326,
+  "cpu_rollout_s": 0.00017829006537795067,
+  "mjx_first_s": 6.311822541989386,
+  "mjx_warm_s": 0.03113543801009655,
+  "mjx_warm_repeats_s": [
+    0.03336576698347926,
+    0.03113543801009655,
+    0.031351529993116856,
+    0.0300357760861516,
+    0.02925673103891313
+  ],
+  "forward_compile_s": 6.452591530047357
+}

@@ -1,0 +1,17 @@
+{
+  "backend": "released DiffMJX fork of MJX 3.3.1 on CUDA",
+  "precision": "float64",
+  "tip": "tpu6",
+  "contact_model": "padsT",
+  "pad_spacing_mm": 1.0,
+  "pads_total": 2388,
+  "candidate_contact_slots": 2454,
+  "tool": "cylinder",
+  "worlds": 1,
+  "steps_requested": 20,
+  "initial_forward_compile_s": 129.106,
+  "elapsed_before_stop_s": 475,
+  "peak_resident_kib": 12050412,
+  "rollout_compile_completed": false,
+  "reason_stopped": "The 20 ms rollout compilation had not completed after 7 min 55 s; peak host resident memory reached 11.5 GiB and available RAM fell to 4.5 GiB. The process was terminated to protect the workstation."
+}

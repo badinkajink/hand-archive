@@ -1,0 +1,84 @@
+{
+  "backend": "released DiffMJX fork of MJX 3.3.1",
+  "jax_backend": "gpu",
+  "precision": "float64",
+  "scene": "/home/humanoid/Programs/hand/assets/mjcf/experimental/20261007-diffmjx/D1_tpu6_padsT_fast_bed_ir100_mu2.4_s2_mjx_no_post.xml",
+  "plans": "docs/experiments/20261007-contact-gait/20261007-padsT-release-seed1-256.json",
+  "method": "cem",
+  "pad_spacing_mm": 2,
+  "start_ms": 280,
+  "steps": 10,
+  "control": "index MCP target bias (rad)",
+  "cfd": false,
+  "scan_loop": false,
+  "metric_names": [
+    "vertical_cos",
+    "tool_z_m",
+    "tool_omega_x_rad_s",
+    "tool_contact_torque_x_Nm"
+  ],
+  "initial_cpu_index_force_N": 0.0,
+  "initial_fork_index_min_gap_m": 3.841455668434409e-05,
+  "final_cpu_index_force_N": 0.5714067822743821,
+  "cpu_zero": [
+    0.235808747710196,
+    0.09479295627089744,
+    0.02615381254926067,
+    0.00019781806688990442
+  ],
+  "fork_zero": [
+    0.235774192567489,
+    0.09479337798016883,
+    0.02729505974590825,
+    0.00018321708595862764
+  ],
+  "cpu_fd": {
+    "0.01": {
+      "derivative": [
+        -0.0010525931283644763,
+        3.2238538325013444e-06,
+        0.34803822575770416,
+        0.0008989288116737978
+      ],
+      "plus_index_force_N": 0.5821291718321819,
+      "minus_index_force_N": 0.5606795403381756
+    },
+    "0.003": {
+      "derivative": [
+        -0.001051620672672578,
+        3.232807949578772e-06,
+        0.3479322532107653,
+        0.0009003253620556607
+      ],
+      "plus_index_force_N": 0.5746240177168854,
+      "minus_index_force_N": 0.5681891110727755
+    },
+    "0.001": {
+      "derivative": [
+        -0.0010516223063472552,
+        3.2327877319549003e-06,
+        0.34793248873868365,
+        0.0009003243867291427
+      ],
+      "plus_index_force_N": 0.5724792426960574,
+      "minus_index_force_N": 0.5703342734236363
+    }
+  },
+  "fork_fd_0.01": [
+    -0.0010269562402354104,
+    3.521612596674162e-06,
+    0.3408099278163712,
+    0.0008892738135361788
+  ],
+  "fork_ad": [
+    -0.0010264225546878843,
+    3.5269686582967646e-06,
+    0.3407532421568173,
+    0.0008900405896005537
+  ],
+  "put_model_s": 0.5554547519423068,
+  "forward_compile_s": 27.966765868011862,
+  "rollout_compile_s": 34.980926380027086,
+  "derivative_compile_s": 70.25178874097764,
+  "derivative_warm_s": 9.84162240801379
+}
