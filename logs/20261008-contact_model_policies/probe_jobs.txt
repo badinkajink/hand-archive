@@ -1,0 +1,4 @@
+# 5-iteration timing probes (step 1): tag run seed timesteps
+20261008-d6_work_probe5_a_box   results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip              0 245760
+20261008-d6_work_probe5_b_mesh  results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7mesh  0 245760
+20261008-d6_work_probe5_c_pads1 results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7pads1 0 245760

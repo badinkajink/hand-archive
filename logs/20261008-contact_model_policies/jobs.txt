@@ -1,0 +1,15 @@
+# 2026-10-08 contact-model policies: tag run seed timesteps (40 M = 813 iterations at 2,048 envs x 24 steps)
+# arm (d) condim 4 dropped from training (24 GPU-h cap; all five arms 26.9 h): evaluated in the transfer matrix only
+# 20261008-d6_work_tpu27meshc4_40M_s<seed>  results/phase1/real_v1/20261008-sv1_u0308_b050_work_tip_tpu2.7mesh_c4
+20261008-d6_work_box_40M_s0          results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip              0 40000000
+20261008-d6_work_tpu27mesh_40M_s0    results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7mesh  0 40000000
+20261008-d6_work_tpu27pads1_40M_s0   results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7pads1 0 40000000
+20261008-d6_work_tpu27skin_40M_s0    results/phase1/real_v1/20261008-sv1_u0308_b050_work_tip_tpu2.7skin  0 40000000
+20261008-d6_work_box_40M_s1          results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip              1 40000000
+20261008-d6_work_tpu27mesh_40M_s1    results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7mesh  1 40000000
+20261008-d6_work_tpu27pads1_40M_s1   results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7pads1 1 40000000
+20261008-d6_work_tpu27skin_40M_s1    results/phase1/real_v1/20261008-sv1_u0308_b050_work_tip_tpu2.7skin  1 40000000
+20261008-d6_work_box_40M_s2          results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip              2 40000000
+20261008-d6_work_tpu27mesh_40M_s2    results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7mesh  2 40000000
+20261008-d6_work_tpu27pads1_40M_s2   results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7pads1 2 40000000
+20261008-d6_work_tpu27skin_40M_s2    results/phase1/real_v1/20261008-sv1_u0308_b050_work_tip_tpu2.7skin  2 40000000
