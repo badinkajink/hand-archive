@@ -1,0 +1,2182 @@
+{
+ "meta": {
+  "date": "2026-10-08",
+  "bench_t": [
+   -1.0,
+   -0.75,
+   -0.5,
+   -0.25,
+   0.0,
+   0.25,
+   0.5,
+   0.75,
+   1.0
+  ],
+  "sd_bench_deg": 4.4,
+  "ci_deg": 3.0,
+  "n_min": 8,
+  "n_max": 15,
+  "t_trial_s": 90.0,
+  "t_ballast_s": 360.0,
+  "t_reconf_s": 30.0,
+  "t_day_overhead_s": 2700.0,
+  "t_day_s": 18000.0,
+  "seed": 20261008,
+  "reference_cell": [
+   "x100.0_y110.0",
+   "cylinder",
+   25.0
+  ]
+ },
+ "core": {
+  "cylinder": [
+   6,
+   10,
+   25,
+   63
+  ],
+  "sphere": [
+   10,
+   16,
+   50,
+   100
+  ]
+ },
+ "core_days": 2,
+ "cells": [
+  {
+   "tag": "x070.0_y080.0",
+   "t": 0.5,
+   "x_sep_mm": 70.0,
+   "y_sep_mm": 80.0,
+   "shape": "cylinder",
+   "d_mm": 6.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 57.5,
+    "spread_mm": 22.5,
+    "cand": 7,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 57.5,
+    "spread_mm": 22.5,
+    "cand": 7
+   },
+   "sim_turn_deg": 71.13,
+   "sim_turn_sd_deg": 9.56,
+   "sim_hold_N": 1.572,
+   "n_turn": 15,
+   "n_ballast": 0,
+   "mass_g": 24.7
+  },
+  {
+   "tag": "x055.0_y065.0",
+   "t": 0.75,
+   "x_sep_mm": 55.0,
+   "y_sep_mm": 65.0,
+   "shape": "cylinder",
+   "d_mm": 6.0,
+   "near_ridge_of": [
+    "hold",
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 65.5,
+    "spread_mm": 22.5,
+    "cand": 8,
+    "limit_joint": [
+     null,
+     null,
+     "thumb_pip"
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 62.5,
+    "spread_mm": 32.5,
+    "cand": 3
+   },
+   "sim_turn_deg": 46.15,
+   "sim_turn_sd_deg": 21.55,
+   "sim_hold_N": 3.26,
+   "n_turn": 15,
+   "n_ballast": 2,
+   "mass_g": 24.7
+  },
+  {
+   "tag": "x040.0_y050.0",
+   "t": 1.0,
+   "x_sep_mm": 40.0,
+   "y_sep_mm": 50.0,
+   "shape": "cylinder",
+   "d_mm": 6.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 66.5,
+    "spread_mm": 32.5,
+    "cand": 0,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 67.5,
+    "spread_mm": 22.5,
+    "cand": 4
+   },
+   "sim_turn_deg": 18.71,
+   "sim_turn_sd_deg": 1.55,
+   "sim_hold_N": 2.368,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 24.7
+  },
+  {
+   "tag": "x085.0_y095.0",
+   "t": 0.25,
+   "x_sep_mm": 85.0,
+   "y_sep_mm": 95.0,
+   "shape": "cylinder",
+   "d_mm": 10.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 50.0,
+    "spread_mm": 22.5,
+    "cand": 7,
+    "limit_joint": [
+     null,
+     "thumb_pip",
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 58.0,
+    "spread_mm": 32.5,
+    "cand": 5
+   },
+   "sim_turn_deg": 75.13,
+   "sim_turn_sd_deg": 12.81,
+   "sim_hold_N": 2.744,
+   "n_turn": 15,
+   "n_ballast": 0,
+   "mass_g": 25.2
+  },
+  {
+   "tag": "x070.0_y080.0",
+   "t": 0.5,
+   "x_sep_mm": 70.0,
+   "y_sep_mm": 80.0,
+   "shape": "cylinder",
+   "d_mm": 10.0,
+   "near_ridge_of": [
+    "hold",
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 59.0,
+    "spread_mm": 22.5,
+    "cand": 7,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 61.5,
+    "spread_mm": 22.5,
+    "cand": 8
+   },
+   "sim_turn_deg": 91.78,
+   "sim_turn_sd_deg": 9.16,
+   "sim_hold_N": 2.236,
+   "n_turn": 15,
+   "n_ballast": 2,
+   "mass_g": 25.2
+  },
+  {
+   "tag": "x055.0_y065.0",
+   "t": 0.75,
+   "x_sep_mm": 55.0,
+   "y_sep_mm": 65.0,
+   "shape": "cylinder",
+   "d_mm": 10.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 64.0,
+    "spread_mm": 32.5,
+    "cand": 3,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 66.0,
+    "spread_mm": 42.5,
+    "cand": 2
+   },
+   "sim_turn_deg": 43.21,
+   "sim_turn_sd_deg": 6.74,
+   "sim_hold_N": 2.692,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 25.2
+  },
+  {
+   "tag": "x085.0_y095.0",
+   "t": 0.25,
+   "x_sep_mm": 85.0,
+   "y_sep_mm": 95.0,
+   "shape": "cylinder",
+   "d_mm": 16.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 54.5,
+    "spread_mm": 32.5,
+    "cand": 4,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 60.0,
+    "spread_mm": 32.5,
+    "cand": 5
+   },
+   "sim_turn_deg": 66.77,
+   "sim_turn_sd_deg": 13.69,
+   "sim_hold_N": 3.712,
+   "n_turn": 15,
+   "n_ballast": 0,
+   "mass_g": 24.9
+  },
+  {
+   "tag": "x070.0_y080.0",
+   "t": 0.5,
+   "x_sep_mm": 70.0,
+   "y_sep_mm": 80.0,
+   "shape": "cylinder",
+   "d_mm": 16.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 63.0,
+    "spread_mm": 22.5,
+    "cand": 8,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 60.0,
+    "spread_mm": 22.5,
+    "cand": 6
+   },
+   "sim_turn_deg": 28.25,
+   "sim_turn_sd_deg": 3.23,
+   "sim_hold_N": 5.544,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 24.9
+  },
+  {
+   "tag": "x055.0_y065.0",
+   "t": 0.75,
+   "x_sep_mm": 55.0,
+   "y_sep_mm": 65.0,
+   "shape": "cylinder",
+   "d_mm": 16.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 66.0,
+    "spread_mm": 22.5,
+    "cand": 7,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 67.0,
+    "spread_mm": 32.5,
+    "cand": 5
+   },
+   "sim_turn_deg": 26.68,
+   "sim_turn_sd_deg": 1.68,
+   "sim_hold_N": 4.796,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 24.9
+  },
+  {
+   "tag": "x040.0_y050.0",
+   "t": 1.0,
+   "x_sep_mm": 40.0,
+   "y_sep_mm": 50.0,
+   "shape": "cylinder",
+   "d_mm": 16.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 68.0,
+    "spread_mm": 22.5,
+    "cand": 0,
+    "limit_joint": [
+     null,
+     "index_pip",
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 68.0,
+    "spread_mm": 22.5,
+    "cand": 0
+   },
+   "sim_turn_deg": 6.41,
+   "sim_turn_sd_deg": 0.01,
+   "sim_hold_N": 7.564,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 24.9
+  },
+  {
+   "tag": "x100.0_y110.0",
+   "t": 0.0,
+   "x_sep_mm": 100.0,
+   "y_sep_mm": 110.0,
+   "shape": "cylinder",
+   "d_mm": 25.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 50.5,
+    "spread_mm": 32.5,
+    "cand": 4,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 59.0,
+    "spread_mm": 42.5,
+    "cand": 2
+   },
+   "sim_turn_deg": 33.98,
+   "sim_turn_sd_deg": 3.04,
+   "sim_hold_N": 4.044,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 25.0
+  },
+  {
+   "tag": "x085.0_y095.0",
+   "t": 0.25,
+   "x_sep_mm": 85.0,
+   "y_sep_mm": 95.0,
+   "shape": "cylinder",
+   "d_mm": 25.0,
+   "near_ridge_of": [
+    "hold",
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 57.5,
+    "spread_mm": 22.5,
+    "cand": 7,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 62.5,
+    "spread_mm": 32.5,
+    "cand": 5
+   },
+   "sim_turn_deg": 54.56,
+   "sim_turn_sd_deg": 11.26,
+   "sim_hold_N": 5.188,
+   "n_turn": 15,
+   "n_ballast": 2,
+   "mass_g": 25.0
+  },
+  {
+   "tag": "x070.0_y080.0",
+   "t": 0.5,
+   "x_sep_mm": 70.0,
+   "y_sep_mm": 80.0,
+   "shape": "cylinder",
+   "d_mm": 25.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 64.0,
+    "spread_mm": 22.5,
+    "cand": 6,
+    "limit_joint": [
+     null,
+     null,
+     "middle_pip"
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 64.0,
+    "spread_mm": 42.5,
+    "cand": 0
+   },
+   "sim_turn_deg": 25.11,
+   "sim_turn_sd_deg": 11.91,
+   "sim_hold_N": 6.012,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 25.0
+  },
+  {
+   "tag": "x115.0_y125.0",
+   "t": -0.25,
+   "x_sep_mm": 115.0,
+   "y_sep_mm": 125.0,
+   "shape": "cylinder",
+   "d_mm": 40.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 51.0,
+    "spread_mm": 42.5,
+    "cand": 1,
+    "limit_joint": [
+     "thumb_mcp",
+     "thumb_mcp",
+     "middle_pip"
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 45.0,
+    "spread_mm": 22.5,
+    "cand": 6
+   },
+   "sim_turn_deg": 23.14,
+   "sim_turn_sd_deg": 2.84,
+   "sim_hold_N": 4.724,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 24.5
+  },
+  {
+   "tag": "x100.0_y110.0",
+   "t": 0.0,
+   "x_sep_mm": 100.0,
+   "y_sep_mm": 110.0,
+   "shape": "cylinder",
+   "d_mm": 40.0,
+   "near_ridge_of": [
+    "hold",
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 56.5,
+    "spread_mm": 32.5,
+    "cand": 3,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 63.0,
+    "spread_mm": 42.5,
+    "cand": 2
+   },
+   "sim_turn_deg": 17.3,
+   "sim_turn_sd_deg": 1.11,
+   "sim_hold_N": 5.7,
+   "n_turn": 9,
+   "n_ballast": 2,
+   "mass_g": 24.5
+  },
+  {
+   "tag": "x085.0_y095.0",
+   "t": 0.25,
+   "x_sep_mm": 85.0,
+   "y_sep_mm": 95.0,
+   "shape": "cylinder",
+   "d_mm": 40.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 65.0,
+    "spread_mm": 32.5,
+    "cand": 5,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 64.0,
+    "spread_mm": 32.5,
+    "cand": 3
+   },
+   "sim_turn_deg": 19.28,
+   "sim_turn_sd_deg": 0.7,
+   "sim_hold_N": 6.736,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 24.5
+  },
+  {
+   "tag": "x130.0_y140.0",
+   "t": -0.5,
+   "x_sep_mm": 130.0,
+   "y_sep_mm": 140.0,
+   "shape": "cylinder",
+   "d_mm": 50.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 43.5,
+    "spread_mm": 32.5,
+    "cand": 4,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 42.0,
+    "spread_mm": 32.5,
+    "cand": 3
+   },
+   "sim_turn_deg": 22.49,
+   "sim_turn_sd_deg": 10.72,
+   "sim_hold_N": 4.6,
+   "n_turn": 15,
+   "n_ballast": 0,
+   "mass_g": 25.0
+  },
+  {
+   "tag": "x115.0_y125.0",
+   "t": -0.25,
+   "x_sep_mm": 115.0,
+   "y_sep_mm": 125.0,
+   "shape": "cylinder",
+   "d_mm": 50.0,
+   "near_ridge_of": [
+    "hold",
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 54.0,
+    "spread_mm": 32.5,
+    "cand": 4,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 59.5,
+    "spread_mm": 42.5,
+    "cand": 2
+   },
+   "sim_turn_deg": 22.71,
+   "sim_turn_sd_deg": 11.28,
+   "sim_hold_N": 4.796,
+   "n_turn": 15,
+   "n_ballast": 2,
+   "mass_g": 25.0
+  },
+  {
+   "tag": "x100.0_y110.0",
+   "t": 0.0,
+   "x_sep_mm": 100.0,
+   "y_sep_mm": 110.0,
+   "shape": "cylinder",
+   "d_mm": 50.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 62.0,
+    "spread_mm": 32.5,
+    "cand": 3,
+    "limit_joint": [
+     null,
+     "middle_mcp",
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 62.0,
+    "spread_mm": 42.5,
+    "cand": 0
+   },
+   "sim_turn_deg": 15.95,
+   "sim_turn_sd_deg": 9.98,
+   "sim_hold_N": 9.876,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 25.0
+  },
+  {
+   "tag": "x145.0_y155.0",
+   "t": -0.75,
+   "x_sep_mm": 145.0,
+   "y_sep_mm": 155.0,
+   "shape": "cylinder",
+   "d_mm": 63.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 43.5,
+    "spread_mm": 42.5,
+    "cand": 1,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 43.5,
+    "spread_mm": 42.5,
+    "cand": 1
+   },
+   "sim_turn_deg": 19.15,
+   "sim_turn_sd_deg": 0.65,
+   "sim_hold_N": 4.276,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 28.3
+  },
+  {
+   "tag": "x130.0_y140.0",
+   "t": -0.5,
+   "x_sep_mm": 130.0,
+   "y_sep_mm": 140.0,
+   "shape": "cylinder",
+   "d_mm": 63.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 50.0,
+    "spread_mm": 32.5,
+    "cand": 4,
+    "limit_joint": [
+     "middle_pip",
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 49.5,
+    "spread_mm": 32.5,
+    "cand": 3
+   },
+   "sim_turn_deg": 25.63,
+   "sim_turn_sd_deg": 1.96,
+   "sim_hold_N": 4.672,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 28.3
+  },
+  {
+   "tag": "x115.0_y125.0",
+   "t": -0.25,
+   "x_sep_mm": 115.0,
+   "y_sep_mm": 125.0,
+   "shape": "cylinder",
+   "d_mm": 63.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 62.0,
+    "spread_mm": 42.5,
+    "cand": 1,
+    "limit_joint": [
+     null,
+     null,
+     "index_mcp"
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 61.0,
+    "spread_mm": 42.5,
+    "cand": 0
+   },
+   "sim_turn_deg": 12.24,
+   "sim_turn_sd_deg": 6.7,
+   "sim_hold_N": 10.544,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 28.3
+  },
+  {
+   "tag": "x100.0_y110.0",
+   "t": 0.0,
+   "x_sep_mm": 100.0,
+   "y_sep_mm": 110.0,
+   "shape": "cylinder",
+   "d_mm": 63.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 66.0,
+    "spread_mm": 42.5,
+    "cand": 0,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 66.0,
+    "spread_mm": 42.5,
+    "cand": 0
+   },
+   "sim_turn_deg": 9.52,
+   "sim_turn_sd_deg": 0.3,
+   "sim_hold_N": 6.132,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 28.3
+  },
+  {
+   "tag": "x070.0_y080.0",
+   "t": 0.5,
+   "x_sep_mm": 70.0,
+   "y_sep_mm": 80.0,
+   "shape": "sphere",
+   "d_mm": 10.0,
+   "near_ridge_of": [
+    "hold",
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 57.0,
+    "spread_mm": 0.0,
+    "cand": 4,
+    "limit_joint": [
+     "middle_mcp",
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 56.0,
+    "spread_mm": 0.0,
+    "cand": 3
+   },
+   "sim_turn_deg": 16.02,
+   "sim_turn_sd_deg": 7.88,
+   "sim_hold_N": 3.192,
+   "n_turn": 15,
+   "n_ballast": 2,
+   "mass_g": 6.6
+  },
+  {
+   "tag": "x085.0_y095.0",
+   "t": 0.25,
+   "x_sep_mm": 85.0,
+   "y_sep_mm": 95.0,
+   "shape": "sphere",
+   "d_mm": 16.0,
+   "near_ridge_of": [
+    "hold",
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 50.0,
+    "spread_mm": 0.0,
+    "cand": 0,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 51.0,
+    "spread_mm": 0.0,
+    "cand": 2
+   },
+   "sim_turn_deg": 89.98,
+   "sim_turn_sd_deg": 29.16,
+   "sim_hold_N": 1.852,
+   "n_turn": 15,
+   "n_ballast": 2,
+   "mass_g": 19.3
+  },
+  {
+   "tag": "x070.0_y080.0",
+   "t": 0.5,
+   "x_sep_mm": 70.0,
+   "y_sep_mm": 80.0,
+   "shape": "sphere",
+   "d_mm": 16.0,
+   "near_ridge_of": [
+    "hold",
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 56.5,
+    "spread_mm": 0.0,
+    "cand": 0,
+    "limit_joint": [
+     "index_pip",
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 58.0,
+    "spread_mm": 0.0,
+    "cand": 2
+   },
+   "sim_turn_deg": 88.21,
+   "sim_turn_sd_deg": 31.27,
+   "sim_hold_N": 3.688,
+   "n_turn": 15,
+   "n_ballast": 2,
+   "mass_g": 19.3
+  },
+  {
+   "tag": "x085.0_y095.0",
+   "t": 0.25,
+   "x_sep_mm": 85.0,
+   "y_sep_mm": 95.0,
+   "shape": "sphere",
+   "d_mm": 25.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 54.5,
+    "spread_mm": 0.0,
+    "cand": 3,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 55.5,
+    "spread_mm": 0.0,
+    "cand": 4
+   },
+   "sim_turn_deg": 46.31,
+   "sim_turn_sd_deg": 4.57,
+   "sim_hold_N": 3.54,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 25.6
+  },
+  {
+   "tag": "x055.0_y065.0",
+   "t": 0.75,
+   "x_sep_mm": 55.0,
+   "y_sep_mm": 65.0,
+   "shape": "sphere",
+   "d_mm": 25.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 66.0,
+    "spread_mm": 0.0,
+    "cand": 3,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 66.0,
+    "spread_mm": 0.0,
+    "cand": 3
+   },
+   "sim_turn_deg": 19.27,
+   "sim_turn_sd_deg": 1.78,
+   "sim_hold_N": 4.144,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 25.6
+  },
+  {
+   "tag": "x040.0_y050.0",
+   "t": 1.0,
+   "x_sep_mm": 40.0,
+   "y_sep_mm": 50.0,
+   "shape": "sphere",
+   "d_mm": 25.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 67.5,
+    "spread_mm": 0.0,
+    "cand": 1,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 67.0,
+    "spread_mm": 0.0,
+    "cand": 0
+   },
+   "sim_turn_deg": 2.18,
+   "sim_turn_sd_deg": 0.21,
+   "sim_hold_N": 4.988,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 25.6
+  },
+  {
+   "tag": "x100.0_y110.0",
+   "t": 0.0,
+   "x_sep_mm": 100.0,
+   "y_sep_mm": 110.0,
+   "shape": "sphere",
+   "d_mm": 40.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 52.5,
+    "spread_mm": 0.0,
+    "cand": 2,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 54.0,
+    "spread_mm": 0.0,
+    "cand": 4
+   },
+   "sim_turn_deg": 30.84,
+   "sim_turn_sd_deg": 2.34,
+   "sim_hold_N": 3.308,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 23.9
+  },
+  {
+   "tag": "x085.0_y095.0",
+   "t": 0.25,
+   "x_sep_mm": 85.0,
+   "y_sep_mm": 95.0,
+   "shape": "sphere",
+   "d_mm": 40.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 58.0,
+    "spread_mm": 0.0,
+    "cand": 0,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 61.0,
+    "spread_mm": 0.0,
+    "cand": 4
+   },
+   "sim_turn_deg": 29.77,
+   "sim_turn_sd_deg": 1.41,
+   "sim_hold_N": 5.488,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 23.9
+  },
+  {
+   "tag": "x055.0_y065.0",
+   "t": 0.75,
+   "x_sep_mm": 55.0,
+   "y_sep_mm": 65.0,
+   "shape": "sphere",
+   "d_mm": 40.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 67.5,
+    "spread_mm": 0.0,
+    "cand": 1,
+    "limit_joint": [
+     null,
+     null,
+     "index_pip"
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 67.0,
+    "spread_mm": 0.0,
+    "cand": 0
+   },
+   "sim_turn_deg": 6.22,
+   "sim_turn_sd_deg": 0.81,
+   "sim_hold_N": 6.252,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 23.9
+  },
+  {
+   "tag": "x100.0_y110.0",
+   "t": 0.0,
+   "x_sep_mm": 100.0,
+   "y_sep_mm": 110.0,
+   "shape": "sphere",
+   "d_mm": 50.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 55.0,
+    "spread_mm": 0.0,
+    "cand": 1,
+    "limit_joint": [
+     "index_pip",
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 58.5,
+    "spread_mm": 0.0,
+    "cand": 4
+   },
+   "sim_turn_deg": 24.52,
+   "sim_turn_sd_deg": 2.24,
+   "sim_hold_N": 4.636,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 25.5
+  },
+  {
+   "tag": "x070.0_y080.0",
+   "t": 0.5,
+   "x_sep_mm": 70.0,
+   "y_sep_mm": 80.0,
+   "shape": "sphere",
+   "d_mm": 50.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 65.5,
+    "spread_mm": 0.0,
+    "cand": 0,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 67.0,
+    "spread_mm": 0.0,
+    "cand": 3
+   },
+   "sim_turn_deg": 10.73,
+   "sim_turn_sd_deg": 0.4,
+   "sim_hold_N": 6.228,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 25.5
+  },
+  {
+   "tag": "x055.0_y065.0",
+   "t": 0.75,
+   "x_sep_mm": 55.0,
+   "y_sep_mm": 65.0,
+   "shape": "sphere",
+   "d_mm": 50.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 68.0,
+    "spread_mm": 0.0,
+    "cand": 0,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 68.0,
+    "spread_mm": 0.0,
+    "cand": 0
+   },
+   "sim_turn_deg": 3.12,
+   "sim_turn_sd_deg": 0.36,
+   "sim_hold_N": 6.868,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 25.5
+  },
+  {
+   "tag": "x115.0_y125.0",
+   "t": -0.25,
+   "x_sep_mm": 115.0,
+   "y_sep_mm": 125.0,
+   "shape": "sphere",
+   "d_mm": 63.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 53.5,
+    "spread_mm": 0.0,
+    "cand": 2,
+    "limit_joint": [
+     "index_pip",
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 56.0,
+    "spread_mm": 0.0,
+    "cand": 4
+   },
+   "sim_turn_deg": 20.25,
+   "sim_turn_sd_deg": 0.72,
+   "sim_hold_N": 3.948,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 25.2
+  },
+  {
+   "tag": "x070.0_y080.0",
+   "t": 0.5,
+   "x_sep_mm": 70.0,
+   "y_sep_mm": 80.0,
+   "shape": "sphere",
+   "d_mm": 63.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 67.5,
+    "spread_mm": 0.0,
+    "cand": 1,
+    "limit_joint": [
+     null,
+     null,
+     "index_pip"
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 67.0,
+    "spread_mm": 0.0,
+    "cand": 0
+   },
+   "sim_turn_deg": 3.25,
+   "sim_turn_sd_deg": 0.4,
+   "sim_hold_N": 6.932,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 25.2
+  },
+  {
+   "tag": "x130.0_y140.0",
+   "t": -0.5,
+   "x_sep_mm": 130.0,
+   "y_sep_mm": 140.0,
+   "shape": "sphere",
+   "d_mm": 80.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 54.0,
+    "spread_mm": 0.0,
+    "cand": 3,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 55.0,
+    "spread_mm": 0.0,
+    "cand": 4
+   },
+   "sim_turn_deg": 16.33,
+   "sim_turn_sd_deg": 0.24,
+   "sim_hold_N": 3.732,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 25.4
+  },
+  {
+   "tag": "x085.0_y095.0",
+   "t": 0.25,
+   "x_sep_mm": 85.0,
+   "y_sep_mm": 95.0,
+   "shape": "sphere",
+   "d_mm": 80.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 67.5,
+    "spread_mm": 0.0,
+    "cand": 1,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 67.0,
+    "spread_mm": 0.0,
+    "cand": 0
+   },
+   "sim_turn_deg": 2.99,
+   "sim_turn_sd_deg": 0.25,
+   "sim_hold_N": 6.844,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 25.4
+  },
+  {
+   "tag": "x145.0_y155.0",
+   "t": -0.75,
+   "x_sep_mm": 145.0,
+   "y_sep_mm": 155.0,
+   "shape": "sphere",
+   "d_mm": 100.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 54.0,
+    "spread_mm": 0.0,
+    "cand": 3,
+    "limit_joint": [
+     "index_pip",
+     null,
+     "index_pip"
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 55.5,
+    "spread_mm": 0.0,
+    "cand": 4
+   },
+   "sim_turn_deg": 13.0,
+   "sim_turn_sd_deg": 0.25,
+   "sim_hold_N": 3.776,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 33.7
+  },
+  {
+   "tag": "x100.0_y110.0",
+   "t": 0.0,
+   "x_sep_mm": 100.0,
+   "y_sep_mm": 110.0,
+   "shape": "sphere",
+   "d_mm": 100.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "core",
+   "turn_grasp": {
+    "h_mm": 67.5,
+    "spread_mm": 0.0,
+    "cand": 1,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 67.0,
+    "spread_mm": 0.0,
+    "cand": 0
+   },
+   "sim_turn_deg": 2.37,
+   "sim_turn_sd_deg": 0.24,
+   "sim_hold_N": 6.864,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 33.7
+  },
+  {
+   "tag": "x160.0_y170.0",
+   "t": -1.0,
+   "x_sep_mm": 160.0,
+   "y_sep_mm": 170.0,
+   "shape": "sphere",
+   "d_mm": 125.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 56.0,
+    "spread_mm": 0.0,
+    "cand": 2,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 58.5,
+    "spread_mm": 0.0,
+    "cand": 4
+   },
+   "sim_turn_deg": 9.79,
+   "sim_turn_sd_deg": 0.35,
+   "sim_hold_N": 4.26,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 51.2
+  },
+  {
+   "tag": "x145.0_y155.0",
+   "t": -0.75,
+   "x_sep_mm": 145.0,
+   "y_sep_mm": 155.0,
+   "shape": "sphere",
+   "d_mm": 125.0,
+   "near_ridge_of": [
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 62.5,
+    "spread_mm": 0.0,
+    "cand": 2,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 64.0,
+    "spread_mm": 0.0,
+    "cand": 4
+   },
+   "sim_turn_deg": 9.19,
+   "sim_turn_sd_deg": 0.11,
+   "sim_hold_N": 6.04,
+   "n_turn": 9,
+   "n_ballast": 0,
+   "mass_g": 51.2
+  },
+  {
+   "tag": "x130.0_y140.0",
+   "t": -0.5,
+   "x_sep_mm": 130.0,
+   "y_sep_mm": 140.0,
+   "shape": "sphere",
+   "d_mm": 125.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 65.5,
+    "spread_mm": 0.0,
+    "cand": 0,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 66.5,
+    "spread_mm": 0.0,
+    "cand": 2
+   },
+   "sim_turn_deg": 5.77,
+   "sim_turn_sd_deg": 0.33,
+   "sim_hold_N": 6.88,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 51.2
+  },
+  {
+   "tag": "x115.0_y125.0",
+   "t": -0.25,
+   "x_sep_mm": 115.0,
+   "y_sep_mm": 125.0,
+   "shape": "sphere",
+   "d_mm": 125.0,
+   "near_ridge_of": [
+    "hold"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 68.0,
+    "spread_mm": 0.0,
+    "cand": 0,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 68.0,
+    "spread_mm": 0.0,
+    "cand": 0
+   },
+   "sim_turn_deg": 1.16,
+   "sim_turn_sd_deg": 0.2,
+   "sim_hold_N": 7.248,
+   "n_turn": 0,
+   "n_ballast": 2,
+   "mass_g": 51.2
+  },
+  {
+   "tag": "x160.0_y170.0",
+   "t": -1.0,
+   "x_sep_mm": 160.0,
+   "y_sep_mm": 170.0,
+   "shape": "sphere",
+   "d_mm": 160.0,
+   "near_ridge_of": [
+    "hold",
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 65.0,
+    "spread_mm": 0.0,
+    "cand": 0,
+    "limit_joint": [
+     null,
+     null,
+     null
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 66.5,
+    "spread_mm": 0.0,
+    "cand": 3
+   },
+   "sim_turn_deg": 4.11,
+   "sim_turn_sd_deg": 0.32,
+   "sim_hold_N": 6.776,
+   "n_turn": 9,
+   "n_ballast": 2,
+   "mass_g": 82.3
+  },
+  {
+   "tag": "x145.0_y155.0",
+   "t": -0.75,
+   "x_sep_mm": 145.0,
+   "y_sep_mm": 155.0,
+   "shape": "sphere",
+   "d_mm": 160.0,
+   "near_ridge_of": [
+    "hold",
+    "turn"
+   ],
+   "set": "extended",
+   "turn_grasp": {
+    "h_mm": 67.5,
+    "spread_mm": 0.0,
+    "cand": 0,
+    "limit_joint": [
+     null,
+     "index_pip",
+     "index_pip"
+    ]
+   },
+   "hold_grasp": {
+    "h_mm": 68.0,
+    "spread_mm": 0.0,
+    "cand": 1
+   },
+   "sim_turn_deg": 1.29,
+   "sim_turn_sd_deg": 0.1,
+   "sim_hold_N": 6.992,
+   "n_turn": 9,
+   "n_ballast": 2,
+   "mass_g": 82.3
+  }
+ ],
+ "days": [
+  {
+   "day": 1,
+   "entries": [
+    {
+     "cell": "reference",
+     "tag": "x100.0_y110.0",
+     "shape": "cylinder",
+     "d_mm": 25.0,
+     "n_turn": 5
+    },
+    {
+     "cell": "study",
+     "tag": "x070.0_y080.0",
+     "shape": "sphere",
+     "d_mm": 16.0,
+     "n_turn": 15,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x040.0_y050.0",
+     "shape": "cylinder",
+     "d_mm": 6.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x070.0_y080.0",
+     "shape": "sphere",
+     "d_mm": 50.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x070.0_y080.0",
+     "shape": "cylinder",
+     "d_mm": 6.0,
+     "n_turn": 15,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x100.0_y110.0",
+     "shape": "sphere",
+     "d_mm": 100.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x055.0_y065.0",
+     "shape": "cylinder",
+     "d_mm": 10.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x070.0_y080.0",
+     "shape": "sphere",
+     "d_mm": 10.0,
+     "n_turn": 15,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x055.0_y065.0",
+     "shape": "sphere",
+     "d_mm": 50.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x100.0_y110.0",
+     "shape": "cylinder",
+     "d_mm": 25.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x100.0_y110.0",
+     "shape": "cylinder",
+     "d_mm": 63.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x130.0_y140.0",
+     "shape": "cylinder",
+     "d_mm": 63.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x100.0_y110.0",
+     "shape": "sphere",
+     "d_mm": 50.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x085.0_y095.0",
+     "shape": "cylinder",
+     "d_mm": 10.0,
+     "n_turn": 15,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x115.0_y125.0",
+     "shape": "cylinder",
+     "d_mm": 63.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x145.0_y155.0",
+     "shape": "sphere",
+     "d_mm": 100.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x070.0_y080.0",
+     "shape": "cylinder",
+     "d_mm": 25.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    }
+   ]
+  },
+  {
+   "day": 2,
+   "entries": [
+    {
+     "cell": "reference",
+     "tag": "x100.0_y110.0",
+     "shape": "cylinder",
+     "d_mm": 25.0,
+     "n_turn": 5
+    },
+    {
+     "cell": "study",
+     "tag": "x070.0_y080.0",
+     "shape": "cylinder",
+     "d_mm": 10.0,
+     "n_turn": 15,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x085.0_y095.0",
+     "shape": "cylinder",
+     "d_mm": 25.0,
+     "n_turn": 15,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x085.0_y095.0",
+     "shape": "sphere",
+     "d_mm": 16.0,
+     "n_turn": 15,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x055.0_y065.0",
+     "shape": "cylinder",
+     "d_mm": 6.0,
+     "n_turn": 15,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x145.0_y155.0",
+     "shape": "cylinder",
+     "d_mm": 63.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x160.0_y170.0",
+     "shape": "sphere",
+     "d_mm": 125.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x040.0_y050.0",
+     "shape": "cylinder",
+     "d_mm": 16.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x115.0_y125.0",
+     "shape": "cylinder",
+     "d_mm": 50.0,
+     "n_turn": 15,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x055.0_y065.0",
+     "shape": "sphere",
+     "d_mm": 25.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x085.0_y095.0",
+     "shape": "sphere",
+     "d_mm": 25.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x115.0_y125.0",
+     "shape": "cylinder",
+     "d_mm": 40.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x085.0_y095.0",
+     "shape": "sphere",
+     "d_mm": 80.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x130.0_y140.0",
+     "shape": "sphere",
+     "d_mm": 80.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x100.0_y110.0",
+     "shape": "sphere",
+     "d_mm": 40.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "revisit",
+     "tag": "x100.0_y110.0",
+     "shape": "sphere",
+     "d_mm": 50.0,
+     "n_turn": 5
+    },
+    {
+     "cell": "revisit",
+     "tag": "x115.0_y125.0",
+     "shape": "cylinder",
+     "d_mm": 63.0,
+     "n_turn": 5
+    }
+   ]
+  },
+  {
+   "day": 3,
+   "entries": [
+    {
+     "cell": "reference",
+     "tag": "x100.0_y110.0",
+     "shape": "cylinder",
+     "d_mm": 25.0,
+     "n_turn": 5
+    },
+    {
+     "cell": "study",
+     "tag": "x145.0_y155.0",
+     "shape": "sphere",
+     "d_mm": 125.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x100.0_y110.0",
+     "shape": "cylinder",
+     "d_mm": 40.0,
+     "n_turn": 9,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x115.0_y125.0",
+     "shape": "sphere",
+     "d_mm": 63.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x085.0_y095.0",
+     "shape": "cylinder",
+     "d_mm": 16.0,
+     "n_turn": 15,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x130.0_y140.0",
+     "shape": "sphere",
+     "d_mm": 125.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x160.0_y170.0",
+     "shape": "sphere",
+     "d_mm": 160.0,
+     "n_turn": 9,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x055.0_y065.0",
+     "shape": "sphere",
+     "d_mm": 40.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x040.0_y050.0",
+     "shape": "sphere",
+     "d_mm": 25.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x115.0_y125.0",
+     "shape": "sphere",
+     "d_mm": 125.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x070.0_y080.0",
+     "shape": "sphere",
+     "d_mm": 63.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x055.0_y065.0",
+     "shape": "cylinder",
+     "d_mm": 16.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x085.0_y095.0",
+     "shape": "cylinder",
+     "d_mm": 40.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x070.0_y080.0",
+     "shape": "cylinder",
+     "d_mm": 16.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x085.0_y095.0",
+     "shape": "sphere",
+     "d_mm": 40.0,
+     "n_turn": 9,
+     "n_ballast": 0
+    },
+    {
+     "cell": "study",
+     "tag": "x100.0_y110.0",
+     "shape": "cylinder",
+     "d_mm": 50.0,
+     "n_turn": 0,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x145.0_y155.0",
+     "shape": "sphere",
+     "d_mm": 160.0,
+     "n_turn": 9,
+     "n_ballast": 2
+    },
+    {
+     "cell": "study",
+     "tag": "x130.0_y140.0",
+     "shape": "cylinder",
+     "d_mm": 50.0,
+     "n_turn": 15,
+     "n_ballast": 0
+    },
+    {
+     "cell": "revisit",
+     "tag": "x040.0_y050.0",
+     "shape": "cylinder",
+     "d_mm": 6.0,
+     "n_turn": 5
+    },
+    {
+     "cell": "revisit",
+     "tag": "x070.0_y080.0",
+     "shape": "sphere",
+     "d_mm": 50.0,
+     "n_turn": 5
+    }
+   ]
+  }
+ ],
+ "hours": {
+  "turn_trials": 7.95,
+  "ballast": 5.8,
+  "reconfiguration": 0.39,
+  "reference_and_revisits": 0.88,
+  "day_overhead": 2.25,
+  "total": 17.27,
+  "core_trials_only": 7.1,
+  "extended_trials_only": 7.04
+ },
+ "objects": [
+  {
+   "shape": "cylinder",
+   "d_mm": 6.0,
+   "mass_g": 24.7,
+   "recipe": "steel rod 6 mm",
+   "on_target": true
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 10.0,
+   "mass_g": 25.2,
+   "recipe": "PLA tube on a 5 mm steel rod",
+   "on_target": true
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 16.0,
+   "mass_g": 24.9,
+   "recipe": "PLA, 90% infill",
+   "on_target": true
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 25.0,
+   "mass_g": 25.0,
+   "recipe": "PLA, 1.2 mm walls, 10% infill, 4.5 g steel at the centre",
+   "on_target": true
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 40.0,
+   "mass_g": 24.5,
+   "recipe": "PLA, 0.8 mm walls, 5% infill",
+   "on_target": true
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 50.0,
+   "mass_g": 25.0,
+   "recipe": "PLA, 0.8 mm walls, 0% infill, 3 g steel at the centre",
+   "on_target": true
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 63.0,
+   "mass_g": 28.3,
+   "recipe": "PLA, 0.8 mm walls, 0% infill",
+   "on_target": false
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 10.0,
+   "mass_g": 6.6,
+   "recipe": "steel ball 10 mm",
+   "on_target": false
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 16.0,
+   "mass_g": 19.3,
+   "recipe": "steel ball 16 mm",
+   "on_target": false
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 25.0,
+   "mass_g": 25.6,
+   "recipe": "PLA, 1.2 mm walls, hollow halves, 17 mm steel ball at the centre",
+   "on_target": true
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 40.0,
+   "mass_g": 23.9,
+   "recipe": "PLA, 1.2 mm walls, hollow halves, 15 mm steel ball at the centre",
+   "on_target": true
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 50.0,
+   "mass_g": 25.5,
+   "recipe": "PLA, 1.2 mm walls, hollow halves, 14 mm steel ball at the centre",
+   "on_target": true
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 63.0,
+   "mass_g": 25.2,
+   "recipe": "PLA, 1.2 mm walls, hollow halves, 10 mm steel ball at the centre",
+   "on_target": true
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 80.0,
+   "mass_g": 25.4,
+   "recipe": "PLA, 0.8 mm walls, hollow halves, 9 mm steel ball at the centre",
+   "on_target": true
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 100.0,
+   "mass_g": 33.7,
+   "recipe": "PLA, 0.8 mm walls, hollow halves",
+   "on_target": false
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 125.0,
+   "mass_g": 51.2,
+   "recipe": "PLA, 0.8 mm walls, hollow halves",
+   "on_target": false
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 160.0,
+   "mass_g": 82.3,
+   "recipe": "PLA, 0.8 mm walls, hollow halves",
+   "on_target": false
+  }
+ ]
+}
