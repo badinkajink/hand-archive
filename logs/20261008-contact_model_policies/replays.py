@@ -57,10 +57,14 @@ def finished():
 
 
 def block_dir(d: Path) -> Path:
+    """As rl_policy_replay.block_dir: the same seed's TPU-mesh replay dir, or seed 0's when that run was stopped."""
     n = d.name
     for a, b in (("pads1", "mesh"), ("tpu27skin", "tpu27mesh"), ("_box_", "_tpu27mesh_")):
         n = n.replace(a, b)
-    return d.with_name(n)
+    bd = d.with_name(n)
+    if bd != d and not (ROOT / "results/rl" / n / "tensorboard" / "model_812.pt").exists():
+        bd = d.with_name(re.sub(r"_s\d+$", "_s0", n))
+    return bd
 
 
 def done():
