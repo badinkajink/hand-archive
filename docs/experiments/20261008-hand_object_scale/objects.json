@@ -1,0 +1,671 @@
+{
+ "meta": {
+  "date": "2026-10-08",
+  "pla_g_cm3": 1.24,
+  "steel_g_cm3": 7.85,
+  "target_g": 25.0,
+  "flag_g": 2.5,
+  "note": "cylinders lie along palm y, 100 mm long (the screwdriver class); grasps on the equator; masses include the tag flag"
+ },
+ "objects": [
+  {
+   "shape": "cylinder",
+   "d_mm": 6,
+   "length_mm": 100.0,
+   "mass_g": 24.7,
+   "weight_N": 0.242,
+   "recipe": "steel rod 6 mm",
+   "on_target": true,
+   "diag_t": [
+    -0.25,
+    -0.125,
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875,
+    1.0
+   ],
+   "n_diag": [
+    11,
+    17
+   ],
+   "n_xsep": [
+    11,
+    17
+   ],
+   "n_ysep": [
+    17,
+    17
+   ],
+   "n_grid": [
+    43,
+    81
+   ]
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 10,
+   "length_mm": 100.0,
+   "mass_g": 25.2,
+   "weight_N": 0.247,
+   "recipe": "PLA tube on a 5 mm steel rod",
+   "on_target": true,
+   "diag_t": [
+    -0.375,
+    -0.25,
+    -0.125,
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875,
+    1.0
+   ],
+   "n_diag": [
+    12,
+    17
+   ],
+   "n_xsep": [
+    11,
+    17
+   ],
+   "n_ysep": [
+    17,
+    17
+   ],
+   "n_grid": [
+    42,
+    81
+   ]
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 16,
+   "length_mm": 100.0,
+   "mass_g": 24.9,
+   "weight_N": 0.245,
+   "recipe": "PLA, 90% infill",
+   "on_target": true,
+   "diag_t": [
+    -0.375,
+    -0.25,
+    -0.125,
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875,
+    1.0
+   ],
+   "n_diag": [
+    12,
+    17
+   ],
+   "n_xsep": [
+    10,
+    17
+   ],
+   "n_ysep": [
+    16,
+    17
+   ],
+   "n_grid": [
+    39,
+    81
+   ]
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 25,
+   "length_mm": 100.0,
+   "mass_g": 25.0,
+   "weight_N": 0.245,
+   "recipe": "PLA, 1.2 mm walls, 10% infill, 4.5 g steel at the centre",
+   "on_target": true,
+   "diag_t": [
+    -0.625,
+    -0.5,
+    -0.375,
+    -0.25,
+    -0.125,
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875
+   ],
+   "n_diag": [
+    13,
+    17
+   ],
+   "n_xsep": [
+    11,
+    17
+   ],
+   "n_ysep": [
+    16,
+    17
+   ],
+   "n_grid": [
+    42,
+    81
+   ]
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 40,
+   "length_mm": 100.0,
+   "mass_g": 24.5,
+   "weight_N": 0.241,
+   "recipe": "PLA, 0.8 mm walls, 5% infill",
+   "on_target": true,
+   "diag_t": [
+    -0.75,
+    -0.625,
+    -0.5,
+    -0.375,
+    -0.25,
+    -0.125,
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625
+   ],
+   "n_diag": [
+    12,
+    17
+   ],
+   "n_xsep": [
+    11,
+    17
+   ],
+   "n_ysep": [
+    13,
+    17
+   ],
+   "n_grid": [
+    42,
+    81
+   ]
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 50,
+   "length_mm": 100.0,
+   "mass_g": 25.0,
+   "weight_N": 0.245,
+   "recipe": "PLA, 0.8 mm walls, 0% infill, 3 g steel at the centre",
+   "on_target": true,
+   "diag_t": [
+    -0.875,
+    -0.75,
+    -0.625,
+    -0.5,
+    -0.375,
+    -0.25,
+    -0.125,
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5
+   ],
+   "n_diag": [
+    12,
+    17
+   ],
+   "n_xsep": [
+    11,
+    17
+   ],
+   "n_ysep": [
+    11,
+    17
+   ],
+   "n_grid": [
+    47,
+    81
+   ]
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 63,
+   "length_mm": 100.0,
+   "mass_g": 28.3,
+   "weight_N": 0.278,
+   "recipe": "PLA, 0.8 mm walls, 0% infill",
+   "on_target": false,
+   "diag_t": [
+    -1.0,
+    -0.875,
+    -0.75,
+    -0.625,
+    -0.5,
+    -0.375,
+    -0.25,
+    -0.125,
+    0.0,
+    0.125
+   ],
+   "n_diag": [
+    10,
+    17
+   ],
+   "n_xsep": [
+    9,
+    17
+   ],
+   "n_ysep": [
+    9,
+    17
+   ],
+   "n_grid": [
+    39,
+    81
+   ]
+  },
+  {
+   "shape": "cylinder",
+   "d_mm": 80,
+   "length_mm": 100.0,
+   "mass_g": 37.4,
+   "weight_N": 0.367,
+   "recipe": "PLA, 0.8 mm walls, 0% infill",
+   "on_target": false,
+   "diag_t": [
+    -0.875,
+    -0.75
+   ],
+   "n_diag": [
+    2,
+    17
+   ],
+   "n_xsep": [
+    7,
+    17
+   ],
+   "n_ysep": [
+    6,
+    17
+   ],
+   "n_grid": [
+    30,
+    81
+   ]
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 10,
+   "length_mm": null,
+   "mass_g": 6.6,
+   "weight_N": 0.065,
+   "recipe": "steel ball 10 mm",
+   "on_target": false,
+   "diag_t": [
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875,
+    1.0
+   ],
+   "n_diag": [
+    8,
+    17
+   ],
+   "n_xsep": [
+    0,
+    17
+   ],
+   "n_ysep": [
+    1,
+    17
+   ],
+   "n_grid": [
+    6,
+    81
+   ]
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 16,
+   "length_mm": null,
+   "mass_g": 19.3,
+   "weight_N": 0.19,
+   "recipe": "steel ball 16 mm",
+   "on_target": false,
+   "diag_t": [
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875,
+    1.0
+   ],
+   "n_diag": [
+    9,
+    17
+   ],
+   "n_xsep": [
+    3,
+    17
+   ],
+   "n_ysep": [
+    5,
+    17
+   ],
+   "n_grid": [
+    14,
+    81
+   ]
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 25,
+   "length_mm": null,
+   "mass_g": 25.6,
+   "weight_N": 0.251,
+   "recipe": "PLA, 1.2 mm walls, hollow halves, 17 mm steel ball at the centre",
+   "on_target": true,
+   "diag_t": [
+    -0.125,
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875,
+    1.0
+   ],
+   "n_diag": [
+    10,
+    17
+   ],
+   "n_xsep": [
+    5,
+    17
+   ],
+   "n_ysep": [
+    8,
+    17
+   ],
+   "n_grid": [
+    20,
+    81
+   ]
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 40,
+   "length_mm": null,
+   "mass_g": 23.9,
+   "weight_N": 0.234,
+   "recipe": "PLA, 1.2 mm walls, hollow halves, 15 mm steel ball at the centre",
+   "on_target": true,
+   "diag_t": [
+    -0.25,
+    -0.125,
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875
+   ],
+   "n_diag": [
+    10,
+    17
+   ],
+   "n_xsep": [
+    8,
+    17
+   ],
+   "n_ysep": [
+    11,
+    17
+   ],
+   "n_grid": [
+    33,
+    81
+   ]
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 50,
+   "length_mm": null,
+   "mass_g": 25.5,
+   "weight_N": 0.25,
+   "recipe": "PLA, 1.2 mm walls, hollow halves, 14 mm steel ball at the centre",
+   "on_target": true,
+   "diag_t": [
+    -0.375,
+    -0.25,
+    -0.125,
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75
+   ],
+   "n_diag": [
+    10,
+    17
+   ],
+   "n_xsep": [
+    11,
+    17
+   ],
+   "n_ysep": [
+    12,
+    17
+   ],
+   "n_grid": [
+    38,
+    81
+   ]
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 63,
+   "length_mm": null,
+   "mass_g": 25.2,
+   "weight_N": 0.247,
+   "recipe": "PLA, 1.2 mm walls, hollow halves, 10 mm steel ball at the centre",
+   "on_target": true,
+   "diag_t": [
+    -0.625,
+    -0.5,
+    -0.375,
+    -0.25,
+    -0.125,
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625
+   ],
+   "n_diag": [
+    11,
+    17
+   ],
+   "n_xsep": [
+    15,
+    17
+   ],
+   "n_ysep": [
+    13,
+    17
+   ],
+   "n_grid": [
+    49,
+    81
+   ]
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 80,
+   "length_mm": null,
+   "mass_g": 25.4,
+   "weight_N": 0.25,
+   "recipe": "PLA, 0.8 mm walls, hollow halves, 9 mm steel ball at the centre",
+   "on_target": true,
+   "diag_t": [
+    -0.875,
+    -0.75,
+    -0.625,
+    -0.5,
+    -0.375,
+    -0.25,
+    -0.125,
+    0.0,
+    0.125,
+    0.25,
+    0.375
+   ],
+   "n_diag": [
+    11,
+    17
+   ],
+   "n_xsep": [
+    17,
+    17
+   ],
+   "n_ysep": [
+    14,
+    17
+   ],
+   "n_grid": [
+    51,
+    81
+   ]
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 100,
+   "length_mm": null,
+   "mass_g": 33.7,
+   "weight_N": 0.33,
+   "recipe": "PLA, 0.8 mm walls, hollow halves",
+   "on_target": false,
+   "diag_t": [
+    -1.0,
+    -0.875,
+    -0.75,
+    -0.625,
+    -0.5,
+    -0.375,
+    -0.25,
+    -0.125,
+    0.0,
+    0.125
+   ],
+   "n_diag": [
+    10,
+    17
+   ],
+   "n_xsep": [
+    11,
+    17
+   ],
+   "n_ysep": [
+    9,
+    17
+   ],
+   "n_grid": [
+    47,
+    81
+   ]
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 125,
+   "length_mm": null,
+   "mass_g": 51.2,
+   "weight_N": 0.502,
+   "recipe": "PLA, 0.8 mm walls, hollow halves",
+   "on_target": false,
+   "diag_t": [
+    -1.0,
+    -0.875,
+    -0.75,
+    -0.625,
+    -0.5,
+    -0.375,
+    -0.25
+   ],
+   "n_diag": [
+    7,
+    17
+   ],
+   "n_xsep": [
+    6,
+    17
+   ],
+   "n_ysep": [
+    5,
+    17
+   ],
+   "n_grid": [
+    35,
+    81
+   ]
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 160,
+   "length_mm": null,
+   "mass_g": 82.3,
+   "weight_N": 0.807,
+   "recipe": "PLA, 0.8 mm walls, hollow halves",
+   "on_target": false,
+   "diag_t": [
+    -1.0,
+    -0.875,
+    -0.75
+   ],
+   "n_diag": [
+    3,
+    17
+   ],
+   "n_xsep": [
+    0,
+    17
+   ],
+   "n_ysep": [
+    0,
+    17
+   ],
+   "n_grid": [
+    9,
+    81
+   ]
+  }
+ ]
+}
