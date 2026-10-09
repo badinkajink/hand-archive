@@ -1,0 +1,1 @@
+{"tag": "20261008-d6_work_box_40M_s1", "iteration": 328, "env_steps": 16171008, "reason": "jitter at every watched checkpoint from 4.1 to 16.2 M (tool angular jerk in the hold 262, 126, 131, 160 1/s^2; the hold frames show the tool shaking), held count falling from 61/64 at 8.1 M to 7/64 at 16.2 M", "when": "2026-10-08 23:08"}
