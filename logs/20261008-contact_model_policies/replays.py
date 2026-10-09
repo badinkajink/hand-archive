@@ -31,11 +31,27 @@ ENGINES = sys.argv[1:] or ["mujoco", "drake", "newton"]
 STEPS_PER_IT = 2048 * 24
 
 
+def plateau_stops():
+    """Runs the checkpoint watch stopped on the plateau test (stops.jsonl): their last checkpoint is their final policy."""
+    p = ROOT / "docs/experiments/20261008-contact_model_policies/stops.jsonl"
+    out = {}
+    if p.exists():
+        for line in open(p):
+            r = json.loads(line)
+            if r.get("reason", "").startswith("plateau"):
+                out[r["tag"]] = int(r["iteration"])
+    return out
+
+
 def finished():
-    out = []
+    out, pl = [], plateau_stops()
     for line in open(JOBS):
-        f = line.split("#")[0].split()
-        if len(f) == 4 and (ROOT / "results/rl" / f[0] / "tensorboard" / f"model_{int(f[3]) // STEPS_PER_IT - 1}.pt").exists():
+        stopped = line.startswith("#stopped# ")
+        f = (line[len("#stopped# "):] if stopped else line).split("#")[0].split()
+        if len(f) != 4 or (stopped and f[0] not in pl):      # a run stopped as degenerate has no final policy
+            continue
+        it = pl.get(f[0], int(f[3]) // STEPS_PER_IT - 1)
+        if (ROOT / "results/rl" / f[0] / "tensorboard" / f"model_{it}.pt").exists():
             out.append(f[0])
     return sorted(out, key=lambda t: (0 if "tpu27mesh_" in t else 1, t))
 

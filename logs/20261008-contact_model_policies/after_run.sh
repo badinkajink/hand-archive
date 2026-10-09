@@ -45,8 +45,8 @@ if [ ! -e $L/post_train.started ] && python3 - <<'PY'
 import sys
 sys.path.insert(0, "logs/20261008-contact_model_policies")
 from replays import JOBS, finished
-n = sum(1 for l in open(JOBS) if len(l.split("#")[0].split()) == 4)
-sys.exit(0 if len(finished()) == n else 1)
+active = {l.split("#")[0].split()[0] for l in open(JOBS) if len(l.split("#")[0].split()) == 4}
+sys.exit(0 if active <= set(finished()) else 1)   # every job still in the queue has its final checkpoint
 PY
 then
   touch $L/post_train.started
