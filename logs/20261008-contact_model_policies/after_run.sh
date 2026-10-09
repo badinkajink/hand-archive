@@ -7,14 +7,6 @@
 set -u
 cd /home/humanoid/Programs/hand
 until ~/.claude/bin/resguard.sh status | grep -q "launch gate: OPEN"; do sleep 30; done
-for sub in ckpts final; do
-  echo "$(date '+%F %H:%M:%S') eval $sub (after $1)"
-  WARP_CACHE_PATH=$(mktemp -d) MUJOCO_GL=egl ~/.claude/bin/resguard.sh run --mem 6G --cpu 400 -- \
-    uv run --extra rl --extra gpu python scripts/rl_contact_eval.py $sub --all
-  rc=$?
-  echo "$(date '+%F %H:%M:%S') eval $sub exit $rc"
-  sleep 20
-done
 # checkpoint watch of this run's checkpoints that the watcher did not reach (the final one, and every checkpoint of a
 # skin run, whose trainer leaves under 2 GB of GPU memory), so every run has the watch rows, strips and films
 its=$(ls -v results/rl/$1/tensorboard/model_*.pt 2>/dev/null | sed 's/.*model_\([0-9]*\)\.pt/\1/' | awk '$1 > 0 && ($1 % 82 == 0 || $1 == 812)' | tr '\n' ' ')
@@ -24,6 +16,14 @@ if [ -n "$its" ]; then
     uv run --extra rl --extra gpu python scripts/rl_contact_eval.py watch --tags "$1" --iterations $its
   echo "$(date '+%F %H:%M:%S') watch exit $?"
 fi
+for sub in ckpts final; do
+  echo "$(date '+%F %H:%M:%S') eval $sub (after $1)"
+  WARP_CACHE_PATH=$(mktemp -d) MUJOCO_GL=egl ~/.claude/bin/resguard.sh run --mem 6G --cpu 400 -- \
+    uv run --extra rl --extra gpu python scripts/rl_contact_eval.py $sub --all
+  rc=$?
+  echo "$(date '+%F %H:%M:%S') eval $sub exit $rc"
+  sleep 20
+done
 echo "$(date '+%F %H:%M:%S') replays (after $1)"
 python3 logs/20261008-contact_model_policies/replays.py
 rc=$?
