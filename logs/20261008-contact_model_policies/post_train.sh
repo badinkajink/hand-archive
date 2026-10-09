@@ -15,11 +15,12 @@ PYN=logs/20261004-contact-transfer/venv/bin/python
 gpu() { until $HOME/.claude/bin/resguard.sh status | grep -q "launch gate: OPEN"; do sleep 30; done
         WARP_CACHE_PATH=$(mktemp -d) MUJOCO_GL=egl $RG "$@"; }
 echo "$(date '+%F %H:%M:%S') post_train start"
+# owner 2026-10-08 21:50: 256 rollouts per transfer cell, more where compute allows (robustness at 128)
 for scene in box tpu27mesh tpu27pads1 tpu27meshc4 tpu27skin; do
-  gpu $UVP scripts/rl_contact_eval.py transfer --scene $scene --all
+  gpu $UVP scripts/rl_contact_eval.py transfer --scene $scene --all --n 256
 done
-gpu $UVP scripts/rl_contact_eval.py robust --all --perturb friction=0.7 friction=1.3 mass=0.8 mass=1.2 kp=2 kp=6 kp=10 \
-  dt=0.001 noise=2,5
+gpu $UVP scripts/rl_contact_eval.py robust --all --n 128 --perturb friction=0.7 friction=1.3 mass=0.8 mass=1.2 kp=2 kp=6 \
+  kp=10 dt=0.001 noise=2,5
 python3 $L/pick_films.py --json > $L/films.txt
 mkdir -p $M
 while read -r arm role tag it <&3; do
