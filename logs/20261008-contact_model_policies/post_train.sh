@@ -21,6 +21,12 @@ for scene in box tpu27mesh tpu27pads1 tpu27meshc4 tpu27skin; do
 done
 gpu $UVP scripts/rl_contact_eval.py robust --all --n 128 --perturb friction=0.7 friction=1.3 mass=0.8 mass=1.2 kp=2 kp=6 \
   kp=10 dt=0.001 noise=2,5
+# the final checkpoint of every run watched again with the full set of watch signals (spin and tilt of the tool were
+# added on 2026-10-09 01:15), so all runs are compared on the same metrics
+for tag in $(grep -o '20261008-d6_work_[a-z0-9]*_40M_s[0-9]' $L/jobs.txt | sort -u); do
+  last=$(ls -v results/rl/$tag/tensorboard/model_*.pt 2>/dev/null | tail -1 | sed 's/.*model_\([0-9]*\)\.pt/\1/')
+  [ -n "$last" ] && gpu $UVP scripts/rl_contact_eval.py watch --redo --tags $tag --iterations $last
+done
 # more open-loop replays per final policy (owner 2026-10-08 21:50: 8-16 per policy): CPU MuJoCo and Drake on 16 worlds,
 # Newton on 12 (the record has 16 worlds)
 REPLAY_WORLDS=16 python3 $L/replays.py mujoco drake
