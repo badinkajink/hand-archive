@@ -31,6 +31,27 @@ done
 # Newton on 12 (the record has 16 worlds)
 REPLAY_WORLDS=16 python3 $L/replays.py mujoco drake
 REPLAY_WORLDS=12 python3 $L/replays.py newton
+# replays of the last checkpoint of a run stopped early that still held at least half its rollouts (pads s1 at 24 M,
+# stopped for rocking): does a rocking pad policy transfer?
+RP=scripts/rl_policy_replay.py
+for tag in $(python3 - <<'PY'
+import json
+for l in open("docs/experiments/20261008-contact_model_policies/stops.jsonl"):
+    r = json.loads(l)
+    w = [json.loads(x) for x in open("docs/experiments/20261008-contact_model_policies/watch.jsonl")]
+    last = max((x for x in w if x["tag"] == r["tag"]), key=lambda x: x["iteration"])
+    if last["n_held"] >= 32:
+        print(r["tag"])
+PY
+); do
+  d=$L/replay/$tag
+  [ -f $d/rec.npz ] || gpu $UVP $RP record --study 20261008 --tag $tag --n 16
+  for w in $(seq 0 11); do
+    $PYD $RP bench --study 20261008 --dir $d --world $w
+    for e in mujoco drake; do $PYD $RP replay --study 20261008 --dir $d --engine $e; done
+    [ $w -lt 6 ] && gpu $PYN $RP replay --study 20261008 --dir $d --engine newton
+  done
+done
 python3 $L/pick_films.py --json > $L/films.txt
 mkdir -p $M
 while read -r arm role tag it <&3; do
