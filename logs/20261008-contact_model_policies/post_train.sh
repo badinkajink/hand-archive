@@ -21,6 +21,10 @@ for scene in box tpu27mesh tpu27pads1 tpu27meshc4 tpu27skin; do
 done
 gpu $UVP scripts/rl_contact_eval.py robust --all --n 128 --perturb friction=0.7 friction=1.3 mass=0.8 mass=1.2 kp=2 kp=6 \
   kp=10 dt=0.001 noise=2,5
+# more open-loop replays per final policy (owner 2026-10-08 21:50: 8-16 per policy): CPU MuJoCo and Drake on 16 worlds,
+# Newton on 12 (the record has 16 worlds)
+REPLAY_WORLDS=16 python3 $L/replays.py mujoco drake
+REPLAY_WORLDS=12 python3 $L/replays.py newton
 python3 $L/pick_films.py --json > $L/films.txt
 mkdir -p $M
 while read -r arm role tag it <&3; do
