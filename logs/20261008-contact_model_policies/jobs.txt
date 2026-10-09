@@ -7,7 +7,7 @@
 20261008-d6_work_tpu27skin_40M_s0    results/phase1/real_v1/20261008-sv1_u0308_b050_work_tip_tpu2.7skin  0 40000000
 #stopped# 20261008-d6_work_box_40M_s1          results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip              1 40000000
 20261008-d6_work_tpu27mesh_40M_s1    results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7mesh  1 40000000
-20261008-d6_work_tpu27pads1_40M_s1   results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7pads1 1 40000000
+#stopped# 20261008-d6_work_tpu27pads1_40M_s1   results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7pads1 1 40000000
 20261008-d6_work_tpu27skin_40M_s1    results/phase1/real_v1/20261008-sv1_u0308_b050_work_tip_tpu2.7skin  1 40000000
 20261008-d6_work_box_40M_s2          results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip              2 40000000
 20261008-d6_work_tpu27mesh_40M_s2    results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7mesh  2 40000000
