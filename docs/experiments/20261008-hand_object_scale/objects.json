@@ -38,11 +38,11 @@
     17
    ],
    "n_ysep": [
-    17,
+    14,
     17
    ],
    "n_grid": [
-    43,
+    39,
     81
    ]
   },
@@ -55,7 +55,6 @@
    "recipe": "PLA tube on a 5 mm steel rod",
    "on_target": true,
    "diag_t": [
-    -0.375,
     -0.25,
     -0.125,
     0.0,
@@ -69,7 +68,7 @@
     1.0
    ],
    "n_diag": [
-    12,
+    11,
     17
    ],
    "n_xsep": [
@@ -77,11 +76,11 @@
     17
    ],
    "n_ysep": [
-    17,
+    15,
     17
    ],
    "n_grid": [
-    42,
+    38,
     81
    ]
   },
@@ -120,7 +119,7 @@
     17
    ],
    "n_grid": [
-    39,
+    37,
     81
    ]
   },
@@ -133,8 +132,6 @@
    "recipe": "PLA, 1.2 mm walls, 10% infill, 4.5 g steel at the centre",
    "on_target": true,
    "diag_t": [
-    -0.625,
-    -0.5,
     -0.375,
     -0.25,
     -0.125,
@@ -148,7 +145,7 @@
     0.875
    ],
    "n_diag": [
-    13,
+    11,
     17
    ],
    "n_xsep": [
@@ -160,7 +157,7 @@
     17
    ],
    "n_grid": [
-    42,
+    38,
     81
    ]
   },
@@ -173,7 +170,6 @@
    "recipe": "PLA, 0.8 mm walls, 5% infill",
    "on_target": true,
    "diag_t": [
-    -0.75,
     -0.625,
     -0.5,
     -0.375,
@@ -187,7 +183,7 @@
     0.625
    ],
    "n_diag": [
-    12,
+    11,
     17
    ],
    "n_xsep": [
@@ -199,7 +195,7 @@
     17
    ],
    "n_grid": [
-    42,
+    38,
     81
    ]
   },
@@ -212,8 +208,6 @@
    "recipe": "PLA, 0.8 mm walls, 0% infill, 3 g steel at the centre",
    "on_target": true,
    "diag_t": [
-    -0.875,
-    -0.75,
     -0.625,
     -0.5,
     -0.375,
@@ -226,7 +220,7 @@
     0.5
    ],
    "n_diag": [
-    12,
+    10,
     17
    ],
    "n_xsep": [
@@ -238,7 +232,7 @@
     17
    ],
    "n_grid": [
-    47,
+    43,
     81
    ]
   },
@@ -251,8 +245,6 @@
    "recipe": "PLA, 0.8 mm walls, 0% infill",
    "on_target": false,
    "diag_t": [
-    -1.0,
-    -0.875,
     -0.75,
     -0.625,
     -0.5,
@@ -263,7 +255,7 @@
     0.125
    ],
    "n_diag": [
-    10,
+    8,
     17
    ],
    "n_xsep": [
@@ -275,7 +267,7 @@
     17
    ],
    "n_grid": [
-    39,
+    37,
     81
    ]
   },
@@ -317,6 +309,73 @@
    "recipe": "steel ball 10 mm",
    "on_target": false,
    "diag_t": [
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875,
+    1.0
+   ],
+   "n_diag": [
+    6,
+    17
+   ],
+   "n_xsep": [
+    0,
+    17
+   ],
+   "n_ysep": [
+    0,
+    17
+   ],
+   "n_grid": [
+    4,
+    81
+   ]
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 16,
+   "length_mm": null,
+   "mass_g": 19.3,
+   "weight_N": 0.19,
+   "recipe": "steel ball 16 mm",
+   "on_target": false,
+   "diag_t": [
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875,
+    1.0
+   ],
+   "n_diag": [
+    7,
+    17
+   ],
+   "n_xsep": [
+    0,
+    17
+   ],
+   "n_ysep": [
+    2,
+    17
+   ],
+   "n_grid": [
+    11,
+    81
+   ]
+  },
+  {
+   "shape": "sphere",
+   "d_mm": 25,
+   "length_mm": null,
+   "mass_g": 25.6,
+   "weight_N": 0.251,
+   "recipe": "PLA, 1.2 mm walls, hollow halves, 17 mm steel ball at the centre",
+   "on_target": true,
+   "diag_t": [
     0.125,
     0.25,
     0.375,
@@ -335,84 +394,11 @@
     17
    ],
    "n_ysep": [
-    1,
-    17
-   ],
-   "n_grid": [
-    6,
-    81
-   ]
-  },
-  {
-   "shape": "sphere",
-   "d_mm": 16,
-   "length_mm": null,
-   "mass_g": 19.3,
-   "weight_N": 0.19,
-   "recipe": "steel ball 16 mm",
-   "on_target": false,
-   "diag_t": [
-    0.0,
-    0.125,
-    0.25,
-    0.375,
-    0.5,
-    0.625,
-    0.75,
-    0.875,
-    1.0
-   ],
-   "n_diag": [
-    9,
-    17
-   ],
-   "n_xsep": [
-    3,
-    17
-   ],
-   "n_ysep": [
     5,
     17
    ],
    "n_grid": [
-    14,
-    81
-   ]
-  },
-  {
-   "shape": "sphere",
-   "d_mm": 25,
-   "length_mm": null,
-   "mass_g": 25.6,
-   "weight_N": 0.251,
-   "recipe": "PLA, 1.2 mm walls, hollow halves, 17 mm steel ball at the centre",
-   "on_target": true,
-   "diag_t": [
-    -0.125,
-    0.0,
-    0.125,
-    0.25,
-    0.375,
-    0.5,
-    0.625,
-    0.75,
-    0.875,
-    1.0
-   ],
-   "n_diag": [
-    10,
-    17
-   ],
-   "n_xsep": [
-    5,
-    17
-   ],
-   "n_ysep": [
-    8,
-    17
-   ],
-   "n_grid": [
-    20,
+    16,
     81
    ]
   },
@@ -425,8 +411,6 @@
    "recipe": "PLA, 1.2 mm walls, hollow halves, 15 mm steel ball at the centre",
    "on_target": true,
    "diag_t": [
-    -0.25,
-    -0.125,
     0.0,
     0.125,
     0.25,
@@ -437,19 +421,19 @@
     0.875
    ],
    "n_diag": [
-    10,
-    17
-   ],
-   "n_xsep": [
     8,
     17
    ],
+   "n_xsep": [
+    5,
+    17
+   ],
    "n_ysep": [
-    11,
+    10,
     17
    ],
    "n_grid": [
-    33,
+    25,
     81
    ]
   },
@@ -462,8 +446,6 @@
    "recipe": "PLA, 1.2 mm walls, hollow halves, 14 mm steel ball at the centre",
    "on_target": true,
    "diag_t": [
-    -0.375,
-    -0.25,
     -0.125,
     0.0,
     0.125,
@@ -474,19 +456,19 @@
     0.75
    ],
    "n_diag": [
-    10,
+    8,
     17
    ],
    "n_xsep": [
-    11,
+    9,
     17
    ],
    "n_ysep": [
-    12,
+    11,
     17
    ],
    "n_grid": [
-    38,
+    31,
     81
    ]
   },
@@ -499,8 +481,6 @@
    "recipe": "PLA, 1.2 mm walls, hollow halves, 10 mm steel ball at the centre",
    "on_target": true,
    "diag_t": [
-    -0.625,
-    -0.5,
     -0.375,
     -0.25,
     -0.125,
@@ -512,11 +492,11 @@
     0.625
    ],
    "n_diag": [
-    11,
+    9,
     17
    ],
    "n_xsep": [
-    15,
+    12,
     17
    ],
    "n_ysep": [
@@ -524,7 +504,7 @@
     17
    ],
    "n_grid": [
-    49,
+    41,
     81
    ]
   },
@@ -537,8 +517,6 @@
    "recipe": "PLA, 0.8 mm walls, hollow halves, 9 mm steel ball at the centre",
    "on_target": true,
    "diag_t": [
-    -0.875,
-    -0.75,
     -0.625,
     -0.5,
     -0.375,
@@ -550,11 +528,11 @@
     0.375
    ],
    "n_diag": [
-    11,
+    9,
     17
    ],
    "n_xsep": [
-    17,
+    14,
     17
    ],
    "n_ysep": [
@@ -562,7 +540,7 @@
     17
    ],
    "n_grid": [
-    51,
+    44,
     81
    ]
   },
@@ -575,7 +553,6 @@
    "recipe": "PLA, 0.8 mm walls, hollow halves",
    "on_target": false,
    "diag_t": [
-    -1.0,
     -0.875,
     -0.75,
     -0.625,
@@ -587,7 +564,7 @@
     0.125
    ],
    "n_diag": [
-    10,
+    9,
     17
    ],
    "n_xsep": [
@@ -599,7 +576,7 @@
     17
    ],
    "n_grid": [
-    47,
+    43,
     81
    ]
   },
@@ -633,7 +610,7 @@
     17
    ],
    "n_grid": [
-    35,
+    32,
     81
    ]
   },
@@ -663,7 +640,7 @@
     17
    ],
    "n_grid": [
-    9,
+    7,
     81
    ]
   }
