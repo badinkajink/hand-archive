@@ -20,6 +20,16 @@ python3 logs/20261008-contact_model_policies/replays.py
 rc=$?
 echo "$(date '+%F %H:%M:%S') replays exit $rc"
 uv run --extra rl python scripts/rl_contact_eval.py tb --all
+# one-off (2026-10-08): the Newton film panel on the pads s0 replay, world 0, before post_train.sh relies on it
+L=logs/20261008-contact_model_policies
+if [ ! -e $L/newton_film_test.done ] && [ -f $L/replay/20261008-d6_work_tpu27pads1_40M_s0/rec.npz ]; then
+  logs/20261001-hom_contact/venv/bin/python scripts/rl_policy_replay.py bench --study 20261008 \
+    --dir $L/replay/20261008-d6_work_tpu27pads1_40M_s0 --world 0
+  WARP_CACHE_PATH=$(mktemp -d) MUJOCO_GL=egl $HOME/.claude/bin/resguard.sh run --mem 6G --cpu 400 -- \
+    logs/20261004-contact-transfer/venv/bin/python scripts/rl_policy_replay.py film --study 20261008 \
+    --dir $L/replay/20261008-d6_work_tpu27pads1_40M_s0 --engine newton --out $L/newton_film_test.mp4 --title "pads s0 test"
+  echo "newton film test exit $?" && touch $L/newton_film_test.done
+fi
 # after the last run: the transfer matrix, robustness and films (once; post_train.sh skips what exists)
 L=logs/20261008-contact_model_policies
 if [ ! -e $L/post_train.started ] && python3 - <<'PY'
