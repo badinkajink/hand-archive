@@ -34,6 +34,7 @@ while ! grep -q "queue done" $L/train_queue.log; do
       ~/.claude/bin/resguard.sh status | grep -q "launch gate: OPEN" || { echo "$(date '+%F %T') $tag it $it: gate closed"; break; }
       PID=$(pgrep -f "^/home/humanoid/Programs/hand/.venv/bin/python3 scripts/rl_train_cube.py .*--tag $tag( |\$)" | head -1)
       [ -n "$PID" ] || break
+      exec 9> $L/watch.lock; flock 9                # one paused-trainer GPU job at a time (retro_watch2.sh takes it too)
       t0=$(date +%s)
       kill -STOP "$PID"
       echo "$(date '+%F %T') $tag it $it: trainer $PID paused"
@@ -43,6 +44,7 @@ while ! grep -q "queue done" $L/train_queue.log; do
       rc=$?
       kill -CONT "$PID"
       PID=""
+      flock -u 9
       t1=$(date +%s)
       echo -e "$tag\t$it\t$t0\t$t1\t$rc" >> $L/watch_pauses.tsv
       echo "$(date '+%F %T') $tag it $it: resumed after $((t1 - t0)) s, exit $rc"
