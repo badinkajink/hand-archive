@@ -12,4 +12,4 @@
 20261008-d6_work_box_40M_s2          results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip              2 40000000
 20261008-d6_work_tpu27mesh_40M_s2    results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7mesh  2 40000000
 20261008-d6_work_tpu27pads1_40M_s2   results/phase1/real_v1/20261006-sv1_u0308_b050_work_tip_tpu2.7pads1 2 40000000
-20261008-d6_work_tpu27skin_40M_s2    results/phase1/real_v1/20261008-sv1_u0308_b050_work_tip_tpu2.7skin  2 40000000
+# held for the owner (24 GPU-h cap; schedule measures 25.7 h): 20261008-d6_work_tpu27skin_40M_s2    results/phase1/real_v1/20261008-sv1_u0308_b050_work_tip_tpu2.7skin  2 40000000
